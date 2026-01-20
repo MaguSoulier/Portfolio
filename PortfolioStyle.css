@@ -6,6 +6,8 @@
             --container-width: 75%; 
             --header-h: 80px;
             --footer-h: 80px;
+            --container-width: 85%; /* Un poco más ancho en general */
+            --max-width: 1400px;    /* Pero que nunca supere esto */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,6 +34,7 @@ html, body {
     grid-template-columns: repeat(12, 1fr);
     gap: var(--gap);
     width: var(--container-width);
+    max-width: var(--max-width); /* Añade esta línea */
     margin: 0 auto;
     height: 100%;
 }
@@ -68,7 +71,7 @@ header {
 
         .h-item {
             align-self: center;
-             font-size: 1.1rem;
+             font-size: 17px;
         }
 
         .flower {
@@ -128,7 +131,7 @@ header {
 
         .lang-switcher button {
             background: none;
-            font-size: 1.1rem;
+            font-size: 17px;
             border: none;
             padding: 3px 8px;
             cursor: none !important;
@@ -202,11 +205,13 @@ main {
                     grid-column: 1 / span 5; /* Ocupa de la 1 a la 4 */
                     grid-row: 1 / 3;
                     padding: 0 30px;
-                    box-sizing: border-box;
+                    z-index: 0;
+                    overflow: visible;
                 }
             
                 .photo-container img {
                     width: 94%;
+                    max-width: 510px;
                     height: auto;
                     display: block;
                     margin-top: -10px;
@@ -223,10 +228,11 @@ main {
 
                 #main-name {
                     visibility: hidden;
-                    line-height: 1.1; /* Ajusta según tu diseño para que el <br> se vea bien */
+                    line-height: 0.9; /* Ajusta según tu diseño para que el <br> se vea bien */
                     display: block;  /* Asegura que procese el bloque correctamente */
                     transition: opacity 0.5s ease;
                     will-change: contents;
+                    z-index: 1;
                 }
                 
                 [data-key="connect"] {
@@ -240,7 +246,7 @@ main {
                     display: flex;
                     flex-direction: column; /* Esto pone la hora a la izquierda o derecha según necesites */
                     gap: 4px; /* Espacio entre las dos líneas verticales */
-                
+                    padding-top: 13px;
                     /* Configuración vertical */
                     writing-mode: vertical-rl;
                 
@@ -255,7 +261,6 @@ main {
                     display: block;
                     font-family: "Space Mono", monospace;
                     font-size: clamp(32px, 10cqi, 110px); 
-                    line-height: 0.9; /* Ajusta según prefieras la cercanía de las líneas */
                     text-transform: uppercase;
                     font-weight: 700;
                     width: 100%;
@@ -276,15 +281,16 @@ main {
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
-                    font-size: 1.1rem;
+                    font-size: 17px;
                     text-transform: uppercase;
                     line-height: 1.5;
+                    z-index: 1;
                 }
             
                 .badge {
                     background-color: var(--brand-orange);
                     color: var(--bg-gray);
-                    margin-left: 0.4rem;
+                    margin-left: 8px;
                     padding: 2px 8px;
                     display: inline-block;
                     animation-delay: 10s;
@@ -293,7 +299,7 @@ main {
                 .location-time {
                 font-family: 'Space Mono', monospace; /* Para mantener tu estilo */
                 color: var(--brand-orange);
-                font-size: 0.9rem;
+                font-size: 14px;
                 text-transform: uppercase;
                 writing-mode: vertical-rl; 
                 letter-spacing: 0.05em;
@@ -394,7 +400,7 @@ main {
             /* Estilo individual de cada etiqueta (basado en tu imagen) */
             .tag {
                 font-family: "Space Mono", monospace;
-                font-size: 0.7rem;           /* Tamaño pequeño y legible */
+                font-size: 13px;           /* Tamaño pequeño y legible */
                 color: var(--brand-orange);
                 border: 1px solid var(--brand-orange); /* Borde fino naranja */
                 padding: 4px 10px;         /* Espacio interno (aire) */
@@ -437,7 +443,7 @@ footer {
             justify-content: center;
             margin-top: -10px;
             margin-left: 30px;
-            font-size: 0.9rem;
+            font-size: 14px;
         }
 
         .footer-container {
@@ -452,7 +458,7 @@ footer {
         font-family: "Space Mono", monospace;
         grid-column: 10 / 13;
         grid-row: 6;
-        font-size: 1.6rem; 
+        font-size: 25px; 
         justify-self: end;
         align-self: end;
         font-weight: 700;
@@ -515,19 +521,19 @@ footer {
 
         .contact-icon {
            fill: var(--brand-orange);
-           width: 0.65rem;
+           width: 13px;
            margin-left: 10px;
            flex-shrink: 0; /* Impide que el icono se comprima */
         }
         .mail-icon{
            fill: var(--brand-orange);
-           width: 0.7rem;
+           width: 13px;
            margin-left: 5px;
            flex-shrink: 0; /* Impide que el icono se comprima */
         }
 
         .copy-email {
-           font-size: 1.2rem;
+           font-size:19px;
            font-weight: 700;
            letter-spacing:0.02em;
            text-decoration: none;
@@ -566,7 +572,7 @@ footer {
 
         .copy-email {
            text-decoration: underline var(--brand-orange);
-           font-size: 1.2rem;
+           font-size: 19px;
            font-weight: 700;
            color: var(--brand-orange);
            text-decoration: none;
