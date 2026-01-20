@@ -1,0 +1,859 @@
+:root {
+            --brand-orange: #ff3c00;
+            --bg-gray: #f2f2f2;
+            --grid-gap: clamp(8px, 0.729vw, 14px);
+            --gap: 14px;
+            --container-width: 75%; 
+            --header-h: 80px;
+            --footer-h: 80px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-gray);
+    display: flex;
+    flex-direction: column;
+    /* height: 100vh;  <-- ELIMINA O COMENTA ESTO */
+    min-height: 100vh; /* Cambia a min-height */
+    /* overflow: hidden; <-- ELIMINA O COMENTA ESTO */
+    overflow-x: hidden; /* Solo bloquea el scroll horizontal */
+    font-family: "Space Mono", monospace;
+    color: var(--brand-orange);
+    scroll-behavior: smooth; /* Para que el salto sea suave */
+}
+
+html, body {
+    cursor: none;
+    }
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gap);
+    width: var(--container-width);
+    margin: 0 auto;
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+header {
+    height: var(--header-h);
+    background-color: var(--bg-gray);
+    flex-shrink: 0;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    position: fixed; /* Lo fija a la pantalla */
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+        .nav-menu {
+        display: contents; 
+        }
+
+        .nav-menu a{
+            text-decoration: none;
+            color: var(--brand-orange);
+            cursor: none !important;
+        }
+
+        .nav-menu a.active {
+            font-weight: 700 ;
+            cursor: none !important;
+        }
+
+        .h-item {
+            align-self: center;
+             font-size: 1.1rem;
+        }
+
+        .flower {
+    grid-column: 1; 
+    display: flex; /* Vital para que el SVG mantenga su tamaño */
+    align-items: center; 
+    cursor: none !important;
+    padding-left: 30px;
+    text-decoration: none; /* Quita subrayados accidentales del link */
+    height: 100%; /* Para que ocupe el alto del header fijo */
+}
+
+.flower svg {
+    display: inline-block;
+    width: 35px;
+    height: auto;
+    transform-origin: center;
+    pointer-events: none; /* Evita que el SVG interfiera con el click del link */
+}
+
+            /* Configuración base para los elementos del Header */
+            #HeaderCorona, #HeaderOjo, #HeaderParpado, #HeaderIris {
+                transform-origin: center;
+                transform-box: fill-box;
+                transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+
+            /* --- EFECTO HOVER --- */
+#logo-inicio:hover #HeaderCorona {
+    transform: scale(1.1);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+/* --- ANIMACIÓN DE PESTAÑEO ÚNICO --- */
+@keyframes pestaneoUnico {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}
+
+/* Al hacer hover, el ojo parpadea solo 1 vez */
+#logo-inicio:hover #HeaderParpado {
+    animation: pestaneoUnico 0.4s ease-in-out 1;
+}
+
+/* --- ANIMACIÓN DE CLICK (SOLO CORONA) --- */
+@keyframes coronaGiro {
+    0% { transform: rotate(0deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1.1); }
+}
+
+.animar-corona-click {
+    animation: coronaGiro 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+/* El ojo ya no tiene animación de click, se queda normal */
+
+
+        .lang-switcher button {
+            background: none;
+            font-size: 1.1rem;
+            border: none;
+            padding: 3px 8px;
+            cursor: none !important;
+            color: var(--brand-orange); 
+            font-family: inherit; 
+
+        }
+
+            .lang-switcher span {
+                color: #ff3c00;
+                font-family: inherit;
+            }
+
+            .lang-switcher button:hover {
+                text-decoration: underline var(--brand-orange);
+                text-decoration-thickness: 1px;
+                text-underline-offset: 4px; 
+            }
+
+            .lang-switcher button.active {
+                background-color: var(--brand-orange);
+                color: var(--bg-gray);
+            }
+
+        .h-item-1 { grid-column: 1; justify-self: start; } 
+        .h-item-2 { grid-column: 5; justify-self: start; } 
+        .h-item-3 { grid-column: 7 / 9; justify-self: end; }  
+        .h-item-4 { grid-column: 11 / 13; justify-self: end; }  
+
+        .menu-toggle {
+        display: none;
+        grid-column: 12;
+        justify-self: end;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 10001;
+        }
+
+        .menu-toggle .bar {
+        display: block;
+        width: 25px;
+        height: 4px;
+        background-color: var(--brand-orange);
+        margin: 5px 0;
+        transition: 0.3s;
+        }
+
+
+main {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-top: 150px; 
+    padding-bottom: var(--footer-h);
+}
+
+.section-title{
+    grid-column: 1 / 13;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-left: 30px;
+}
+
+        .grid-inicio {
+            align-items: start; 
+            grid-template-rows: 25vh 30vh 20vh;
+            height: 700px;
+        }
+
+                .photo-container {
+                    grid-column: 1 / span 5; /* Ocupa de la 1 a la 4 */
+                    grid-row: 1 / 3;
+                    padding: 0 30px;
+                    box-sizing: border-box;
+                }
+            
+                .photo-container img {
+                    width: 94%;
+                    height: auto;
+                    display: block;
+                    margin-top: -10px;
+                }
+
+                .main-text-block {
+                    grid-column: 5 / 13;
+                    grid-row: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+
+                #main-name {
+                    visibility: hidden;
+                    line-height: 1.1; /* Ajusta según tu diseño para que el <br> se vea bien */
+                    display: block;  /* Asegura que procese el bloque correctamente */
+                    transition: opacity 0.5s ease;
+                    will-change: contents;
+                }
+                
+                [data-key="connect"] {
+                    visibility: hidden;
+                    display: inline-block;
+                }                
+            
+                .secondary-text-block{
+                    grid-column: 12;/* Empieza exactamente en la columna 5 */
+                    grid-row: 1;
+                    display: flex;
+                    flex-direction: column; /* Esto pone la hora a la izquierda o derecha según necesites */
+                    gap: 4px; /* Espacio entre las dos líneas verticales */
+                
+                    /* Configuración vertical */
+                    writing-mode: vertical-rl;
+                
+                    font-family: 'Space Mono', monospace;
+                    color: var(--brand-orange);
+                    text-transform: uppercase;
+                }
+            
+                .main-name {
+                    margin: 0;
+                    overflow: visible; 
+                    display: block;
+                    font-family: "Space Mono", monospace;
+                    font-size: clamp(32px, 10cqi, 110px); 
+                    line-height: 0.9; /* Ajusta según prefieras la cercanía de las líneas */
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    width: 100%;
+                    -webkit-user-select: none; /* Safari */
+                    -ms-user-select: none;     /* IE 10 y 11 */
+                    user-select: none;
+                }
+            
+                .main-name .line {
+                    display: block; /* Esto garantiza las 2 líneas */
+                    width: fit-content;
+                }
+
+            
+                .tagline {
+                    grid-column: 5 / 13;
+                    grid-row: 2;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    font-size: 1.1rem;
+                    text-transform: uppercase;
+                    line-height: 1.5;
+                }
+            
+                .badge {
+                    background-color: var(--brand-orange);
+                    color: var(--bg-gray);
+                    margin-left: 0.4rem;
+                    padding: 2px 8px;
+                    display: inline-block;
+                    animation-delay: 10s;
+                }
+            
+                .location-time {
+                font-family: 'Space Mono', monospace; /* Para mantener tu estilo */
+                color: var(--brand-orange);
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                writing-mode: vertical-rl; 
+                letter-spacing: 0.05em;
+                }
+                .location-line {
+                    white-space: nowrap;
+                    font-size: 0.9rem;
+                    line-height: 1.2;
+                }
+                        .bold-text {
+                    font-weight: 700 !important;
+                    display: inline-block;
+                }
+
+
+
+
+
+
+
+
+
+            .project-item {
+                grid-column: 1 / 13; /* Ocupa todo el ancho */
+                height: 400px;
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: var(--gap);
+                margin-bottom: 60px;
+                border-top: 1px solid var(--brand-orange); /* Línea decorativa opcional */
+                padding: 20px;
+                opacity: 0.4; /* Estado apagado */
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+
+            /* Contenedor de Media (Columnas 1 a 6) */
+            .project-media {
+                grid-column: 1 / 7;
+                position: relative;
+                overflow: hidden;
+                height: 100%;
+            }
+
+            .media-img, .media-video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Asegura que cubra el área sin deformarse */
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: opacity 0.5s ease;
+            }
+
+            .media-video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0; /* Siempre usa opacity en lugar de display:none */
+                transition: opacity 0.4s ease;
+                pointer-events: none; /* Evita que el video interfiera con el mouse */
+            }
+
+            .project-item.active {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: #fff;
+    /* Aquí pon todas las propiedades que tenías en el :hover original */
+}
+
+/* Opcional: Mantén el hover para usuarios de escritorio si quieres doble interacción */
+.project-item:hover {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: #fff;
+}
+
+
+            /* Contenedor de Info (Columnas 7 a 13) */
+            .project-info {
+                grid-column: 7 / 13;
+                display: flex;
+                flex-direction: column;
+                justify-content: start; /* Centrado vertical */
+                padding-left: 20px;
+            }
+
+            .project-tags {
+                display: flex;
+                flex-wrap: wrap; /* Permite que bajen si no hay espacio */
+                gap: 12px;       /* Espacio entre cada recuadro */
+                margin-bottom: 20px;
+            }
+
+            /* Estilo individual de cada etiqueta (basado en tu imagen) */
+            .tag {
+                font-family: "Space Mono", monospace;
+                font-size: 0.7rem;           /* Tamaño pequeño y legible */
+                color: var(--brand-orange);
+                border: 1px solid var(--brand-orange); /* Borde fino naranja */
+                padding: 4px 10px;         /* Espacio interno (aire) */
+                text-transform: uppercase; /* Todo en mayúsculas */
+                letter-spacing: 0.05em;    /* Un poco de aire entre letras */
+                line-height: 1;
+                display: inline-block;
+                transition: all 0.3s ease;
+            }
+
+            /* Efecto Hover (Opcional, pero recomendado para interactividad) */
+            .tag:hover {
+                background-color: var(--brand-orange);
+                color: var(--bg-gray);
+            }
+
+            .project-title { font-size: 32px; font-weight: 700; margin-bottom: 15px; }
+            .project-description { font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+            .view-project { text-decoration: none; color: var(--brand-orange); font-weight: 700; }
+
+
+
+footer {
+    height: var(--footer-h);
+    flex-shrink: 0;
+    background-color: var(--bg-gray);
+    z-index: 1000;
+    position: fixed; /* Lo fija a la pantalla */
+    bottom: 0;      /* Lo fija estrictamente al borde inferior */
+    left: 0;
+    width: 100%;    /* Ocupa todo el ancho de la pantalla */
+    display: block; /* Asegura que se comporte como bloque para el contenedor interno */
+}
+        
+        .web-portfolio{
+            grid-column: 1 / 7;
+            display: flex;
+            flex-direction: column;
+            grid-row: 1;
+            justify-content: center;
+            margin-top: -10px;
+            margin-left: 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-container {
+            grid-column: 10 / 13; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: -10px;
+        }
+
+            .connect {
+        font-family: "Space Mono", monospace;
+        grid-column: 10 / 13;
+        grid-row: 6;
+        font-size: 1.6rem; 
+        justify-self: end;
+        align-self: end;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block; /* Importante para que el transform funcione bien */
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1), color 0.3s;
+        z-index: 9001;
+            }
+
+           .connect.moved {
+        transform: translateY(-150px) !important; /* Aumenté el valor para que se note el cambio */
+        }
+
+        .contact-panel {
+        position: fixed;
+        bottom: 0;
+        /* Esto lo centra si la pantalla es > 1400px, si no, lo pega a la derecha */
+        right: max(0px, calc((100vw - 1400px) / 2)); 
+        
+        /* Ancho: 4 columnas de una grilla de 12 (aprox 33%) */
+        width: 100%;
+        max-width: 466px; /* 1400 / 12 * 4 */
+        
+        background-color: var(--bg-gray);
+        border-top: 2px solid var(--brand-orange);
+        padding: 30px;
+        
+        /* Estado inicial */
+        transform: translateY(100%); 
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 9999;
+        }
+
+        .contact-panel.is-visible {
+        transform: translateY(0) !important;
+        }
+
+        .contact-link {
+           color: var(--brand-orange) !important; /* Aseguramos el color naranja */
+           text-decoration: none;
+        }
+
+        .contact-redes {
+           display: grid;
+           /* Creamos dos columnas de ancho fijo para que no se empujen */
+           /* 140px es suficiente para "LINKED-IN" en Space Mono */
+           grid-template-columns: repeat(2, 140px); 
+           gap: 50px;
+           margin-top: 15px;
+        }
+
+        .contact-item {
+           display: flex;
+           align-items: center;
+           justify-content: flex-start; /* Alinea texto e icono a la derecha de su celda */
+           white-space: nowrap;
+           /* Opcional: asegura que use Space Mono para anchos constantes */
+           font-family: 'Space Mono', monospace; 
+        }
+
+        .contact-icon {
+           fill: var(--brand-orange);
+           width: 0.65rem;
+           margin-left: 10px;
+           flex-shrink: 0; /* Impide que el icono se comprima */
+        }
+        .mail-icon{
+           fill: var(--brand-orange);
+           width: 0.7rem;
+           margin-left: 5px;
+           flex-shrink: 0; /* Impide que el icono se comprima */
+        }
+
+        .copy-email {
+           font-size: 1.2rem;
+           font-weight: 700;
+           letter-spacing:0.02em;
+           text-decoration: none;
+           color:var(--brand-orange);
+           margin-top: 5px;
+        }
+
+        .contact-email{
+           margin-bottom: 20px;
+        }
+
+        .copy-email:hover, 
+        .contact-link:hover {
+           text-decoration: underline var(--brand-orange);
+           text-decoration-thickness: 1px;
+           text-underline-offset: 4px; /* Mantiene el aire entre el texto y la línea */
+        
+           /* Refuerzo: Aseguramos que el cursor del sistema no aparezca */
+           cursor: none !important;
+        }
+
+        .copy-email, 
+        .contact-link, 
+        .copy-email,
+        .connect {
+           /* El !important es vital aquí para ganarle a la configuración 
+              por defecto de los navegadores para enlaces */
+           cursor: none !important;
+        }
+
+        .contact-tag {
+           color: var(--brand-orange); /* Se mantiene naranja */
+           margin-bottom: 5px;
+           transition: color 0.3s ease;
+        }
+
+        .copy-email {
+           text-decoration: underline var(--brand-orange);
+           font-size: 1.2rem;
+           font-weight: 700;
+           color: var(--brand-orange);
+           text-decoration: none;
+        }
+
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: #000000;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+
+.custom-cursor.cursor-pointer {
+    width: 18px;
+    height: 18px;
+    background-color: var(--brand-orange); 
+    opacity: 0.5;
+}
+
+.custom-cursor.click-static {
+    transform: translate(-50%, -50%) scale(0.6);
+    background-color: #000; 
+}
+
+.custom-cursor.click-interactive {
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: var(--brand-orange);
+}
+
+
+/* 1. Definir el ancho de la barra */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* 2. El riel (fondo) */
+::-webkit-scrollbar-track {
+    background: var(--bg-gray);
+}
+
+/* 3. La barra de desplazamiento (Thumb) */
+::-webkit-scrollbar-thumb {
+    background: var(--brand-orange);
+    /* Cambiamos border-radius a 0 para que sea cuadrada */
+    border-radius: 0px; 
+}
+
+/* 4. ELIMINAR LAS FLECHAS (Buttons) */
+/* Este es el truco para quitar los botones de arriba y abajo */
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* 5. Esquinas (cuando hay scroll horizontal y vertical a la vez) */
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--brand-orange) var(--bg-gray);
+}
+
+
+
+
+
+
+
+@media (max-width: 1400px) {
+
+    .main-name {
+        font-size:clamp(32px, 6cqi, 110px) ;
+    }
+    .main-text-block {
+        grid-column: 5 / 11;
+    }
+
+    .photo-container img {
+        width: 120%;
+    }
+     .tagline{
+        grid-column: 5 / 11 ;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .badge{
+        margin-left: 0px;
+    }
+
+    .web-portfolio{
+            margin-left: 0px;
+        }
+
+}
+
+
+@media (max-width: 768px) {
+
+    :root {
+            --container-width: 85%; 
+        }
+
+    .grid-layout {
+        gap: 5px;
+    }
+
+    .nav-menu {
+        display: flex; 
+        position: fixed;
+        top: -100vh; /* Posición inicial: fuera de pantalla arriba */
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg-gray);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: top 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+        z-index: 10000;
+    }
+        .nav-menu.is-active {
+            top: 0;
+        }
+        .h-item-1 {
+            z-index: 10002;
+            position: relative;
+        }
+        .nav-menu .h-item {
+            grid-column: auto;
+            justify-self: center;
+        }
+        .menu-toggle {
+            display: block; /* Aparece el botón */
+            align-self: center;
+        }
+        .flower {
+            padding-left: 0px;
+        }
+
+    main {
+    padding-top: 20px;
+    }
+
+   
+
+    main .grid-layout {
+    grid-template-rows: 100px 35vh 100px;
+    }
+
+        .photo-container {
+            grid-column: 1 /9;
+            grid-row: 2;
+            padding: 0px;
+        }
+
+        .photo-container img{
+            margin-top: -40px;
+        }
+
+        .main-text-block {
+            grid-column: 3 / 13;
+        }
+
+        .main-name {
+            font-size: clamp(32px, 12cqi, 110px);
+        }
+
+        .tagline{
+            grid-column: 1 / 13;
+            grid-row: 3;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .badge{
+            margin-left: 0rem;
+        }
+
+        .secondary-text-block{
+            grid-row: 2;
+        }
+    
+    .web-portfolio{
+            grid-column: 1 / 5;
+    }
+
+}
+
+#loader-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-gray);
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en vertical */
+    justify-content: center; /* Centra verticalmente en la pantalla */
+    align-items: center;     /* Centra horizontalmente en la pantalla */
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#loader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-container {
+    width: 75px; /* Tamaño del área del logo */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+#loader-percentage {
+    margin-top: 15px; /* Espacio entre el logo y el número */
+    font-family: 'Space Mono', monospace;
+    color: var(--brand-orange);
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1; /* Evita espacios extra por debajo del texto */
+}
+
+#Centro {
+    opacity: 0;
+    animation: aparecerSimple 0.2s ease forwards;
+    color: var(--brand-orange);
+}
+
+#anim-corona {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: aparecerEscala 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+#anim-iris {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease;
+    opacity: 1;
+}
+
+/* El ojo inicia cerrado (scaleY 0) y el parpado también se prepara */
+#anim-ojo, #anim-parpado {
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+/* --- CLASES DE CONTROL (JS) --- */
+.eye-open { animation: abrirOjo 0.5s ease-out forwards; }
+.eye-close { animation: cerrarOjo 0.4s ease-in forwards; }
+.parpadeando { animation: parpadear 0.2s ease-in-out; }
+
+/* --- ANIMACIONES DE SALIDA --- */
+.out-fade { animation: desaparecerSimple 0s ease forwards !important; }
+.out-scale { animation: desaparecerEscala 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) forwards !important; }
+
+/* --- KEYFRAMES --- */
+@keyframes aparecerSimple { from { opacity: 0; } to { opacity: 1; } }
+@keyframes desaparecerSimple { from { opacity: 1; } to { opacity: 0; } }
+@keyframes aparecerEscala { 
+    0% { transform: scale(0); opacity: 0; } 
+    100% { transform: scale(1); opacity: 1; } 
+}
+@keyframes desaparecerEscala { 
+    0% { transform: scale(1); opacity: 1; } 
+    100% { transform: scale(0); opacity: 0; } 
+}
+@keyframes abrirOjo { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes cerrarOjo { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+@keyframes parpadear { 
+    0% { transform: scaleY(1); } 
+    50% { transform: scaleY(0); } 
+    100% { transform: scaleY(1); } 
+}
