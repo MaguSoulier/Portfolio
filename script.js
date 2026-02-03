@@ -71,6 +71,7 @@ const translations = {
   es: {
     tagline: "SOY UNA DISEÑADORA VISUAL ESPECIALIZADA EN",
     connect: "CONECTEMOS",
+    web_portfolio:"2026 - PORTFOLIO WEB",
     navwork: "TRABAJOS",
     navabout: "SOBRE MÍ",
     email_tag: "E-MAIL",
@@ -85,10 +86,12 @@ const translations = {
     ilustracion: "ILUSTRACIÓN",
     identidad_de_marca: "IDENTIDAD DE MARCA",
     redes_sociales:"REDES SOCIALES",
+    projet1_description: ["Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.", "A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos."]
   },
   en: {
     tagline: "I’M A VISUAL DESIGNER SPECIALIZED IN",
     connect: "LET'S CONNECT",
+    web_portfolio:"2026 - WEB PORTFOLIO",
     navwork: "WORK",
     navabout: "ABOUT ME",
     email_tag: "E-MAIL",
@@ -103,6 +106,7 @@ const translations = {
     ilustracion: "ILUSTRATION",
     identidad_de_marca: "BRANDING",
     redes_sociales:"SOCIAL MEDIA",
+    projet1_description: ["<em>Your neighborhood, your food fair</em>, is a multi-channel strategy developed for Municipio B, aimed at reconnecting Montevideo’s youth with local neighborhood markets.", "Through a dynamic visual identity and a geo-located web platform, the project translates the logic of traditional street markets into digital languages, providing real-time information tailored to contemporary consumption habits."]
   }
 };
 
@@ -127,7 +131,16 @@ function changeLanguage(lang, updateURL = true) {
   }
   document.querySelectorAll('[data-key]').forEach(element => {
     const key = element.getAttribute('data-key');
-    if (translations[lang][key]) element.innerText = translations[lang][key];
+    if (!translations[lang][key]) return;
+
+const value = translations[lang][key];
+
+if (Array.isArray(value)) {
+  element.innerHTML = value.map(text => `<p>${text}</p>`).join('');
+} else {
+  element.innerText = value;
+}
+
   });
   
   const contactTag = document.querySelector('.contact-tag');
@@ -183,7 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('mouseenter', () => link.scrambler.setText(link.innerText));
     });
 
-    // Gestión del Cursor Personalizado
+// ==========================================
+// 2. CURSOR PERSONALIZADO
+// ==========================================
+
     document.addEventListener('mousemove', (e) => {
         if(cursor) {
             cursor.style.left = `${e.clientX}px`;
@@ -191,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const interactiveElements = document.querySelectorAll('.nav-work, .nav-about, .nav-lang, .connect, .flower, a, button, .contact-email');
+    const interactiveElements = document.querySelectorAll('.nav-work, .nav-about, .nav-lang, .connect, .flower, a, button, .contact-email, .project-item');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => cursor?.classList.add('cursor-pointer'));
         el.addEventListener('mouseleave', () => cursor?.classList.remove('cursor-pointer'));
@@ -290,6 +306,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ==========================================
+// 5. MENU ITEMS ACTIVADOS POR EL SCROLL
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-menu a');
@@ -345,51 +365,86 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+// ===============
+// 6. PROYECTOS
+// ===============
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Forzar inicio arriba
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     const projectItems = document.querySelectorAll('.project-item');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer'); // Seleccionamos el footer
+    
+    const projectRoutes = {
+        'project1': 'project1.html',
+        'project2': 'project2.html',
+        'project3': 'project3.html'
+    };
 
     projectItems.forEach(item => {
-        const video = item.querySelector('.media-video');
         const title = item.querySelector('.scramble-title');
-        const scrambler = new TextScramble(title);
-        const originalText = title.innerText;
+        if (title) {
+            item.scramblerInstance = new TextScramble(title);
+            item.originalText = title.innerText;
+        }
 
-        // Variable para rastrear la promesa de reproducción
-        let playPromise;
-
-        item.addEventListener('mouseenter', () => {
-            if (video) {
-                // Intentamos reproducir y guardamos la promesa
-                playPromise = video.play();
+        // --- LÓGICA DE CLICK: SALIDA DE UI ---
+        item.addEventListener('click', () => {
+            const targetUrl = projectRoutes[item.id];
+            
+            if (targetUrl) {
+                // 1. Animamos el Header (hacia arriba)
+                if (header) header.classList.add('header-out');
                 
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // Reproducción exitosa
-                        video.style.opacity = "1";
-                    }).catch(error => {
-                        // Aquí es donde capturamos el error que mencionaste
-                        console.log("Reproducción prevenida o abortada:", error);
-                    });
-                }
-            }
-            scrambler.setText(originalText);
-        });
+                // 2. Animamos el Footer (hacia abajo)
+                if (footer) footer.classList.add('footer-out');
 
-        item.addEventListener('mouseleave', () => {
-            if (video) {
-                // Solo pausamos si la promesa ya se cumplió (evita el error de aborto)
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        video.pause();
-                    }).catch(() => {
-                        // Si la promesa falló, simplemente pausamos por seguridad
-                        video.pause();
-                    });
-                }
+                // 3. Navegamos tras la animación
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 600); 
             }
         });
     });
+
+    // --- LÓGICA DE ACTIVACIÓN ÚNICA (Misma de antes) ---
+    const updateActiveProject = () => {
+        let closestProject = null;
+        let minDistance = Infinity;
+        const viewportCenter = window.innerHeight / 2;
+
+        projectItems.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(viewportCenter - itemCenter);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestProject = item;
+            }
+        });
+
+        if (closestProject && !closestProject.classList.contains('active')) {
+            projectItems.forEach(p => p.classList.remove('active'));
+            closestProject.classList.add('active');
+            if (closestProject.scramblerInstance) {
+                closestProject.scramblerInstance.setText(closestProject.originalText);
+            }
+        }
+    };
+
+    window.addEventListener('scroll', updateActiveProject);
+    setTimeout(updateActiveProject, 100);
 });
+
+// ==========
+// 7. CARGA
+// ==========
 
 let progress = 0;
 const percentEl = document.getElementById('loader-percentage');
@@ -593,31 +648,92 @@ if (logoInicio) {
 
 // --- ACTIVACIÓN DE PROYECTOS POR SCROLL ---
 
-const observarProyectos = () => {
-    const proyectos = document.querySelectorAll('.project-item');
-
-    const opciones = {
-        root: null, // usa el viewport del navegador
-        threshold: 0.8, // 0.5 significa que se activa cuando el 50% del div es visible
-        rootMargin: "0px"
+// Sistema de activación basado en proximidad al centro del viewport
+const inicializarActivacionProyectos = () => {
+    const projectItems = document.querySelectorAll('.project-item');
+    const projectRoutes = {
+        'project1': 'project1.html',
+        'project2': 'project2.html',
+        'project3': 'project3.html'
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Cuando el proyecto entra en vista
-                entry.target.classList.add('active');
-            } else {
-                // Opcional: Quitar la clase al salir (para que se "apague" al pasar)
-                entry.target.classList.remove('active');
-            }
-        });
-    }, opciones);
+    // Configuración inicial de scramblers para títulos
+    projectItems.forEach(item => {
+        const title = item.querySelector('.scramble-title');
+        if (title) {
+            item.scramblerInstance = new TextScramble(title);
+            item.originalText = title.innerText;
+        }
 
-    proyectos.forEach(proyecto => {
-        observer.observe(proyecto);
+        // Click handler para navegación
+        item.addEventListener('click', () => {
+            const targetUrl = projectRoutes[item.id];
+            if (targetUrl) window.location.href = targetUrl;
+        });
     });
+
+    let lastActiveProject = null;
+    let isScrolling = false;
+
+    // Función de activación mejorada - solo activa el proyecto más cercano al centro
+    const updateActiveProject = () => {
+        // Evitar ejecuciones múltiples durante el mismo frame
+        if (isScrolling) return;
+        isScrolling = true;
+        
+        requestAnimationFrame(() => {
+            let closestProject = null;
+            let minDistance = Infinity;
+            const viewportCenter = window.innerHeight / 2;
+
+            projectItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                const itemCenter = rect.top + rect.height / 2;
+                const distance = Math.abs(viewportCenter - itemCenter);
+
+                // Encontrar el proyecto más cercano al centro del viewport
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestProject = item;
+                }
+            });
+
+            // Solo actualizar si hay un cambio de proyecto activo
+            if (closestProject && closestProject !== lastActiveProject) {
+                // Remover 'active' de todos los proyectos primero
+                projectItems.forEach(p => {
+                    if (p !== closestProject) {
+                        p.classList.remove('active');
+                    }
+                });
+
+                // Activar el proyecto más cercano
+                closestProject.classList.add('active');
+                
+                // Aplicar efecto scramble al título
+                if (closestProject.scramblerInstance && closestProject.originalText) {
+                    closestProject.scramblerInstance.setText(closestProject.originalText);
+                }
+
+                lastActiveProject = closestProject;
+            }
+
+            isScrolling = false;
+        });
+    };
+
+    // Throttled scroll listener para mejor performance
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        scrollTimeout = window.requestAnimationFrame(updateActiveProject);
+    }, { passive: true });
+
+    // Activación inicial después de que el contenido cargue
+    setTimeout(updateActiveProject, 200);
 };
 
 // Disparar la función tras la carga
-window.addEventListener('DOMContentLoaded', observarProyectos);
+window.addEventListener('DOMContentLoaded', inicializarActivacionProyectos);

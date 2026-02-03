@@ -111,10 +111,10 @@
         </h1>
         </div>
 
-            <p class="tagline">
+            <div class="tagline">
                 <span data-key="tagline">I’M A VISUAL DESIGNER SPECIALIZED IN</span> 
                 <span class="badge" id="rotating-badge">BRANDING</span>
-            </p>
+            </div>
         
         <div class="secondary-text-block">
             <div  class="location-line">
@@ -127,13 +127,13 @@
     </section>
 
 
-    <section id="trabajos"  style="min-height: 100vh; padding-top: 100px;">
+    <section id="trabajos">
         <div class="grid-layout grid-trabajos">
             <h2 data-key="selected_projects" class="section-title">PROYECTOS SELECCIONADOS</h2>
 
-                <div class="project-item">
+                <div class="project-item" id="project1">
                     <div class="project-media">
-                        <img src="tu_barrio/Celular y tote.png" alt="Proyecto 01" class="media-img">
+                        <img src="Celular y tote.png" alt="Proyecto 01" class="media-img">
                         <video class="media-video" muted loop playsinline autoplay preload="auto">
                             <source src="tu_barrio/VIdeo_web.mp4" type="video/mp4">
                         </video>
@@ -150,15 +150,15 @@
                             <h3 data-key="projet1_name" class="project-title scramble-title">
                                 TU BARRIO, TU FERIA
                             </h3>
-                            <p data-key="projet1_description" class="project-description">
-                                Descripción breve del proyecto. Branding, estrategia y desarrollo visual 
-                                enfocado en la experiencia del usuario.
-                            </p>
+                            <div data-key="projet1_description" class="project-description">
+                                <p>Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.</p>
+                                <p>A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos. </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-item">
+                <div class="project-item" id="project2">
                     <div class="project-media">
                         <img src="tu_barrio/Celular y tote.png" alt="Proyecto 01" class="media-img">
                         <video class="media-video" muted loop playsinline autoplay preload="auto">
@@ -184,12 +184,10 @@
                     </div>
                 </div>
 
-                <div class="project-item">
+                <div class="project-item" id="project3">
                     <div class="project-media">
                         <img src="tu_barrio/Celular y tote.png" alt="Proyecto 01" class="media-img">
-                        <video class="media-video" muted loop playsinline autoplay preload="auto">
-                            <source src="tu_barrio/VIdeo_web.mp4" type="video/mp4">
-                        </video>
+                        
                     </div>
                 
                     <div class="project-info">
@@ -227,9 +225,7 @@
             <div class="footer-container">
                 <a data-key="connect" class="connect">LET'S CONNECT</a>
             </div>
-            <div class="web-portfolio">
-            <p>2026 - WEB PORTFOLIO</p>
-        </div>
+            <div data-key="web_portfolio" class="web-portfolio">2026 - WEB PORTFOLIO</div>
         </div>
         
     </footer>

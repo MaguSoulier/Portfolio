@@ -1,0 +1,177 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 0;
+        }
+
+        .container {
+            display: flex;
+            width: 85%;
+            max-width: 1500px;
+            height: calc(100vh - 160px);
+            margin: 0 auto;
+        }
+
+        /* LEFT SECTION - FIXED */
+        .left-section {
+            width: 35%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--brand-orange);
+        }
+
+        .phrase{
+            font-size: 3rem;
+            line-height: 1.1;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 20px 0;
+            color: var(--brand-brown);
+            font-family: "Space Grotesk", sans-serif;
+        }
+
+        .accordion-container {
+            margin-bottom: 20px;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+        }
+
+        .accordion-header {
+            font-family: "Space Mono", monospace;
+            font-size: 13px;   
+                background-color: var(--bg-gray);        /* Tamaño pequeño y legible */
+                color: var(--brand-orange);
+                border: 1px solid var(--brand-orange); /* Borde fino naranja */
+                padding: 4px 10px;         /* Espacio interno (aire) */
+                text-transform: uppercase; /* Todo en mayúsculas */
+                letter-spacing: 0.05em;    /* Un poco de aire entre letras */
+                line-height: 1;
+                display: inline-block;
+                transition: all 0.3s ease;
+                transition: background-color 0.4s ease;
+        }
+
+        .accordion-header:hover {
+            box-shadow: inset 0 0 0 1px var(--brand-orange);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+           transition: max-height 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            transition: max-height 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .accordion-header.active {
+            background-color: var(--brand-orange);
+            color: var(--bg-gray);
+        }
+
+        .accordion-text {
+            padding: 20px;
+        }
+
+        /* RIGHT SECTION - SCROLLABLE */
+        .right-section {
+            width: 65%;
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--gap);
+        }
+
+        .gallery-item {
+            background-color: #bdbdbd;
+            overflow: hidden;
+        }
+
+        .gallery-item.span-2 {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none; /* Prevents user interaction (pause/play) */
+        }
+
+        /* Scrollbar styling */
+        .right-section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .right-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .right-section::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .right-section::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .left-section {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+
+            .right-section {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .container {
+                flex-direction: column;
+                overflow-y: auto;
+            }
+
+            body {
+                overflow: auto;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }

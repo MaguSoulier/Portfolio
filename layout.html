@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Barrio, Tu Feria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* LEFT SECTION - FIXED */
+        .left-section {
+            width: 40%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            background-color: #f5f5f5;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff5722;
+            line-height: 1.1;
+        }
+
+        .accordion-container {
+            margin-bottom: 20px;
+        }
+
+        .accordion-item {
+            margin-bottom: 10px;
+        }
+
+        .accordion-header {
+            background-color: #ff5722;
+            color: white;
+            padding: 12px 20px;
+            cursor: pointer;
+            border: none;
+            text-align: left;
+            width: 100%;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover {
+            background-color: #e64a19;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            transition: max-height 0.3s ease-in;
+        }
+
+        .accordion-text {
+            padding: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* RIGHT SECTION - SCROLLABLE */
+        .right-section {
+            width: 60%;
+            margin-left: 40%;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #e0e0e0;
+            padding: 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background-color: #bdbdbd;
+            aspect-ratio: 1;
+            border-radius: 4px;
+        }
+
+        /* Scrollbar styling */
+        .right-section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .right-section::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .right-section::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .right-section::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .left-section {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+
+            .right-section {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .container {
+                flex-direction: column;
+                overflow-y: auto;
+            }
+
+            body {
+                overflow: auto;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- LEFT SECTION - FIXED -->
+        <div class="left-section">
+            <div class="title">
+                TU BARRIO,<br>TU FERIA
+            </div>
+
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <button class="accordion-header">SÍNTESIS</button>
+                    <div class="accordion-content">
+                        <div class="accordion-text">
+                            El ecosistema de las ferias barriales en Montevideo presentaba una brecha crítica de accesibilidad para el segmento joven. El objetivo del proyecto fue digitalizar una experiencia tradicionalmente analógica, eliminando la complejidad u la fragmentación informativa. Se buscó crear una solución intuitiva que centralizara datos en tiempo real, permitiendo que el usuario tenga el control de su consumo y su tiempo al alcance de la mano.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">DESCUBRIMIENTOS</button>
+                    <div class="accordion-content">
+                        <div class="accordion-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">EL DESAFÍO</button>
+                    <div class="accordion-content">
+                        <div class="accordion-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">SISTEMA DE DISEÑO</button>
+                    <div class="accordion-content">
+                        <div class="accordion-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">EXPERIENCIA DE USUARIO</button>
+                    <div class="accordion-content">
+                        <div class="accordion-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SECTION - SCROLLABLE -->
+        <div class="right-section">
+            <div class="gallery">
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+                <div class="gallery-item"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const isActive = content.classList.contains('active');
+
+                // Close all accordion items
+                document.querySelectorAll('.accordion-content').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    content.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
