@@ -94,6 +94,14 @@
                         <button onclick="changeLanguage('en')" id="btn-en">EN</button>
                     </div>
                 </div>
+                
+                <!-- NEW: Footer content inside mobile menu -->
+                <div class="h-item h-item-5 mobile-only">
+                    <a data-key="connect" class="connect">LET'S CONNECT</a>
+                </div>
+                <div class="h-item h-item-6 mobile-only">
+                    <div data-key="web_portfolio" class="web-portfolio-mobile">2026 - WEB PORTFOLIO</div>
+                </div>
             </nav>
         </div>
     </header>
@@ -112,7 +120,7 @@
         </div>
 
             <div class="tagline">
-                <span data-key="tagline">I’M A VISUAL DESIGNER SPECIALIZED IN</span> 
+                <span data-key="tagline">I'M A VISUAL DESIGNER SPECIALIZED IN</span> 
                 <span class="badge" id="rotating-badge">BRANDING</span>
             </div>
         
@@ -220,7 +228,7 @@
     </section>
 </main>
 
-    <footer>
+    <footer class="desktop-only">
         <div class="grid-layout">
             <div class="footer-container">
                 <a data-key="connect" class="connect">LET'S CONNECT</a>
@@ -256,6 +264,8 @@
     <div class="cursor-dot"></div>
     </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="script.js"></script>
 
 </body>

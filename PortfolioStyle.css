@@ -7,7 +7,7 @@
             --container-width: 75%; 
             --header-h: 80px;
             --footer-h: 80px;
-            --container-width: 85%; /* Un poco más ancho en general */
+            --container-width: 85%; /* Un poco mÃ¡s ancho en general */
             --max-width: 1500px;    /* Pero que nunca supere esto */
         }
 
@@ -35,7 +35,7 @@ body {
     grid-template-columns: repeat(12, 1fr);
     gap: var(--gap);
     width: var(--container-width);
-    max-width: var(--max-width); /* Añade esta línea */
+    max-width: var(--max-width); /* AÃ±ade esta lÃ­nea */
     margin: 0 auto;
     height: 100%;
 }
@@ -60,7 +60,7 @@ header {
     height: var(--header-h);
     background-color: var(--bg-gray);
     flex-shrink: 0;
-    z-index: 1000; /* Asegura que esté por encima de todo */
+    z-index: 1000; /* Asegura que estÃ© por encima de todo */
     position: fixed; /* Lo fija a la pantalla */
     display: block;
     top: 0;
@@ -89,7 +89,7 @@ header {
 
         .flower {
     grid-column: 1; 
-    display: flex; /* Vital para que el SVG mantenga su tamaño */
+    display: flex; /* Vital para que el SVG mantenga su tamaÃ±o */
     align-items: center; 
     cursor: none !important;
     padding-left: 30px;
@@ -105,7 +105,7 @@ header {
     pointer-events: none; /* Evita que el SVG interfiera con el click del link */
 }
 
-            /* Configuración base para los elementos del Header */
+            /* ConfiguraciÃ³n base para los elementos del Header */
             #HeaderCorona, #HeaderOjo, #HeaderParpado, #HeaderIris {
                 transform-origin: center;
                 transform-box: fill-box;
@@ -117,7 +117,7 @@ header {
     transform: scale(1.1);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-/* --- ANIMACIÓN DE PESTAÑEO ÚNICO --- */
+/* --- ANIMACIÃ“N DE PESTAÃ‘EO ÃšNICO --- */
 @keyframes pestaneoUnico {
     0% { transform: scaleY(1); }
     50% { transform: scaleY(0); }
@@ -129,7 +129,7 @@ header {
     animation: pestaneoUnico 0.4s ease-in-out 1;
 }
 
-/* --- ANIMACIÓN DE CLICK (SOLO CORONA) --- */
+/* --- ANIMACIÃ“N DE CLICK (SOLO CORONA) --- */
 @keyframes coronaGiro {
     0% { transform: rotate(0deg) scale(1.1); }
     100% { transform: rotate(360deg) scale(1.1); }
@@ -139,7 +139,7 @@ header {
     animation: coronaGiro 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
 }
 
-/* El ojo ya no tiene animación de click, se queda normal */
+/* El ojo ya no tiene animaciÃ³n de click, se queda normal */
 
 
         .lang-switcher button {
@@ -204,7 +204,7 @@ header {
 
 main {
     flex-grow: 1;
-    padding-top: 150px; 
+    padding-top: 7%; 
     padding-bottom: var(--footer-h);
 }
 
@@ -248,7 +248,7 @@ main {
 
                 #main-name {
                     visibility: hidden;
-                    line-height: 0.9; /* Ajusta según tu diseño para que el <br> se vea bien */
+                    line-height: 0.9; /* Ajusta segÃºn tu diseÃ±o para que el <br> se vea bien */
                     display: block;  /* Asegura que procese el bloque correctamente */
                     transition: opacity 0.5s ease;
                     will-change: contents;
@@ -264,10 +264,10 @@ main {
                     grid-column: 12;/* Empieza exactamente en la columna 5 */
                     grid-row: 1;
                     display: flex;
-                    flex-direction: column; /* Esto pone la hora a la izquierda o derecha según necesites */
-                    gap: 4px; /* Espacio entre las dos líneas verticales */
+                    flex-direction: column; /* Esto pone la hora a la izquierda o derecha segÃºn necesites */
+                    gap: 4px; /* Espacio entre las dos lÃ­neas verticales */
                     padding-top: 13px;
-                    /* Configuración vertical */
+                    /* ConfiguraciÃ³n vertical */
                     writing-mode: vertical-rl;
                 
                     font-family: 'Space Mono', monospace;
@@ -290,7 +290,7 @@ main {
                 }
             
                 .main-name .line {
-                    display: block; /* Esto garantiza las 2 líneas */
+                    display: block; /* Esto garantiza las 2 lÃ­neas */
                     width: fit-content;
                 }
 
@@ -348,7 +348,7 @@ main {
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
                 gap: var(--gap);
-                border-top: 1px solid var(--brand-orange); /* Línea decorativa opcional */
+                border-top: 1px solid var(--brand-orange); /* LÃ­nea decorativa opcional */
                 padding: 20px 30px 0 30px;
                 opacity: 0.5; /* Estado apagado */
                 transition: all 0.4s ease;
@@ -365,7 +365,7 @@ main {
             .media-img, .media-video {
                 width: 100%;
                 height: 100%;
-                object-fit: cover; /* Asegura que cubra el área sin deformarse */
+                object-fit: cover; /* Asegura que cubra el Ã¡rea sin deformarse */
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -398,11 +398,11 @@ main {
             /* Estilo individual de cada etiqueta (basado en tu imagen) */
             .tag {
                 font-family: "Space Mono", monospace;
-                font-size: 13px;           /* Tamaño pequeño y legible */
+                font-size: 13px;           /* TamaÃ±o pequeÃ±o y legible */
                 color: var(--brand-orange);
                 border: 1px solid var(--brand-orange); /* Borde fino naranja */
                 padding: 4px 10px;         /* Espacio interno (aire) */
-                text-transform: uppercase; /* Todo en mayúsculas */
+                text-transform: uppercase; /* Todo en mayÃºsculas */
                 letter-spacing: 0.05em;    /* Un poco de aire entre letras */
                 line-height: 1;
                 display: inline-block;
@@ -472,7 +472,7 @@ footer {
             }
 
            .connect.moved {
-        transform: translateY(-150px) !important; /* Aumenté el valor para que se note el cambio */
+        transform: translateY(-150px) !important; /* AumentÃ© el valor para que se note el cambio */
         }
 
         .contact-panel {
@@ -552,7 +552,7 @@ footer {
         .contact-link:hover {
            text-decoration: underline var(--brand-orange);
            text-decoration-thickness: 1px;
-           text-underline-offset: 4px; /* Mantiene el aire entre el texto y la línea */
+           text-underline-offset: 4px; /* Mantiene el aire entre el texto y la lÃ­nea */
         
            /* Refuerzo: Aseguramos que el cursor del sistema no aparezca */
            cursor: none !important;
@@ -562,7 +562,7 @@ footer {
         .contact-link, 
         .copy-email,
         .connect {
-           /* El !important es vital aquí para ganarle a la configuración 
+           /* El !important es vital aquÃ­ para ganarle a la configuraciÃ³n 
               por defecto de los navegadores para enlaces */
            cursor: none !important;
         }
@@ -659,7 +659,19 @@ footer {
     scrollbar-color: var(--brand-orange) var(--bg-gray);
 }
 
+/* ========================================
+   VISIBILITY CLASSES
+   ======================================== */
 
+/* Hide on desktop (shown only on mobile) */
+.mobile-only {
+    display: none !important;
+}
+
+/* Show on desktop (hidden on mobile) */
+.desktop-only {
+    display: block;
+}
 
 
 
@@ -717,7 +729,7 @@ footer {
 }
 
 .loader-container {
-    width: 75px; /* Tamaño del área del logo */
+    width: 75px; /* TamaÃ±o del Ã¡rea del logo */
     height: auto;
     display: flex;
     justify-content: center;
@@ -731,7 +743,7 @@ svg {
 }
 
 #loader-percentage {
-    margin-top: 15px; /* Espacio entre el logo y el número */
+    margin-top: 15px; /* Espacio entre el logo y el nÃºmero */
     font-family: 'Space Mono', monospace;
     color: var(--brand-orange);
     font-size: 1.2rem;
@@ -758,7 +770,7 @@ svg {
     opacity: 1;
 }
 
-/* El ojo inicia cerrado (scaleY 0) y el parpado también se prepara */
+/* El ojo inicia cerrado (scaleY 0) y el parpado tambiÃ©n se prepara */
 #anim-ojo, #anim-parpado {
     transform-origin: center;
     transform-box: fill-box;
@@ -876,10 +888,43 @@ svg {
         grid-column: auto;
     }
 
+    /* ===== MOBILE MENU FOOTER ITEMS ===== */
+    .mobile-only {
+        display: flex !important;
+    }
+
+    .desktop-only {
+        display: none !important;
+    }
+
+    .h-item-5, .h-item-6 {
+        grid-column: auto;
+    }
+
+    /* Connect button in mobile menu */
+    .nav-menu .connect {
+        font-size: 1.5rem;
+        margin-top: 30px;
+        font-weight: 700;
+        /* Reset desktop positioning styles */
+        justify-self: center;
+        align-self: center;
+        position: relative;
+        transform: none !important;
+    }
+
+    /* Web portfolio in mobile menu */
+    .web-portfolio-mobile {
+        font-size: 0.75rem;
+        margin-top: 20px;
+        text-align: center;
+        color: var(--brand-orange);
+    }
+
     /* ===== MAIN SECTION ===== */
     main {
         padding-top: 80px;
-        padding-bottom: 60px;
+        padding-bottom: 20px; /* Reduced since footer is hidden */
     }
 
     /* ===== INICIO SECTION - HERO ===== */
@@ -888,7 +933,7 @@ svg {
         grid-template-rows: auto auto auto;
         height: auto;
         min-height: calc(100vh - 170px);
-        padding-top: 20px;
+        padding-top: 0px;
     }
 
     /* Photo Container - Left side, rows 1-2 */
@@ -1041,38 +1086,13 @@ svg {
         padding-top: 60px;
     }
 
-    /* ===== FOOTER ===== */
-    footer {
-        height: auto;
-        min-height: 80px;
-        padding: 20px 0;
-    }
-
-    footer .grid-layout {
-        align-items: center;
-    }
-
-    .footer-container {
-        grid-column: 4 / 7;
-        justify-self: end;
-        margin-top: 0;
-    }
-
-    .connect {
-        font-size: 0.95rem;
-    }
-
-    .web-portfolio {
-        grid-column: 1 / 4;
-        justify-self: start;
-        font-size: 0.75rem;
-        margin-left: 0;
-    }
-
     /* ===== CONTACT PANEL ===== */
     .contact-panel {
         width: 100%;
+        max-width: 100%;
+        right: 0;
         padding: 40px 20px;
+        z-index: 10001; /* Above menu */
     }
 
     .panel-content {

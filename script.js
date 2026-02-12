@@ -1,7 +1,6 @@
 // ==========================================
-// 1. CLASE TEXTSCRAMBLE
+// 1. CLASE TEXTSCRAMBLE (FIXED)
 // ==========================================
-
 
 class TextScramble {
   constructor(el) {
@@ -9,10 +8,24 @@ class TextScramble {
     this.chars = '!<>-_\\/[]{}—=+*^?#abcdefghijklmnopqrstuvwxyz';
     this.update = this.update.bind(this);
     this.targetText = '';
+    this.isAnimating = false; // NEW: Track animation state
   }
   
   setText(newText) {
+    // 1. Check if we're already animating to this exact text
+    if (this.isAnimating && this.targetText === newText) {
+      return; // Ignore redundant request
+    }
+    
+    // 2. If we're animating to something different, clean up first
+    if (this.isAnimating) {
+      this.completeImmediately();
+    }
+    
+    // 3. NOW start the new animation from a clean state
     this.targetText = newText;
+    this.isAnimating = true; // Mark as animating
+    
     const oldText = this.el.innerText || "";
     const length = Math.max(oldText.length, newText.length);
     const promise = new Promise((resolve) => (this.resolve = resolve));
@@ -27,13 +40,27 @@ class TextScramble {
       if (end > this.maxEnd) this.maxEnd = end;
       this.queue.push({ from, to, start, end });
     }
+    
     cancelAnimationFrame(this.frameRequest);
     this.frame = 0;
     this.update();
     return promise;
   }
   
+  // NEW: Method to immediately complete current animation
+  completeImmediately() {
+    cancelAnimationFrame(this.frameRequest);
+    this.el.innerText = this.targetText; // Set to clean target text
+    this.isAnimating = false;
+    if (this.resolve) this.resolve();
+  }
+  
   update() {
+    // Defensive check: if we're no longer supposed to be animating, stop immediately
+    if (!this.isAnimating) {
+      return;
+    }
+    
     let output = '';
     let complete = 0;
     for (let i = 0, n = this.queue.length; i < n; i++) {
@@ -54,6 +81,7 @@ class TextScramble {
     this.el.innerHTML = output;
     if (this.frame >= this.maxEnd && complete === this.queue.length) {
       this.el.innerText = this.targetText;
+      this.isAnimating = false; // Animation complete
       this.resolve();
     } else {
       this.frameRequest = requestAnimationFrame(this.update);
@@ -89,7 +117,7 @@ const translations = {
     projet1_description: ["Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.", "A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos."]
   },
   en: {
-    tagline: "I’M A VISUAL DESIGNER SPECIALIZED IN",
+    tagline: "I'M A VISUAL DESIGNER SPECIALIZED IN",
     connect: "LET'S CONNECT",
     web_portfolio:"2026 - WEB PORTFOLIO",
     navwork: "WORK",
@@ -106,7 +134,7 @@ const translations = {
     ilustracion: "ILUSTRATION",
     identidad_de_marca: "BRANDING",
     redes_sociales:"SOCIAL MEDIA",
-    projet1_description: ["<em>Your neighborhood, your food fair</em>, is a multi-channel strategy developed for Municipio B, aimed at reconnecting Montevideo’s youth with local neighborhood markets.", "Through a dynamic visual identity and a geo-located web platform, the project translates the logic of traditional street markets into digital languages, providing real-time information tailored to contemporary consumption habits."]
+    projet1_description: ["<em>Your neighborhood, your food fair</em>, is a multi-channel strategy developed for Municipio B, aimed at reconnecting Montevideo's youth with local neighborhood markets.", "Through a dynamic visual identity and a geo-located web platform, the project translates the logic of traditional street markets into digital languages, providing real-time information tailored to contemporary consumption habits."]
   }
 };
 
@@ -129,22 +157,30 @@ function changeLanguage(lang, updateURL = true) {
     const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?lang=' + lang;
     window.history.pushState({ path: newurl }, '', newurl);
   }
+  
+  // Update all elements with data-key
   document.querySelectorAll('[data-key]').forEach(element => {
     const key = element.getAttribute('data-key');
     if (!translations[lang][key]) return;
 
-const value = translations[lang][key];
+    const value = translations[lang][key];
 
-if (Array.isArray(value)) {
-  element.innerHTML = value.map(text => `<p>${text}</p>`).join('');
-} else {
-  element.innerText = value;
-}
+    if (Array.isArray(value)) {
+      element.innerHTML = value.map(text => `<p>${text}</p>`).join('');
+    } else {
+      element.innerText = value;
+    }
 
+    // CRITICAL: Update originalText for elements with scramblers
+    if (element.scrambler && !Array.isArray(value)) {
+      element.originalText = value; // Use the translation value directly
+    }
   });
   
   const contactTag = document.querySelector('.contact-tag');
-  if (contactTag) contactTag.innerText = translations[lang].email_tag;
+  if (contactTag) {
+    contactTag.innerText = translations[lang].email_tag;
+  }
 
   startBadgeRotation();
   const mainName = document.querySelector('.main-name');
@@ -189,11 +225,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (badgeEl) badgeEl.scrambler = new TextScramble(badgeEl);
     if (contactTag) contactTag.scrambler = new TextScramble(contactTag);
     
+    // Setup hover scramble for navigation links
     allLinks.forEach(link => {
+      // Exclude: flower logo and contact panel links
       if (link.classList.contains('flower')) return; 
-    if (link.closest('.flower')) return;
-        link.scrambler = new TextScramble(link);
-        link.addEventListener('mouseenter', () => link.scrambler.setText(link.innerText));
+      if (link.closest('.flower')) return;
+      if (link.classList.contains('contact-link')) return; // Exclude contact panel links
+      if (link.classList.contains('copy-email')) return; // Exclude email
+      
+      link.scrambler = new TextScramble(link);
+      
+      // For links with data-key, get text from current translation
+      const dataKey = link.getAttribute('data-key');
+      if (dataKey && translations[currentLang][dataKey]) {
+        link.originalText = translations[currentLang][dataKey];
+      } else {
+        link.originalText = link.innerText; // Fallback to current text
+      }
+      
+      link.addEventListener('mouseenter', () => link.scrambler.setText(link.originalText));
     });
 
 // ==========================================
@@ -474,7 +524,7 @@ function iniciarCarga() {
             clearInterval(interval);
             finalizarCarga();
         }
-    }, 30); 
+    }, 15); 
 }
 
 function moverIris() {
@@ -524,10 +574,28 @@ function finalizarCarga() {
     }, 200);
 }
 
-// --- CLASE PARA TEXTOS LENTOS Y CON SALTOS DE LÍNEA ---
+// --- CLASE PARA TEXTOS LENTOS Y CON SALTOS DE LÍNEA (FIXED) ---
 class SlowTextScramble extends TextScramble {
+  constructor(el) {
+    super(el);
+    this.isAnimating = false; // Ensure this is initialized
+  }
+
   setText(newText) {
+    // 1. Check if we're already animating to this exact text
+    if (this.isAnimating && this.targetText === newText) {
+      return; // Ignore redundant request
+    }
+    
+    // 2. If we're animating to something different, clean up first
+    if (this.isAnimating) {
+      this.completeImmediately();
+    }
+    
+    // 3. NOW start the new animation from a clean state
     this.targetText = newText;
+    this.isAnimating = true;
+    
     // Usamos innerHTML para capturar los <br>
     const oldText = this.el.innerHTML || "";
     const length = Math.max(oldText.length, newText.length);
@@ -552,7 +620,19 @@ class SlowTextScramble extends TextScramble {
     return promise;
   }
 
+  completeImmediately() {
+    cancelAnimationFrame(this.frameRequest);
+    this.el.innerHTML = this.targetText; // Use innerHTML for <br> tags
+    this.isAnimating = false;
+    if (this.resolve) this.resolve();
+  }
+
   update() {
+    // Defensive check: if we're no longer supposed to be animating, stop immediately
+    if (!this.isAnimating) {
+      return;
+    }
+    
     let output = '';
     let complete = 0;
     for (let i = 0, n = this.queue.length; i < n; i++) {
@@ -577,6 +657,8 @@ class SlowTextScramble extends TextScramble {
     }
     this.el.innerHTML = output; // Usar innerHTML para procesar los <br>
     if (complete === this.queue.length) {
+      this.el.innerHTML = this.targetText; // SET FINAL CLEAN TEXT - CRITICAL FIX
+      this.isAnimating = false; // Animation complete
       this.resolve();
     } else {
       this.frameRequest = requestAnimationFrame(this.update);
@@ -605,7 +687,8 @@ function iniciarAnimacionesEntrada() {
     if (connectEl) {
         connectEl.style.visibility = 'visible';
         const fxConnect = new SlowTextScramble(connectEl);
-        fxConnect.setText("LET'S CONNECT");
+        // Use current language translation instead of hardcoded English
+        fxConnect.setText(translations[currentLang].connect);
     }
     const badges = document.querySelectorAll('.badge');
     badges.forEach(badge => {
