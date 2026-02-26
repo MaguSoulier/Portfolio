@@ -683,11 +683,14 @@ function iniciarAnimacionesEntrada() {
     }
 
     // 3. Scramble LENTO para el botón Connect
-    const connectEl = document.querySelector('[data-key="connect"]');
+    // Make ALL connect buttons visible (desktop footer + mobile nav menu)
+    document.querySelectorAll('[data-key="connect"]').forEach(el => {
+        el.style.visibility = 'visible';
+    });
+    // Apply scramble animation only to the desktop footer button
+    const connectEl = document.querySelector('footer [data-key="connect"]');
     if (connectEl) {
-        connectEl.style.visibility = 'visible';
         const fxConnect = new SlowTextScramble(connectEl);
-        // Use current language translation instead of hardcoded English
         fxConnect.setText(translations[currentLang].connect);
     }
     const badges = document.querySelectorAll('.badge');

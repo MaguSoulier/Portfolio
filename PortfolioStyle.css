@@ -4,7 +4,6 @@
             --brand-brown:#6C3636;
             --grid-gap: clamp(8px, 0.729vw, 14px);
             --gap: 14px;
-            --container-width: 75%; 
             --header-h: 80px;
             --footer-h: 80px;
             --container-width: 85%; /* Un poco mÃ¡s ancho en general */
@@ -46,14 +45,25 @@ html {
 
 p{
     font-family: "Space Grotesk", sans-serif;
-    font-size: 0.9rem; 
+    font-size: 1rem; 
     line-height: 1.5; 
     margin-bottom: 7px;
     color:var(--brand-brown)
 }
 
 h3{
+    font-size: 24px; 
+    font-weight: 700;
     margin-top: 20px;
+    transform: uppercase;
+}
+
+.label{
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.8rem; 
+    line-height: 1.5; 
+    color:var(--brand-brown);
+    opacity: 0.8;
 }
 
 header {
@@ -340,7 +350,9 @@ main {
 
 
 
-
+                #trabajos{
+                    margin-top: 100px;
+                }
 
             .project-item {
                 grid-column: 1 / 13; /* Ocupa todo el ancho */
@@ -348,7 +360,7 @@ main {
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
                 gap: var(--gap);
-                border-top: 1px solid var(--brand-orange); /* LÃ­nea decorativa opcional */
+                border-top: 2px solid var(--brand-orange); /* LÃ­nea decorativa opcional */
                 padding: 20px 30px 0 30px;
                 opacity: 0.5; /* Estado apagado */
                 transition: all 0.4s ease;
@@ -410,6 +422,19 @@ main {
                 transition: background-color 0.3s ease, color 0.3s ease;
             }
 
+            .orange-tag {
+                font-family: "Space Mono", monospace;
+                font-size: 13px;           /* TamaÃ±o pequeÃ±o y legible */
+                color: var(--bg-gray);
+                background-color: var(--brand-orange);
+                border: 1px solid var(--brand-orange); /* Borde fino naranja */
+                padding: 4px 10px;         /* Espacio interno (aire) */
+                text-transform: uppercase; /* Todo en mayÃºsculas */
+                letter-spacing: 0.05em;    /* Un poco de aire entre letras */
+                line-height: 1;
+                display: inline-block;
+            }
+
   .project-item.active .tag {
     background-color: var(--brand-orange);
     color:  var(--bg-gray);
@@ -418,7 +443,7 @@ main {
 }
 
 
-            .project-title { font-size: 32px; font-weight: 700; margin-bottom: 15px; }
+            .project-title {  margin-bottom: 15px; }
             .project-description { 
                 padding: 0 20px;
             }

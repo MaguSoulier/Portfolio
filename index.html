@@ -9,6 +9,18 @@
     <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        header {
+            transform: translateY(0);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        header.header--hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -142,9 +154,6 @@
                 <div class="project-item" id="project1">
                     <div class="project-media">
                         <img src="Celular y tote.png" alt="Proyecto 01" class="media-img">
-                        <video class="media-video" muted loop playsinline autoplay preload="auto">
-                            <source src="tu_barrio/VIdeo_web.mp4" type="video/mp4">
-                        </video>
                     </div>
                 
                     <div class="project-info">
@@ -233,6 +242,27 @@
             <div class="footer-container">
                 <a data-key="connect" class="connect">LET'S CONNECT</a>
             </div>
+            <div class="contact-panel-mobile mobile-only" id="contactPanelMobile">
+                    <div class="panel-content">
+                        <div class="contact-email">
+                            <span class="contact-tag-mobile">E-MAIL</span>
+                            <svg class="mail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.01 13.7"><defs><style>.d{fill:#ff3c00;}</style></defs><g id="c"><path class="d" d="M10.81,10.8H3.38l-1.2-1.2V1.2l1.2-1.2h7.43l1.2,1.2v8.41l-1.2,1.2ZM3.43,9.55h7.34v-.46s0-7.37,0-7.37v-.47H3.43v.47s0,7.37,0,7.37v.46Z"/><polygon class="d" points="9.2 13.7 1.2 13.7 0 12.5 0 3.52 1.25 3.52 1.25 11.98 1.25 12.45 9.2 12.45 9.2 13.7"/></g></svg>
+                            </br><p class="copy-email-mobile">MAG.SOULIER01@GMAIL.COM</p>
+                        </div>
+
+                        <div class="contact-redes">
+                            <div class="contact-item">
+                                <a href="#" class="contact-link">LINKED-IN</a>
+                                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><defs><style>.d{fill:#ff3c00;}</style></defs><g id="c"><polygon class="d" points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></g></svg>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <a href="#" class="contact-link">BEHANCE</a>
+                                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><defs><style>.d{fill:#ff3c00;}</style></defs><g id="c"><polygon class="d" points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></g></svg>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
             <div data-key="web_portfolio" class="web-portfolio">2026 - WEB PORTFOLIO</div>
         </div>
         
@@ -267,6 +297,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="script.js"></script>
+
+    <script>
+        (function () {
+            const header = document.querySelector('header');
+            let lastY = window.scrollY;
+
+            window.addEventListener('scroll', function () {
+                const currentY = window.scrollY;
+                if (currentY > lastY && currentY > 60) {
+                    header.classList.add('header--hidden');
+                } else {
+                    header.classList.remove('header--hidden');
+                }
+                lastY = currentY;
+            }, { passive: true });
+        })();
+    </script>
 
 </body>
 </html>
