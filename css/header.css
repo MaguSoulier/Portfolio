@@ -1,0 +1,142 @@
+header {
+    height: var(--header-h);
+    background-color: var(--color-white);
+    flex-shrink: 0;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    position: fixed; /* Lo fija a la pantalla */
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.nav-menu {
+    display: contents;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--color-black);
+    cursor: none !important;
+}
+
+.nav-menu a.active {
+    font-weight: 700;
+    cursor: none !important;
+}
+
+.h-item {
+    align-self: center;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+}
+
+.flower {
+    grid-column: 1;
+    display: flex; /* Vital para que el SVG mantenga su tamaño */
+    align-items: center;
+    cursor: none !important;
+    padding-left: 30px;
+    text-decoration: none; /* Quita subrayados accidentales del link */
+    height: 100%; /* Para que ocupe el alto del header fijo */
+}
+
+.flower svg {
+    display: inline-block;
+    width: 35px;
+    height: auto;
+    transform-origin: center;
+    pointer-events: none; /* Evita que el SVG interfiera con el click del link */
+}
+
+/* Configuración base para los elementos del Header */
+#HeaderCorona, #HeaderOjo, #HeaderParpado, #HeaderIris {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- EFECTO HOVER --- */
+#logo-inicio:hover #HeaderCorona {
+    transform: scale(1.1);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- ANIMACIÓN DE PESTAÑEO ÚNICO --- */
+@keyframes pestaneoUnico {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}
+
+/* Al hacer hover, el ojo parpadea solo 1 vez */
+#logo-inicio:hover #HeaderParpado {
+    animation: pestaneoUnico 0.4s ease-in-out 1;
+}
+
+/* --- ANIMACIÓN DE CLICK (SOLO CORONA) --- */
+@keyframes coronaGiro {
+    0% { transform: rotate(0deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1.1); }
+}
+
+.animar-corona-click {
+    animation: coronaGiro 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+/* El ojo ya no tiene animación de click, se queda normal */
+
+.lang-switcher button {
+    background: none;
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    border: none;
+    padding: 3px 8px;
+    cursor: none !important;
+    color: var(--color-black);
+    font-family: inherit;
+}
+
+.lang-switcher span {
+    color: var(--color-black);
+    font-family: inherit;
+}
+
+.lang-switcher button:hover {
+    text-decoration: underline var(--color-black);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.lang-switcher button.active {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.h-item-1 { grid-column: 1; justify-self: start; }
+.h-item-2 { grid-column: 5; justify-self: start; }
+.h-item-3 { grid-column: 7 / 9; justify-self: end; }
+.h-item-4 { grid-column: 11 / 13; justify-self: end; }
+
+.menu-toggle {
+    display: none;
+    grid-column: 10 / 12;
+    justify-self: end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 4px;
+    background-color: var(--color-black);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+

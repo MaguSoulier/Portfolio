@@ -1,0 +1,178 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: clip;  /* Prevents horizontal scroll */
+    overflow-y: visible; /* Allows sticky to work */
+    font-family: var(--font-heading);
+    color: var(--color-black);
+    scroll-behavior: smooth; /* Para que el salto sea suave */
+}
+
+* {
+  cursor: none !important;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gap);
+    width: var(--container-width);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+p {
+    font-family: var(--font-body);
+    font-size: var(--fs-text);
+    line-height: var(--lh-text);
+    letter-spacing: var(--ls-text);
+    font-weight: var(--fw-regular);
+    margin-bottom: 7px;
+    color: var(--color-black)
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-bold);
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.label {
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-light);
+    color: var(--color-black);
+    opacity: 0.8;
+}
+
+main {
+    padding-top: 7%;
+}
+
+/* ========================================
+   SMOOTH SCROLL (GSAP ScrollSmoother)
+   #smooth-wrapper takes main's old place as the
+   flex item that fills remaining body height.
+   ======================================== */
+
+#smooth-wrapper {
+    flex-grow: 1;
+    display: block;
+}
+
+#smooth-content {
+    display: block;
+}
+
+.section-title {
+    grid-column: 1 / 13;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-left: 30px;
+}
+
+.bold-text {
+    font-weight: 700 !important;
+    display: inline-block;
+}
+
+/* ========================================
+   CUSTOM CURSOR
+   ======================================== */
+
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-black);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-cursor.cursor-pointer {
+    width: 18px;
+    height: 18px;
+    background-color: var(--color-orange);
+    opacity: 0.5;
+}
+
+.custom-cursor.click-static {
+    transform: translate(-50%, -50%) scale(0.6);
+    background-color: var(--color-black);
+}
+
+.custom-cursor.click-interactive {
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: var(--color-orange);
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-white);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-orange);
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-orange) var(--color-white);
+}
+
+/* ========================================
+   VISIBILITY CLASSES
+   ======================================== */
+
+/* Hide on desktop (shown only on mobile) */
+.mobile-only {
+    display: none !important;
+}
+
+/* Show on desktop (hidden on mobile) */
+.desktop-only {
+    display: block;
+}

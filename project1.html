@@ -4,639 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Barrio Tu Feria — Magdalena Soulier</title>
-    <link rel="stylesheet" href="PortfolioStyle.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/project1.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
-
-    <style>
-
-        /* =============================================
-           HEADER OVERRIDES — project1
-           ============================================= */
-
-        header {
-            background-color: var(--bg-gray) !important;
-            transform: translateY(0);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        header.header--hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-
-        /* Center logo and hide hamburger on this page */
-        header .grid-layout {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        header .flower {
-            padding-left: 0;
-        }
-
-        /* Hide menu toggle — this page has no nav */
-        header .menu-toggle {
-            display: none;
-        }
-
-        /* =============================================
-           CASE STUDY — HERO SECTION
-           ============================================= */
-
-        .case-study {
-            padding-top: var(--header-h);
-        }
-
-        /* ---- Info bar (title + tags + description) ---- */
-
-        .cs-hero-info {
-            height: auto;           /* Override .grid-layout height: 100% */
-            align-items: start;
-            padding: 30px 0 30px;
-        }
-
-        /* Left block: title + tags — columns 1 → 6 */
-        .cs-title-col {
-            grid-column: 1 / 7;
-            padding-left: 30px;     /* Aligned with header logo */
-        }
-
-        .cs-title {
-            font-family: "Space Mono", monospace;
-            font-size: clamp(2.2rem, 3.0vw, 4.5rem);
-            font-weight: 700;
-            color: var(--brand-orange);
-            text-transform: uppercase;
-            line-height: 0.88;
-            letter-spacing: -0.015em;
-            margin-bottom: 22px;
-        }
-
-        .cs-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        /* Right block: description — columns 7 → 13 */
-        .cs-desc-col {
-            grid-column: 7 / 13;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .cs-desc-col p {
-            margin-bottom: 0;
-            max-width: 540px;
-        }
-
-        /* ---- Full-bleed hero image ---- */
-
-        .cs-hero-image-wrap {
-            width: 100%;
-            height: 65vh;
-            min-height: 380px;
-            overflow: hidden;
-            position: relative;
-
-            /* Named view-timeline for the scroll-driven parallax */
-            view-timeline-name: --cs-hero;
-            view-timeline-axis: block;
-        }
-
-        .cs-hero-image {
-            position: absolute;
-            top:    -15%;
-            left:   0;
-            width:  100%;
-            height: 140%;           /* Extra height allows upward/downward travel */
-
-            /*
-             * Replace the background-color below with your hero image:
-             * background-image: url('path/to/hero.jpg');
-             */
-            background-image: url('tu-barrio-tu-feria/celular 1.png');
-            background-size:  cover;
-            background-position: center;
-            will-change: transform;
-        }
-
-        /* ------------------------------------------
-           CSS Scroll-Driven Parallax
-           Supported in Chrome 115+, Edge 115+.
-           Safari / Firefox fall back to JS below.
-        ------------------------------------------ */
-        @supports (animation-timeline: scroll()) {
-
-            @keyframes cs-parallax {
-                from { transform: translateY(0%);   }
-                to   { transform: translateY(22%);  }
-            }
-
-            .cs-hero-image {
-                animation: cs-parallax linear both;
-                animation-timeline: --cs-hero;
-                animation-range: entry 0% exit 100%;
-            }
-
-            /* Second hero — own timeline so it tracks independently */
-            .cs-hero-image-wrap--2 {
-                view-timeline-name: --cs-hero-2;
-                view-timeline-axis: block;
-            }
-
-            .cs-hero-image-wrap--2 .cs-hero-image {
-                animation-timeline: --cs-hero-2;
-            }
-        }
-
-
-        /* ---- Split hero (TOTE / Stickers) ---- */
-
-        .cs-hero-split {
-            width: 100%;
-            display: flex;
-            gap: 14px;
-            height: 80vh;
-            min-height: 380px;
-            overflow: hidden;
-        }
-
-        /*
-         * Left width = left_margin + 7 cols + 6 gaps
-         *            = 50vw + container/12 - 5.83px
-         * For 85vw container  → 57.083vw - 6px
-         * For 1500px container → 50vw + 119px
-         */
-        .cs-hero-split-left {
-            width: min(calc(60vw - 6px), calc(50vw + 119px));
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .cs-hero-split-right {
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .cs-hero-split-left img,
-        .cs-hero-split-right img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-
-
-        /* =============================================
-           RESPONSIVE
-           ============================================= */
-
-        @media (max-width: 1400px) {
-            .cs-title {
-                font-size: clamp(2rem, 3vw, 3.8rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .cs-hero-info {
-                padding: 20px 0 24px;
-            }
-
-            /* Stack into 6-column mobile grid */
-            .cs-title-col {
-                grid-column: 1 / 7;
-                padding-left: 0;
-            }
-
-            .cs-desc-col {
-                grid-column: 1 / 7;
-                margin-top: 20px;
-            }
-
-            .cs-title {
-                font-size: clamp(2rem, 8.5vw, 3rem);
-                margin-bottom: 16px;
-            }
-
-            .cs-hero-image-wrap {
-                height: 52vw;
-                min-height: 260px;
-            }
-
-            .cs-hero-split {
-                flex-direction: column;
-                height: auto;
-                gap: 5px;
-            }
-
-            .cs-hero-split-left {
-                width: 100%;
-                height: 52vw;
-                min-height: 220px;
-            }
-
-            .cs-hero-split-right {
-                height: 52vw;
-                min-height: 220px;
-            }
-        }
-
-
-        /* =============================================
-           CONTENT SECTIONS
-           ============================================= */
-
-        .cs-section-grid {
-            height: auto;
-            padding: 36px 0 48px;
-            align-items: start;
-        }
-
-        /* Section heading — mirrors .section-title in PortfolioStyle.css */
-        .cs-section-title {
-            grid-column: 1 / 13;
-            font-family: "Space Mono", monospace;
-            color: var(--brand-orange);
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        /* ---- Technologies ---- */
-
-        /* 3-column sub-grid inside cols 1→10, left-padded to align with title */
-        .cs-tools-container {
-            grid-column: 1 / 10;
-            padding-left: 30px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--gap);
-            align-items: start;
-        }
-
-        .cs-tool-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .cs-tool-items {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .cs-tool-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .cs-tool-category {
-            font-family: "Space Mono", monospace;
-            font-size: 0.75rem;
-            color: var(--brand-orange);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        /* Gray placeholder square for software logo */
-        .cs-tool-logo-box {
-            width: 62px;
-            height: 62px;
-            background-color: #d9d9d9;
-            flex-shrink: 0;
-        }
-
-        /* ---- Strategic Proposal ---- */
-
-        .cs-strategy-section {
-            grid-column: 1 / 6;
-            padding-left: 0px;
-            padding-right: 14px;
-        }
-
-        .cs-strategy-text {
-            padding-left: 30px;
-        }
-
-        /* Last paragraph has no bottom margin */
-        .cs-strategy-text p:last-child { margin-bottom: 0; }
-
-        .cs-bold { font-weight: 700 !important; }
-
-        .cs-strategy-img {
-            grid-column: 6 / 13;
-            overflow: hidden;
-        }
-
-        .cs-strategy-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* ---- Section responsive overrides ---- */
-        @media (max-width: 768px) {
-
-            .cs-section-title { margin-left: 0; }
-
-            .cs-tools-container {
-                grid-column: 1 / 7;
-                padding-left: 0;
-                grid-template-columns: 1fr;
-                gap: 28px;
-            }
-
-            .cs-strategy-text {
-                grid-column: 1 / 7;
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            .cs-strategy-img {
-                grid-column: 1 / 7;
-                margin-top: 28px;
-            }
-
-            .cs-strategy-img img {
-                height: auto;
-            }
-        }
-
-        /* ---- Video ---- */
-
-        .cs-video-wrap {
-            grid-column: 2 / 12;
-        }
-
-        .cs-video-wrap video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        @media (max-width: 768px) {
-            .cs-video-wrap {
-                grid-column: 1 / 7;
-            }
-        }
-
-        /* ---- Públicos ---- */
-
-        .cs-publicos-intro {
-            grid-column: 1 / 6;
-            margin-left: 30px;
-            border: 1px solid currentColor;
-            padding: 16px 20px;
-        }
-
-        .cs-publicos-intro p { margin-bottom: 0; }
-        .cs-publicos-intro p + p { margin-top: 10px; }
-
-        .cs-publicos-cards {
-            grid-column: 1 / 13;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--gap);
-            align-items: start;
-            margin-top: 32px;
-            
-        }
-
-        .cs-publico-card {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding: 0px 30px;
-        }
-
-        .cs-publico-card .orange-tag {
-            align-self: flex-start;
-        }
-
-        .cs-publico-body {
-            padding: 16px 0px;
-        }
-
-        .cs-publico-body p:last-child { margin-bottom: 0; }
-
-        @media (max-width: 768px) {
-            .cs-publicos-intro {
-                grid-column: 1 / 7;
-                margin-left: 0;
-            }
-            .cs-publicos-cards {
-                grid-column: 1 / 7;
-                grid-template-columns: 1fr;
-                gap: 28px;
-            }
-        }
-
-        /* ---- Sistema Visual y Lenguaje de Diseño ---- */
-
-        .cs-sistema-left {
-            grid-column: 1 / 6;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .cs-sistema-left .cs-section-title { margin-bottom: 0; }
-
-        
-
-        .cs-sistema-intro {
-            margin-bottom: 32px;
-        }
-        .cs-sistema-text  { margin-bottom: 32px; padding: 16px 0px; }
-        .cs-sistema-text p + p { margin-top: 12px; }
-
-        .cs-sistema-right {
-            grid-column: 7 / 13;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            padding: 0px 30px;
-        }
-
-        .cs-carousel-track-wrap {
-            flex: 1;
-            overflow: hidden;
-            min-width: 0;
-        }
-
-        .cs-carousel-track {
-            display: flex;
-            will-change: transform;
-            transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .cs-carousel-track img {
-            width: 100%;
-            flex-shrink: 0;
-            height: auto;
-            display: block;
-            opacity: 0.25;
-            transition: opacity 0.45s ease;
-        }
-
-        .cs-carousel-track img.is-active {
-            opacity: 1;
-        }
-
-        .cs-carousel-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            width: 27px;
-            flex-shrink: 0;
-            transition: opacity 0.2s;
-        }
-
-        .cs-carousel-btn.cs-carousel-prev { transform: scaleX(-1); }
-
-        @media (max-width: 768px) {
-            .cs-sistema-left {
-                grid-column: 1 / 7;
-                padding-left: 0;
-            }
-            .cs-sistema-right {
-                grid-column: 1 / 7;
-                margin-top: 28px;
-            }
-        }
-
-
-        /* =============================================
-           CASE STUDY FOOTER
-           ============================================= */
-
-        .cs-footer {
-            border-top: 2px solid var(--brand-orange);
-            background: var(--bg-gray);
-            margin-top: 80px;
-        }
-
-        .cs-footer-inner {
-            height: auto;
-            padding: 20px 0 0;
-            align-items: start;
-        }
-
-        .footer-inicio {
-            grid-column: 1 / 4;
-            grid-row: 1;
-            
-            padding-left: 30px;
-        }
-
-        .text-inicio{
-            font-family: "Space Mono", monospace;
-            font-size: 1rem;
-            color: var(--brand-orange);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5em;
-        }
-
-        .copyright{
-            height: 0.7rem;
-            width: auto;
-            display: block;
-            margin-top: 5px;
-        }
-
-        .footer-arrow {
-            height: 0.9em;
-            padding-top: 3.1px;
-            width: auto;
-            display: block;
-            flex-shrink: 0;
-        }
-
-        .footer-arrow--left {
-            transform: scaleX(-1);
-        }
-
-        .cs-footer-credits {
-            grid-column: 1 / 5;
-            grid-row: 2;
-            font-family: "Space Mono", monospace;
-            font-size: 0.8rem;
-            color: var(--brand-orange);
-            text-transform: uppercase;
-            padding: 30px;
-            align-self: flex-end;
-            letter-spacing: 0.06em;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .next-project{
-grid-column: 9 / 13;
-            grid-row: 2;
-            padding: 30px 0;
-        }
-
-        .cs-footer-next {
-            font-family: "Space Mono", monospace;
-            font-size: clamp(1.4rem, 2.4vw, 2.4rem);
-            font-weight: 700;
-            color: var(--brand-orange);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 0.4em;
-        }
-
-        @media (max-width: 768px) {
-            .cs-footer-inicio {
-                grid-column: 1 / 5;
-                padding-left: 0;
-                font-size: 0.75rem;
-            }
-            .cs-footer-credits {
-                grid-column: 1 / 7;
-                grid-row: 2;
-                text-align: left;
-                margin-top: 10px;
-            }
-            .cs-footer-next {
-                grid-column: 1 / 7;
-                grid-row: 3;
-                justify-content: flex-start;
-                font-size: clamp(1.2rem, 6vw, 1.8rem);
-                padding: 20px 0 30px;
-            }
-        }
-
-    </style>
 </head>
 
 <body>
 
 
     <!-- =============================================
-         HEADER (fixed, from PortfolioStyle.css)
+         HEADER (fixed, from css/header.css)
          ============================================= -->
     <header>
         <div class="grid-layout">
@@ -672,6 +52,9 @@ grid-column: 9 / 13;
     </header>
 
 
+    <div id="smooth-wrapper">
+    <div id="smooth-content">
+
     <!-- =============================================
          CASE STUDY
          ============================================= -->
@@ -684,19 +67,25 @@ grid-column: 9 / 13;
                 <h1 class="cs-title">TU BARRIO, TU FERIA</h1>
 
                 <div class="cs-tags">
-                    <span class="tag">DISEÑO WEB</span>
-                    <span class="tag">CREATIVE CODING</span>
-                    <span class="tag">DIRECCIÓN DE ARTE</span>
-                    <span class="tag">ILUSTRACIÓN</span>
-                    <span class="tag">PARTICIPACIÓN JUVENIL</span>
-                    <span class="tag">DISEÑO DE ESTRATEGIA</span>
+                    <span class="tag" data-key="diseno_web">DISEÑO WEB</span>
+                    <span class="tag" data-key="ilustracion">ILUSTRACIÓN</span>
+                    <span class="tag" data-key="diseno_estrategia">DISEÑO DE ESTRATEGIA</span>
+                    <span class="tag" data-key="direccion_de_arte">DIRECCIÓN DE ARTE</span>
                 </div>
             </div>
 
             <div class="cs-desc-col">
-                <p>El ecosistema de las ferias barriales en Montevideo presentaba una brecha crítica para el segmento joven. El objetivo del proyecto fue digitalizar una experiencia tradicionalmente analógica, eliminando la complejidad de la fragmentación informativa. Se buscó crear una solución intuitiva que centralizara datos en tiempo real, permitiendo que el usuario tenga el control de su consumo y su tiempo al alcance de la mano.</p>
+                <div data-key="cs_descripcion"><p>El ecosistema de las ferias barriales en Montevideo presenta una brecha crítica para el segmento joven. El objetivo del proyecto fue digitalizar una experiencia tradicionalmente analógica, eliminando la complejidad de la fragmentación informativa.</p><p>Se buscó crear una solución intuitiva que centralizara datos en tiempo real, permitiendo que el usuario tenga el control de su consumo y su tiempo al alcance de la mano.</p></div>
             </div>
 
+        </div>
+
+        <div class="grid-layout cs-details">
+            <div class="cs-details-row">
+                <span data-key="detalle_anio">[2025]</span>
+                <span data-key="detalle_universidad">[UDELAR]</span>
+                <span data-key="detalle_equipo">Realizado en equipo con Iara Rodriguez y Emilia Fripp</span>
+            </div>
         </div>
 
         <!-- Full-bleed hero image with scroll-driven parallax -->
@@ -710,13 +99,21 @@ grid-column: 9 / 13;
              ============================================= -->
         <div class="grid-layout cs-section-grid">
 
-            <h3 class="cs-section-title">Tecnologías utilizadas</h3>
+            <h3 class="cs-section-title" data-key="sec_tecnologias">Tecnologías utilizadas</h3>
 
             <div class="cs-tools-container">
 
                 <div class="cs-tool-group">
-                    <span class="orange-tag">Ilustraciones</span>
+                    <span class="orange-tag" data-key="cat_diseno">Diseño</span>
                     <div class="cs-tool-items">
+                        <div class="cs-tool-item">
+                            <img class="cs-tool-logo-box" src="logos/figma.png" alt="Figma logo">
+                            <span class="label">Figma</span>
+                        </div>
+                        <div class="cs-tool-item">
+                            <img class="cs-tool-logo-box" src="logos/adobe.png" alt="Adobe Suite logo">
+                            <span class="label">Adobe Suite</span>
+                        </div>
                         <div class="cs-tool-item">
                             <img class="cs-tool-logo-box" src="logos/procreate.png" alt="Procreate logo">
                             <span class="label">Procreate</span>
@@ -725,21 +122,7 @@ grid-column: 9 / 13;
                 </div>
 
                 <div class="cs-tool-group">
-                    <span class="orange-tag">Diseño</span>
-                    <div class="cs-tool-items">
-                        <div class="cs-tool-item">
-                            <img class="cs-tool-logo-box" src="logos/adobe.png" alt="Adobe Suite logo">
-                            <span class="label">Adobe Suite</span>
-                        </div>
-                        <div class="cs-tool-item">
-                            <img class="cs-tool-logo-box" src="logos/figma.png" alt="Figma logo">
-                            <span class="label">Figma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cs-tool-group">
-                    <span class="orange-tag">Implementación</span>
+                    <span class="orange-tag" data-key="cat_implementacion">Implementación</span>
                     <div class="cs-tool-items">
                         <div class="cs-tool-item">
                             <img class="cs-tool-logo-box" src="logos/claude.png" alt="Claude logo">
@@ -748,10 +131,6 @@ grid-column: 9 / 13;
                         <div class="cs-tool-item">
                             <img class="cs-tool-logo-box" src="logos/p5.png" alt="p5.js logo">
                             <span class="label">p5.js</span>
-                        </div>
-                        <div class="cs-tool-item">
-                            <img class="cs-tool-logo-box" src="logos/react.png" alt="React.js logo">
-                            <span class="label">React.js</span>
                         </div>
                     </div>
                 </div>
@@ -769,8 +148,8 @@ grid-column: 9 / 13;
             
 
             <div class="cs-strategy-section">
-                <h3 class="cs-section-title">Propuesta estratégica</h3>
-                <div class="cs-strategy-text">
+                <h3 class="cs-section-title" data-key="sec_propuesta">Propuesta estratégica</h3>
+                <div class="cs-strategy-text" data-key="propuesta_texto">
                     <p>Las ferias vecinales ocupan un lugar significativo en el tejido barrial, funcionando como focos de encuentro donde se entrecruzan intercambios económicos, interacciones sociales e identidades comunitarias.</p>
                     <p>Este proyecto no trata de modificar la dinámica de las ferias, sino de reactivarla: la propuesta opera como puerta de entrada al consumo en territorio.</p>
                     <p class="cs-bold">El desafío: Fragmentación informativa y falta de una experiencia de usuario cohesiva.</p>
@@ -803,9 +182,9 @@ grid-column: 9 / 13;
              ============================================= -->
         <div class="grid-layout cs-section-grid">
             <div class="cs-strategy-section">
-            <h3 class="cs-section-title">Públicos</h3>
+            <h3 class="cs-section-title" data-key="sec_publicos">Públicos</h3>
 
-            <div class="cs-strategy-text">
+            <div class="cs-strategy-text" data-key="publicos_intro">
                 <p>El proyecto se dirige al grupo de jóvenes de 18 a 34 años, que se ocupan de la compra de alimentos.</p>
                 <p>En función de su relación con el contexto se detectan 3 perfiles.</p>
             </div>
@@ -813,8 +192,8 @@ grid-column: 9 / 13;
             <div class="cs-publicos-cards">
 
                 <div class="cs-publico-card">
-                    <span class="orange-tag">Desvinculado</span>
-                    <div class="cs-publico-body">
+                    <span class="orange-tag" data-key="card_desvinculado">Desvinculado</span>
+                    <div class="cs-publico-body" data-key="body_desvinculado">
                         <p><strong>Comportamiento:</strong> Posee una relación nula o escasa con el entorno físico de la feria y el barrio.</p>
                         <p><strong>Necesidad:</strong> Superar la barrera del desconocimiento.</p>
                         <p><strong>Oportunidad de Diseño:</strong> Generar interés mediante una interfaz que presente la feria como un evento relevante, moderno y digno de ser explorado.</p>
@@ -822,8 +201,8 @@ grid-column: 9 / 13;
                 </div>
 
                 <div class="cs-publico-card">
-                    <span class="orange-tag">Práctico</span>
-                    <div class="cs-publico-body">
+                    <span class="orange-tag" data-key="card_practico">Práctico</span>
+                    <div class="cs-publico-body" data-key="body_practico">
                         <p><strong>Comportamiento:</strong> Prioriza la rapidez y la accesibilidad sobre el vínculo emocional. Su decisión de compra es puramente funcional. Buscan optimizar el tiempo y demandan acceso inmediato a la información.</p>
                         <p><strong>Punto de Dolor:</strong> La percepción de que la feria es "difícil" o "lenta" comparada con un supermercado.</p>
                         <p><strong>Oportunidad de diseño:</strong> Enfoque mobile-first. La UI debe destacar la cercanía (geolocalización) y la competitividad de precios, posicionando a la feria como la opción más eficiente y sencilla en su rutina diaria.</p>
@@ -831,8 +210,8 @@ grid-column: 9 / 13;
                 </div>
 
                 <div class="cs-publico-card">
-                    <span class="orange-tag">Consciente</span>
-                    <div class="cs-publico-body">
+                    <span class="orange-tag" data-key="card_consciente">Consciente</span>
+                    <div class="cs-publico-body" data-key="body_consciente">
                         <p><strong>Comportamiento:</strong> Usuario con valores éticos y de consumo responsable alineados con la soberanía alimentaria. Ya posee un vínculo con el territorio.</p>
                         <p><strong>Necesidad:</strong> Profundizar la conexión y pertenencia.</p>
                         <p><strong>Oportunidad de Diseño:</strong> Retención y Comunidad. El diseño debe ofrecer contenido de valor agregado (historia de los productos, impacto social) que refuerce su compromiso y lo convierta en un promotor activo del sistema de ferias.</p>
@@ -860,21 +239,21 @@ grid-column: 9 / 13;
         <div class="grid-layout cs-section-grid">
 
             <div class="cs-sistema-left">
-                <h3 class="cs-section-title">Sistema Visual y Lenguaje de Diseño</h3>
+                <h3 class="cs-section-title" data-key="sec_sistema">Sistema Visual y Lenguaje de Diseño</h3>
 
                 <div class="cs-strategy-text">
-                <div class="cs-sistema-intro">
+                <div class="cs-sistema-intro" data-key="sistema_intro">
                     <p>Se proyectó un sistema visual claro y cautivante, diseñado con una estructura flexible que permite una aplicación coherente tanto en interfaces digitales como en dispositivos territoriales de diversa complejidad. El enfoque técnico consistió en equilibrar la identidad Institucional del Municipio B con recursos gráficos contemporáneos que responden a los patrones de consumo visual de las audiencias jóvenes.</p>
                 </div>
 
-                <span class="orange-tag">Impacto Visual</span>
-                <div class="cs-sistema-text">
+                <span class="orange-tag" data-key="cat_impacto_visual">Impacto Visual</span>
+                <div class="cs-sistema-text" data-key="impacto_texto">
                     <p>A partir de una paleta que es llamativa y colorida, pero también orgánica y terrenal, se generan superposiciones de tramas geométricas. Estos elementos, en movimiento, permiten construir piezas visualmente potentes que captan la atención en entornos digitales saturados.</p>
                     <p>Además, introducen una lectura visual de movimiento colectivo, reforzando la idea de un espacio barrial dinámico y en constante transformación.</p>
                 </div>
 
-                <span class="orange-tag">Ilustraciones</span>
-                <div class="cs-sistema-text">
+                <span class="orange-tag" data-key="cat_ilustraciones_sistema">Ilustraciones</span>
+                <div class="cs-sistema-text" data-key="ilustraciones_texto">
                     <p>Se desarrolló un estilo de ilustraciones que aporta una arista humana al sistema, equilibrando la construcción vectorial con la calidez del trazo manual. Estos recursos permiten representar escenas, gestos y dinámicas propias de la feria, humanizando la interfaz.</p>
                     <p>Los componentes de interacción (botones) también han sido ilustrados, simulando la apariencia de un sticker, reforzando el carácter táctil y cercano de la propuesta digital.</p>
                 </div>
@@ -911,6 +290,7 @@ grid-column: 9 / 13;
              SPLIT HERO — TOTE / STICKERS
              ============================================= -->
         <div class="cs-hero-split">
+            <span class="orange-tag cs-hero-split-tag" data-key="cat_fidelizacion">Piezas para fidelización de conusmidores</span>
             <div class="cs-hero-split-left">
                 <img src="tu-barrio-tu-feria/TOTE 1.png" alt="Tote bag con ilustración Tu Barrio Tu Feria">
             </div>
@@ -929,246 +309,36 @@ grid-column: 9 / 13;
         <div class="grid-layout cs-footer-inner">
             <div class="footer-inicio">
                 <a href="index.html" class="text-inicio">
-                    <svg class="footer-arrow footer-arrow--left" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--brand-orange)"/></svg>
-                    <span class="cs-footer-inicio-text">INICIO</span>
+                    <svg class="footer-arrow footer-arrow--left" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--color-black)"/></svg>
+                    <span class="cs-footer-inicio-text" data-key="footer_inicio">INICIO</span>
                 </a>
             </div>
             <div class="cs-footer-credits">
-                DISEÑO Y DESARROLLO POR MAGDALENA SOULIER
-                <svg class="copyright" width="100%" height="100%" viewBox="0 0 617 151" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g transform="matrix(0.959587,0,0,1,-25.135809,0)"><g transform="matrix(206.933409,0,0,206.933409,19.986415,147.750454)"><path d="M0.306,-0.178C0.33,-0.178 0.348,-0.185 0.36,-0.198C0.372,-0.211 0.378,-0.229 0.378,-0.25L0.378,-0.29L0.45,-0.29L0.45,-0.258C0.45,-0.215 0.438,-0.179 0.415,-0.152C0.392,-0.126 0.356,-0.112 0.308,-0.112C0.262,-0.112 0.226,-0.125 0.201,-0.15C0.175,-0.176 0.162,-0.216 0.162,-0.27L0.162,-0.426C0.162,-0.48 0.175,-0.521 0.203,-0.547C0.23,-0.575 0.265,-0.588 0.308,-0.588C0.353,-0.588 0.388,-0.575 0.413,-0.547C0.438,-0.521 0.45,-0.485 0.45,-0.442L0.45,-0.41L0.378,-0.41L0.378,-0.446C0.378,-0.467 0.372,-0.485 0.361,-0.5C0.35,-0.515 0.331,-0.522 0.306,-0.522C0.285,-0.522 0.267,-0.515 0.254,-0.501C0.241,-0.486 0.234,-0.465 0.234,-0.438L0.234,-0.258C0.234,-0.232 0.241,-0.212 0.255,-0.199C0.269,-0.185 0.286,-0.178 0.306,-0.178ZM0.582,-0.184C0.582,-0.117 0.565,-0.068 0.531,-0.035C0.498,-0.002 0.451,0.014 0.39,0.014L0.222,0.014C0.161,0.014 0.114,-0.002 0.081,-0.035C0.047,-0.068 0.03,-0.117 0.03,-0.184L0.03,-0.516C0.03,-0.583 0.047,-0.632 0.081,-0.665C0.114,-0.698 0.161,-0.714 0.222,-0.714L0.39,-0.714C0.451,-0.714 0.498,-0.698 0.531,-0.665C0.565,-0.632 0.582,-0.583 0.582,-0.516L0.582,-0.184ZM0.51,-0.51C0.51,-0.553 0.501,-0.586 0.481,-0.609C0.462,-0.631 0.432,-0.642 0.39,-0.642L0.222,-0.642C0.18,-0.642 0.149,-0.631 0.131,-0.609C0.112,-0.586 0.102,-0.553 0.102,-0.51L0.102,-0.19C0.102,-0.147 0.112,-0.114 0.131,-0.091C0.149,-0.069 0.18,-0.058 0.222,-0.058L0.39,-0.058C0.432,-0.058 0.462,-0.069 0.481,-0.091C0.501,-0.114 0.51,-0.147 0.51,-0.19L0.51,-0.51Z" style="fill:#ff3b00;fill-rule:nonzero;"/></g><g transform="matrix(206.933409,0,0,206.933409,682.173323,147.750454)"></g><text x="175.6px" y="147.75px" style="font-family:'SpaceMono-Regular', 'Space Mono', monospace;font-size:206.933px;fill:#ff3b00;"><tspan x="175.6px " y="147.75px ">2</tspan>026</text></g>
+                <span data-key="footer_creditos">DISEÑO Y DESARROLLO POR MAGDALENA SOULIER</span>
+                <svg class="copyright" width="100%" height="100%" viewBox="0 0 617 151" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g transform="matrix(0.959587,0,0,1,-25.135809,0)"><g transform="matrix(206.933409,0,0,206.933409,19.986415,147.750454)"><path d="M0.306,-0.178C0.33,-0.178 0.348,-0.185 0.36,-0.198C0.372,-0.211 0.378,-0.229 0.378,-0.25L0.378,-0.29L0.45,-0.29L0.45,-0.258C0.45,-0.215 0.438,-0.179 0.415,-0.152C0.392,-0.126 0.356,-0.112 0.308,-0.112C0.262,-0.112 0.226,-0.125 0.201,-0.15C0.175,-0.176 0.162,-0.216 0.162,-0.27L0.162,-0.426C0.162,-0.48 0.175,-0.521 0.203,-0.547C0.23,-0.575 0.265,-0.588 0.308,-0.588C0.353,-0.588 0.388,-0.575 0.413,-0.547C0.438,-0.521 0.45,-0.485 0.45,-0.442L0.45,-0.41L0.378,-0.41L0.378,-0.446C0.378,-0.467 0.372,-0.485 0.361,-0.5C0.35,-0.515 0.331,-0.522 0.306,-0.522C0.285,-0.522 0.267,-0.515 0.254,-0.501C0.241,-0.486 0.234,-0.465 0.234,-0.438L0.234,-0.258C0.234,-0.232 0.241,-0.212 0.255,-0.199C0.269,-0.185 0.286,-0.178 0.306,-0.178ZM0.582,-0.184C0.582,-0.117 0.565,-0.068 0.531,-0.035C0.498,-0.002 0.451,0.014 0.39,0.014L0.222,0.014C0.161,0.014 0.114,-0.002 0.081,-0.035C0.047,-0.068 0.03,-0.117 0.03,-0.184L0.03,-0.516C0.03,-0.583 0.047,-0.632 0.081,-0.665C0.114,-0.698 0.161,-0.714 0.222,-0.714L0.39,-0.714C0.451,-0.714 0.498,-0.698 0.531,-0.665C0.565,-0.632 0.582,-0.583 0.582,-0.516L0.582,-0.184ZM0.51,-0.51C0.51,-0.553 0.501,-0.586 0.481,-0.609C0.462,-0.631 0.432,-0.642 0.39,-0.642L0.222,-0.642C0.18,-0.642 0.149,-0.631 0.131,-0.609C0.112,-0.586 0.102,-0.553 0.102,-0.51L0.102,-0.19C0.102,-0.147 0.112,-0.114 0.131,-0.091C0.149,-0.069 0.18,-0.058 0.222,-0.058L0.39,-0.058C0.432,-0.058 0.462,-0.069 0.481,-0.091C0.501,-0.114 0.51,-0.147 0.51,-0.19L0.51,-0.51Z" style="fill:var(--color-black);fill-rule:nonzero;"/></g><g transform="matrix(206.933409,0,0,206.933409,682.173323,147.750454)"></g><text x="175.6px" y="147.75px" style="font-family:'SpaceMono-Regular', 'Space Mono', monospace;font-size:206.933px;fill:var(--color-black);"><tspan x="175.6px " y="147.75px ">2</tspan>026</text></g>
                     </svg>
             </div>
             <div class="next-project">
                 <a href="project2.html" class="cs-footer-next">
-                    <span class="cs-footer-next-text">SIGUIENTE PROYECTO</span>
-                    <svg class="footer-arrow" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--brand-orange)"/></svg>
+                    <span class="cs-footer-next-text" data-key="footer_siguiente">SIGUIENTE PROYECTO</span>
+                    <svg class="footer-arrow" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--color-black)"/></svg>
                 </a>
             </div>
         </div>
     </div>
 
+    </div>
+    </div>
 
     <div class="custom-cursor">
         <div class="cursor-dot"></div>
     </div>
 
 
-    <script>
-        // ── Custom cursor ──────────────────────────────────────────
-        const cursor = document.querySelector('.custom-cursor');
-
-        document.addEventListener('mousemove', (e) => {
-            requestAnimationFrame(() => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top  = e.clientY + 'px';
-            });
-        });
-        document.addEventListener('mousedown', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(0.7)';
-        });
-        document.addEventListener('mouseup', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-        });
-
-        // ── Parallax JS fallback (Safari, Firefox) ─────────────────
-        // Skipped when the browser supports CSS scroll-driven animations.
-        if (!CSS.supports('animation-timeline', 'scroll()')) {
-            document.querySelectorAll('.cs-hero-image-wrap').forEach(wrap => {
-                const heroImg = wrap.querySelector('.cs-hero-image');
-                if (!heroImg) return;
-
-                const update = () => {
-                    const rect     = wrap.getBoundingClientRect();
-                    const total    = window.innerHeight + rect.height;
-                    const progress = Math.max(0, Math.min(1, 1 - rect.bottom / total));
-                    heroImg.style.transform = `translateY(${progress * 22}%)`;
-                };
-
-                window.addEventListener('scroll', update, { passive: true });
-                update();
-            });
-        }
-
-        // ── Carousel ──────────────────────────────────────────────
-        (function () {
-            const track = document.getElementById('csCarouselTrack');
-            if (!track) return;
-
-            const originals = Array.from(track.querySelectorAll('img'));
-            const N = originals.length;
-
-            // Surround real slides with one clone on each side:
-            //   [clone-of-last] [0..N-1] [clone-of-first]
-            // This allows seamless wrapping in both directions.
-            track.insertBefore(originals[N - 1].cloneNode(true), originals[0]);
-            track.appendChild(originals[0].cloneNode(true));
-
-            const allSlides = Array.from(track.querySelectorAll('img'));
-            let current = 1; // index 1 = real first slide
-            let busy    = false;
-            let timer;
-
-            function updateActive(index) {
-                allSlides.forEach((s, i) => s.classList.toggle('is-active', i === index));
-            }
-
-            // Instant reposition — no transition
-            function jump(index) {
-                track.style.transition = 'none';
-                current = index;
-                track.style.transform = `translateX(-${current * 100}%)`;
-                track.getBoundingClientRect(); // force reflow
-                track.style.transition = '';
-                updateActive(index);
-            }
-
-            // Animated slide
-            function slide(index) {
-                if (busy) return;
-                busy = true;
-                updateActive(index);
-                current = index;
-                track.style.transform = `translateX(-${current * 100}%)`;
-            }
-
-            // After the transform transition ends, correct position if on a clone
-            track.addEventListener('transitionend', (e) => {
-                if (e.propertyName !== 'transform') return;
-                busy = false;
-                if (current === N + 1) jump(1); // slid past last clone → real first
-                if (current === 0)     jump(N); // slid past first clone → real last
-            });
-
-            function next() { slide(current + 1); }
-            function prev() { slide(current - 1); }
-
-            function startAuto() { timer = setInterval(next, 3500); }
-            function resetAuto()  { clearInterval(timer); startAuto(); }
-
-            document.querySelector('.cs-carousel-prev').addEventListener('click', () => { prev(); resetAuto(); });
-            document.querySelector('.cs-carousel-next').addEventListener('click', () => { next(); resetAuto(); });
-
-            document.querySelectorAll('.cs-carousel-btn').forEach(btn => {
-                btn.addEventListener('mouseenter', () => cursor.classList.add('cursor-pointer'));
-                btn.addEventListener('mouseleave', () => cursor.classList.remove('cursor-pointer'));
-            });
-
-            jump(1); // set initial position without animation
-            startAuto();
-        }());
-
-        // ── Footer links: scramble + cursor-pointer ────────────────
-        class TextScramble {
-            constructor(el) {
-                this.el = el;
-                this.chars = '!<>-_\\/[]{}—=+*^?#abcdefghijklmnopqrstuvwxyz';
-                this.update = this.update.bind(this);
-                this.targetText = '';
-                this.isAnimating = false;
-            }
-            setText(newText) {
-                if (this.isAnimating && this.targetText === newText) return;
-                if (this.isAnimating) this.completeImmediately();
-                this.targetText = newText;
-                this.isAnimating = true;
-                const oldText = this.el.innerText || '';
-                const length = Math.max(oldText.length, newText.length);
-                const promise = new Promise(resolve => (this.resolve = resolve));
-                this.queue = [];
-                this.maxEnd = 0;
-                for (let i = 0; i < length; i++) {
-                    const from = oldText[i] || '';
-                    const to   = newText[i] || '';
-                    const start = Math.floor(Math.random() * 10);
-                    const end   = start + Math.floor(Math.random() * 12);
-                    if (end > this.maxEnd) this.maxEnd = end;
-                    this.queue.push({ from, to, start, end });
-                }
-                cancelAnimationFrame(this.frameRequest);
-                this.frame = 0;
-                this.update();
-                return promise;
-            }
-            completeImmediately() {
-                cancelAnimationFrame(this.frameRequest);
-                this.el.innerText = this.targetText;
-                this.isAnimating = false;
-                if (this.resolve) this.resolve();
-            }
-            update() {
-                if (!this.isAnimating) return;
-                let output = '', complete = 0;
-                for (let i = 0, n = this.queue.length; i < n; i++) {
-                    let { from, to, start, end, char } = this.queue[i];
-                    if (this.frame >= end) { complete++; output += to; }
-                    else if (this.frame >= start) {
-                        if (!char || Math.random() < 0.28) { char = this.randomChar(); this.queue[i].char = char; }
-                        output += `<span>${char}</span>`;
-                    } else { output += from; }
-                }
-                this.el.innerHTML = output;
-                if (this.frame >= this.maxEnd && complete === this.queue.length) {
-                    this.el.innerText = this.targetText;
-                    this.isAnimating = false;
-                    this.resolve();
-                } else {
-                    this.frameRequest = requestAnimationFrame(this.update);
-                    this.frame++;
-                }
-            }
-            randomChar() { return this.chars[Math.floor(Math.random() * this.chars.length)]; }
-        }
-
-        // Inicio link — scramble on text span, hover on full <a>
-        const inicioLink = document.querySelector('.text-inicio');
-        const inicioSpan = document.querySelector('.cs-footer-inicio-text');
-        if (inicioLink && inicioSpan) {
-            const fxInicio = new TextScramble(inicioSpan);
-            const inicioOriginal = inicioSpan.innerText;
-            inicioLink.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor-pointer');
-                fxInicio.setText(inicioOriginal);
-            });
-            inicioLink.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor-pointer');
-            });
-        }
-
-        // Siguiente proyecto — scramble on text span, hover on full <a>
-        const nextLink = document.querySelector('.cs-footer-next');
-        const nextSpan = document.querySelector('.cs-footer-next-text');
-        if (nextLink && nextSpan) {
-            const fxNext = new TextScramble(nextSpan);
-            const nextOriginal = nextSpan.innerText;
-            nextLink.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor-pointer');
-                fxNext.setText(nextOriginal);
-            });
-            nextLink.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor-pointer');
-            });
-        }
-    </script>
-
-
-
-
-
-    <script>
-        (function () {
-            const header = document.querySelector('header');
-            let lastY = window.scrollY;
-
-            window.addEventListener('scroll', function () {
-                const currentY = window.scrollY;
-                if (currentY > lastY && currentY > 60) {
-                    header.classList.add('header--hidden');
-                } else {
-                    header.classList.remove('header--hidden');
-                }
-                lastY = currentY;
-            }, { passive: true });
-        })();
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+    <script src="js/smooth-scroll.js"></script>
+    <script src="js/pages/project1.js"></script>
 </body>
 </html>

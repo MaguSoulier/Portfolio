@@ -1,0 +1,141 @@
+/* Text matches the Figma "Connect-card" component (node 31:165) heading style. */
+.connect {
+    font-family: var(--font-heading);
+    grid-column: 10 / 13;
+    grid-row: 6;
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    justify-self: end;
+    align-self: end;
+    font-weight: var(--fw-bold);
+    text-transform: uppercase;
+    display: inline-block; /* Importante para que el transform funcione bien */
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1), color 0.3s;
+    z-index: 9001;
+}
+
+.connect.moved {
+    transform: translateY(-150px) !important; /* Aumenté el valor para que se note el cambio */
+}
+
+.contact-panel {
+    position: fixed;
+    bottom: 0;
+    /* Esto lo centra si la pantalla es > 1400px, si no, lo pega a la derecha */
+    right: max(0px, calc((100vw - 1500px) / 2));
+
+    /* Ancho: 4 columnas de una grilla de 12 (aprox 33%) */
+    width: 100%;
+    max-width: 466px; /* 1400 / 12 * 4 */
+
+    background-color: var(--color-white);
+    border-top: 2px solid var(--color-orange);
+    padding: 30px;
+
+    /* Estado inicial */
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 9999;
+}
+
+.contact-panel.is-visible {
+    transform: translateY(0) !important;
+}
+
+.contact-link {
+    color: var(--color-orange) !important; /* Aseguramos el color naranja */
+    text-decoration: none;
+}
+
+.contact-redes {
+    display: grid;
+    /* Creamos dos columnas de ancho fijo para que no se empujen */
+    /* 140px es suficiente para "LINKED-IN" en Space Mono */
+    grid-template-columns: repeat(2, 140px);
+    gap: 50px;
+    margin-top: 15px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinea texto e icono a la derecha de su celda */
+    white-space: nowrap;
+    /* Opcional: asegura que use Space Mono para anchos constantes */
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+}
+
+.contact-icon {
+    fill: var(--color-orange);
+    width: 13px;
+    margin-left: 10px;
+    flex-shrink: 0; /* Impide que el icono se comprima */
+}
+
+.mail-icon {
+    fill: var(--color-orange);
+    width: 13px;
+    margin-left: 5px;
+    flex-shrink: 0; /* Impide que el icono se comprima */
+}
+
+.copy-email {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    font-weight: var(--fw-bold);
+    letter-spacing: var(--ls-subtitle-2);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-orange);
+    margin-top: 5px;
+}
+
+.contact-email {
+    margin-bottom: 20px;
+}
+
+.copy-email:hover,
+.contact-link:hover {
+    text-decoration: underline var(--color-orange);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px; /* Mantiene el aire entre el texto y la línea */
+
+    /* Refuerzo: Aseguramos que el cursor del sistema no aparezca */
+    cursor: none !important;
+}
+
+.copy-email,
+.contact-link,
+.copy-email,
+.connect {
+    /* El !important es vital aquí para ganarle a la configuración
+       por defecto de los navegadores para enlaces */
+    cursor: none !important;
+}
+
+.contact-tag {
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-medium);
+    color: var(--color-orange); /* Se mantiene naranja */
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.copy-email {
+    text-decoration: underline var(--color-orange);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-bold);
+    color: var(--color-orange);
+    text-decoration: none;
+}
+

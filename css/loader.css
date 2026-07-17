@@ -1,0 +1,86 @@
+#loader-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en vertical */
+    justify-content: center; /* Centra verticalmente en la pantalla */
+    align-items: center;     /* Centra horizontalmente en la pantalla */
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#loader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-container {
+    width: 75px; /* Tamaño del área del logo */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader-percentage {
+    margin-top: 15px; /* Espacio entre el logo y el número */
+    font-family: var(--font-heading);
+    color: var(--color-orange);
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1; /* Evita espacios extra por debajo del texto */
+}
+
+#Centro {
+    opacity: 0;
+    animation: aparecerSimple 0.2s ease forwards;
+    color: var(--color-orange);
+}
+
+#anim-corona {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: aparecerEscala 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+#anim-iris {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease;
+    opacity: 1;
+}
+
+/* El ojo inicia cerrado (scaleY 0) y el parpado también se prepara */
+#anim-ojo, #anim-parpado {
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+/* --- CLASES DE CONTROL (JS) --- */
+.eye-open { animation: abrirOjo 0.5s ease-out forwards; }
+.eye-close { animation: cerrarOjo 0.4s ease-in forwards; }
+.parpadeando { animation: parpadear 0.2s ease-in-out; }
+
+/* --- ANIMACIONES DE SALIDA --- */
+.out-fade { animation: desaparecerSimple 0s ease forwards !important; }
+.out-scale { animation: desaparecerEscala 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) forwards !important; }
+
+/* --- KEYFRAMES --- */
+@keyframes aparecerSimple { from { opacity: 0; } to { opacity: 1; } }
+@keyframes desaparecerSimple { from { opacity: 1; } to { opacity: 0; } }
+@keyframes aparecerEscala {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes desaparecerEscala {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+@keyframes abrirOjo { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes cerrarOjo { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+@keyframes parpadear {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}

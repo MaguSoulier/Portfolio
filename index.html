@@ -4,23 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magdalena Soulier</title>
-    <link rel="stylesheet" href="PortfolioStyle.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <style>
-        header {
-            transform: translateY(0);
-            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        header.header--hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -106,24 +95,14 @@
                         <button onclick="changeLanguage('en')" id="btn-en">EN</button>
                     </div>
                 </div>
-                
-                <!-- NEW: Footer content inside mobile menu -->
-                <div class="h-item h-item-5 mobile-only">
-                    <a data-key="connect" class="connect">LET'S CONNECT</a>
-                </div>
-                <div class="h-item h-item-6 mobile-only">
-                    <div data-key="web_portfolio" class="web-portfolio-mobile">2026 - WEB PORTFOLIO</div>
-                </div>
             </nav>
         </div>
     </header>
 
+    <div id="smooth-wrapper">
+    <div id="smooth-content">
     <main>
     <section id="inicio" class="grid-layout grid-inicio">
-        <div class="photo-container">
-            <img src="Blancoynegro.png" alt="Magdalena Soulier">
-        </div>
-
         <div class="main-text-block">
             <h1 id="main-name" class="main-name">
                 <span class="line">Magdalena</span>
@@ -131,11 +110,19 @@
         </h1>
         </div>
 
+        <div id="main-photo" class="photo-container">
+            <img src="Foto-violeta.png" alt="Magdalena Soulier">
+        </div>
+
+        <div class="web-portfolio">
+            <span data-key="web_portfolio">2026 - WEB PORTFOLIO</span>
+        </div>
+
             <div class="tagline">
-                <span data-key="tagline">I'M A VISUAL DESIGNER SPECIALIZED IN</span> 
+                <span data-key="tagline">I'M A VISUAL DESIGNER SPECIALIZED IN</span>
                 <span class="badge" id="rotating-badge">BRANDING</span>
             </div>
-        
+
         <div class="secondary-text-block">
             <div  class="location-line">
         <span data-key="location_line" >UBICADA EN </span><strong class="bold-text">MONTEVIDEO</strong>, URUGUAY
@@ -149,82 +136,67 @@
 
     <section id="trabajos">
         <div class="grid-layout grid-trabajos">
-            <h2 data-key="selected_projects" class="section-title">PROYECTOS SELECCIONADOS</h2>
 
-                <div class="project-item" id="project1">
-                    <div class="project-media">
-                        <img src="Celular y tote.png" alt="Proyecto 01" class="media-img">
+            <div class="trabajos-label">
+                <span data-key="selected_projects">PROYECTOS SELECCIONADOS</span>
+            </div>
+
+            <div class="project-item" id="project1">
+                <div class="project-media">
+                    <img class="media-img" src="tu-barrio-tu-feria/celular 1.png"
+                         alt="Vista previa en celular del proyecto Tu Barrio, Tu Feria">
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag" data-key="diseno_web">DISEÑO WEB</span>
+                        <span class="tag" data-key="ilustracion">ILUSTRACIÓN</span>
+                        <span class="tag" data-key="diseno_estrategia">DISEÑO DE ESTRATEGIA</span>
+                        <span class="tag" data-key="direccion_de_arte">DIRECCIÓN DE ARTE</span>
                     </div>
-                
-                    <div class="project-info">
-                        <div class="info-content">
-                            <div class="project-tags">
-                                <span data-key="diseno_web" class="tag" data-category="diseno-web">DISEÑO WEB</span>
-                                <span data-key="direccion_de_arte" class="tag" data-category="direccion-de-arte">DIRECCIÓN DE ARTE</span>
-                                <span data-key="codigo_creativo" class="tag" data-category="codigo-creativo">CÓDIGO CREATIVO</span>
-                                <span data-key="ilustracion" class="tag" data-category="ilustracion">ILUSTRACIÓN</span>
-                            </div>
-                            <h3 data-key="projet1_name" class="project-title scramble-title">
-                                TU BARRIO, TU FERIA
-                            </h3>
-                            <div data-key="projet1_description" class="project-description">
-                                <p>Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.</p>
-                                <p>A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos. </p>
-                            </div>
-                        </div>
+                    <h3 class="project-title title-3 scramble-title">TU BARRIO, TU FERIA</h3>
+                    <div class="project-description" data-key="projet1_description">
+                        <p>Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.</p>
+                        <p>A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-item" id="project2">
-                    <div class="project-media">
-                        <img src="tu_barrio/Celular y tote.png" alt="Proyecto 01" class="media-img">
-                        <video class="media-video" muted loop playsinline autoplay preload="auto">
-                            <source src="tu_barrio/VIdeo_web.mp4" type="video/mp4">
-                        </video>
+            <div class="project-item reverse" id="project2">
+                <div class="project-media">
+                    <img class="media-img" src="fabrika-de-gigantes/preview.jpg"
+                         alt="Vista previa del proyecto Fabrika de Gigantes">
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag" data-key="diseno_ux_ui">DISEÑO UX/UI</span>
+                        <span class="tag" data-key="modelado_3d">MODELADO 3D</span>
+                        <span class="tag" data-key="diseno_videojuegos">DISEÑO DE VIDEOJUEGOS</span>
                     </div>
-                
-                    <div class="project-info">
-                        <div class="info-content">
-                            <div class="project-tags">
-                                <span data-key="diseno_web" class="tag" data-category="diseno-web">DISEÑO WEB</span>
-                                <span data-key="identidad_de_marca" class="tag" data-category="identidad-de-marca">IDENTIDAD DE MARCA</span>
-                                <span data-key="redes_sociales" class="tag" data-category="redes-sociales">REDES SOCIALES</span>
-                            </div>
-                            <h3 data-key="projet2_name" class="project-title scramble-title">
-                                UYDECANTS
-                            </h3>
-                            <p data-key="projet2_description" class="project-description">
-                                Descripción breve del proyecto. Branding, estrategia y desarrollo visual 
-                                enfocado en la experiencia del usuario.
-                            </p>
-                        </div>
+                    <h3 class="project-title title-3 scramble-title">FABRIKA DE GIGANTES</h3>
+                    <div class="project-description" data-key="project2_description">
+                        <p>Diseñado para Revista Gigantes (LaDiaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).</p>
+                        <p>El proyecto funciona como puente para derivar tráfico calificado hacia la plataforma digital de la revista, incrementando los niveles de engagement y retención en el público infantil.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-item" id="project3">
-                    <div class="project-media">
-                        <img src="tu_barrio/Celular y tote.png" alt="Proyecto 01" class="media-img">
-                        
+            <div class="project-item" id="project3">
+                <div class="project-media">
+                    <img class="media-img" src="disenar-los-suenos/preview.jpg"
+                         alt="Vista previa del proyecto Diseñar los Sueños con los Pies en el Barrio">
+                </div>
+                <div class="project-info">
+                    <div class="project-tags">
+                        <span class="tag" data-key="diseno_editorial">DISEÑO EDITORIAL</span>
+                        <span class="tag" data-key="fotografia">FOTOGRAFÍA</span>
                     </div>
-                
-                    <div class="project-info">
-                        <div class="info-content">
-                            <div class="project-tags">
-                                <span class="tag" data-category="diseno-web">DISEÑO WEB</span>
-                                <span class="tag" data-category="direccion-de-arte">DIRECCIÓN DE ARTE</span>
-                                <span class="tag" data-category="codigo-creativo">CÓDIGO CREATIVO</span>
-                                <span class="tag" data-category="ilustracion">ILUSTRACIÓN</span>
-                            </div>
-                            <h3 data-key="projet3_name" class="project-title scramble-title">
-                                TU BARRIO, TU FERIA
-                            </h3>
-                            <p data-key="projet3_description" class="project-description">
-                                Descripción breve del proyecto. Branding, estrategia y desarrollo visual 
-                                enfocado en la experiencia del usuario.
-                            </p>
-                        </div>
+                    <h3 class="project-title title-3 scramble-title">DISEÑAR LOS SUEÑOS CON LOS PIES EN EL BARRIO</h3>
+                    <div class="project-description" data-key="project3_description">
+                        <p>Diseño editorial realizado para la tesis de Valentina Ibarlucea.</p>
+                        <p>El texto investiga los alcances del arte y diseño participativo en colectivos de base territorial, tomando como caso de estudio la Comisión Derecho a la Ciudad en Ciudad Vieja, Montevideo.</p>
                     </div>
                 </div>
+            </div>
 
         </div>
     </section>
@@ -232,41 +204,12 @@
 
     <section id="sobre-mi" style="min-height: 100vh; padding-top: 100px;">
         <div class="grid-layout">
-            <h2 data-key="about_me" class="section-title">SOBRE MÍ</h2>
+            <h2 data-key="" class="section-title"></h2>
             </div>
     </section>
 </main>
-
-    <footer class="desktop-only">
-        <div class="grid-layout">
-            <div class="footer-container">
-                <a data-key="connect" class="connect">LET'S CONNECT</a>
-            </div>
-            <div class="contact-panel-mobile mobile-only" id="contactPanelMobile">
-                    <div class="panel-content">
-                        <div class="contact-email">
-                            <span class="contact-tag-mobile">E-MAIL</span>
-                            <svg class="mail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12.01 13.7"><defs><style>.d{fill:#ff3c00;}</style></defs><g id="c"><path class="d" d="M10.81,10.8H3.38l-1.2-1.2V1.2l1.2-1.2h7.43l1.2,1.2v8.41l-1.2,1.2ZM3.43,9.55h7.34v-.46s0-7.37,0-7.37v-.47H3.43v.47s0,7.37,0,7.37v.46Z"/><polygon class="d" points="9.2 13.7 1.2 13.7 0 12.5 0 3.52 1.25 3.52 1.25 11.98 1.25 12.45 9.2 12.45 9.2 13.7"/></g></svg>
-                            </br><p class="copy-email-mobile">MAG.SOULIER01@GMAIL.COM</p>
-                        </div>
-
-                        <div class="contact-redes">
-                            <div class="contact-item">
-                                <a href="#" class="contact-link">LINKED-IN</a>
-                                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><defs><style>.d{fill:#ff3c00;}</style></defs><g id="c"><polygon class="d" points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></g></svg>
-                            </div>
-                            
-                            <div class="contact-item">
-                                <a href="#" class="contact-link">BEHANCE</a>
-                                <svg class="contact-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><defs><style>.d{fill:#ff3c00;}</style></defs><g id="c"><polygon class="d" points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></g></svg>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            <div data-key="web_portfolio" class="web-portfolio">2026 - WEB PORTFOLIO</div>
-        </div>
-        
-    </footer>
+    </div>
+    </div>
 
     <div class="contact-panel" id="contactPanel">
     <div class="panel-content">
@@ -290,30 +233,62 @@
     </div>
 </div>
 
+<!-- Connect card (Figma node 31:165) — fixed bottom, aligned to the header's
+     language switcher via the same .grid-layout. Collapsed by default;
+     clicking the header expands it upward. -->
+<div class="connect-card-wrap">
+    <div class="grid-layout">
+        <div class="connect-card" id="connectCard">
+            <button class="connect-card__header" id="connectCardToggle" aria-expanded="false" aria-controls="connectCardBody">
+                <span data-key="connect_card_title">CONTACTAR</span>
+            </button>
+            <div class="connect-card__body" id="connectCardBody">
+                <div class="connect-card__content">
+                    <div class="connect-card__links">
+                        <a href="https://www.behance.net/magdalesoulier2" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                            <span>BEHANCE</span>
+                            <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                        </a>
+                    <a href="https://www.linkedin.com/in/magdalena-soulier/" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                            <span>LINKED-IN</span>
+                            <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                        </a>
+                    </div>
+                    <div class="connect-card__mail">
+                        <span class="connect-card__mail-label">
+                            <span data-key="email_tag">E-mail</span>
+                            <svg class="connect-card__mail-icon" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-white)"/>
+<path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-white)"/>
+</svg>
+                        </span>
+                        <span class="connect-card__mail-address">MAG.SOULIER01@GMAIL.COM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="custom-cursor">
     <div class="cursor-dot"></div>
     </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="script.js"></script>
-
-    <script>
-        (function () {
-            const header = document.querySelector('header');
-            let lastY = window.scrollY;
-
-            window.addEventListener('scroll', function () {
-                const currentY = window.scrollY;
-                if (currentY > lastY && currentY > 60) {
-                    header.classList.add('header--hidden');
-                } else {
-                    header.classList.remove('header--hidden');
-                }
-                lastY = currentY;
-            }, { passive: true });
-        })();
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+<script src="js/smooth-scroll.js"></script>
+<script src="js/text-scramble.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/cursor-and-init.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/nav-menu.js"></script>
+<script src="js/nav-scroll-spy.js"></script>
+<script src="js/work-section.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/logo-interaction.js"></script>
+<script src="js/connect-card.js"></script>
+<script src="js/pages/index.js"></script>
 
 </body>
 </html>

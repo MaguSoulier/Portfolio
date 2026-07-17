@@ -1,0 +1,49 @@
+:root {
+    /* ========================================
+       DESIGN TOKENS — Figma "Library" page, COLORS frame (node 3:5)
+       ======================================== */
+    --color-orange: #F54814;
+    --color-dark-orange: #E93E0A;
+    --color-dark-orange-2: #D33505;
+    --color-white: #F7F7F7;
+    --color-gray-2: #BEBEBE;
+    --color-gray-3: #7C7C7C;
+    --color-black: #2D0030;
+    --color-violet: #582B59;
+
+    /* Legacy aliases — no longer referenced anywhere in css/ (all call sites now
+       use the canonical --color-* tokens directly). Safe to delete. */
+    --brand-orange: var(--color-orange);
+    --bg-gray: var(--color-white);
+    --brand-brown: var(--color-black);
+
+    /* ========================================
+       TEXT STYLES — Figma "Library" page, TYPOGRAPHY frame (node 7:44)
+       ======================================== */
+    --font-heading: "Space Mono", monospace;
+    --font-body: "Space Grotesk", sans-serif;
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    /* size / line-height / letter-spacing, per Figma type scale */
+    --fs-small-tag: 12px;   --lh-small-tag: 18px;   --ls-small-tag: 0.48px;
+    --fs-subtext: 12px;     --lh-subtext: 18px;     --ls-subtext: 0.18px;
+    --fs-text: 16px;        --lh-text: 22px;        --ls-text: 0.16px;
+    --fs-subtitle-2: 16px;  --lh-subtitle-2: 20px;  --ls-subtitle-2: 0.32px;
+    --fs-subtitle-1: 20px;  --lh-subtitle-1: 24px;  --ls-subtitle-1: 0.12px;
+    --fs-title-3: 36px;     --lh-title-3: 36px;     --ls-title-3: -0.72px;
+    --fs-title-2: 60px;     --lh-title-2: 60px;     --ls-title-2: -2.4px;
+    --fs-title-1: 120px;     --lh-title-1: 80px;     --ls-title-1: -3.2px;
+
+    /* ========================================
+       LAYOUT (not part of the Figma token set)
+       ======================================== */
+    --grid-gap: clamp(8px, 0.729vw, 14px);
+    --gap: 14px;
+    --header-h: 70px;
+    --container-width: 85%; /* Un poco más ancho en general */
+    --max-width: 1500px;    /* Pero que nunca supere esto */
+}

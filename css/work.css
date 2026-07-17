@@ -1,0 +1,146 @@
+#trabajos {
+    margin-top: 160px;
+}
+
+/* Vertical eyebrow label — same treatment as .location-time/.web-portfolio
+   in hero.css (writing-mode: vertical-rl), reused here for consistency.
+   Shares row 1 with #project1 (see below) instead of sitting in its own
+   row above the cards. */
+.trabajos-label {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--color-violet);
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    text-transform: uppercase;
+    justify-self: start;
+    align-self: start;
+    margin-top: -60px;
+}
+
+/* Indented to leave column 1 free for .trabajos-label, which sits beside
+   it in the same row. */
+#project1 {
+    grid-column: 1 / 13;
+    grid-row: 1;
+}
+
+.project-item {
+    grid-column: 1 / 13; /* Ocupa todo el ancho */
+    min-height: 400px; /* was a fixed height: 400px — real 2-paragraph
+        descriptions (esp. the longer titles) overflow that, so the box
+        now grows with content instead of clipping/spilling. */
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start; /* don't stretch the (now aspect-ratio-based) media
+        column to match a taller info column */
+    gap: var(--gap);
+    opacity: 0.5; /* Estado apagado */
+    transition: all 0.4s ease;
+    margin-bottom: 120px;
+}
+
+/* Contenedor de Media (Columnas 1 a 6) */
+.project-media {
+    grid-column: 2 / 8;
+    grid-row: 1; /* explicit — without this, .reverse's column order (info's
+        1/7 starting before media's 7/13 end) makes the auto-placement
+        cursor push .project-info onto a second row instead of packing it
+        beside the image. */
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2/ 1; /* was height:90% of a fixed-height parent — now
+        that the parent is auto-height, this sizes the image directly */
+}
+
+/* Image-right / text-left variant (Figma's zigzag — card 2 reverses the
+   usual media-left layout). DOM order stays media-then-info so mobile
+   stacking (which ignores grid-column) still puts the image first. */
+.project-item.reverse .project-media {
+    grid-column: 6 / 12;
+}
+
+.project-item.reverse .project-info {
+    grid-column: 1 / 6;
+    padding-left: 0;
+    padding-right: 24px;
+}
+
+.media-img, .media-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que cubra el área sin deformarse */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.5s ease;
+}
+
+.project-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Contenedor de Info (Columnas 7 a 13) */
+.project-info {
+    grid-column: 8 / 13;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start; /* Centrado vertical */
+    padding-left: 24px;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap; /* Permite que bajen si no hay espacio */
+    gap: 8px;       /* Espacio entre cada recuadro */
+    margin-bottom: 24px;
+}
+
+/* Small-tag component (Figma node 44:140) — Color=Orange variants. */
+.tag {
+    font-family: var(--font-heading);
+    font-size: var(--fs-small-tag);
+    color: var(--color-orange);
+    border: 1px solid var(--color-orange); /* Borde fino naranja */
+    padding: 4px 10px;         /* Espacio interno (aire) */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: var(--ls-small-tag);
+    line-height: 1;
+    display: inline-block;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.orange-tag {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    background-color: var(--color-black);
+    padding: 4px 10px;         /* Espacio interno (aire) */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    display: inline-block;
+}
+
+.project-item.active .tag {
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    border-color: var(--color-orange);
+    font-weight: var(--fw-regular);
+    transition: all 0.4s ease;
+}
+
+.project-title { margin-bottom: 24px; }
+.project-description {
+    padding:  0  0  0 24px ;
+}
+.view-project { text-decoration: none; color: var(--color-orange); font-weight: 700; }

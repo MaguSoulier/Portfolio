@@ -1,0 +1,91 @@
+.case-study {
+    padding-top: var(--header-h);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.cs-coming-soon {
+    height: auto;
+    flex: 1;
+    align-items: center;
+}
+
+.cs-coming-inner {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 70vh;
+    padding-left: 30px;
+    gap: 20px;
+}
+
+.cs-coming-label {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--color-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.cs-coming-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    font-weight: 700;
+    color: var(--color-orange);
+    text-transform: uppercase;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+}
+
+/* ---- Footer ---- */
+.cs-footer {
+    border-top: 2px solid var(--color-orange);
+    background: var(--color-white);
+}
+
+.cs-footer-inner {
+    height: auto;
+    padding: 20px 0 30px;
+    align-items: center;
+}
+
+.cs-footer-inicio {
+    grid-column: 1 / 4;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--color-orange);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-left: 30px;
+}
+
+.cs-footer-credits {
+    grid-column: 8 / 13;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    color: var(--color-orange);
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .cs-coming-inner {
+        padding-left: 0;
+        min-height: 60vh;
+    }
+    .cs-footer-inicio {
+        grid-column: 1 / 5;
+        padding-left: 0;
+    }
+    .cs-footer-credits {
+        grid-column: 1 / 7;
+        grid-row: 2;
+        text-align: left;
+        margin-top: 10px;
+    }
+}

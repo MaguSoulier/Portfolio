@@ -1,0 +1,91 @@
+/* Text styles from the Figma TYPOGRAPHY frame (node 7:44). */
+
+.title-1,
+.title-2,
+.title-3,
+.subtitle-1,
+.subtitle-2,
+.small-tag {
+    font-family: var(--font-heading);
+    font-style: normal;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.text,
+.subtext {
+    font-family: var(--font-body);
+    margin: 0;
+}
+
+.title-1 {
+    font-size: var(--fs-title-1);
+    line-height: var(--lh-title-1);
+    letter-spacing: var(--ls-title-1);
+    font-weight: var(--fw-bold);
+}
+
+.title-2 {
+    font-size: var(--fs-title-2);
+    line-height: var(--lh-title-2);
+    letter-spacing: var(--ls-title-2);
+    font-weight: var(--fw-bold);
+}
+
+.title-3 {
+    font-size: var(--fs-title-3);
+    line-height: var(--lh-title-3);
+    letter-spacing: var(--ls-title-3);
+    font-weight: var(--fw-bold);
+}
+
+.subtitle-1 {
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+}
+
+.subtitle-1--bold {
+    font-weight: var(--fw-bold);
+}
+
+.subtitle-2 {
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+}
+
+.subtitle-2--bold {
+    font-weight: var(--fw-bold);
+}
+
+.small-tag {
+    font-size: var(--fs-small-tag);
+    line-height: var(--lh-small-tag);
+    letter-spacing: var(--ls-small-tag);
+    font-weight: var(--fw-regular);
+}
+
+.text {
+    font-size: var(--fs-text);
+    line-height: var(--lh-text);
+    letter-spacing: var(--ls-text);
+    font-weight: var(--fw-regular);
+}
+
+.text--bold {
+    font-weight: var(--fw-bold);
+}
+
+.subtext {
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-light);
+}
+
+.subtext--bold {
+    font-weight: var(--fw-medium);
+}

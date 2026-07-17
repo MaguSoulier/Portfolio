@@ -1,0 +1,186 @@
+.grid-inicio {
+    position: relative; /* containing block for .web-portfolio, see below */
+    align-items: start;
+    /* minmax(<vh>, auto) instead of a flat <vh>: rows keep their intended
+       viewport-relative proportions but grow for content that needs more
+       room. A flat height (previously a fixed 700px on the container)
+       couldn't do that — at viewport heights where the vh rows needed more
+       or less than the fixed value, content would overflow the box or
+       leave dead space inside it, and #trabajos (which just follows in
+       normal flow below) would inherit that mismatch as an overlap or a
+       gap. Letting the container's height fall out of its (now flexible)
+       rows keeps it always matching its actual content. */
+    grid-template-rows: minmax(25vh, auto) minmax(30vh, auto) minmax(20vh, auto);
+    /* Single source of truth for the photo's rendered width, so
+       .web-portfolio's position (computed from it) always stays in sync,
+       including across the responsive overrides below. */
+    --hero-photo-w: clamp(300px, 28vw, 510px);
+}
+
+.photo-container {
+    grid-column: 1 / span 5; /* Ocupa de la 1 a la 4 */
+    grid-row: 1 / 3;
+    padding: 0 30px;
+    z-index: 0;
+    overflow: visible;
+}
+
+.photo-container img {
+    width: var(--hero-photo-w);
+    max-width: 510px;
+    height: auto;
+    display: block;
+    margin-top: -10px;
+}
+
+.main-text-block {
+    grid-column: 5 / 13;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#main-name {
+    visibility: hidden;
+    line-height: 0.9; /* Ajusta según tu diseño para que el <br> se vea bien */
+    display: block;  /* Asegura que procese el bloque correctamente */
+    transition: opacity 0.5s ease;
+    will-change: contents;
+    z-index: 1;
+}
+
+
+.secondary-text-block {
+    grid-column: 12;/* Empieza exactamente en la columna 5 */
+    grid-row: 1;
+    display: flex;
+    flex-direction: column; /* Esto pone la hora a la izquierda o derecha según necesites */
+    gap: 4px; /* Espacio entre las dos líneas verticales */
+    padding-top: 14px;
+    /* Configuración vertical */
+    writing-mode: vertical-rl;
+
+    font-family: var(--font-heading);
+    color: var(--color-violet);
+    text-transform: uppercase;
+}
+
+.main-name {
+    margin: 0;
+    overflow: visible;
+    display: block;
+    /* The scramble animation (TextScramble) replaces the .line spans below
+       with flat text mid-transition, carrying the line break over as a
+       literal \n. pre-line keeps that \n rendering as a real break so
+       "Soulier" can't ever land next to "Magdalena" during the scramble. */
+    white-space: pre-line;
+    font-family: var(--font-heading);
+    /* Capped at the Figma Title 1 size (80px); letter-spacing kept as a ratio
+       (Title 1's -3.2px / 80px = -4%) so it scales correctly at the smaller
+       end of the clamp instead of crushing the text. */
+    font-size: clamp(32px, 10cqi, var(--fs-title-1));
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    font-weight: var(--fw-bold);
+    width: 100%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 y 11 */
+    user-select: none;
+}
+
+.main-name .line {
+    display: block; /* Esto garantiza las 2 líneas */
+    width: fit-content;
+}
+
+/* Plain inline flow (not flexbox) so the badge wraps as part of the text
+   run — it sits right after the tagline text and only drops to its own
+   line when it no longer fits, instead of being forced under the text. */
+.tagline {
+    grid-column: 5 / 12;
+    grid-row: 2;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+    text-transform: uppercase;
+    z-index: 1;
+    padding-top: 22px;
+    margin-top: 0px;
+}
+
+/* Both the sentence and the badge need the same vertical-align reference —
+   otherwise the badge (taller than the plain text line-box because of its
+   own padding) sits on a different baseline than the surrounding text. */
+.tagline [data-key="tagline"] {
+    vertical-align: middle;
+}
+
+/* Small-tag component, Active=Yes / Color=Orange variant (Figma node 44:141). */
+.badge {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 2px 8px;
+    display: inline-block;
+    vertical-align: middle;
+    animation-delay: 10s;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: 0.24px;
+    font-weight: var(--fw-regular);
+    text-transform: uppercase;
+}
+
+.location-time {
+    font-family: var(--font-heading); /* Para mantener tu estilo */
+    color: var(--color-violet);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+}
+
+.location-line {
+    white-space: nowrap;
+    font-size: var(--fs-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    line-height: 1.2;
+}
+
+/* "2026 - WEB PORTFOLIO" vertical label (Figma node 26:82). Figma places it
+   flush against the photo's right edge, starting ~81% of the way down the
+   photo's height and running past its bottom edge.
+
+   The photo and the tagline/name text column deliberately share a grid
+   column (an intentional bleed in this design), and the photo can itself
+   overflow past its own grid rows (its height follows the source image's
+   4:3-ish aspect ratio, which is taller than the row heights reserve) — so
+   neither "anchor beside the photo's box" nor "drop into an empty grid row"
+   held up across breakpoints. Instead this computes the label's position
+   directly from --hero-photo-w (the same variable that sizes the image),
+   relative to .grid-inicio, so it tracks the *actual* rendered photo
+   exactly, at any width, without depending on DOM nesting inside the photo
+   (which would conflict with this element also being a plain grid item on
+   mobile — see the 768px override in responsive.css). */
+.web-portfolio {
+    position: absolute;
+    left: calc(var(--hero-photo-w) + 38px); /* 30px photo padding + 8px gap */
+    /* -10px image's own margin-top, then ~81.5% down the image's rendered
+       height (height = width * 1.339, the source photo's aspect ratio) */
+    top: calc(-90px + var(--hero-photo-w) * 1.0913);
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-violet);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); /* reads bottom-to-top, mirroring .location-time */
+    white-space: nowrap;
+}

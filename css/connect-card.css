@@ -1,0 +1,143 @@
+/* Connect card (Figma node 31:165). Fixed to the bottom of the viewport,
+   collapsed by default. Reuses .grid-layout (the same 12-column/centering
+   rules the header uses) and sits in the same columns as .h-item-4 (the
+   language switcher), so both align to the same right edge. */
+
+.connect-card-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9000;
+    pointer-events: none; /* only the card itself should catch clicks */
+}
+
+.connect-card-wrap .grid-layout {
+    height: auto;
+}
+
+.connect-card {
+    grid-column: 1 / 13;
+    justify-self: end;
+    width: 314px;
+    min-width: 314px; /* grid items default to min-width:auto, which lets
+                          the browser compress below `width` as the track
+                          narrows — this pins it so it can't shrink */
+    background-color: var(--color-orange);
+    pointer-events: auto;
+}
+
+.connect-card__header {
+    display: block;
+    width: 100%;
+    padding: 8px 16px 16px;
+    background: none;
+    border: none;
+    cursor: none !important; /* custom cursor system, see base.css */
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    text-transform: uppercase;
+    text-align: left;
+}
+
+/* Animated height via grid-template-rows 0fr -> 1fr — smooth expand/collapse
+   without measuring pixel heights in JS. */
+.connect-card__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.connect-card.is-expanded .connect-card__body {
+    grid-template-rows: 1fr;
+}
+
+.connect-card__content {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.connect-card__links {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 9px 16px;
+    min-height: 53px;
+}
+
+.connect-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: none !important;
+}
+
+.connect-card__link-icon {
+    width: 12px;
+    height: 12px;
+    fill: var(--color-white);
+    flex-shrink: 0;
+}
+
+.connect-card__mail {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 16px;
+    background-color: var(--color-dark-orange-2);
+}
+
+.connect-card__mail-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+}
+
+.connect-card__mail-icon {
+    width: 10px;
+    height: 10px;
+    fill: var(--color-white);
+    flex-shrink: 0;
+}
+
+.connect-card__mail-address {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    text-transform: uppercase;
+    cursor: none !important;
+}
+
+@media (max-width: 768px) {
+    /* No language switcher visible in the closed mobile header to align to
+       (it lives inside the off-canvas menu) — a full-width bottom bar is
+       the more sensible mobile pattern here. */
+    .connect-card {
+        grid-column: 1 / 7;
+        justify-self: stretch;
+        width: auto;
+        min-width: 0; /* undo the desktop min-width so it can shrink/stretch */
+        max-width: 100%;
+    }
+}
