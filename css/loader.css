@@ -26,7 +26,7 @@
 #loader-percentage {
     margin-top: 15px; /* Espacio entre el logo y el número */
     font-family: var(--font-heading);
-    color: var(--color-orange);
+    color: var(--color-black);
     font-size: 1.2rem;
     text-align: center;
     line-height: 1; /* Evita espacios extra por debajo del texto */

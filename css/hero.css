@@ -95,12 +95,17 @@
     width: fit-content;
 }
 
-/* Plain inline flow (not flexbox) so the badge wraps as part of the text
-   run — it sits right after the tagline text and only drops to its own
-   line when it no longer fits, instead of being forced under the text. */
+/* Nested inside .main-text-block (right after #main-name) instead of being
+   placed in grid-row 2: row 2's height was driven by .photo-container
+   spanning rows 1/3, not by the name's actual content height, so the
+   name-to-tagline gap grew or shrank with viewport height instead of
+   staying constant. As a flex sibling of the name it just sits margin-top
+   px below it, always — regardless of row-track sizing.
+   Still plain inline flow (not flexbox) internally so the badge wraps as
+   part of the text run — it sits right after the tagline text and only
+   drops to its own line when it no longer fits, instead of being forced
+   under the text. */
 .tagline {
-    grid-column: 5 / 12;
-    grid-row: 2;
     font-family: var(--font-heading);
     font-size: var(--fs-subtitle-1);
     line-height: var(--lh-subtitle-1);
@@ -108,8 +113,7 @@
     font-weight: var(--fw-regular);
     text-transform: uppercase;
     z-index: 1;
-    padding-top: 22px;
-    margin-top: 0px;
+    margin-top: 22px;
 }
 
 /* Both the sentence and the badge need the same vertical-align reference —

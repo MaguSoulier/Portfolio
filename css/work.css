@@ -72,13 +72,21 @@
 }
 
 .media-img, .media-video {
+    /* Oversized (110%/150% instead of 100%/100%) and centered — top/left
+       split the extra 10%/50% evenly on both sides — so js/parallax.js has
+       room to drift the image vertically (±10% yPercent) inside the
+       cropped .project-media frame without exposing empty edges. Centered
+       also means the crop itself is centered on the source photo, instead
+       of being biased toward one edge and cutting off content lower in the
+       frame. Mobile (768px, below) resets width/height/top/left back to
+       100%/100%/0/0 since the drift is disabled there. */
     width: 100%;
-    height: 100%;
+    height: 150%;
     object-fit: cover; /* Asegura que cubra el área sin deformarse */
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -25%;
     transition: opacity 0.5s ease;
+    will-change: transform;
 }
 
 .project-item.active {
