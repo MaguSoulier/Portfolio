@@ -48,6 +48,21 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <div class="h-item h-item-2">
+                    <a href="index.html#trabajos" data-key="navwork" class="nav-work">TRABAJOS</a>
+                </div>
+                <div class="h-item h-item-3">
+                    <a href="index.html#sobre-mi" data-key="navabout" class="nav-about">SOBRE MÍ</a>
+                </div>
+                <div class="h-item h-item-4">
+                    <div class="lang-switcher">
+                         <button onclick="changeLanguage('es')" id="btn-es">ES</button>
+                        <button onclick="changeLanguage('en')" id="btn-en">EN</button>
+                    </div>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -141,37 +156,59 @@
 
 
         <!-- =============================================
-             PROPUESTA ESTRATÉGICA
+             CONTEXTO Y PROBLEMÁTICA
              ============================================= -->
         <div class="grid-layout cs-section-grid">
 
-            
-
-            <div class="cs-strategy-section">
-                <h3 class="cs-section-title" data-key="sec_propuesta">Propuesta estratégica</h3>
-                <div class="cs-strategy-text" data-key="propuesta_texto">
-                    <p>Las ferias vecinales ocupan un lugar significativo en el tejido barrial, funcionando como focos de encuentro donde se entrecruzan intercambios económicos, interacciones sociales e identidades comunitarias.</p>
-                    <p>Este proyecto no trata de modificar la dinámica de las ferias, sino de reactivarla: la propuesta opera como puerta de entrada al consumo en territorio.</p>
-                    <p class="cs-bold">El desafío: Fragmentación informativa y falta de una experiencia de usuario cohesiva.</p>
-                    <p>Mientras que los competidores del sector retail ofrecen experiencias digitales fluidas, la feria carecía de una interfaz unificada, lo que generaba una percepción de obsolescencia.</p>
-                    <p>El reto consistió en estructurar un lenguaje de diseño capaz de convivir con la identidad del Municipio B, priorizando una arquitectura de información clara que resolviera la inconsistencia visual y los problemas de comunicación previos en el territorio.</p>
-            </div>
+            <div class="cs-context-text">
+                <h3 class="cs-section-title" data-key="sec_contexto">Contexto y problemática</h3>
+                <div class="cs-strategy-text" data-key="contexto_texto">
+                    <p>Las ferias vecinales ocupan un lugar significativo en la vida de los barrios, funcionando como espacios de encuentro donde se cruzan intercambios económicos, interacciones sociales e identidades comunitarias.</p>
+                    <p>Sin embargo, según el informe de la Cámara de Industrias del Uruguay e INEFOP (2020) se evidencia que <strong>la feria ha dejado de ocupar un lugar cotidiano</strong> en la rutina de las personas uruguayas, desplazada por otras formas de compra, siendo los <strong>jóvenes de 18 a 34 años</strong> el grupo que <strong>menos acude a la feria</strong> como primer punto de compra.</p>
+                    <p>Actualmente, la única forma de conocer la ubicación, horarios y oferta de las ferias es encontrándote una en la calle. Esto genera una <strong>percepción de obsolescencia</strong> frente a las plataformas de retail modernas, cuyas <strong>experiencias digitales son fluidas e inmediatas.</strong></p>
+                    <p>El proyecto nace con el objetivo de reactivar el consumo en territorio y atraer a poblaciones jóvenes mediante el desarrollo de una <strong>identidad digital contemporánea</strong> que formalice el <strong>acceso a la información</strong> y brinde certeza a los usuarios antes de su visita. Reafirmando la idea de que fortalecer la feria es fortalecer la vida barrial.</p>
                 </div>
+            </div>
 
-            <div class="cs-strategy-img">
-                <img src="tu-barrio-tu-feria/compu 1.png" alt="Interfaz del proyecto visualizada en laptop">
+            <div class="cs-context-img">
+                <img src="tu-barrio-tu-feria/celular 3.png" alt="Interfaz del proyecto visualizada en un celular en la calle">
             </div>
 
         </div>
 
 
         <!-- =============================================
-             VIDEO
+             VIDEO 1
              ============================================= -->
         <div class="grid-layout cs-section-grid">
 
             <div class="cs-video-wrap">
                 <video src="tu-barrio-tu-feria/landing.mp4" autoplay muted loop playsinline></video>
+            </div>
+
+            <div class="cs-media-caption" data-key="video1_subtext">
+                <p>Animación desarrollada en JavaScript para la pantalla de inicio de la web. 
+                Los patrones geométricos se inspiran en el apilamiento hexagonal de las frutas y verduras, trasmitiendo el concepto de flujo, intercambio y abundancia de las ferias barriales.</p>
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             PROPUESTA ESTRATÉGICA
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+
+            <div class="cs-proposal-img">
+                <img src="tu-barrio-tu-feria/img23.jpg" alt="Interfaz del proyecto visualizada en laptop">
+            </div>
+
+            <div class="cs-proposal-content">
+                <h3 class="cs-section-title" data-key="sec_propuesta">Propuesta estratégica</h3>
+                <div class="cs-strategy-text" data-key="propuesta_texto">
+                    <p>La feria es efímera por naturaleza, pero la necesidad de información del usuario es constante. Su presencia debe circular simbólicamente en el barrio, y permanecer en la memoria visual de quienes la habitan.</p>
+                    <p>La estrategia combina presencia en redes sociales, cartelería y objetos de fidelización, todos nucleados por una plataforma web que actúa como punto de contacto. Formalizando el acceso a la información e instalando a las ferias como una experiencia de compra ordenada y accesible, se activa el deseo de consumo.</p>
+                </div>
             </div>
 
         </div>
@@ -227,11 +264,62 @@
         <div class="cs-hero-image-wrap cs-hero-image-wrap--2">
             <div class="cs-hero-image" style="background-image: url('tu-barrio-tu-feria/mapa completo.png');"></div>
         </div>
-<div class="grid-layout cs-section-grid">
-<div class="cs-video-wrap">
+
+
+        <!-- =============================================
+             FLUJO DE USUARIO
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+
+            <div class="cs-flow-col">
+                <h3 class="cs-section-title" data-key="sec_flujo">Flujo de usuario</h3>
+
+                <div class="cs-strategy-text" data-key="flujo_intro">
+                    <p>Al ser un sitio pensado para acceder desde códigos QR en la vía pública, se proyectó un sistema sin scroll, desde el enfoque mobile-first. Esta organización prioriza una navegación sencilla y orientada a la acción.</p>
+                </div>
+
+                <div class="cs-flow-diagram">
+                    <span class="orange-tag cs-flow-root" data-key="flujo_pantalla_inicio">Pantalla de inicio</span>
+                    <div class="cs-flow-branches">
+                        <div class="cs-flow-branch">
+                            <span class="orange-tag cs-flow-tag" data-key="flujo_mas_info">Más información</span>
+                            <div class="cs-flow-arrow"></div>
+                            <div class="cs-flow-text" data-key="flujo_texto_mas_info">
+                                <p>A través de textos breves, se explica cómo consumir en ferias aporta a la economía solidaria, beneficiando tanto a la sociedad como al bolsillo.</p>
+                                <p>Esta sección busca construir sentido alrededor de la decisión de comprar en la feria.</p>
+                            </div>
+                        </div>
+                        <div class="cs-flow-branch">
+                            <span class="orange-tag cs-flow-tag" data-key="flujo_mapa">Mapa geolocalizado</span>
+                            <div class="cs-flow-arrow"></div>
+                            <div class="cs-flow-text" data-key="flujo_texto_mapa">
+                                <p>El usuario puede filtrar por día y por cercanía, acceder a instrucciones de uso y visualizar las ferias dentro de un barrio.</p>
+                                <p>Al seleccionar una feria, se despliega su información específica, incluyendo ubicación, horario y tipos de puestos.</p>
+                                <p>Al hacer clic en un tipo de puesto, el sitio muestra datos del vendedor o categoría e información complementaria según corresponda.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cs-flow-img">
+                <img src="tu-barrio-tu-feria/Celular y tote.png" alt="Celular mostrando la web del proyecto en la mano de una persona">
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             VIDEO 2
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+            <div class="cs-video-wrap">
                 <video src="tu-barrio-tu-feria/map.mp4" autoplay muted loop playsinline></video>
             </div>
-</div>
+            <div class="cs-media-caption" data-key="video2_subtext">
+                <p>Las tramas geométricas conviven de manera integrada con ilustraciones manuales que operan como los botones de acción.</p>
+            </div>
+        </div>
 
         <!-- =============================================
              SISTEMA VISUAL Y LENGUAJE DE DISEÑO
@@ -289,15 +377,24 @@
         <!-- =============================================
              SPLIT HERO — TOTE / STICKERS
              ============================================= -->
-        <div class="cs-hero-split">
+        <div class="grid-layout cs-hero-split-tag-row">
             <span class="orange-tag cs-hero-split-tag" data-key="cat_fidelizacion">Piezas para fidelización de conusmidores</span>
-            <div class="cs-hero-split-left">
-                <img src="tu-barrio-tu-feria/TOTE 1.png" alt="Tote bag con ilustración Tu Barrio Tu Feria">
+        </div>
+        <div class="cs-hero-split-group">
+            <div class="cs-hero-split">
+                <div class="cs-hero-split-left">
+                    <img src="tu-barrio-tu-feria/TOTE 1.png" alt="Tote bag con ilustración Tu Barrio Tu Feria">
+                </div>
+                <div class="cs-hero-split-right">
+                    <img src="tu-barrio-tu-feria/stickers (1).png" alt="Stickers del proyecto en un teléfono">
+                </div>
             </div>
-            <div class="cs-hero-split-right">
-                <img src="tu-barrio-tu-feria/stickers (1).png" alt="Stickers del proyecto en un teléfono">
+            <div class="grid-layout cs-hero-split-captions">
+                <p class="cs-media-caption cs-hero-split-caption cs-hero-split-caption-left" data-key="tote_subtext">Tote bag que utiliza las ilustraciones del sistema visual.</p>
+                <p class="cs-media-caption cs-hero-split-caption cs-hero-split-caption-right" data-key="stickers_subtext">Stickers que nacen de los botones de la web, referencian a cada feria vecinal del municipio B.</p>
             </div>
         </div>
+        
 
     </section>
 
@@ -314,9 +411,8 @@
                 </a>
             </div>
             <div class="cs-footer-credits">
-                <span data-key="footer_creditos">DISEÑO Y DESARROLLO POR MAGDALENA SOULIER</span>
-                <svg class="copyright" width="100%" height="100%" viewBox="0 0 617 151" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g transform="matrix(0.959587,0,0,1,-25.135809,0)"><g transform="matrix(206.933409,0,0,206.933409,19.986415,147.750454)"><path d="M0.306,-0.178C0.33,-0.178 0.348,-0.185 0.36,-0.198C0.372,-0.211 0.378,-0.229 0.378,-0.25L0.378,-0.29L0.45,-0.29L0.45,-0.258C0.45,-0.215 0.438,-0.179 0.415,-0.152C0.392,-0.126 0.356,-0.112 0.308,-0.112C0.262,-0.112 0.226,-0.125 0.201,-0.15C0.175,-0.176 0.162,-0.216 0.162,-0.27L0.162,-0.426C0.162,-0.48 0.175,-0.521 0.203,-0.547C0.23,-0.575 0.265,-0.588 0.308,-0.588C0.353,-0.588 0.388,-0.575 0.413,-0.547C0.438,-0.521 0.45,-0.485 0.45,-0.442L0.45,-0.41L0.378,-0.41L0.378,-0.446C0.378,-0.467 0.372,-0.485 0.361,-0.5C0.35,-0.515 0.331,-0.522 0.306,-0.522C0.285,-0.522 0.267,-0.515 0.254,-0.501C0.241,-0.486 0.234,-0.465 0.234,-0.438L0.234,-0.258C0.234,-0.232 0.241,-0.212 0.255,-0.199C0.269,-0.185 0.286,-0.178 0.306,-0.178ZM0.582,-0.184C0.582,-0.117 0.565,-0.068 0.531,-0.035C0.498,-0.002 0.451,0.014 0.39,0.014L0.222,0.014C0.161,0.014 0.114,-0.002 0.081,-0.035C0.047,-0.068 0.03,-0.117 0.03,-0.184L0.03,-0.516C0.03,-0.583 0.047,-0.632 0.081,-0.665C0.114,-0.698 0.161,-0.714 0.222,-0.714L0.39,-0.714C0.451,-0.714 0.498,-0.698 0.531,-0.665C0.565,-0.632 0.582,-0.583 0.582,-0.516L0.582,-0.184ZM0.51,-0.51C0.51,-0.553 0.501,-0.586 0.481,-0.609C0.462,-0.631 0.432,-0.642 0.39,-0.642L0.222,-0.642C0.18,-0.642 0.149,-0.631 0.131,-0.609C0.112,-0.586 0.102,-0.553 0.102,-0.51L0.102,-0.19C0.102,-0.147 0.112,-0.114 0.131,-0.091C0.149,-0.069 0.18,-0.058 0.222,-0.058L0.39,-0.058C0.432,-0.058 0.462,-0.069 0.481,-0.091C0.501,-0.114 0.51,-0.147 0.51,-0.19L0.51,-0.51Z" style="fill:var(--color-black);fill-rule:nonzero;"/></g><g transform="matrix(206.933409,0,0,206.933409,682.173323,147.750454)"></g><text x="175.6px" y="147.75px" style="font-family:'SpaceMono-Regular', 'Space Mono', monospace;font-size:206.933px;fill:var(--color-black);"><tspan x="175.6px " y="147.75px ">2</tspan>026</text></g>
-                    </svg>
+                <span data-key="footer_creditos">Diseñado y desarrollado por Magdalena soulier | © 2026</span>
+                 
             </div>
             <div class="next-project">
                 <a href="project2.html" class="cs-footer-next">
@@ -339,6 +435,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
     <script src="js/smooth-scroll.js"></script>
+    <script src="js/nav-menu.js"></script>
     <script src="js/pages/project1.js"></script>
 </body>
 </html>

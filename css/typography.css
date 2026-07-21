@@ -3,6 +3,7 @@
 .title-1,
 .title-2,
 .title-3,
+.title-4,
 .subtitle-1,
 .subtitle-2,
 .small-tag {
@@ -13,7 +14,8 @@
 }
 
 .text,
-.subtext {
+.subtext,
+.mobile-text {
     font-family: var(--font-body);
     margin: 0;
 }
@@ -36,6 +38,13 @@
     font-size: var(--fs-title-3);
     line-height: var(--lh-title-3);
     letter-spacing: var(--ls-title-3);
+    font-weight: var(--fw-bold);
+}
+
+.title-4 {
+    font-size: var(--fs-title-4);
+    line-height: var(--lh-title-4);
+    letter-spacing: var(--ls-title-4);
     font-weight: var(--fw-bold);
 }
 
@@ -88,4 +97,15 @@
 
 .subtext--bold {
     font-weight: var(--fw-medium);
+}
+
+.mobile-text {
+    font-size: var(--fs-mobile-text);
+    line-height: var(--lh-mobile-text);
+    letter-spacing: var(--ls-mobile-text);
+    font-weight: var(--fw-regular);
+}
+
+.mobile-text--bold {
+    font-weight: var(--fw-bold);
 }

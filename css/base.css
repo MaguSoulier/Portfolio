@@ -42,7 +42,7 @@ p {
     line-height: var(--lh-text);
     letter-spacing: var(--ls-text);
     font-weight: var(--fw-regular);
-    margin-bottom: 7px;
+    margin-bottom: 16px;
     color: var(--color-black)
 }
 

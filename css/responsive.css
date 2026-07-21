@@ -148,14 +148,7 @@
     }
 
     .project-description {
-        padding-right: 16px;
-    }
-
-    .project-description p {
-        font-size: 14px;
-        line-height: 19px;
-        letter-spacing: 0.14px;
-        margin-bottom: 8px;
+        padding-right: 24px;
     }
 
 }
@@ -251,7 +244,7 @@
     .nav-menu .h-item {
         grid-column: auto;
         justify-self: start;
-        font-size: 16px;
+        font-size: var(--fs-subtitle-2);
     }
 
     .h-item-2, .h-item-3, .h-item-4 {
@@ -269,18 +262,6 @@
         margin-top: 24px;
         grid-template-rows: auto auto auto;
         align-content: start;
-        /* height was previously floored at min-height: calc(100vh - 170px)
-           to make the hero feel full-screen, but that's a function of
-           viewport HEIGHT only — unrelated to how tall the content actually
-           is. Content height varies with viewport WIDTH too (.main-name's
-           font-size is a vw-based clamp), so depending on the device the
-           floor either sat well above the content (huge empty space before
-           #trabajos, since #trabajos itself had no margin of its own) or
-           well below it (no floor effect at all, so #trabajos landed flush
-           against the content with zero gap). Auto height keeps the section
-           exactly as tall as its content on every device, and the real gap
-           to #trabajos now comes from #trabajos's own margin-top below —
-           consistent regardless of screen size. */
         height: auto;
         padding-top: 0px;
     }
@@ -424,6 +405,7 @@
        row 1 with .trabajos-label like it does on desktop. */
     #project1, #project3 {
         grid-column: 1 / 7;
+
     }
 
     .project-item {
@@ -471,22 +453,20 @@
     }
 
     .project-title {
-        font-size: var(--fs-subtitle-1);
-        line-height: var(--lh-subtitle-1);
-        letter-spacing: var(--ls-subtitle-1);
+        font-size: var(--fs-title-4);
+        line-height: var(--lh-title-4);
+        letter-spacing: var(--ls-title-4);
         margin-top: 10px;
         margin-bottom: 12px;
     }
 
     .project-description {
-        font-size: 0.85rem;
-        line-height: 1.5;
+        font-size: var(--fs-mobile-text);
+        line-height: var(--lh-mobile-text);
+        letter-spacing: var(--ls-mobile-text);
     }
 
-    .project-description p {
-        font-size: 0.85rem;
-        margin-bottom: 10px;
-    }
+    
 
     /* ===== ABOUT SECTION ===== */
     #sobre-mi {
@@ -541,8 +521,9 @@
     }
 
     p {
-        font-size: 0.85rem;
-        line-height: 1.5;
+        font-size: var(--fs-mobile-text);
+        line-height: var(--lh-mobile-text);
+        letter-spacing: var(--ls-mobile-text);
         margin-bottom: 8px;
     }
 

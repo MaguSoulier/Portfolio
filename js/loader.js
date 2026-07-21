@@ -175,6 +175,22 @@ class SlowTextScramble extends TextScramble {
 
 // --- FUNCIÓN DE INICIO ACTUALIZADA ---
 function iniciarAnimacionesEntrada() {
+    // 0. Arriving via a link to a specific section (e.g. project1.html's
+    //    header linking to index.html#trabajos) — jump there now that the
+    //    page is revealed and layout has settled. Doing this any earlier
+    //    (e.g. on DOMContentLoaded) would measure the target's position
+    //    before images have finished loading, landing short; body's
+    //    overflow:hidden during the loader also blocks it from being
+    //    visible until now anyway. work-section.js's unconditional
+    //    scrollTo(0, 0) on DOMContentLoaded runs first but is invisible
+    //    under the opaque loader overlay, so it doesn't fight this.
+    if (window.location.hash && window.pageSmoother) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            window.pageSmoother.scrollTo(target, false, 'top 70px'); // 70 = --header-h, see smooth-scroll.js
+        }
+    }
+
     // 1. Logo del Header
     const headerLogo = document.querySelector('.header-logo');
     if (headerLogo) headerLogo.classList.add('header-active');

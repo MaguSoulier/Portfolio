@@ -38,4 +38,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Arriving via a link to a specific section (e.g. project1.html's
+    // header linking to index.html#trabajos) — jump there once every
+    // image has actually finished loading. loader.js makes an earlier
+    // attempt as soon as its (fake, time-based — not tied to real asset
+    // loading) progress bar completes, which covers the common case, but
+    // on a slow connection images can still be arriving after that,
+    // growing the page's height and making ScrollSmoother/ScrollTrigger
+    // recalculate and snap back to the top. window's load event only
+    // fires once every image is truly in, so refreshing ScrollTrigger and
+    // re-scrolling here is what actually guarantees landing in the right
+    // place regardless of connection speed.
+    window.addEventListener('load', () => {
+        if (!window.location.hash) return;
+        const target = document.querySelector(window.location.hash);
+        if (!target) return;
+        ScrollTrigger.refresh();
+        smoother.scrollTo(target, false, `top ${headerOffset}px`);
+    });
 });

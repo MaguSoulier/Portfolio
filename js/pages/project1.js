@@ -1,7 +1,14 @@
-// ── Language: apply saved preference ─────────────────────
-(function () {
-    const T = {
+// ── Language: apply saved preference, expose changeLanguage() for the
+//    header's ES/EN switcher ─────────────────────
+// Not js/i18n.js (used by index.html) — that dictionary is keyed for the
+// hero/work-section elements this page doesn't have (.main-name,
+// #rotating-badge, etc.) and only partially overlaps this page's own
+// data-key vocabulary, so loading it instead of this local one would risk
+// silently mismatched translations rather than a clean switch.
+const T = {
         es: {
+            navwork: 'TRABAJOS',
+            navabout: 'SOBRE MÍ',
             diseno_web: 'DISEÑO WEB',
             direccion_de_arte: 'DIRECCIÓN DE ARTE',
             ilustracion: 'ILUSTRACIÓN',
@@ -13,8 +20,11 @@
             sec_tecnologias: 'Tecnologías utilizadas',
             cat_diseno: 'Diseño',
             cat_implementacion: 'Implementación',
+            sec_contexto: 'Contexto y problemática',
+            contexto_texto: '<p>Las ferias vecinales ocupan un lugar significativo en la vida de los barrios, funcionando como espacios de encuentro donde se cruzan intercambios económicos, interacciones sociales e identidades comunitarias.</p><p>Sin embargo, según el informe de la Cámara de Industrias del Uruguay e INEFOP (2020) se evidencia que <strong>la feria ha dejado de ocupar un lugar cotidiano</strong> en la rutina de las personas uruguayas, desplazada por otras formas de compra, siendo los <strong>jóvenes de 18 a 34 años</strong> el grupo que <strong>menos acude a la feria</strong> como primer punto de compra.</p><p>Actualmente, la única forma de conocer la ubicación, horarios y oferta de las ferias es encontrándote una en la calle. Esto genera una <strong>percepción de obsolescencia</strong> frente a las plataformas de retail modernas, cuyas <strong>experiencias digitales son fluidas e inmediatas.</strong></p><p>El proyecto nace con el objetivo de reactivar el consumo en territorio y atraer a poblaciones jóvenes mediante el desarrollo de una <strong>identidad digital contemporánea</strong> que formalice el <strong>acceso a la información</strong> y brinde certeza a los usuarios antes de su visita. Reafirmando la idea de que fortalecer la feria es fortalecer la vida barrial.</p>',
+            video1_subtext: '<p>Animación desarrollada en JavaScript para la pantalla de inicio de la web. Los patrones geométricos se inspiran en el apilamiento hexagonal de las frutas y verduras, trasmitiendo el concepto de flujo, intercambio y abundancia de las ferias barriales.</p>',
             sec_propuesta: 'Propuesta estratégica',
-            propuesta_texto: '<p>Las ferias vecinales ocupan un lugar significativo en el tejido barrial, funcionando como focos de encuentro donde se entrecruzan intercambios económicos, interacciones sociales e identidades comunitarias.</p><p>Este proyecto no trata de modificar la dinámica de las ferias, sino de reactivarla: la propuesta opera como puerta de entrada al consumo en territorio.</p><p class="cs-bold">El desafío: Fragmentación informativa y falta de una experiencia de usuario cohesiva.</p><p>Mientras que los competidores del sector retail ofrecen experiencias digitales fluidas, la feria carecía de una interfaz unificada, lo que generaba una percepción de obsolescencia.</p><p>El reto consistió en estructurar un lenguaje de diseño capaz de convivir con la identidad del Municipio B, priorizando una arquitectura de información clara que resolviera la inconsistencia visual y los problemas de comunicación previos en el territorio.</p>',
+            propuesta_texto: '<p>La feria es efímera por naturaleza, pero la necesidad de información del usuario es constante. Su presencia debe circular simbólicamente en el barrio, y permanecer en la memoria visual de quienes la habitan.</p><p>La estrategia combina presencia en redes sociales, cartelería y objetos de fidelización, todos nucleados por una plataforma web que actúa como punto de contacto. Formalizando el acceso a la información e instalando a las ferias como una experiencia de compra ordenada y accesible, se activa el deseo de consumo.</p>',
             sec_publicos: 'Públicos',
             publicos_intro: '<p>El proyecto se dirige al grupo de jóvenes de 18 a 34 años, que se ocupan de la compra de alimentos.</p><p>En función de su relación con el contexto se detectan 3 perfiles.</p>',
             card_desvinculado: 'Desvinculado',
@@ -23,6 +33,14 @@
             body_practico: '<p><strong>Comportamiento:</strong> Prioriza la rapidez y la accesibilidad sobre el vínculo emocional. Su decisión de compra es puramente funcional. Buscan optimizar el tiempo y demandan acceso inmediato a la información.</p><p><strong>Punto de Dolor:</strong> La percepción de que la feria es "difícil" o "lenta" comparada con un supermercado.</p><p><strong>Oportunidad de diseño:</strong> Enfoque mobile-first. La UI debe destacar la cercanía (geolocalización) y la competitividad de precios, posicionando a la feria como la opción más eficiente y sencilla en su rutina diaria.</p>',
             card_consciente: 'Consciente',
             body_consciente: '<p><strong>Comportamiento:</strong> Usuario con valores éticos y de consumo responsable alineados con la soberanía alimentaria. Ya posee un vínculo con el territorio.</p><p><strong>Necesidad:</strong> Profundizar la conexión y pertenencia.</p><p><strong>Oportunidad de Diseño:</strong> Retención y Comunidad. El diseño debe ofrecer contenido de valor agregado (historia de los productos, impacto social) que refuerce su compromiso y lo convierta en un promotor activo del sistema de ferias.</p>',
+            sec_flujo: 'Flujo de usuario',
+            flujo_intro: '<p>Al ser un sitio pensado para acceder desde códigos QR en la vía pública, se proyectó un sistema sin scroll, desde el enfoque mobile-first. Esta organización prioriza una navegación sencilla y orientada a la acción.</p>',
+            flujo_pantalla_inicio: 'Pantalla de inicio',
+            flujo_mas_info: 'Más información',
+            flujo_mapa: 'Mapa geolocalizado',
+            flujo_texto_mas_info: '<p>A través de textos breves, se explica cómo consumir en ferias aporta a la economía solidaria, beneficiando tanto a la sociedad como al bolsillo.</p><p>Esta sección busca construir sentido alrededor de la decisión de comprar en la feria.</p>',
+            flujo_texto_mapa: '<p>El usuario puede filtrar por día y por cercanía, acceder a instrucciones de uso y visualizar las ferias dentro de un barrio.</p><p>Al seleccionar una feria, se despliega su información específica, incluyendo ubicación, horario y tipos de puestos.</p><p>Al hacer clic en un tipo de puesto, el sitio muestra datos del vendedor o categoría e información complementaria según corresponda.</p>',
+            video2_subtext: '<p>Las tramas geométricas conviven de manera integrada con ilustraciones manuales que operan como los botones de acción.</p>',
             sec_sistema: 'Sistema Visual y Lenguaje de Diseño',
             sistema_intro: '<p>Se proyectó un sistema visual claro y cautivante, diseñado con una estructura flexible que permite una aplicación coherente tanto en interfaces digitales como en dispositivos territoriales de diversa complejidad. El enfoque técnico consistió en equilibrar la identidad Institucional del Municipio B con recursos gráficos contemporáneos que responden a los patrones de consumo visual de las audiencias jóvenes.</p>',
             cat_impacto_visual: 'Impacto Visual',
@@ -30,11 +48,15 @@
             cat_ilustraciones_sistema: 'Ilustraciones',
             ilustraciones_texto: '<p>Se desarrolló un estilo de ilustraciones que aporta una arista humana al sistema, equilibrando la construcción vectorial con la calidez del trazo manual. Estos recursos permiten representar escenas, gestos y dinámicas propias de la feria, humanizando la interfaz.</p><p>Los componentes de interacción (botones) también han sido ilustrados, simulando la apariencia de un sticker, reforzando el carácter táctil y cercano de la propuesta digital.</p>',
             cat_fidelizacion: 'Piezas para fidelización de conusmidores',
+            tote_subtext: 'Tote bag que utiliza las ilustraciones del sistema visual.',
+            stickers_subtext: 'Stickers que nacen de los botones de la web, referencian a cada feria vecinal del municipio B.',
             footer_inicio: 'INICIO',
             footer_siguiente: 'SIGUIENTE PROYECTO',
-            footer_creditos: 'DISEÑO Y DESARROLLO POR MAGDALENA SOULIER',
+            footer_creditos: 'Diseñado y desarrollado por Magdalena soulier | © 2026',
         },
         en: {
+            navwork: 'WORK',
+            navabout: 'ABOUT ME',
             diseno_web: 'WEB DESIGN',
             direccion_de_arte: 'ART DIRECTION',
             ilustracion: 'ILLUSTRATION',
@@ -46,8 +68,11 @@
             sec_tecnologias: 'Technologies used',
             cat_diseno: 'Design',
             cat_implementacion: 'Implementation',
+            sec_contexto: 'Context and problem',
+            contexto_texto: '<p>Neighborhood markets hold a significant place in the life of the barrios, functioning as spaces of encounter where economic exchange, social interaction, and community identity intersect.</p><p>However, according to a report by the Chamber of Industries of Uruguay and INEFOP (2020), <strong>the market has stopped being part of Uruguayans\' daily routine</strong>, displaced by other ways of shopping — with <strong>young people aged 18 to 34</strong> being the group that <strong>visits the market least</strong> as their first choice for purchases.</p><p>Currently, the only way to find out a market\'s location, hours, and offerings is to come across one on the street. This creates a <strong>perception of obsolescence</strong> compared to modern retail platforms, whose <strong>digital experiences are fluid and immediate</strong>.</p><p>The project was born with the goal of reactivating local consumption and attracting younger audiences through a <strong>contemporary digital identity</strong> that formalizes <strong>access to information</strong> and gives users certainty before their visit — reaffirming the idea that strengthening the market means strengthening neighborhood life.</p>',
+            video1_subtext: '<p>Animation developed in JavaScript for the site\'s home screen. The geometric patterns are inspired by the hexagonal stacking of fruits and vegetables, conveying the concept of flow, exchange, and abundance found in neighborhood markets.</p>',
             sec_propuesta: 'Strategic proposal',
-            propuesta_texto: '<p>Neighborhood markets hold a significant place in the fabric of local communities, functioning as hubs where economic exchanges, social interactions, and community identities intersect.</p><p>This project does not seek to modify the dynamics of the markets, but to reactivate them: the proposal operates as a gateway to territorial consumption.</p><p class="cs-bold">The challenge: Information fragmentation and the lack of a cohesive user experience.</p><p>While retail competitors offer seamless digital experiences, the market lacked a unified interface, generating a perception of obsolescence.</p><p>The challenge was to structure a design language capable of coexisting with the identity of Municipio B, prioritizing a clear information architecture that resolved previous visual inconsistencies and communication issues in the territory.</p>',
+            propuesta_texto: '<p>The market is ephemeral by nature, but the user\'s need for information is constant. Its presence must circulate symbolically through the neighborhood, and remain in the visual memory of those who live there.</p><p>The strategy combines a presence on social media, signage, and loyalty items, all centered around a web platform that acts as the point of contact. By formalizing access to information and establishing the markets as an orderly, accessible shopping experience, consumer desire is activated.</p>',
             sec_publicos: 'Audiences',
             publicos_intro: '<p>The project targets young people aged 18 to 34 who are responsible for food shopping.</p><p>Based on their relationship with the context, 3 profiles are identified.</p>',
             card_desvinculado: 'Disconnected',
@@ -56,6 +81,14 @@
             body_practico: '<p><strong>Behavior:</strong> Prioritizes speed and accessibility over emotional connection. Their purchase decision is purely functional. They seek to optimize time and demand immediate access to information.</p><p><strong>Pain Point:</strong> The perception that the market is "difficult" or "slow" compared to a supermarket.</p><p><strong>Design Opportunity:</strong> Mobile-first approach. The UI should highlight proximity (geolocation) and price competitiveness, positioning the market as the most efficient and simple option in their daily routine.</p>',
             card_consciente: 'Conscious',
             body_consciente: '<p><strong>Behavior:</strong> User with ethical values and responsible consumption aligned with food sovereignty. Already has a connection with the territory.</p><p><strong>Need:</strong> Deepen the connection and sense of belonging.</p><p><strong>Design Opportunity:</strong> Retention and Community. The design should offer value-added content (product history, social impact) that reinforces their commitment and turns them into an active promoter of the market system.</p>',
+            sec_flujo: 'User flow',
+            flujo_intro: '<p>Since the site is meant to be accessed via QR codes in public spaces, it was designed as a scroll-free, mobile-first system. This structure prioritizes simple, action-oriented navigation.</p>',
+            flujo_pantalla_inicio: 'Home screen',
+            flujo_mas_info: 'More information',
+            flujo_mapa: 'Geolocated map',
+            flujo_texto_mas_info: '<p>Through short texts, it\'s explained how shopping at markets contributes to the solidarity economy, benefiting both society and your wallet.</p><p>This section aims to build meaning around the decision to buy at the market.</p>',
+            flujo_texto_mapa: '<p>Users can filter by day and by proximity, access usage instructions, and view the markets within a neighborhood.</p><p>Selecting a market reveals its specific information, including location, hours, and stall types.</p><p>Clicking on a stall type shows vendor or category details and complementary information as relevant.</p>',
+            video2_subtext: '<p>The geometric patterns integrate seamlessly with hand-drawn illustrations that function as the action buttons.</p>',
             sec_sistema: 'Visual System and Design Language',
             sistema_intro: '<p>A clear and captivating visual system was designed with a flexible structure that allows coherent application across both digital interfaces and territorial devices of varying complexity. The technical approach consisted of balancing the institutional identity of Municipio B with contemporary graphic resources that respond to the visual consumption patterns of young audiences.</p>',
             cat_impacto_visual: 'Visual Impact',
@@ -63,22 +96,39 @@
             cat_ilustraciones_sistema: 'Illustrations',
             ilustraciones_texto: '<p>An illustration style was developed that brings a human dimension to the system, balancing vector construction with the warmth of hand-drawn strokes. These resources allow for the representation of scenes, gestures, and dynamics typical of the market, humanizing the interface.</p><p>The interaction components (buttons) have also been illustrated, simulating the appearance of a sticker, reinforcing the tactile and approachable nature of the digital proposal.</p>',
             cat_fidelizacion: 'Consumer loyalty pieces',
+            tote_subtext: 'Tote bag featuring the visual system\'s illustrations.',
+            stickers_subtext: 'Stickers derived from the site\'s buttons, each referencing a neighborhood market in Municipio B.',
             footer_inicio: 'HOME',
             footer_siguiente: 'NEXT PROJECT',
-            footer_creditos: 'DESIGN AND DEVELOPMENT BY MAGDALENA SOULIER',
+            footer_creditos: 'Design and developed by Magdalena soulier | © 2026',
         }
     };
 
-    const lang = new URLSearchParams(window.location.search).get('lang')
-              || localStorage.getItem('preferredLang')
-              || 'es';
-
+function applyLanguage(lang) {
     const t = T[lang] || T.es;
     document.querySelectorAll('[data-key]').forEach(function (el) {
         const key = el.getAttribute('data-key');
         if (t[key] !== undefined) el.innerHTML = t[key];
     });
-}());
+    const btnEs = document.getElementById('btn-es');
+    const btnEn = document.getElementById('btn-en');
+    if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+    if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+}
+
+// Global — called from the header's onclick="changeLanguage('es')" buttons.
+function changeLanguage(lang) {
+    localStorage.setItem('preferredLang', lang);
+    const newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?lang=' + lang;
+    window.history.pushState({ path: newurl }, '', newurl);
+    applyLanguage(lang);
+}
+
+applyLanguage(
+    new URLSearchParams(window.location.search).get('lang')
+    || localStorage.getItem('preferredLang')
+    || 'es'
+);
 
 // ── Custom cursor ──────────────────────────────────────────
 const cursor = document.querySelector('.custom-cursor');
