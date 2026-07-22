@@ -40,8 +40,8 @@
     align-items: start; /* don't stretch the (now aspect-ratio-based) media
         column to match a taller info column */
     gap: var(--gap);
-    opacity: 0.5; /* Estado apagado */
-    transition: all 0.4s ease;
+    padding: 32px 24px;
+    transition: background-color 0.4s ease;
     margin-bottom: 120px;
 }
 
@@ -87,11 +87,13 @@
     top: -25%;
     transition: opacity 0.5s ease;
     will-change: transform;
-}
-
-.project-item.active {
-    opacity: 1;
-    transform: translateY(0);
+    transform-origin: center;
+    /* The hover zoom (subtle scale-up) is driven by GSAP in
+       cursor-and-init.js, not a CSS transition — js/parallax.js already
+       owns this element's transform (scrubbed yPercent drift), so the
+       zoom is tweened as a separate GSAP property on the same element
+       instead of a CSS :hover rule, which a GSAP-set inline transform
+       would just override. */
 }
 
 /* Contenedor de Info (Columnas 7 a 13) */
@@ -115,8 +117,8 @@
 .tag {
     font-family: var(--font-heading);
     font-size: var(--fs-small-tag);
-    color: var(--color-orange);
-    border: 1px solid var(--color-orange); /* Borde fino naranja */
+    color: var(--color-violet);
+    border: 1px solid var(--color-violet); /* Borde fino naranja */
     padding: 4px 10px;         /* Espacio interno (aire) */
     text-transform: uppercase; /* Todo en mayúsculas */
     letter-spacing: var(--ls-small-tag);
@@ -139,12 +141,21 @@
     display: inline-block;
 }
 
-.project-item.active .tag {
-    background-color: var(--color-orange);
+/* Was tied to a scroll-driven .active class (whichever card sat closest to
+   viewport center); now it's a plain hover state — matches the card's
+   overall "hover, not active" treatment. */
+.project-item:hover .tag {
+    background-color: var(--color-violet);
     color: var(--color-white);
-    border-color: var(--color-orange);
+    border-color: var(--color-black); /* --color-dark-violet doesn't exist as a
+        token (not in tokens.css, no such swatch in the Figma library either) —
+        an unresolved var() invalidates the whole declaration, so border-color
+        fell back to its initial value (currentcolor = the hover text's white),
+        which is why the border was invisible against the page's near-white
+        background. --color-black (#2D0030, "VioletBlack" in the Figma color
+        library) sits in the same violet family and is an existing token, so
+        it gives a real dark border without inventing a new color. */
     font-weight: var(--fw-regular);
-    transition: all 0.4s ease;
 }
 
 .project-title { margin-bottom: 24px; }
@@ -152,3 +163,29 @@
     padding:  0  0  0 24px ;
 }
 .view-project { text-decoration: none; color: var(--color-orange); font-weight: 700; }
+
+/* "Ver proyecto" CTA (Figma node 2300:760, an instance of the Primary
+   Button component — see button.css for the shared .btn styles). Sits
+   below the description, left-aligned to the same 24px inset. align-self
+   keeps it hugging its own content instead of stretching to the full
+   width of the flex-column .project-info. */
+.project-cta {
+    margin-top: 24px;
+    margin-left: 24px; /* matches .project-description's own extra
+        padding-left:24px, which .project-cta doesn't inherit as a sibling
+        (not nested inside .project-description) — needed in both the
+        default and .reverse layouts, since .project-info's own padding
+        difference between them applies equally to both siblings and
+        cancels out. */
+    align-self: flex-start;
+}
+
+/* Hovering anywhere on the card previews the CTA's own hover state (see
+   .btn:hover in button.css) — same visual, just triggered from the whole
+   card's hit area instead of requiring the pointer to be on the button
+   itself, matching .tag's card-wide hover just above. */
+
+
+.project-item:hover .project-cta .btn__icon {
+    animation: btn-icon-nudge 0.9s ease-in-out infinite;
+}

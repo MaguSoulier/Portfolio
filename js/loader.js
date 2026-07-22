@@ -80,100 +80,10 @@ function finalizarCarga() {
     }, 200);
 }
 
-// --- CLASE PARA TEXTOS LENTOS Y CON SALTOS DE LÍNEA (FIXED) ---
-class SlowTextScramble extends TextScramble {
-  constructor(el) {
-    super(el);
-    this.isAnimating = false; // Ensure this is initialized
-  }
-
-  setText(newText) {
-    // 1. Check if we're already animating to this exact text
-    if (this.isAnimating && this.targetText === newText) {
-      return; // Ignore redundant request
-    }
-
-    // 2. If we're animating to something different, clean up first
-    if (this.isAnimating) {
-      this.completeImmediately();
-    }
-
-    // 3. NOW start the new animation from a clean state
-    this.targetText = newText;
-    this.isAnimating = true;
-
-    // Usamos innerHTML para capturar los <br>
-    const oldText = this.el.innerHTML || "";
-    const length = Math.max(oldText.length, newText.length);
-    const promise = new Promise((resolve) => (this.resolve = resolve));
-    this.queue = [];
-    this.maxEnd = 0;
-
-    for (let i = 0; i < length; i++) {
-      const from = oldText[i] || '';
-      const to = newText[i] || '';
-
-      // AUMENTO DE DURACIÓN: start 0-60 y end hasta 120 frames
-      const start = Math.floor(Math.random() * 10);
-      const end = start + Math.floor(Math.random() * 40);
-
-      if (end > this.maxEnd) this.maxEnd = end;
-      this.queue.push({ from, to, start, end });
-    }
-    cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
-    return promise;
-  }
-
-  completeImmediately() {
-    cancelAnimationFrame(this.frameRequest);
-    this.el.innerHTML = this.targetText; // Use innerHTML for <br> tags
-    this.isAnimating = false;
-    if (this.resolve) this.resolve();
-  }
-
-  update() {
-    // Defensive check: if we're no longer supposed to be animating, stop immediately
-    if (!this.isAnimating) {
-      return;
-    }
-
-    let output = '';
-    let complete = 0;
-    for (let i = 0, n = this.queue.length; i < n; i++) {
-      let { from, to, start, end, char } = this.queue[i];
-      if (this.frame >= end) {
-        complete++;
-        output += to;
-      } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.28) {
-          char = this.randomChar();
-          this.queue[i].char = char;
-        }
-        // Si el destino es parte de un <br>, no ponemos caracteres aleatorios
-        if (to === '<' || to === 'b' || to === 'r' || to === '>') {
-           output += to;
-        } else {
-           output += `<span class="d">${char}</span>`;
-        }
-      } else {
-        output += from;
-      }
-    }
-    this.el.innerHTML = output; // Usar innerHTML para procesar los <br>
-    if (complete === this.queue.length) {
-      this.el.innerHTML = this.targetText; // SET FINAL CLEAN TEXT - CRITICAL FIX
-      this.isAnimating = false; // Animation complete
-      this.resolve();
-    } else {
-      this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
-    }
-  }
-}
-
 // --- FUNCIÓN DE INICIO ACTUALIZADA ---
+// SlowTextScramble now lives in text-scramble.js (loaded before this file),
+// alongside the base TextScramble class it extends — see there for its
+// definition.
 function iniciarAnimacionesEntrada() {
     // 0. Arriving via a link to a specific section (e.g. project1.html's
     //    header linking to index.html#trabajos) — jump there now that the

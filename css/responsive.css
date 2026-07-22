@@ -125,8 +125,10 @@
     }
 
     .project-media {
-        width: calc(100% - 24px);
-        margin-left: 24px;
+        /* .project-item's own padding (work.css) now supplies the card's
+           left inset, so this no longer needs its own margin-left on top
+           of it — that would double the gap. */
+        width: 100%;
         aspect-ratio: 2 / 1;
     }
 
@@ -149,6 +151,14 @@
 
     .project-description {
         padding-right: 24px;
+    }
+
+    /* ---- Sobre mí / Formación (css/about.css) ----
+       3 cards side-by-side get cramped once each column is this narrow —
+       stack them a breakpoint earlier than the full mobile collapse below. */
+    .sobre-mi-cards {
+        flex-direction: column;
+        gap: 32px;
     }
 
 }
@@ -392,11 +402,29 @@
         align-self: start;
     }
 
-    .section-title {
-        grid-column: 1 / 7;
-        margin-left: 0;
+    /* ---- Sobre mí / Formación (css/about.css) ---- */
+    .sobre-mi-label {
+        grid-column: 1 / 2;
+        grid-row: 1;
         font-size: var(--fs-small-tag);
-        margin-bottom: 30px;
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+        align-self: start;
+    }
+
+    .sobre-mi-intro {
+        grid-column: 1 / 7;
+        margin-bottom: 40px;
+    }
+
+    .sobre-mi-intro-text {
+        padding: 0;
+    }
+
+    .sobre-mi-cards {
+        grid-column: 1 / 7;
+        flex-direction: column;
+        gap: 32px;
     }
 
     /* #project1's desktop grid-column:1/13 (an ID selector, so it isn't
@@ -414,13 +442,15 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        padding: 20px 16px; /* smaller than desktop's 32px/24px card padding
+            (work.css) to fit the narrower mobile container */
     }
 
-    /* Left-inset to match the Figma mobile frame, where every project
-       image sits in a wrapper with padding-left:24px. */
+    /* Image no longer needs its own left inset — .project-item's padding
+       (above) now supplies it, matching the Figma mobile frame's
+       padding-left:24px on the image wrapper without doubling it. */
     .project-media {
-        width: calc(100% - 24px);
-        margin-left: 24px;
+        width: 100%;
         aspect-ratio: 4/3;
         position: relative;
         overflow: hidden;
@@ -470,8 +500,8 @@
 
     /* ===== ABOUT SECTION ===== */
     #sobre-mi {
-        min-height: 50vh;
-        padding-top: 60px;
+        margin-top: 100px;
+        padding-bottom: 80px;
     }
 
     /* ===== CONTACT PANEL ===== */

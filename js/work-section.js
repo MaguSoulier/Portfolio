@@ -21,7 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     projectItems.forEach(item => {
         const title = item.querySelector('.scramble-title');
         if (title) {
-            item.scramblerInstance = new TextScramble(title);
+            // SlowTextScramble (text-scramble.js) — same effect as the hero
+            // name's load-in reveal. The base TextScramble's faster pace
+            // reads as noisy on a long multi-word title.
+            item.scramblerInstance = new SlowTextScramble(title);
             item.originalText = title.innerText;
         }
 
@@ -39,33 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 600);
             }
         });
-    });
 
-    // --- LÓGICA DE ACTIVACIÓN ÚNICA (Misma de antes) ---
-    const updateActiveProject = () => {
-        let closestProject = null;
-        let minDistance = Infinity;
-        const viewportCenter = window.innerHeight / 2;
-
-        projectItems.forEach(item => {
-            const rect = item.getBoundingClientRect();
-            const itemCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(viewportCenter - itemCenter);
-            if (distance < minDistance) {
-                minDistance = distance;
-                closestProject = item;
-            }
+        // Title scramble now plays on hover instead of on scroll-activation
+        // — cards no longer have a scroll-driven "active" card, so this is
+        // the replacement trigger (also see cursor-and-init.js for the
+        // rest of the hover treatment: image zoom + custom cursor).
+        item.addEventListener('mouseenter', () => {
+            if (item.scramblerInstance) item.scramblerInstance.setText(item.originalText);
         });
-
-        if (closestProject && !closestProject.classList.contains('active')) {
-            projectItems.forEach(p => p.classList.remove('active'));
-            closestProject.classList.add('active');
-            if (closestProject.scramblerInstance) {
-                closestProject.scramblerInstance.setText(closestProject.originalText);
-            }
-        }
-    };
-
-    window.addEventListener('scroll', updateActiveProject);
-    setTimeout(updateActiveProject, 100);
+    });
 });

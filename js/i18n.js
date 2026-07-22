@@ -14,6 +14,7 @@ const translations = {
     email_copied: "Copiado",
     location_line: "UBICADA EN ",
     selected_projects: "PROYECTOS SELECCIONADOS",
+    ver_proyecto: "VER PROYECTO",
     about_me:"SOBRE MÍ",
     diseno_web:"DISEÑO WEB",
     direccion_de_arte:"DIRECCIÓN DE ARTE",
@@ -29,7 +30,21 @@ const translations = {
     fotografia: "FOTOGRAFÍA",
     projet1_description: ["Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.", "A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos."],
     project2_description: ["Diseñado para Revista Gigantes (LaDiaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).", "El proyecto funciona como puente para derivar tráfico calificado hacia la plataforma digital de la revista, incrementando los niveles de engagement y retención en el público infantil."],
-    project3_description: ["Diseño editorial realizado para la tesis de Valentina Ibarlucea.", "El texto investiga los alcances del arte y diseño participativo en colectivos de base territorial, tomando como caso de estudio la Comisión Derecho a la Ciudad en Ciudad Vieja, Montevideo."]
+    project3_description: ["Diseño editorial realizado para la tesis de Valentina Ibarlucea.", "El texto investiga los alcances del arte y diseño participativo en colectivos de base territorial, tomando como caso de estudio la Comisión Derecho a la Ciudad en Ciudad Vieja, Montevideo."],
+    formacion_titulo: "Formación",
+    formacion_intro: "En la búsqueda académica de encontrar mi vocación, descubrí que mi valor está en la intersección de las disciplinas que fui cruzando en el camino. Sin saberlo en su momento, fui forjando un perfil híbrido y estratégico.",
+    edu1_titulo: "Posgrado en Diseño de Experiencia de Usuario",
+    edu1_tag1: "Actualidad",
+    edu1_tag2: "Universidad ORT",
+    edu1_texto: "Especialización en UX Writing, UX Research, arquitectura de la información y liderazgo estratégico. Aplico estas herramientas para mitigar la incertidumbre, validar hipótesis con usuarios y optimizar flujos de interacción reduciendo la fricción cognitiva.",
+    edu2_titulo: "Licenciatura en Diseño de Comunicación Visual",
+    edu2_tag1: "2022 - 2025",
+    edu2_tag2: "UDELAR",
+    edu2_texto: "Mi formación de grado me capacitó para transformar conceptos abstractos en sistemas visuales sólidos, que no sólo tienen en cuenta el contexto, sino que lo utilizan a su favor.",
+    edu3_titulo: "Desarrollo web",
+    edu3_tag1: "2021",
+    edu3_tag2: "Jóvenes a Programar",
+    edu3_texto: "A través de este programa incorporé fundamentos de lógica y desarrollo frontend. Esto me permite colaborar de forma directa con equipos de ingeniería, optimizar la transición del diseño a producción y empujar los límites visuales sin romper el rendimiento técnico."
   },
   en: {
     tagline: "I'M A VISUAL DESIGNER SPECIALIZED IN",
@@ -43,6 +58,7 @@ const translations = {
     email_copied: "Copied",
     location_line: "BASED IN ",
     selected_projects: "SELECTED PROJECTS",
+    ver_proyecto: "VIEW PROJECT",
     about_me:"ABOUT ME",
     diseno_web:"WEB DESIGN",
     direccion_de_arte:"ART DIRECTION",
@@ -58,7 +74,21 @@ const translations = {
     fotografia: "PHOTOGRAPHY",
     projet1_description: ["<em>Your neighborhood, your food fair</em>, is a multi-channel strategy developed for Municipio B, aimed at reconnecting Montevideo's youth with local neighborhood markets.", "Through a dynamic visual identity and a geo-located web platform, the project translates the logic of traditional street markets into digital languages, providing real-time information tailored to contemporary consumption habits."],
     project2_description: ["Designed for Revista Gigantes (LaDiaria), aimed at turning passive content consumption into a participatory User-Generated Content (UGC) experience.", "The project acts as a bridge, driving qualified traffic to the magazine's digital platform and increasing engagement and retention among young readers."],
-    project3_description: ["Editorial design created for Valentina Ibarlucea's thesis.", "The text explores the reach of participatory art and design within grassroots community groups, using the Comisión Derecho a la Ciudad in Ciudad Vieja, Montevideo as its case study."]
+    project3_description: ["Editorial design created for Valentina Ibarlucea's thesis.", "The text explores the reach of participatory art and design within grassroots community groups, using the Comisión Derecho a la Ciudad in Ciudad Vieja, Montevideo as its case study."],
+    formacion_titulo: "Education",
+    formacion_intro: "In my academic search to find my calling, I discovered that my value lies at the intersection of the disciplines I crossed along the way. Without realizing it at the time, I was shaping a hybrid, strategic profile.",
+    edu1_titulo: "Postgraduate Degree in User Experience Design",
+    edu1_tag1: "Ongoing",
+    edu1_tag2: "Universidad ORT",
+    edu1_texto: "Specialization in UX Writing, UX Research, information architecture, and strategic leadership. I apply these tools to mitigate uncertainty, validate hypotheses with users, and optimize interaction flows by reducing cognitive friction.",
+    edu2_titulo: "Bachelor's Degree in Visual Communication Design",
+    edu2_tag1: "2022 - 2025",
+    edu2_tag2: "UDELAR",
+    edu2_texto: "My undergraduate training equipped me to turn abstract concepts into solid visual systems — ones that don't just account for context, but use it to their advantage.",
+    edu3_titulo: "Web Development",
+    edu3_tag1: "2021",
+    edu3_tag2: "Jóvenes a Programar",
+    edu3_texto: "Through this program I picked up the fundamentals of logic and frontend development. It lets me collaborate directly with engineering teams, streamline the handoff from design to production, and push visual boundaries without breaking technical performance."
   }
 };
 

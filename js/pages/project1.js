@@ -146,6 +146,25 @@ document.addEventListener('mouseup', () => {
     cursor.style.transform = 'translate(-50%, -50%) scale(1)';
 });
 
+// ── Header nav links (TRABAJOS / SOBRE MÍ): scramble on hover, same
+//    TextScramble class/timing as index.html's header. Wired up locally
+//    here (not shared cursor-and-init.js) since this page already runs its
+//    own cursor system above and its own T/applyLanguage translation
+//    system (see the top of this file) — loading the shared file would
+//    double up both. Reads link.innerText fresh on every hover instead of
+//    caching it once, so it stays correct after an ES/EN switch without
+//    needing to hook into applyLanguage(). ──
+document.querySelectorAll('.nav-work, .nav-about').forEach(link => {
+    const scrambler = new TextScramble(link);
+    link.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-pointer');
+        scrambler.setText(link.innerText);
+    });
+    link.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-pointer');
+    });
+});
+
 // ── Hero image parallax (GSAP ScrollTrigger — same scroll system
 //    ScrollSmoother already drives, so it stays in sync everywhere) ──
 document.addEventListener('DOMContentLoaded', () => {
@@ -240,72 +259,16 @@ document.addEventListener('DOMContentLoaded', () => {
 }());
 
 // ── Footer links: scramble + cursor-pointer ────────────────
-class TextScramble {
-    constructor(el) {
-        this.el = el;
-        this.chars = '!<>-_\\/[]{}—=+*^?#abcdefghijklmnopqrstuvwxyz';
-        this.update = this.update.bind(this);
-        this.targetText = '';
-        this.isAnimating = false;
-    }
-    setText(newText) {
-        if (this.isAnimating && this.targetText === newText) return;
-        if (this.isAnimating) this.completeImmediately();
-        this.targetText = newText;
-        this.isAnimating = true;
-        const oldText = this.el.innerText || '';
-        const length = Math.max(oldText.length, newText.length);
-        const promise = new Promise(resolve => (this.resolve = resolve));
-        this.queue = [];
-        this.maxEnd = 0;
-        for (let i = 0; i < length; i++) {
-            const from = oldText[i] || '';
-            const to   = newText[i] || '';
-            const start = Math.floor(Math.random() * 10);
-            const end   = start + Math.floor(Math.random() * 12);
-            if (end > this.maxEnd) this.maxEnd = end;
-            this.queue.push({ from, to, start, end });
-        }
-        cancelAnimationFrame(this.frameRequest);
-        this.frame = 0;
-        this.update();
-        return promise;
-    }
-    completeImmediately() {
-        cancelAnimationFrame(this.frameRequest);
-        this.el.innerText = this.targetText;
-        this.isAnimating = false;
-        if (this.resolve) this.resolve();
-    }
-    update() {
-        if (!this.isAnimating) return;
-        let output = '', complete = 0;
-        for (let i = 0, n = this.queue.length; i < n; i++) {
-            let { from, to, start, end, char } = this.queue[i];
-            if (this.frame >= end) { complete++; output += to; }
-            else if (this.frame >= start) {
-                if (!char || Math.random() < 0.28) { char = this.randomChar(); this.queue[i].char = char; }
-                output += `<span>${char}</span>`;
-            } else { output += from; }
-        }
-        this.el.innerHTML = output;
-        if (this.frame >= this.maxEnd && complete === this.queue.length) {
-            this.el.innerText = this.targetText;
-            this.isAnimating = false;
-            this.resolve();
-        } else {
-            this.frameRequest = requestAnimationFrame(this.update);
-            this.frame++;
-        }
-    }
-    randomChar() { return this.chars[Math.floor(Math.random() * this.chars.length)]; }
-}
+// SlowTextScramble (text-scramble.js) — same class/duration/space-preserving
+// fix used for the hero name and the project card titles, so the footer
+// nav links scramble at the same calmer pace instead of their own faster,
+// unpatched local copy.
 
 // Inicio link — scramble on text span, hover on full <a>
 const inicioLink = document.querySelector('.text-inicio');
 const inicioSpan = document.querySelector('.cs-footer-inicio-text');
 if (inicioLink && inicioSpan) {
-    const fxInicio = new TextScramble(inicioSpan);
+    const fxInicio = new SlowTextScramble(inicioSpan);
     const inicioOriginal = inicioSpan.innerText;
     inicioLink.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor-pointer');
@@ -320,7 +283,7 @@ if (inicioLink && inicioSpan) {
 const nextLink = document.querySelector('.cs-footer-next');
 const nextSpan = document.querySelector('.cs-footer-next-text');
 if (nextLink && nextSpan) {
-    const fxNext = new TextScramble(nextSpan);
+    const fxNext = new SlowTextScramble(nextSpan);
     const nextOriginal = nextSpan.innerText;
     nextLink.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor-pointer');

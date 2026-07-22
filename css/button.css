@@ -1,0 +1,103 @@
+/* ========================================
+   PRIMARY BUTTON — Figma "Primary Button" component (node 135:56)
+   States: Default / Hover / Pressed / Focus / Disabled.
+
+   Built on native interaction states instead of separate state classes —
+   Hover/Pressed/Focus/Disabled map 1:1 onto :hover/:active/:focus-visible/
+   :disabled, so any real <button> or <a class="btn"> gets every variant
+   for free with no JS state management.
+
+   Usage:
+     <button class="btn">
+       <span>Button</span>
+       <span class="btn__icon">...svg.../span>
+     </button>
+   The icon is optional — omit .btn__icon for a text-only button. For a
+   disabled <a> (which has no native disabled state), add aria-disabled="true"
+   instead of the disabled attribute.
+   ======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 16px;
+    border: 2px solid transparent; /* reserved so :focus-visible's border doesn't shift layout */
+    border-radius: 45px;
+    background-color: var(--color-orange);
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    color: var(--color-gray-1);
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: none;
+}
+
+.btn__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 16px;
+    padding: 2px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.btn__icon svg {
+    display: block;
+    width: 10px;
+    height: 10px;
+}
+
+@keyframes btn-icon-nudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+
+/* Hover — the Figma swatch itself is flat (same fill as Default), so the
+   felt difference here is real motion instead: a soft lift + the arrow
+   nudging forward and back, looping for as long as the pointer stays over
+   the button. Transform/opacity only, no transition-all (per the
+   anti-generic guardrails in CLAUDE.md). */
+
+
+.btn:hover .btn__icon {
+    animation: btn-icon-nudge 0.9s ease-in-out infinite;
+}
+
+/* Pressed — freezes the nudge loop instead of layering a jitter on top of a press */
+.btn:active {
+    background-color: var(--color-dark-orange-2);
+}
+
+.btn:active .btn__icon {
+    animation: none;
+    transform: translateX(0);
+}
+
+/* Focus (keyboard) */
+.btn:focus-visible {
+    outline: none;
+    border-color: var(--color-dark-orange-2);
+}
+
+/* Disabled — .btn[aria-disabled="true"] covers non-<button> elements (e.g. a
+   disabled-looking <a>), since the disabled attribute only exists on
+   form controls. */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    background-color: var(--color-gray-2);
+    transform: none;
+    pointer-events: none;
+}
+
+.btn:disabled .btn__icon,
+.btn[aria-disabled="true"] .btn__icon {
+    transform: none;
+}

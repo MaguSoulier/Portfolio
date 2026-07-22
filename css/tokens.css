@@ -6,10 +6,15 @@
     --color-dark-orange: #E93E0A;
     --color-dark-orange-2: #D33505;
     --color-white: #F2F2F2;
+    --color-gray-1: #F7F7F7; /* Figma "Gray" swatch — lighter than --color-white,
+        used as button label/icon color (Primary Button, node 135:56) */
     --color-gray-2: #BEBEBE;
     --color-gray-3: #7C7C7C;
     --color-black: #2D0030;
     --color-violet: #582B59;
+    --color-card-white: #FFFFFF; /* Figma "Proyect-card" (node 2136:879) bg-white —
+        a true white, distinct from --color-white (#F2F2F2, the page background),
+        so the card reads as a lifted surface against the page. */
 
     /* Legacy aliases — no longer referenced anywhere in css/ (all call sites now
        use the canonical --color-* tokens directly). Safe to delete. */

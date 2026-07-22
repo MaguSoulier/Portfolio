@@ -152,7 +152,7 @@
     position: relative;
     width: 100%;
     display: grid;
-    grid-template-columns: min(calc(60vw - 6px), calc(50vw + 119px)) 1fr;
+    grid-template-columns: min(calc(57.083vw - 6px), calc(50vw + 119px)) 1fr;
     /* 1fr for the image row lets it absorb the height, auto for the
        caption row sizes to its own text — so adding captions shrinks the
        images slightly instead of overflowing the fixed 80vh below. */
@@ -296,7 +296,15 @@
     /* Same fix as .cs-proposal-img/.cs-flow-img below — see that comment. */
     align-self: stretch;
     overflow: hidden;
-    aspect-ratio: 4/3;
+    /* No aspect-ratio here (unlike a stray earlier version of this rule) —
+       .cs-proposal-img/.cs-flow-img don't have one either. Combined with
+       align-self:stretch, aspect-ratio:4/3 computed this box's WIDTH from
+       its stretched HEIGHT (which matches .cs-context-text, its taller
+       sibling) instead of from its grid-column track, so on a tall enough
+       row it grew past 13's column line and bled past the page's own
+       right margin. Dropping it lets the grid column determine width and
+       align-self:stretch determine height, same as its siblings — the img
+       below still fills whatever box results via object-fit: cover. */
 }
 
 .cs-context-img img {
@@ -671,7 +679,7 @@
     font-family: var(--font-body);
     font-size: var(--fs-subtext);
     color: var(--color-violet);
-    padding: 30px;
+    padding: 24px;
     align-self: flex-end;
     letter-spacing: var(--ls-subtext);
     display: flex;
@@ -680,8 +688,12 @@
 }
 .next-project {
     grid-column: 5 / 13;
-    grid-row: 2;
-    padding: 30px 0;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-end; /* right-aligns .cs-footer-next within this
+        wide grid column — moved here from the link itself (see below) so
+        the wide column can stay wide for layout without making the whole
+        empty space to its left part of the clickable/hoverable link. */
 }
 
 .cs-footer-next {
@@ -692,9 +704,12 @@
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: -0.01em;
-    display: flex;
+    display: inline-flex; /* shrink-to-fit, matching .text-inicio — was
+        display:flex, which (being block-level) stretched the <a> itself
+        to fill .next-project's full grid-column width. That made the
+        scramble/hover-cursor interaction fire across a big empty area
+        to the left of "SIGUIENTE PROYECTO", not just the visible text. */
     align-items: center;
-    justify-content: flex-end;
     gap: 0.4em;
 }
 
@@ -724,7 +739,6 @@
     .cs-details-row {
         grid-column: 1 / 10;
     }
-
 }
 
 @media (max-width: 1200px) {
@@ -771,9 +785,6 @@
         line-height: var(--lh-mobile-text);
         letter-spacing: var(--ls-mobile-text);
     }
-    .cs-hero-split{
-    grid-template-columns: min(calc(60vw - 36px), calc(50vw + 119px)) 1fr;
-}
     .cs-sistema-left {
     grid-column: 1 / 7;
     }

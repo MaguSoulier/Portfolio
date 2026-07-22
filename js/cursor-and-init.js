@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (link.classList.contains('contact-link')) return; // Exclude contact panel links
       if (link.classList.contains('copy-email')) return; // Exclude email
       if (link.classList.contains('connect-card__link')) return; // Has an icon — scrambled separately in connect-card.js, targeting just the text span
+      if (link.classList.contains('tag--link')) return; // Has an icon too — scrambling the whole <a> would wipe it via innerHTML; see .tag--link in about.css for its own hover treatment
 
       link.scrambler = new TextScramble(link);
 
@@ -49,11 +50,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const interactiveElements = document.querySelectorAll('.nav-work, .nav-about, .nav-lang, .connect, .flower, a, button, .contact-email, .project-item, .connect-card__mail');
+    // .project-cta excluded — it's inside .project-item, which already
+    // drives .cursor-pointer for the whole card below. If this generic
+    // listener also bound to the button, moving off *just the button*
+    // (while still over the rest of the card) would fire its mouseleave
+    // and wrongly clear .cursor-pointer mid-hover.
+    const interactiveElements = document.querySelectorAll('.nav-work, .nav-about, .nav-lang, .connect, .flower, a, button:not(.project-cta), .contact-email, .connect-card__mail');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => cursor?.classList.add('cursor-pointer'));
         el.addEventListener('mouseleave', () => cursor?.classList.remove('cursor-pointer'));
     });
+
+    // ==========================================
+    // PROJECT CARD HOVER — image zoom + the standard orange-circle cursor
+    // (same .cursor-pointer state as every other link/button), active for
+    // as long as the pointer is anywhere over the card. Bound directly on
+    // .project-item (not the generic interactiveElements list above) so it
+    // fires once for the whole card rather than needing every descendant
+    // (image, text, tags, button...) individually listed.
+    // ==========================================
+    const projectItems = document.querySelectorAll('.project-item');
+
+    if (typeof gsap !== 'undefined') {
+        projectItems.forEach(item => {
+            const media = item.querySelector('.media-img, .media-video');
+
+            item.addEventListener('mouseenter', () => {
+                if (media) gsap.to(media, { scale: 1.06, duration: 0.6, ease: 'power3.out' });
+                cursor?.classList.add('cursor-pointer');
+            });
+
+            item.addEventListener('mouseleave', () => {
+                if (media) gsap.to(media, { scale: 1, duration: 0.5, ease: 'power2.inOut' });
+                cursor?.classList.remove('cursor-pointer');
+            });
+        });
+    }
 
     // Copiar E-mail
     if (emailContainer && contactTag) {

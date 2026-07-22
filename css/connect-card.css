@@ -7,7 +7,12 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -8px; /* shifted down by the same 8px .connect-card adds via
+        padding-bottom below — nets out to the same resting position, but
+        leaves 8px of real card hanging just off-screen instead of empty
+        space. When the hover bounce lifts the card (translateY, up to
+        -6px), that buffer is what gets revealed — more orange, not the
+        page background underneath. */
     z-index: 9000;
     pointer-events: none; /* only the card itself should catch clicks */
 }
@@ -25,6 +30,8 @@
                           narrows — this pins it so it can't shrink */
     background-color: var(--color-orange);
     pointer-events: auto;
+    padding-bottom: 8px; /* the off-screen orange buffer described on
+        .connect-card-wrap above */
 }
 
 .connect-card__header {
@@ -42,6 +49,36 @@
     color: var(--color-white);
     text-transform: uppercase;
     text-align: left;
+}
+
+/* A brief bounce on hover — signals the card is clickable/expandable.
+   Plays once per hover-in (default animation-iteration-count:1) rather
+   than looping, since this card sits fixed on screen at all times and a
+   continuous bounce would get old fast. Transform only, spring-style
+   easing (easeOutBack), matching the site's animation guardrails.
+
+   translateY lifts the card off its resting position, which would
+   normally expose the page background below it (the card sits flush
+   against the viewport's bottom edge) — .connect-card-wrap/.connect-card
+   above carry an 8px off-screen orange buffer for exactly this, so what's
+   revealed during the lift is more of the card, not the page. */
+@keyframes connect-card-bounce {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-6px); }
+    55%  { transform: translateY(0); }
+    75%  { transform: translateY(-2px); }
+    100% { transform: translateY(0); }
+}
+
+/* Targets .connect-card itself, not .connect-card__header — the header has
+   background:none, so its own fill is transparent and the orange comes
+   from this parent. Animating the header alone bounced the text while the
+   orange box stayed put.
+   :not(.is-expanded) — only the "click to expand" cue; once it's already
+   open, bouncing it on every hover (e.g. while reaching for a link) would
+   just be noise. */
+.connect-card:not(.is-expanded):hover {
+    animation: connect-card-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Animated height via grid-template-rows 0fr -> 1fr — smooth expand/collapse

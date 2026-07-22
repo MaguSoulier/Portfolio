@@ -1,0 +1,156 @@
+/* ========================================
+   SOBRE MÍ — "Formación" (Figma node 2305:848)
+   ======================================== */
+
+#sobre-mi {
+    margin-top: 160px; /* matches #trabajos's own top spacing (work.css) */
+    padding-bottom: 160px;
+}
+
+.grid-sobre-mi {
+    height: auto; /* Override .grid-layout height: 100% */
+    align-items: start;
+}
+
+/* Vertical eyebrow label — same treatment as .trabajos-label (work.css). */
+.sobre-mi-label {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--color-violet);
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    text-transform: uppercase;
+    justify-self: start;
+    align-self: start;
+    margin-top: -40px;
+}
+
+.sobre-mi-intro {
+    grid-column: 2 / 8;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 64px;
+}
+
+.sobre-mi-title {
+    color: var(--color-black);
+}
+
+.sobre-mi-intro-text {
+    padding: 0 48px 0 24px;
+    color: var(--color-black);
+}
+
+.sobre-mi-cards {
+    grid-column: 1 / 13;
+    grid-row: 2;
+    display: flex;
+    gap: 32px;
+    align-items: start;
+}
+
+.sobre-mi-card {
+    flex: 1;
+    min-width: 0; /* lets long words wrap instead of forcing the row wider
+        than its grid track (flex items default to min-width:auto) */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+
+    /* Scroll-triggered reveal (js/pages/index.js: IntersectionObserver adds
+       .is-visible to .sobre-mi-cards once, the first time the row enters
+       the viewport). Each card's own transition-delay below staggers them
+       so they appear one after another instead of all at once. Transform/
+       opacity only, per the site's animation guardrails. */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sobre-mi-cards.is-visible .sobre-mi-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sobre-mi-cards .sobre-mi-card:nth-child(1) { transition-delay: 0s; }
+.sobre-mi-cards .sobre-mi-card:nth-child(2) { transition-delay: 0.15s; }
+.sobre-mi-cards .sobre-mi-card:nth-child(3) { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .sobre-mi-card {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.sobre-mi-card-title {
+    color: var(--color-black);
+}
+
+.sobre-mi-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Institution/program tags (UDELAR, Universidad ORT, Jóvenes a Programar) —
+   real external links, so unlike the plain .tag pills they need the arrow
+   icon + link affordance. .tag is display:inline-block; this switches it
+   to inline-flex so the icon sits inline after the text instead of
+   wrapping under it. Text is wrapped in its own <span data-key> (see
+   index.html) rather than putting data-key on the link itself — same
+   reasoning as .connect-card__link: changeLanguage() replaces a data-key
+   element's innerText wholesale, which would silently delete the icon on
+   every language switch if it were a sibling inside that same element. */
+.tag--link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+}
+
+/* Keyboard-only indicator — hover deliberately doesn't touch color (see
+   the icon-nudge treatment below instead), but a focus state still needs
+   *some* visible marker for accessibility. Outline, not a fill/border
+   color swap, so it stays out of the way of the hover treatment. */
+.tag--link:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
+}
+
+@keyframes tag-icon-nudge {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(2px, -2px); }
+}
+
+/* Hover — same idea as .btn__icon's nudge (button.css): no color change,
+   just the icon nudging on a loop for as long as the pointer stays over
+   the tag. Diagonal (up-right) instead of the button's horizontal nudge,
+   matching this icon's own arrow direction. */
+.tag--link:hover .contact-icon,
+.tag--link:focus-visible .contact-icon {
+    animation: tag-icon-nudge 0.9s ease-in-out infinite;
+}
+
+/* Sized for this compact pill context — footer.css's own .contact-icon
+   rule (13px, margin-left:10px) was tuned for the contact block, not a
+   12px tag pill; this out-specifies it here without touching that rule. */
+.sobre-mi-card-tags .contact-icon {
+    width: 8px;
+    height: 8px;
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.sobre-mi-card-text {
+    padding: 0 24px;
+    color: var(--color-black);
+}
