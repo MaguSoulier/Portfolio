@@ -1,5 +1,9 @@
 /* =============================================
    CASE STUDY — HERO SECTION
+   Shared by every case-study page (project1.html, project2.html, project3.html
+   once it's built) — none of the rules below are project-specific. Per-page
+   values (hero image URL, etc.) are set as inline styles in each page's HTML
+   instead of living here, so this file never needs a project-specific fork.
    ============================================= */
 
 .case-study {
@@ -37,6 +41,14 @@
     gap: 8px;
 }
 
+/* .tag (css/work.css) is shared with the project cards on index.html, where
+   it's violet — orange here instead, so the case study's own tags read as
+   a distinct, page-specific accent rather than reusing the homepage's. */
+.cs-tags .tag {
+    color: var(--color-orange);
+    border-color: var(--color-orange);
+}
+
 /* Right block: description — columns 7 → 13 */
 .cs-desc-col {
     grid-column: 7 / 13;
@@ -53,7 +65,70 @@
     margin-top: 8px;
 }
 
-/* ---- Details row (year / university / team credit) ---- */
+/* Opt-in modifier: stacks description + CTA in a right-aligned column
+   instead of the base rule's single left-aligned block — used by pages
+   whose Figma hero has a CTA button under the description (e.g.
+   project2.html's "Ir al juego"). Doesn't touch the base rule, so pages
+   without a CTA (project1.html) keep their original left-hugging layout. */
+.cs-desc-col--stack-end {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* ---- Hero CTA (e.g. "Ir al juego") ---- */
+
+.cs-hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin: 24px 48px 0 0;
+    padding: 8px 16px;
+    background-color: var(--color-orange);
+    border-radius: 45px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    color: var(--color-gray-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cs-hero-cta:hover,
+.cs-hero-cta:focus-visible {
+    background-color: var(--color-dark-orange);
+    transform: translateY(-2px);
+}
+
+.cs-hero-cta:focus-visible {
+    outline: 2px solid var(--color-black);
+    outline-offset: 2px;
+}
+
+.cs-hero-cta:active {
+    transform: translateY(0);
+}
+
+.cs-hero-cta-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+}
+
+.cs-hero-cta-icon svg {
+    width: 9px;
+    height: 9px;
+}
+
+.cs-hero-cta-icon svg polygon {
+    fill: var(--color-gray-1);
+}
+
+/* ---- Details row (year / location / credit) ---- */
 
 .cs-details {
     height: auto;
@@ -86,9 +161,9 @@
 }
 
 /* The scroll-driven parallax itself (both hero images, including the
-   .cs-hero-image-wrap--2 variant) lives in js/pages/project1.js via GSAP
-   ScrollTrigger — it drives yPercent on .cs-hero-image, tied to the same
-   ScrollSmoother instance driving the rest of the page's scroll, so it
+   .cs-hero-image-wrap--2 variant) lives in each page's js/pages/*.js via
+   GSAP ScrollTrigger — it drives yPercent on .cs-hero-image, tied to the
+   same ScrollSmoother instance driving the rest of the page's scroll, so it
    stays in sync everywhere.
 
    This used to be a native CSS animation-timeline: scroll() effect
@@ -100,19 +175,17 @@
    styles, so it was silently overriding the working GSAP tween in every
    Chromium browser. Removed rather than fixed: GSAP already handles both
    images correctly and consistently across all browsers, so there's no
-   reason to keep a second, competing implementation around. */
+   reason to keep a second, competing implementation around.
+
+   background-image is set per-page as an inline style (not here) — this
+   file is shared across every case-study page, and each one has its own
+   hero photo. */
 .cs-hero-image {
     position: absolute;
     top:    -15%;
     left:   0;
     width:  100%;
     height: 140%;           /* Extra height allows upward/downward travel */
-
-    /*
-     * Replace the background-color below with your hero image:
-     * background-image: url('path/to/hero.jpg');
-     */
-    background-image: url('../../tu-barrio-tu-feria/celular 1.png');
     background-size:  cover;
     background-position: center;
     will-change: transform;
@@ -284,7 +357,7 @@
 
 .cs-bold { font-weight: 700 !important; }
 
-/* ---- Contexto y problemática ---- */
+/* ---- Contexto y problemática / Validaciones (text + image) ---- */
 
 .cs-context-text {
     grid-column: 1 / 6;
@@ -315,7 +388,17 @@
     display: block;
 }
 
-/* ---- Propuesta estratégica ---- */
+/* Opt-in modifier: shows the image at its natural 100% width instead of
+   the base rule's 140% zoom/crop — used where the image should sit fully
+   framed (e.g. project2.html's Validaciones photo) rather than cropped in
+   (project1.html's Contexto image, which relies on the 140% treatment).
+   Doesn't touch the base rule, so project1.html is unaffected. */
+.cs-context-img--full img {
+    width: 100%;
+    object-position: center;
+}
+
+/* ---- Propuesta estratégica / Conceptualización Narrativa (image + text) ---- */
 
 .cs-proposal-img {
     grid-column: 2 / 7;
@@ -619,6 +702,109 @@
 .cs-carousel-btn.cs-carousel-prev { transform: scaleX(-1); }
 
 
+/* ---- Centered text-only section (e.g. "Limitaciones técnicas") ---- */
+
+.cs-centered-block {
+    grid-column: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cs-centered-block .cs-section-title {
+    max-width: 900px;
+}
+
+.cs-centered-block .cs-strategy-text {
+    max-width: 900px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+
+/* ---- Before/after compare slider (e.g. "renderizado" / "sin render") ---- */
+
+/* Full-bleed, edge to edge — a direct child of .case-study rather than a
+   .grid-layout item, same as .cs-hero-image-wrap. */
+.cs-compare-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1440 / 500;
+    overflow: hidden;
+    cursor: ew-resize;
+    /* Drag position, updated in JS (js/pages/project2.js) */
+    --compare-pos: 50%;
+}
+
+.cs-compare-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+.cs-compare-image--overlay {
+    clip-path: inset(0 calc(100% - var(--compare-pos)) 0 0);
+}
+
+/* Both tags are anchored to the drag line's own position (--compare-pos),
+   not a fixed corner — they slide together with the handle as it's
+   dragged, one tucked against each side of the line, matching the Figma
+   reference (node 2063:644). */
+.cs-compare-tag {
+    position: absolute;
+    top: 16px;
+    background-color: var(--color-gray-1);
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-1);
+    font-family: var(--font-heading);
+    font-size: var(--fs-small-tag);
+    line-height: var(--lh-small-tag);
+    letter-spacing: var(--ls-small-tag);
+    text-transform: uppercase;
+    padding: 4px 10px;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* Renderizado — right of the line (the un-clipped base image only shows
+   through on that side). */
+.cs-compare-tag--base {
+    left: calc(var(--compare-pos) + 8px);
+}
+
+/* Sin render — left of the line (on the clipped overlay image). */
+.cs-compare-tag--overlay {
+    left: calc(var(--compare-pos) - 8px);
+    transform: translateX(-100%);
+}
+
+.cs-compare-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--compare-pos);
+    width: 2px;
+    background-color: var(--color-gray-1);
+    transform: translateX(-1px);
+    pointer-events: none;
+}
+
+.cs-compare-handle-grip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+
 /* =============================================
    CASE STUDY FOOTER
    ============================================= */
@@ -762,7 +948,7 @@
 
     /* ---- Contexto y problemática ----
        Same move as .cs-strategy-section above: widen the text column so
-       the section's 4 paragraphs aren't squeezed into 5/12 columns at
+       the section's paragraphs aren't squeezed into 5/12 columns at
        tablet width, narrowing the image to compensate. */
     .cs-context-text {
         grid-column: 1 / 8;
@@ -823,7 +1009,12 @@
 
     .cs-desc-col {
         grid-column: 1 / 7;
+        align-items: flex-start;
         margin-top: 20px;
+    }
+
+    .cs-hero-cta {
+        margin: 20px 0 0;
     }
 
     .cs-title {
@@ -846,7 +1037,7 @@
         min-height: 260px;
     }
 
-   
+
     .cs-hero-split-tag-row {
         margin-bottom: 10px;
     }
@@ -927,7 +1118,7 @@
         padding-right: 0;
     }
 
-    /* ---- Contexto y problemática ---- */
+    /* ---- Contexto y problemática / Validaciones ---- */
     .cs-context-text {
         grid-column: 1 / 7;
         padding-left: 0;
@@ -937,7 +1128,7 @@
         margin-top: 28px;
     }
 
-    /* ---- Propuesta estratégica ---- */
+    /* ---- Propuesta estratégica / Conceptualización Narrativa ---- */
     .cs-proposal-img {
         grid-column: 1 / 7;
         /* Image and content stack into separate auto-sized rows here (both
@@ -1041,7 +1232,18 @@
         margin-top: 28px;
     }
 
-    
+    /* ---- Centered text-only section ---- */
+    .cs-centered-block .cs-strategy-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* ---- Compare slider ---- */
+    .cs-compare-wrap {
+        aspect-ratio: 4 / 5;
+    }
+
+
     .footer-inicio {
         grid-column: 1 / 5;
         padding-left: 0;

@@ -3,10 +3,6 @@
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.querySelector('.custom-cursor');
-    const connectBtn = document.querySelector('.connect');
-    const contactPanel = document.getElementById('contactPanel');
-    const emailContainer = document.querySelector('.contact-email');
-    const contactTag = document.querySelector('.contact-tag');
     const mainName = document.querySelector('.main-name');
     const allLinks = document.querySelectorAll('a');
     const badgeEl = document.getElementById('rotating-badge');
@@ -14,17 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar Scramblers
     if (mainName) mainName.scrambler = new TextScramble(mainName);
     if (badgeEl) badgeEl.scrambler = new TextScramble(badgeEl);
-    if (contactTag) contactTag.scrambler = new TextScramble(contactTag);
 
     // Setup hover scramble for navigation links
     allLinks.forEach(link => {
-      // Exclude: flower logo and contact panel links
+      // Exclude: flower logo
       if (link.classList.contains('flower')) return;
       if (link.closest('.flower')) return;
-      if (link.classList.contains('contact-link')) return; // Exclude contact panel links
-      if (link.classList.contains('copy-email')) return; // Exclude email
       if (link.classList.contains('connect-card__link')) return; // Has an icon — scrambled separately in connect-card.js, targeting just the text span
       if (link.classList.contains('tag--link')) return; // Has an icon too — scrambling the whole <a> would wipe it via innerHTML; see .tag--link in about.css for its own hover treatment
+      if (link.classList.contains('site-footer__link')) return; // Has an icon too — scrambled separately in footer.js, targeting just the text span
 
       link.scrambler = new TextScramble(link);
 
@@ -50,12 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Footer's dark background swallows the default black dot — lighten it
+    // for as long as the pointer is anywhere over the footer (css/base.css:
+    // .cursor-on-dark).
+    const footer = document.querySelector('.site-footer');
+    if (footer) {
+        footer.addEventListener('mouseenter', () => cursor?.classList.add('cursor-on-dark'));
+        footer.addEventListener('mouseleave', () => cursor?.classList.remove('cursor-on-dark'));
+    }
+
     // .project-cta excluded — it's inside .project-item, which already
     // drives .cursor-pointer for the whole card below. If this generic
     // listener also bound to the button, moving off *just the button*
     // (while still over the rest of the card) would fire its mouseleave
     // and wrongly clear .cursor-pointer mid-hover.
-    const interactiveElements = document.querySelectorAll('.nav-work, .nav-about, .nav-lang, .connect, .flower, a, button:not(.project-cta), .contact-email, .connect-card__mail');
+    const interactiveElements = document.querySelectorAll('.nav-work, .nav-about, .nav-lang, .flower, a, button:not(.project-cta), .connect-card__mail, .site-footer__mail');
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => cursor?.classList.add('cursor-pointer'));
         el.addEventListener('mouseleave', () => cursor?.classList.remove('cursor-pointer'));
@@ -87,28 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Copiar E-mail
-    if (emailContainer && contactTag) {
-        let isJustCopied = false;
-        emailContainer.addEventListener('mouseenter', () => {
-            if (!isJustCopied) contactTag.scrambler.setText(translations[currentLang].email_copy);
-        });
-        emailContainer.addEventListener('mouseleave', () => {
-            if (!isJustCopied) contactTag.scrambler.setText(translations[currentLang].email_tag);
-        });
-        emailContainer.addEventListener('click', () => {
-            navigator.clipboard.writeText("MAG.SOULIER01@GMAIL.COM").then(() => {
-                isJustCopied = true;
-                contactTag.scrambler.setText(translations[currentLang].email_copied);
-                setTimeout(() => {
-                    isJustCopied = false;
-                    const isHovering = emailContainer.matches(':hover');
-                    contactTag.scrambler.setText(isHovering ? translations[currentLang].email_copy : translations[currentLang].email_tag);
-                }, 1500);
-            });
-        });
-    }
-
     // Efectos de Click
     document.addEventListener('mousedown', () => {
         cursor?.classList.add(cursor.classList.contains('cursor-pointer') ? 'click-interactive' : 'click-static');
@@ -122,17 +103,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLang');
     const finalLang = urlParams.get('lang') || savedLang || 'es';
     document.fonts.ready.then(() => changeLanguage(finalLang, !!urlParams.get('lang')));
-
-    // Panel de contacto
-    document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('connect')) {
-        const panel = document.getElementById('contactPanel');
-        const btn = e.target;
-        const footer = document.querySelector('footer');
-
-        panel.classList.toggle('is-visible');
-        btn.classList.toggle('moved');
-        if (footer) footer.classList.toggle('panel-open');
-    }
-});
 });

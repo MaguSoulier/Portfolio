@@ -10,7 +10,7 @@
        normal flow below) would inherit that mismatch as an overlap or a
        gap. Letting the container's height fall out of its (now flexible)
        rows keeps it always matching its actual content. */
-    grid-template-rows: minmax(25vh, auto) minmax(30vh, auto) minmax(20vh, auto);
+    grid-template-rows: minmax(25vh, auto) minmax(30vh, auto);
     /* Single source of truth for the photo's rendered width, so
        .web-portfolio's position (computed from it) always stays in sync,
        including across the responsive overrides below. */
@@ -157,26 +157,27 @@
 }
 
 /* "2026 - WEB PORTFOLIO" vertical label (Figma node 26:82). Figma places it
-   flush against the photo's right edge, starting ~81% of the way down the
-   photo's height and running past its bottom edge.
+   flush against the photo's right edge, running past its bottom edge.
 
-   The photo and the tagline/name text column deliberately share a grid
-   column (an intentional bleed in this design), and the photo can itself
-   overflow past its own grid rows (its height follows the source image's
-   4:3-ish aspect ratio, which is taller than the row heights reserve) — so
-   neither "anchor beside the photo's box" nor "drop into an empty grid row"
-   held up across breakpoints. Instead this computes the label's position
-   directly from --hero-photo-w (the same variable that sizes the image),
-   relative to .grid-inicio, so it tracks the *actual* rendered photo
-   exactly, at any width, without depending on DOM nesting inside the photo
-   (which would conflict with this element also being a plain grid item on
-   mobile — see the 768px override in responsive.css). */
+   Horizontal position still tracks --hero-photo-w directly (same variable
+   that sizes the image) since the photo and the tagline/name text column
+   share a grid column and the label needs to sit right past the photo's
+   actual rendered edge, not just somewhere in that shared column.
+
+   Vertical position, though, is grid-row:1/3 (the same rows .photo-container
+   spans) + align-self:end — an absolutely-positioned grid item can still be
+   assigned a grid area, and align-self positions it inside that area when
+   top/bottom are auto (as here). That ties the label's bottom to the same
+   row edge the photo's own cell ends on, instead of the previous
+   --hero-photo-w-based aspect-ratio formula (height = width * 1.339, the
+   source photo's aspect ratio) needing its own re-tuned magic-number offset
+   at every breakpoint to keep approximating it. */
 .web-portfolio {
     position: absolute;
+    grid-row: 1 / 3;
+    align-self: end;
+    margin-bottom: 40px;
     left: calc(var(--hero-photo-w) + 38px); /* 30px photo padding + 8px gap */
-    /* -10px image's own margin-top, then ~81.5% down the image's rendered
-       height (height = width * 1.339, the source photo's aspect ratio) */
-    top: calc(-90px + var(--hero-photo-w) * 1.0913);
     font-family: var(--font-heading);
     font-size: var(--fs-subtitle-2);
     line-height: var(--lh-subtitle-2);

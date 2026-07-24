@@ -3,31 +3,31 @@
 // ==========================================
 const translations = {
   es: {
-    tagline: "SOY UNA DISEÑADORA VISUAL ESPECIALIZADA EN",
-    connect: "CONECTEMOS",
-    connect_card_title: "CONTACTAR",
-    web_portfolio:"2026 - PORTFOLIO WEB",
-    navwork: "TRABAJOS",
-    navabout: "SOBRE MÍ",
+    tagline: "Soy una diseñadora visual especializada en",
+    connect: "Conenctar",
+    connect_card_title: "Conectar",
+    web_portfolio:"2026 - portfolio web",
+    navwork: "Trabajos",
+    navabout: "Sobre mí",
     email_tag: "E-mail",
     email_copy: "Copiar E-mail",
     email_copied: "Copiado",
-    location_line: "UBICADA EN ",
-    selected_projects: "PROYECTOS SELECCIONADOS",
-    ver_proyecto: "VER PROYECTO",
-    about_me:"SOBRE MÍ",
-    diseno_web:"DISEÑO WEB",
-    direccion_de_arte:"DIRECCIÓN DE ARTE",
-    codigo_creativo:"CÓDIGO CREATIVO",
-    ilustracion: "ILUSTRACIÓN",
-    identidad_de_marca: "IDENTIDAD DE MARCA",
-    redes_sociales:"REDES SOCIALES",
-    diseno_estrategia: "DISEÑO DE ESTRATEGIA",
-    diseno_ux_ui: "DISEÑO UX/UI",
-    modelado_3d: "MODELADO 3D",
-    diseno_videojuegos: "DISEÑO DE VIDEOJUEGOS",
-    diseno_editorial: "DISEÑO EDITORIAL",
-    fotografia: "FOTOGRAFÍA",
+    location_line: "Ubicada en ",
+    selected_projects: "Proyectos seleccionados",
+    ver_proyecto: "Ver proyecto",
+    about_me:"Sobre mí",
+    diseno_web:"Diseño web",
+    direccion_de_arte:"Dirección de arte",
+    codigo_creativo:"Código creativo",
+    ilustracion: "Ilustración",
+    identidad_de_marca: "Identidad de marca",
+    redes_sociales:"Redes sociales",
+    diseno_estrategia: "Diseño de estrategia",
+    diseno_ux_ui: "Diseño UX/UI",
+    modelado_3d: "Modelado 3d",
+    diseno_videojuegos: "Diseño de videojuegos",
+    diseno_editorial: "Diseño editorial",
+    fotografia: "Fotografía",
     projet1_description: ["Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.", "A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos."],
     project2_description: ["Diseñado para Revista Gigantes (LaDiaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).", "El proyecto funciona como puente para derivar tráfico calificado hacia la plataforma digital de la revista, incrementando los niveles de engagement y retención en el público infantil."],
     project3_description: ["Diseño editorial realizado para la tesis de Valentina Ibarlucea.", "El texto investiga los alcances del arte y diseño participativo en colectivos de base territorial, tomando como caso de estudio la Comisión Derecho a la Ciudad en Ciudad Vieja, Montevideo."],
@@ -44,11 +44,16 @@ const translations = {
     edu3_titulo: "Desarrollo web",
     edu3_tag1: "2021",
     edu3_tag2: "Jóvenes a Programar",
-    edu3_texto: "A través de este programa incorporé fundamentos de lógica y desarrollo frontend. Esto me permite colaborar de forma directa con equipos de ingeniería, optimizar la transición del diseño a producción y empujar los límites visuales sin romper el rendimiento técnico."
+    edu3_texto: "A través de este programa incorporé fundamentos de lógica y desarrollo frontend. Esto me permite colaborar de forma directa con equipos de ingeniería, optimizar la transición del diseño a producción y empujar los límites visuales sin romper el rendimiento técnico.",
+    docencia_titulo: "Docencia",
+    docencia_texto: ["Soy docente en el Taller de Diseño 1 de la Universidad de la República. Trabajar con estudiantes de primer año implica saber deconstruir procesos complejos y explicarlos de forma simple, guiandolos para que aprendan a tomar decisiones proyectuales fundamentadas.", "Estar en el aula me exige mantener un ejercicio constante de resolución de problemas, un diálogo abierto y una actualización metodológica continua que traslado de forma directa a mi práctica profesional."],
+    media_resma_titulo: "Media resma",
+    media_resma_texto: ["Integro una cooperativa de diseño llamada media resma. A través de la autogestión y la toma de decisiones colectivas, buscamos generar un impacto positivo en la comunidad, trabajando codo a codo con colectivos sociales, organizaciones y asociaciones.", "Esta experiencia me da una gran capacidad de adaptación para diseñar en equipo y de forma eficiente bajo restricciones de presupuesto y tiempo."],
+    footer_credit: "Diseñado y desarrollado por Magdalena Soulier | © 2026"
   },
   en: {
-    tagline: "I'M A VISUAL DESIGNER SPECIALIZED IN",
-    connect: "LET'S CONNECT",
+    tagline: "I'm a visual designer specialized in",
+    connect: "Connect",
     connect_card_title: "CONTACT",
     web_portfolio:"2026 - WEB PORTFOLIO",
     navwork: "WORK",
@@ -88,7 +93,12 @@ const translations = {
     edu3_titulo: "Web Development",
     edu3_tag1: "2021",
     edu3_tag2: "Jóvenes a Programar",
-    edu3_texto: "Through this program I picked up the fundamentals of logic and frontend development. It lets me collaborate directly with engineering teams, streamline the handoff from design to production, and push visual boundaries without breaking technical performance."
+    edu3_texto: "Through this program I picked up the fundamentals of logic and frontend development. It lets me collaborate directly with engineering teams, streamline the handoff from design to production, and push visual boundaries without breaking technical performance.",
+    docencia_titulo: "Teaching",
+    docencia_texto: ["I teach Design Workshop 1 at Universidad de la República. Working with first-year students means knowing how to break down complex processes and explain them simply, guiding them to make well-grounded design decisions.", "Being in the classroom keeps me in constant practice: solving problems, keeping an open dialogue, and continuously updating my methods — all of which I carry directly into my professional practice."],
+    media_resma_titulo: "Media resma",
+    media_resma_texto: ["I'm part of a design cooperative called media resma. Through self-management and collective decision-making, we aim to generate a positive impact in the community, working hand in hand with social groups, organizations, and associations.", "This experience gives me a strong ability to adapt, designing collaboratively and efficiently under budget and time constraints."],
+    footer_credit: "Designed and developed by Magdalena Soulier | © 2026"
   }
 };
 
@@ -130,11 +140,6 @@ function changeLanguage(lang, updateURL = true) {
       element.originalText = value; // Use the translation value directly
     }
   });
-
-  const contactTag = document.querySelector('.contact-tag');
-  if (contactTag) {
-    contactTag.innerText = translations[lang].email_tag;
-  }
 
   startBadgeRotation();
   const mainName = document.querySelector('.main-name');

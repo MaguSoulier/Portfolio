@@ -18,7 +18,7 @@
 @media (max-width: 1400px) {
 
     .grid-inicio {
-        grid-template-rows: minmax(20vh, auto) minmax(10vh, auto) minmax(20vh, auto);
+        grid-template-rows: minmax(20vh, auto) minmax(10vh, auto);
         /* Keep in sync with .photo-container img's width below — this is
            what .web-portfolio's position is computed from. */
         --hero-photo-w: clamp(100px, 28vw, 410px);
@@ -86,11 +86,22 @@
         letter-spacing: var(--ls-small-tag);
     }
 
+    /* Below 1200px, .main-text-block (narrower grid-column, from the 1400px
+       breakpoint above) wraps onto more lines and can end up taller than the
+       photo — since .web-portfolio shares .photo-container's grid-row (see
+       hero.css), the row's height then follows the *text*, not the photo,
+       and align-self:end no longer lines the label's bottom up with the
+       image. An explicit top (which makes align-self inert — top/bottom
+       being non-auto is what align-self needs to be ignored) sidesteps that
+       by computing the position directly from the photo's own width/aspect
+       ratio again, same as hero.css did before the grid-align rewrite. */
     .web-portfolio {
         font-size: var(--fs-small-tag);
         line-height: var(--lh-small-tag);
         letter-spacing: var(--ls-small-tag);
-        top: calc(-20px + var(--hero-photo-w) * 1.0913);
+        top: calc(-70px + var(--hero-photo-w));
+        align-self: start;
+        margin-bottom: 0;
     }
 
     /* Projects — Figma "Tablet 768px" frame (node 2129:713): cards stack
@@ -427,6 +438,50 @@
         gap: 32px;
     }
 
+    /* Docencia / Media resma — full-width stack, image then text for each,
+       in that reading order regardless of the desktop left/right swap. */
+    .sobre-mi-feature-media--docencia,
+    .sobre-mi-feature-text--docencia,
+    .sobre-mi-feature-text--media-resma,
+    .sobre-mi-feature-media--media-resma {
+        grid-column: 1 / 7;
+        margin-top: 80px;
+    }
+
+    .sobre-mi-feature-media--docencia { grid-row: 3; }
+    .sobre-mi-feature-text--docencia { grid-row: 4; }
+    .sobre-mi-feature-text--media-resma { grid-row: 5; }
+    .sobre-mi-feature-media--media-resma { grid-row: 6; }
+
+    .sobre-mi-feature-body {
+        padding: 0;
+    }
+
+    /* ---- Footer (css/footer.css) ---- */
+    .site-footer {
+        margin-top: 100px;
+    }
+
+    .site-footer__grid {
+        padding: 40px 0 24px;
+    }
+
+    .site-footer__pages,
+    .site-footer__connect {
+        grid-column: 1 / 7;
+    }
+
+    .site-footer__connect {
+        grid-row: 2;
+        margin-top: 32px;
+    }
+
+    .site-footer__credit {
+        grid-column: 1 / 7;
+        grid-row: 3;
+        margin-top: 32px;
+    }
+
     /* #project1's desktop grid-column:1/13 (an ID selector, so it isn't
        overridden by the .project-item rule below) would otherwise span
        past the 6-col mobile grid — reset it here so it fits and shares
@@ -502,33 +557,6 @@
     #sobre-mi {
         margin-top: 100px;
         padding-bottom: 80px;
-    }
-
-    /* ===== CONTACT PANEL ===== */
-    .contact-panel {
-        width: 100%;
-        max-width: 100%;
-        right: 0;
-        padding: 40px 20px;
-        z-index: 10001; /* Above menu */
-    }
-
-    .panel-content {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .contact-email {
-        font-size: 0.85rem;
-    }
-
-    .contact-redes {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .contact-item {
-        font-size: 0.9rem;
     }
 
     /* ===== CUSTOM CURSOR - DISABLE ON MOBILE ===== */

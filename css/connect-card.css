@@ -28,10 +28,22 @@
     min-width: 314px; /* grid items default to min-width:auto, which lets
                           the browser compress below `width` as the track
                           narrows — this pins it so it can't shrink */
+    margin-right: -16px; /* nudges past the grid's right edge (where
+        .h-item-4, the language switcher, aligns) by 16px */
     background-color: var(--color-orange);
     pointer-events: auto;
     padding-bottom: 8px; /* the off-screen orange buffer described on
         .connect-card-wrap above */
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Once the footer (js/connect-card.js watches it via IntersectionObserver)
+   scrolls into view, fade this out — the footer repeats the same
+   links/mail, and being fixed the card would otherwise sit on top of it. */
+.connect-card-wrap.is-hidden .connect-card {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
 }
 
 .connect-card__header {

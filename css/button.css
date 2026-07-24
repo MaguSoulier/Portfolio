@@ -25,7 +25,7 @@
     padding: 8px 16px;
     border: 2px solid transparent; /* reserved so :focus-visible's border doesn't shift layout */
     border-radius: 45px;
-    background-color: var(--color-orange);
+    background-color: var(--color-dark-orange);
     font-family: var(--font-heading);
     font-weight: var(--fw-bold);
     font-size: var(--fs-subtitle-2);
@@ -69,6 +69,7 @@
 
 .btn:hover .btn__icon {
     animation: btn-icon-nudge 0.9s ease-in-out infinite;
+    
 }
 
 /* Pressed — freezes the nudge loop instead of layering a jitter on top of a press */

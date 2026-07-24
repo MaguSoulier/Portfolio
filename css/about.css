@@ -26,7 +26,7 @@
     text-transform: uppercase;
     justify-self: start;
     align-self: start;
-    margin-top: -40px;
+    margin-top: -60px;
 }
 
 .sobre-mi-intro {
@@ -80,11 +80,12 @@
 }
 
 .sobre-mi-cards .sobre-mi-card:nth-child(1) { transition-delay: 0s; }
-.sobre-mi-cards .sobre-mi-card:nth-child(2) { transition-delay: 0.15s; }
-.sobre-mi-cards .sobre-mi-card:nth-child(3) { transition-delay: 0.3s; }
+.sobre-mi-cards .sobre-mi-card:nth-child(2) { transition-delay: 0.30s; margin-top: 80px; }
+.sobre-mi-cards .sobre-mi-card:nth-child(3) { transition-delay: 0.6s; }
 
 @media (prefers-reduced-motion: reduce) {
-    .sobre-mi-card {
+    .sobre-mi-card,
+    .sobre-mi-feature-text {
         transition: none;
         opacity: 1;
         transform: none;
@@ -140,9 +141,12 @@
     animation: tag-icon-nudge 0.9s ease-in-out infinite;
 }
 
-/* Sized for this compact pill context — footer.css's own .contact-icon
-   rule (13px, margin-left:10px) was tuned for the contact block, not a
-   12px tag pill; this out-specifies it here without touching that rule. */
+.contact-icon {
+    fill: var(--color-violet);
+}
+
+/* Sized for this compact pill context — the base rule above is a generic
+   13px/orange icon; this out-specifies it for the 12px tag pill. */
 .sobre-mi-card-tags .contact-icon {
     width: 8px;
     height: 8px;
@@ -154,3 +158,109 @@
     padding: 0 24px;
     color: var(--color-black);
 }
+
+/* ========================================
+   SOBRE MÍ — Docencia / Media resma (Figma nodes 2155:718, 2155:723)
+   Two alternating image+text rows: image-left/text-right for Docencia,
+   text-left/image-right for Media resma. Both live as direct children of
+   the same .grid-sobre-mi grid as the cards above (grid-row 3 and 4).
+   ======================================== */
+
+.sobre-mi-feature-media {
+    position: relative;
+}
+
+.sobre-mi-feature-media--docencia {
+    grid-column: 1 / 6;
+    grid-row: 3;
+    margin-top: 160px;
+}
+
+.sobre-mi-feature-media--media-resma {
+    grid-column: 7 / 13;
+    grid-row: 4;
+    margin-top: 160px;
+}
+
+/* Cropped frame — the img is oversized (130% height) so js/parallax.js has
+   room to drift it vertically without exposing empty edges, same
+   technique as .project-media/.media-img in work.css. */
+.sobre-mi-feature-media-frame {
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre-mi-feature-media--docencia .sobre-mi-feature-media-frame {
+    aspect-ratio: 540 / 405;
+}
+
+.sobre-mi-feature-media--media-resma .sobre-mi-feature-media-frame {
+    aspect-ratio: 658 / 370;
+}
+
+.sobre-mi-feature-media-img {
+    position: absolute;
+    top: -15%;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    will-change: transform;
+}
+
+/* "Sello" stamp — overlaps the docencia photo's bottom-right corner,
+   positioned in percentages (matching the Figma overlap ratio) so it stays
+   put relative to the frame as the column width changes. Left static (no
+   parallax) so it reads as a fixed sticker over the drifting photo. */
+.sobre-mi-feature-media-accent {
+    position: absolute;
+    left: 63.9%;
+    top: 58.8%;
+    width: 57.2%;
+    aspect-ratio: 309 / 232;
+    object-fit: cover;
+}
+
+.sobre-mi-feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+
+    /* Scroll-triggered reveal (js/pages/index.js), slid in from the side
+       matching the block's [data-reveal] direction instead of the cards'
+       translateY — see the docencia/media-resma comment on that observer. */
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sobre-mi-feature-text[data-reveal="right"] { transform: translateX(60px); }
+.sobre-mi-feature-text[data-reveal="left"] { transform: translateX(-60px); }
+
+.sobre-mi-feature-text.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sobre-mi-feature-text--docencia {
+    grid-column: 7 / 13;
+    grid-row: 3;
+    margin-top: 160px;
+}
+
+.sobre-mi-feature-text--media-resma {
+    grid-column: 1 / 7;
+    grid-row: 4;
+    margin-top: 160px;
+}
+
+.sobre-mi-feature-title {
+    color: var(--color-black);
+}
+
+.sobre-mi-feature-body {
+    padding: 0 48px 0 24px;
+    color: var(--color-black);
+}
+
+

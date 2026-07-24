@@ -124,6 +124,16 @@ main {
     background-color: var(--color-orange);
 }
 
+/* Over a dark surface (e.g. the site footer) the default black dot
+   disappears against the background — swap it to a light color there.
+   The :not()s raise specificity above .cursor-pointer/.click-interactive
+   (same 2-class weight otherwise) so this doesn't need to fight source
+   order — it only ever overrides the plain/click-static black states,
+   never the already-visible orange ones. */
+.custom-cursor.cursor-on-dark:not(.cursor-pointer):not(.click-interactive) {
+    background-color: var(--color-gray-1);
+}
+
 /* ========================================
    SCROLLBAR
    ======================================== */

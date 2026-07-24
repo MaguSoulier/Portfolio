@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Próximo Proyecto — Magdalena Soulier</title>
+    <title>Fabrika de gigantes — Magdalena Soulier</title>
+    <meta name="description" content="Videojuego web diseñado para Revista Gigantes (La Diaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).">
+    <link rel="canonical" href="https://magdalenasoulier.netlify.app/project2.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://magdalenasoulier.netlify.app/project2.html">
+    <meta property="og:title" content="Fabrika de gigantes — Magdalena Soulier">
+    <meta property="og:description" content="Videojuego web diseñado para Revista Gigantes (La Diaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).">
+    <meta property="og:image" content="https://magdalenasoulier.netlify.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_UY">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fabrika de gigantes — Magdalena Soulier">
+    <meta name="twitter:description" content="Videojuego web diseñado para Revista Gigantes (La Diaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).">
+    <meta name="twitter:image" content="https://magdalenasoulier.netlify.app/og-image.png">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/pages/project2.css">
+    <link rel="stylesheet" href="css/pages/case-study.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +28,10 @@
 
 <body>
 
+
+    <!-- =============================================
+         HEADER (fixed, from css/header.css)
+         ============================================= -->
     <header>
         <div class="grid-layout">
             <div class="h-item h-item-1">
@@ -44,6 +62,21 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <div class="h-item h-item-2">
+                    <a href="index.html#trabajos" data-key="navwork" class="nav-work">TRABAJOS</a>
+                </div>
+                <div class="h-item h-item-3">
+                    <a href="index.html#sobre-mi" data-key="navabout" class="nav-about">SOBRE MÍ</a>
+                </div>
+                <div class="h-item h-item-4">
+                    <div class="lang-switcher">
+                         <button onclick="changeLanguage('es')" id="btn-es">ES</button>
+                        <button onclick="changeLanguage('en')" id="btn-en">EN</button>
+                    </div>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -51,23 +84,200 @@
     <div id="smooth-wrapper">
     <div id="smooth-content">
 
+    <!-- =============================================
+         CASE STUDY
+         ============================================= -->
     <section class="case-study">
 
-        <div class="grid-layout cs-coming-soon">
-            <div class="cs-coming-inner">
-                <span class="cs-coming-label">Próximamente</span>
-                <h1 class="cs-coming-title">NUEVO<br>PROYECTO</h1>
+        <!-- Info bar: title + tags (left) / description + CTA (right) -->
+        <div class="grid-layout cs-hero-info">
+
+            <div class="cs-title-col">
+                <h1 class="cs-title">FABRIKA DE GIGANTES</h1>
+
+                <div class="cs-tags">
+                    <span class="tag" data-key="diseno_interfaz">DISEÑO DE INTERFAZ</span>
+                    <span class="tag" data-key="modelado_3d">MODELADO 3D</span>
+                    <span class="tag" data-key="diseno_experiencia">DISEÑO DE EXPERIENCIA</span>
+                </div>
             </div>
+
+            <div class="cs-desc-col cs-desc-col--stack-end">
+                <div data-key="cs_descripcion"><p>Videojuego web diseñado para Revista Gigantes (La Diaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).</p><p>El proyecto funciona como puente para conectar usuarios de la revista a la plataforma digital, incrementando la retención y la participación comunitaria.</p></div>
+                <a href="https://gigantes.uy/juego-fabrika/" class="cs-hero-cta" data-key="cta_juego" target="_blank" rel="noopener noreferrer">
+                    <span>IR AL JUEGO</span>
+                    <span class="cs-hero-cta-icon">
+                        <svg viewBox="0 0 8.48 8.48" xmlns="http://www.w3.org/2000/svg"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                    </span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="grid-layout cs-details">
+            <div class="cs-details-row">
+                <span data-key="detalle_anio">[2024]</span>
+                <span data-key="detalle_ubicacion">[MONTEVIDEO, URUGUAY]</span>
+                <span data-key="detalle_derechos">DERECHOS RESERVADOS MUCHO GAMES</span>
+            </div>
+        </div>
+
+        <!-- Full-bleed hero image with scroll-driven parallax -->
+        <div class="cs-hero-image-wrap">
+            <div class="cs-hero-image" style="background-image: url('fabrika-de-gigantes/entrence.png');"></div>
+        </div>
+
+
+        <!-- =============================================
+             TECNOLOGÍAS UTILIZADAS
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+
+            <h3 class="cs-section-title" data-key="sec_tecnologias">Tecnologías utilizadas</h3>
+
+            <div class="cs-tools-container">
+
+                <div class="cs-tool-group">
+                    <span class="orange-tag" data-key="cat_diseno">Diseño</span>
+                    <div class="cs-tool-items">
+                        <div class="cs-tool-item">
+                            <img class="cs-tool-logo-box" src="logos/figma.png" alt="Figma logo">
+                            <span class="label">Figma</span>
+                        </div>
+                        <div class="cs-tool-item">
+                            <img class="cs-tool-logo-box" src="logos/blender.png" alt="Blender logo">
+                            <span class="label">Blender</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cs-tool-group">
+                    <span class="orange-tag" data-key="cat_implementacion">Implementación</span>
+                    <div class="cs-tool-items">
+                        <div class="cs-tool-item">
+                            <img class="cs-tool-logo-box" src="logos/unity.png" alt="Unity logo">
+                            <span class="label">Unity</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             CONCEPTUALIZACIÓN NARRATIVA
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+
+            <div class="cs-proposal-img">
+                <img src="fabrika-de-gigantes/starting-point.png" alt="Escena del juego mostrando al avatar del jugador en una habitación">
+            </div>
+
+            <div class="cs-proposal-content">
+                <h3 class="cs-section-title" data-key="sec_conceptualizacion">Conceptualización Narrativa</h3>
+                <div class="cs-strategy-text" data-key="conceptualizacion_texto">
+                    <p>El proyecto resuelve la paradoja de una audiencia infantil interpelada bajo el nombre de "gigantes". El juego tangibiliza esta tensión a través de un pequeño avatar que navega por el mapa y recolecta piezas para construir seres monumentales.</p>
+                    <p>Para incentivar la adopción, la revista impresa incluye códigos exclusivos que desbloquean assets especiales dentro del juego. A su vez, los gigantes más votados y creativos generados por los usuarios tienen la posibilidad de aparecer en las siguientes ediciones impresas de la revista.</p>
+                    <p>Crear un gigante constituye una metáfora interactiva sobre la capacidad de las infancias para intervenir en su entorno y dejar una marca propia en la comunidad.</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             VIDEO 1
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+            <div class="cs-video-wrap">
+                <video src="fabrika-de-gigantes/Gigantes-video1.mp4" autoplay muted loop playsinline></video>
+            </div>
+        </div>
+
+
+        <!-- =============================================
+             LIMITACIONES TÉCNICAS
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+            <div class="cs-centered-block">
+                <h3 class="cs-section-title" data-key="sec_limitaciones">Limitaciones técnicas</h3>
+                <div class="cs-strategy-text" data-key="limitaciones_texto">
+                    <p>Para garantizar la equidad en el acceso, el rendimiento del software se optimizó para hardware de gama baja y computadoras escolares de recursos limitados.</p>
+                    <p>El estilo visual y el modelado 3D de los assets se diseñaron bajo una restricción de baja carga computacional: se implementó una técnica de texturizado pixelado combinada con un renderizado plano basado exclusivamente en un valor de luz y un valor de sombra (estilo cel-shading de alto contraste).</p>
+                    <p>Esta solución técnica redujo drásticamente el consumo de memoria gráfica, asegurando una tasa de cuadros por segundo estable sin sacrificar la identidad artística del proyecto.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- =============================================
+             COMPARACIÓN RENDERIZADO / SIN RENDER
+             ============================================= -->
+        <div class="cs-compare-wrap" id="csCompareWrap">
+            <img class="cs-compare-image cs-compare-image--base" src="fabrika-de-gigantes/shader-yes.png" alt="Escena del juego con el renderizado final aplicado" draggable="false">
+            <img class="cs-compare-image cs-compare-image--overlay" id="csCompareOverlay" src="fabrika-de-gigantes/shader-no.png" alt="La misma escena sin el renderizado final aplicado" draggable="false">
+            <span class="cs-compare-tag cs-compare-tag--overlay" data-key="cat_sin_render">Sin render</span>
+            <span class="cs-compare-tag cs-compare-tag--base" data-key="cat_renderizado">Renderizado</span>
+            <div class="cs-compare-handle" id="csCompareHandle">
+                <img class="cs-compare-handle-grip" src="fabrika-de-gigantes/drag-icon.svg" alt="" draggable="false">
+            </div>
+        </div>
+
+
+        <!-- =============================================
+             VIDEO 2
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+            <div class="cs-video-wrap">
+                <video src="fabrika-de-gigantes/Gigantes-video3.mp4" autoplay muted loop playsinline></video>
+            </div>
+        </div>
+
+
+        <!-- =============================================
+             VALIDACIONES
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+
+            <div class="cs-context-text">
+                <h3 class="cs-section-title" data-key="sec_validaciones">Validaciones</h3>
+                <div class="cs-strategy-text" data-key="validaciones_texto">
+                    <p>Como responsable del flujo de experiencia, la UI y el diseño de entornos, lideré el mapeo de interacciones adaptado a modelos mentales infantiles.</p>
+                    <p>Conduje sesiones de testeo con niños para validar la usabilidad de la interfaz, la navegación en los mapas y la fricción en el sistema de construcción de piezas.</p>
+                    <p>Estas pruebas permitieron iterar la jerarquía visual de los controles, simplificar la arquitectura de la información y asegurar que el storyline actuara como un hilo conductor intuitivo sin necesidad de tutoriales complejos.</p>
+                </div>
+            </div>
+
+            <div class="cs-context-img cs-context-img--full">
+                <img src="fabrika-de-gigantes/validations.png" alt="Sesión de testeo con niños validando la interfaz del juego">
+            </div>
+
         </div>
 
     </section>
 
 
+    <!-- =============================================
+         CASE STUDY FOOTER
+         ============================================= -->
     <div class="cs-footer">
         <div class="grid-layout cs-footer-inner">
-            <a href="project1.html" class="cs-footer-inicio">← TU BARRIO, TU FERIA</a>
+            <div class="footer-inicio">
+                <a href="index.html" class="text-inicio">
+                    <svg class="footer-arrow footer-arrow--left" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--color-black)"/></svg>
+                    <span class="cs-footer-inicio-text" data-key="footer_inicio">INICIO</span>
+                </a>
+            </div>
             <div class="cs-footer-credits">
-                DISEÑO Y DESARROLLO POR MAGDALENA SOULIER<br>© 2026
+                <span data-key="footer_creditos">Diseñado y desarrollado por Magdalena soulier | © 2026</span>
+            </div>
+            <div class="next-project">
+                <a href="project3.html" class="cs-footer-next">
+                    <span class="cs-footer-next-text" data-key="footer_siguiente">SIGUIENTE PROYECTO</span>
+                    <svg class="footer-arrow" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--color-black)"/></svg>
+                </a>
             </div>
         </div>
     </div>
@@ -124,8 +334,7 @@
     <script src="js/text-scramble.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/connect-card.js"></script>
+    <script src="js/nav-menu.js"></script>
     <script src="js/pages/project2.js"></script>
-
-
 </body>
 </html>

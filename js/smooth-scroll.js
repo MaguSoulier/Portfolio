@@ -19,7 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.pageSmoother = smoother;
 
-    const headerOffset = 70; // matches --header-h in css/tokens.css
+    // Not just --header-h (70px) — section labels sit above the section's
+    // own top via negative margin (.trabajos-label: -60px, .sobre-mi-label:
+    // -40px), so landing the section's top flush under the header still hid
+    // the label underneath it. 140 clears the worse case (trabajos) with
+    // ~10px to spare.
+    const headerOffset = 140;
 
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
         const targetId = link.getAttribute('href');
@@ -34,6 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(targetId);
             if (target) {
                 e.preventDefault();
+                // Refresh first — if a still-loading image (hero photo,
+                // docencia/media-resma, project media) has shifted the
+                // page's layout since ScrollTrigger last measured it, the
+                // eased scrollTo would ease toward a now-stale target
+                // position and land short of it.
+                ScrollTrigger.refresh();
                 smoother.scrollTo(target, true, `top ${headerOffset}px`);
             }
         });

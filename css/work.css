@@ -58,6 +58,31 @@
         that the parent is auto-height, this sizes the image directly */
 }
 
+/* Grey tint over the image, not a full desaturation — the image keeps its
+   own color underneath and just reads muted until the card is revealed.
+   ::after (not a filter on .media-img) so it paints as a flat layer on top
+   instead of altering the image's own pixels. */
+.project-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #b4afb4;
+    opacity: 0.55;
+    transition: opacity 0.6s ease;
+    pointer-events: none; /* only the image/card underneath should catch clicks/hover */
+}
+
+.project-item.is-visible .project-media::after {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-media::after {
+        transition: none;
+        opacity: 0;
+    }
+}
+
 /* Image-right / text-left variant (Figma's zigzag — card 2 reverses the
    usual media-left layout). DOM order stays media-then-info so mobile
    stacking (which ignores grid-column) still puts the image first. */
@@ -69,6 +94,7 @@
     grid-column: 1 / 6;
     padding-left: 0;
     padding-right: 24px;
+    transform: translateX(-60px); /* info is on the left here — slide in from the left */
 }
 
 .media-img, .media-video {
@@ -104,6 +130,30 @@
     flex-direction: column;
     justify-content: start; /* Centrado vertical */
     padding-left: 24px;
+
+    /* Scroll-triggered reveal (js/pages/index.js: IntersectionObserver
+       toggles .is-visible on the parent .project-item as it enters/leaves
+       the viewport). Scoped to .project-info only — .project-media keeps
+       its own parallax drift (js/parallax.js) untouched by this. Default
+       slides in from the right (info sits on the right); the .reverse
+       variant above overrides this to slide from the left instead — same
+       idea as .sobre-mi-feature-text's [data-reveal] in about.css. */
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-item.is-visible .project-info {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-info {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
 }
 
 .project-tags {
@@ -178,6 +228,7 @@
         difference between them applies equally to both siblings and
         cancels out. */
     align-self: flex-start;
+    transition: background-color 0.3s ease;
 }
 
 /* Hovering anywhere on the card previews the CTA's own hover state (see
@@ -188,4 +239,8 @@
 
 .project-item:hover .project-cta .btn__icon {
     animation: btn-icon-nudge 0.9s ease-in-out infinite;
+}
+
+.project-item:hover .project-cta {
+    background-color: var(--color-orange);
 }
