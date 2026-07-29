@@ -63,8 +63,9 @@
     <header>
         <div class="grid-layout">
             <div class="h-item h-item-1">
-                <a href="#" class="flower" id="logo-inicio"> 
-                    <svg viewBox="0 0 712 681" xmlns="http://www.w3.org/2000/svg">
+                <a href="#" class="flower" id="logo-inicio">
+                    <span class="sr-only" data-key="logo_home">Inicio</span>
+                    <svg viewBox="0 0 712 681" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <path id="HeaderCentro"
                             d="M355.56,164.2L485.67,215.79L539.56,340.33L485.67,464.87L355.56,516.45L225.44,464.87L171.55,340.33L225.44,215.79L355.56,164.2Z"
                             fill="var(--brand-orange)" />
@@ -112,6 +113,49 @@
         </div>
     </header>
 
+    <!-- Connect card (Figma node 31:165) — fixed bottom, aligned to the header's
+     language switcher via the same .grid-layout. Collapsed by default;
+     clicking the header expands it upward. Placed here (right after the
+     header, before main) so it's an early tab stop — it used to sit after
+     the footer in the DOM, meaning keyboard users had to tab through every
+     project/about/footer link before ever reaching it, arriving only once
+     the footer-visibility observer had already faded it out. position:fixed
+     means this move has no effect on where it renders. -->
+<div class="connect-card-wrap">
+    <div class="grid-layout">
+        <div class="connect-card" id="connectCard">
+            <button class="connect-card__header" id="connectCardToggle" aria-expanded="false" aria-controls="connectCardBody">
+                <span data-key="connect_card_title">Contactemos</span>
+            </button>
+            <div class="connect-card__body" id="connectCardBody" inert>
+                <div class="connect-card__content">
+                    <div class="connect-card__links">
+                        <a href="https://www.behance.net/magdalesoulier2" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                            <span>BEHANCE</span>
+                            <svg class="connect-card__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                        </a>
+                    <a href="https://www.linkedin.com/in/magdalena-soulier/" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                            <span>LINKED-IN</span>
+                            <svg class="connect-card__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                        </a>
+                    </div>
+                    <button type="button" class="connect-card__mail" data-aria-key="email_copy" aria-label="Copiar E-mail">
+                        <span class="connect-card__mail-label">
+                            <span data-key="email_tag">E-mail</span>
+                            <svg class="connect-card__mail-icon" aria-hidden="true" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-white)"/>
+<path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-white)"/>
+</svg>
+                        </span>
+                        <span class="connect-card__mail-address">mag.soulier01@gmail.com</span>
+                    </button>
+                    <span class="sr-only" aria-live="polite" id="mailCopyStatus"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div id="smooth-wrapper">
     <div id="smooth-content">
     <main>
@@ -122,14 +166,14 @@
                 <span class="line">Soulier</span>
         </h1>
 
-            <div class="tagline">
+            <h2 class="tagline">
                 <span data-key="tagline">I'M A VISUAL DESIGNER SPECIALIZED IN</span>
                 <span class="badge" id="rotating-badge">BRANDING</span>
-            </div>
+            </h2>
         </div>
 
         <div id="main-photo" class="photo-container">
-            <img src="Foto-violeta.png" alt="Magdalena Soulier">
+            <img src="Foto-violeta.png" alt="Foto de Magdalena mirando levemente hacia la derecha, monocromática en tonos violetas">
         </div>
 
         <div class="web-portfolio">
@@ -157,7 +201,7 @@
             <div class="project-item" id="project1">
                 <div class="project-media">
                     <img class="media-img" src="Celular y tote.png"
-                         alt="Vista previa en celular del proyecto Tu Barrio, Tu Feria">
+                         alt="Vista previa del proyecto, un celular con la plataforma web y una tote bag con ilustraciones de la identidad visual">
                 </div>
                 <div class="project-info">
                     <div class="project-tags">
@@ -168,7 +212,7 @@
                     </div>
                     <h3 class="project-title title-3 scramble-title">TU BARRIO, TU FERIA</h3>
                     <div class="project-description" data-key="projet1_description">
-                        <p>Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.</p>
+                        <p>Estrategia multicanal desarrollada con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.</p>
                         <p>A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos.</p>
                     </div>
                     <button type="button" class="btn project-cta">
@@ -181,7 +225,7 @@
             <div class="project-item reverse" id="project2">
                 <div class="project-media">
                     <img class="media-img" src="fabrika-de-gigantes/hero-image.png"
-                         alt="Vista previa del proyecto Fabrika de Gigantes">
+                         alt="Vista previa del proyecto, una coleccion de creaciones de los usuarios en formato de polaroids dispersados">
                 </div>
                 <div class="project-info">
                     <div class="project-tags">
@@ -204,7 +248,7 @@
             <div class="project-item" id="project3">
                 <div class="project-media">
                     <img class="media-img" src="disenar-los-suenos/preview.jpg"
-                         alt="Vista previa del proyecto Diseñar los Sueños con los Pies en el Barrio">
+                         alt="Vista previa del proyecto, zoom al canto del libro, donde se ve su encuadernado rojo y la tapa con fotografía de la vereda montevideana">
                 </div>
                 <div class="project-info">
                     <div class="project-tags">
@@ -279,9 +323,9 @@
 
             <div class="sobre-mi-feature-media sobre-mi-feature-media--docencia">
                 <div class="sobre-mi-feature-media-frame">
-                    <img class="sobre-mi-feature-media-img" src="docencia.png" alt="Estudiantes trabajando en el Taller de Diseño 1">
+                    <img class="sobre-mi-feature-media-img" src="docencia.png" alt="Fotografía del salón de clases con estudiantes trabajando, agrupados en mesas grupales">
                 </div>
-                <img class="sobre-mi-feature-media-accent" src="sello.png" alt="">
+                <img class="sobre-mi-feature-media-accent" src="sello.png" alt="Estampado de un sello identitario de la materia, forma de una manzana con las siglas TD1 LDCV dentro">
             </div>
             <div class="sobre-mi-feature-text sobre-mi-feature-text--docencia" data-reveal="right">
                 <h2 class="sobre-mi-feature-title title-3" data-key="docencia_titulo">DOCENCIA</h2>
@@ -300,7 +344,7 @@
             </div>
             <div class="sobre-mi-feature-media sobre-mi-feature-media--media-resma">
                 <div class="sobre-mi-feature-media-frame">
-                    <img class="sobre-mi-feature-media-img" src="media-resma.png" alt="Integrantes de la cooperativa media resma sosteniendo hojas en blanco frente a su rostro">
+                    <img class="sobre-mi-feature-media-img" src="media-resma.png" alt="Integrantes de la cooperativa media resma sentados, sosteniendo hojas A4 en blanco frente a su rostro, tapándolo">
                 </div>
             </div>
 
@@ -319,23 +363,24 @@
                 <div class="site-footer__links">
                     <a href="https://www.behance.net/magdalesoulier2" class="site-footer__link" target="_blank" rel="noopener noreferrer">
                         <span>BEHANCE</span>
-                        <svg class="site-footer__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                        <svg class="site-footer__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
                     </a>
                     <a href="https://www.linkedin.com/in/magdalena-soulier/" class="site-footer__link" target="_blank" rel="noopener noreferrer">
                         <span>LINKED-IN</span>
-                        <svg class="site-footer__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                        <svg class="site-footer__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
                     </a>
                 </div>
-                <div class="site-footer__mail" id="footerMail">
+                <button type="button" class="site-footer__mail" id="footerMail" data-aria-key="email_copy" aria-label="Copiar E-mail">
                     <span class="site-footer__mail-label">
                         <span data-key="email_tag">E-mail</span>
-                        <svg class="site-footer__mail-icon" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="site-footer__mail-icon" aria-hidden="true" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-gray-1)"/>
 <path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-gray-1)"/>
 </svg>
                     </span>
                     <span class="site-footer__mail-address">MAG.SOULIER01@GMAIL.COM</span>
-                </div>
+                </button>
+                <span class="sr-only" aria-live="polite" id="footerMailCopyStatus"></span>
             </div>
 
             <p class="site-footer__credit" data-key="footer_credit">Diseñado y desarrollado por Magdalena Soulier | © 2026</p>
@@ -343,43 +388,6 @@
     </footer>
     </div>
     </div>
-
-    <!-- Connect card (Figma node 31:165) — fixed bottom, aligned to the header's
-     language switcher via the same .grid-layout. Collapsed by default;
-     clicking the header expands it upward. -->
-<div class="connect-card-wrap">
-    <div class="grid-layout">
-        <div class="connect-card" id="connectCard">
-            <button class="connect-card__header" id="connectCardToggle" aria-expanded="false" aria-controls="connectCardBody">
-                <span data-key="connect_card_title">Contactemos</span>
-            </button>
-            <div class="connect-card__body" id="connectCardBody">
-                <div class="connect-card__content">
-                    <div class="connect-card__links">
-                        <a href="https://www.behance.net/magdalesoulier2" class="connect-card__link" target="_blank" rel="noopener noreferrer">
-                            <span>BEHANCE</span>
-                            <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
-                        </a>
-                    <a href="https://www.linkedin.com/in/magdalena-soulier/" class="connect-card__link" target="_blank" rel="noopener noreferrer">
-                            <span>LINKED-IN</span>
-                            <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
-                        </a>
-                    </div>
-                    <div class="connect-card__mail">
-                        <span class="connect-card__mail-label">
-                            <span data-key="email_tag">E-mail</span>
-                            <svg class="connect-card__mail-icon" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-white)"/>
-<path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-white)"/>
-</svg>
-                        </span>
-                        <span class="connect-card__mail-address">MAG.SOULIER01@GMAIL.COM</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="custom-cursor">
     <div class="cursor-dot"></div>

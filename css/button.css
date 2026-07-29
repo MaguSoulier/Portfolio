@@ -86,6 +86,7 @@
 .btn:focus-visible {
     outline: none;
     border-color: var(--color-dark-orange-2);
+    outline-offset: 4px;
 }
 
 /* Disabled — .btn[aria-disabled="true"] covers non-<button> elements (e.g. a

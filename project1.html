@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Barrio Tu Feria — Magdalena Soulier</title>
-    <meta name="description" content="Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.">
+    <meta name="description" content="Estrategia multicanal desarrollada con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.">
     <link rel="canonical" href="https://magdalenasoulier.netlify.app/project1.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://magdalenasoulier.netlify.app/project1.html">
     <meta property="og:title" content="Tu Barrio Tu Feria — Magdalena Soulier">
-    <meta property="og:description" content="Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.">
+    <meta property="og:description" content="Estrategia multicanal desarrollada con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.">
     <meta property="og:image" content="https://magdalenasoulier.netlify.app/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="es_UY">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tu Barrio Tu Feria — Magdalena Soulier">
-    <meta name="twitter:description" content="Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.">
+    <meta name="twitter:description" content="Estrategia multicanal desarrollada con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.">
     <meta name="twitter:image" content="https://magdalenasoulier.netlify.app/og-image.png">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/case-study.css">
@@ -36,7 +36,8 @@
         <div class="grid-layout">
             <div class="h-item h-item-1">
                 <a href="index.html" class="flower" id="logo-inicio">
-                    <svg viewBox="0 0 712 681" xmlns="http://www.w3.org/2000/svg">
+                    <span class="sr-only" data-key="logo_home">Inicio</span>
+                    <svg viewBox="0 0 712 681" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <path id="HeaderCentro"
                             d="M355.56,164.2L485.67,215.79L539.56,340.33L485.67,464.87L355.56,516.45L225.44,464.87L171.55,340.33L225.44,215.79L355.56,164.2Z"
                             fill="var(--brand-orange)" />
@@ -80,6 +81,48 @@
         </div>
     </header>
 
+    <!-- Connect card (Figma node 31:165) — fixed bottom, aligned to the header's
+         language switcher via the same .grid-layout. Collapsed by default;
+         clicking the header expands it upward. Placed here (right after the
+         header, before main) so it's an early tab stop — it used to sit after
+         the footer in the DOM, meaning keyboard users had to tab through
+         every project/about/footer link before ever reaching it, arriving
+         only once the footer-visibility observer had already faded it out.
+         position:fixed means this move has no effect on where it renders. -->
+    <div class="connect-card-wrap">
+        <div class="grid-layout">
+            <div class="connect-card" id="connectCard">
+                <button class="connect-card__header" id="connectCardToggle" aria-expanded="false" aria-controls="connectCardBody">
+                    <span data-key="connect_card_title">Contactemos</span>
+                </button>
+                <div class="connect-card__body" id="connectCardBody" inert>
+                    <div class="connect-card__content">
+                        <div class="connect-card__links">
+                            <a href="https://www.behance.net/magdalesoulier2" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                                <span>BEHANCE</span>
+                                <svg class="connect-card__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                            </a>
+                        <a href="https://www.linkedin.com/in/magdalena-soulier/" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                                <span>LINKED-IN</span>
+                                <svg class="connect-card__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                            </a>
+                        </div>
+                        <button type="button" class="connect-card__mail" data-aria-key="email_copy" aria-label="Copiar E-mail">
+                            <span class="connect-card__mail-label">
+                                <span data-key="email_tag">E-mail</span>
+                                <svg class="connect-card__mail-icon" aria-hidden="true" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-white)"/>
+<path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-white)"/>
+</svg>
+                            </span>
+                            <span class="connect-card__mail-address">MAG.SOULIER01@GMAIL.COM</span>
+                        </button>
+                        <span class="sr-only" aria-live="polite" id="mailCopyStatus"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="smooth-wrapper">
     <div id="smooth-content">
@@ -104,7 +147,12 @@
             </div>
 
             <div class="cs-desc-col">
-                <div data-key="cs_descripcion"><p>El ecosistema de las ferias barriales en Montevideo presenta una brecha crítica para el segmento joven. El objetivo del proyecto fue digitalizar una experiencia tradicionalmente analógica, eliminando la complejidad de la fragmentación informativa.</p><p>Se buscó crear una solución intuitiva que centralizara datos en tiempo real, permitiendo que el usuario tenga el control de su consumo y su tiempo al alcance de la mano.</p></div>
+                <div data-key="cs_descripcion"><p>Mi rol consistió en la ideación visual del sistema y producción del producto digital web, mis tareas fueron:</p></div>
+                <ul class="cs-tasks" data-key="cs_tareas">
+                    <li><strong>Creación del sistema de diseño:</strong> Incluyendo paleta cromática, texturas, tipografía y el sistema de ilustraciones que acompañan al producto.</li>
+                    <li><strong>Arquitectura de interfaz:</strong> Diseño del flujo de navegación y jerarquía de la información.</li>
+                    <li><strong>Prototipado:</strong> Programación de la animación generativa en JavaScript y desarrollo del prototipo de alta fidelidad que simula la navegación del mapa y la aplicación de filtros.</li>
+                </ul>
             </div>
 
         </div>
@@ -178,9 +226,9 @@
                 <h3 class="cs-section-title" data-key="sec_contexto">Contexto y problemática</h3>
                 <div class="cs-strategy-text" data-key="contexto_texto">
                     <p>Las ferias vecinales ocupan un lugar significativo en la vida de los barrios, funcionando como espacios de encuentro donde se cruzan intercambios económicos, interacciones sociales e identidades comunitarias.</p>
-                    <p>Sin embargo, según el informe de la Cámara de Industrias del Uruguay e INEFOP (2020) se evidencia que <strong>la feria ha dejado de ocupar un lugar cotidiano</strong> en la rutina de las personas uruguayas, desplazada por otras formas de compra, siendo los <strong>jóvenes de 18 a 34 años</strong> el grupo que <strong>menos acude a la feria</strong> como primer punto de compra.</p>
-                    <p>Actualmente, la única forma de conocer la ubicación, horarios y oferta de las ferias es encontrándote una en la calle. Esto genera una <strong>percepción de obsolescencia</strong> frente a las plataformas de retail modernas, cuyas <strong>experiencias digitales son fluidas e inmediatas.</strong></p>
-                    <p>El proyecto nace con el objetivo de reactivar el consumo en territorio y atraer a poblaciones jóvenes mediante el desarrollo de una <strong>identidad digital contemporánea</strong> que formalice el <strong>acceso a la información</strong> y brinde certeza a los usuarios antes de su visita. Reafirmando la idea de que fortalecer la feria es fortalecer la vida barrial.</p>
+                    <p>Sin embargo, según el informe de la Cámara de Industrias del Uruguay e INEFOP (2020) se evidencia que la feria ha dejado de ocupar un lugar cotidiano en la rutina de las personas uruguayas, desplazada por otras formas de compra, siendo los <strong>jóvenes de 18 a 34 años</strong> el grupo que menos acude a la feria como primer punto de compra.</p>
+                    <p>Actualmente, la ubicación, horarios y oferta de las ferias dependen exclusivamente de la memoria o del hallazgo fortuito en la calle. Esto genera <strong>incertidumbre</strong> frente a las plataformas de retail modernas, cuyas experiencias digitales son fluidas e inmediatas.</p>
+                    <p>El proyecto nace con el objetivo de reactivar el consumo en territorio y atraer a poblaciones jóvenes mediante el <strong>desarrollo de una identidad digital</strong> que formalice el acceso a la información y <strong>brinde certeza</strong> a los usuarios antes de su visita.</p>
                 </div>
             </div>
 
@@ -221,7 +269,7 @@
                 <h3 class="cs-section-title" data-key="sec_propuesta">Propuesta estratégica</h3>
                 <div class="cs-strategy-text" data-key="propuesta_texto">
                     <p>La feria es efímera por naturaleza, pero la necesidad de información del usuario es constante. Su presencia debe circular simbólicamente en el barrio, y permanecer en la memoria visual de quienes la habitan.</p>
-                    <p>La estrategia combina presencia en redes sociales, cartelería y objetos de fidelización, todos nucleados por una plataforma web que actúa como punto de contacto. Formalizando el acceso a la información e instalando a las ferias como una experiencia de compra ordenada y accesible, se activa el deseo de consumo.</p>
+                    <p>La estrategia combina presencia en redes sociales, cartelería y objetos de fidelización, todos nucleados por una plataforma web geolocalizada que actúa como punto de contacto. <strong>Formalizando el acceso a la información e instalando a las ferias como una experiencia de compra ordenada y accesible, se activa el deseo de consumo.</strong></p>
                 </div>
             </div>
 
@@ -247,25 +295,25 @@
                     <div class="cs-publico-body" data-key="body_desvinculado">
                         <p><strong>Comportamiento:</strong> Posee una relación nula o escasa con el entorno físico de la feria y el barrio.</p>
                         <p><strong>Necesidad:</strong> Superar la barrera del desconocimiento.</p>
-                        <p><strong>Oportunidad de Diseño:</strong> Generar interés mediante una interfaz que presente la feria como un evento relevante, moderno y digno de ser explorado.</p>
+                        <p><strong>Oportunidad de Diseño:</strong> Generar interés mediante una identidad visual que presente la feria como un evento relevante, moderno y digno de ser explorado.</p>
                     </div>
                 </div>
 
                 <div class="cs-publico-card">
                     <span class="orange-tag" data-key="card_practico">Práctico</span>
                     <div class="cs-publico-body" data-key="body_practico">
-                        <p><strong>Comportamiento:</strong> Prioriza la rapidez y la accesibilidad sobre el vínculo emocional. Su decisión de compra es puramente funcional. Buscan optimizar el tiempo y demandan acceso inmediato a la información.</p>
-                        <p><strong>Punto de Dolor:</strong> La percepción de que la feria es "difícil" o "lenta" comparada con un supermercado.</p>
-                        <p><strong>Oportunidad de diseño:</strong> Enfoque mobile-first. La UI debe destacar la cercanía (geolocalización) y la competitividad de precios, posicionando a la feria como la opción más eficiente y sencilla en su rutina diaria.</p>
+                        <p><strong>Comportamiento:</strong> Prioriza la rapidez y la accesibilidad sobre el vínculo emocional. Busca optimizar tiempo y exige inmediatez. Compara la feria con la conveniencia del supermercado.</p>
+                        <p><strong>Necesidad:</strong> Cambiar la percepción de que la feria es "difícil" o "lenta" comparada con un supermercado.</p>
+                        <p><strong>Oportunidad de diseño:</strong> Priorización del mapa geolocalizado para responder en menos de 2 clics: ¿Dónde hay feria hoy cerca de mí?</p>
                     </div>
                 </div>
 
                 <div class="cs-publico-card">
                     <span class="orange-tag" data-key="card_consciente">Consciente</span>
                     <div class="cs-publico-body" data-key="body_consciente">
-                        <p><strong>Comportamiento:</strong> Usuario con valores éticos y de consumo responsable alineados con la soberanía alimentaria. Ya posee un vínculo con el territorio.</p>
+                        <p><strong>Comportamiento:</strong> Usuario con valores éticos y de consumo alineados con la soberanía alimentaria. Ya posee un vínculo con el territorio.</p>
                         <p><strong>Necesidad:</strong> Profundizar la conexión y pertenencia.</p>
-                        <p><strong>Oportunidad de Diseño:</strong> Retención y Comunidad. El diseño debe ofrecer contenido de valor agregado (historia de los productos, impacto social) que refuerce su compromiso y lo convierta en un promotor activo del sistema de ferias.</p>
+                        <p><strong>Oportunidad de Diseño:</strong> Retención y comunidad a través de objetos de fidelización. El diseño debe ofrecer contenido de valor agregado (historia de las ferias, impacto social) que refuerce su compromiso.</p>
                     </div>
                 </div>
 
@@ -289,7 +337,7 @@
                 <h3 class="cs-section-title" data-key="sec_flujo">Flujo de usuario</h3>
 
                 <div class="cs-strategy-text" data-key="flujo_intro">
-                    <p>Al ser un sitio pensado para acceder desde códigos QR en la vía pública, se proyectó un sistema sin scroll, desde el enfoque mobile-first. Esta organización prioriza una navegación sencilla y orientada a la acción.</p>
+                    <p>Al tratarse de una experiencia pensada para ser escaneada mediante códigos QR en la vía pública, la arquitectura se diseñó bajo un esquema sin scroll. Esto elimina la fatiga de navegación y orienta al usuario directamente a la acción.</p>
                 </div>
 
                 <div class="cs-flow-diagram">
@@ -300,16 +348,13 @@
                             <div class="cs-flow-arrow"></div>
                             <div class="cs-flow-text" data-key="flujo_texto_mas_info">
                                 <p>A través de textos breves, se explica cómo consumir en ferias aporta a la economía solidaria, beneficiando tanto a la sociedad como al bolsillo.</p>
-                                <p>Esta sección busca construir sentido alrededor de la decisión de comprar en la feria.</p>
                             </div>
                         </div>
                         <div class="cs-flow-branch">
                             <span class="orange-tag cs-flow-tag" data-key="flujo_mapa">Mapa geolocalizado</span>
                             <div class="cs-flow-arrow"></div>
                             <div class="cs-flow-text" data-key="flujo_texto_mapa">
-                                <p>El usuario puede filtrar por día y por cercanía, acceder a instrucciones de uso y visualizar las ferias dentro de un barrio.</p>
-                                <p>Al seleccionar una feria, se despliega su información específica, incluyendo ubicación, horario y tipos de puestos.</p>
-                                <p>Al hacer clic en un tipo de puesto, el sitio muestra datos del vendedor o categoría e información complementaria según corresponda.</p>
+                                <p>Módulo principal con filtros combinados por día, cercanía y barrio. Al seleccionar una feria, se despliega su información específica, incluyendo ubicación precisa, horarios, categorías de puestos e información de los vendedores.</p>
                             </div>
                         </div>
                     </div>
@@ -341,23 +386,23 @@
         <div class="grid-layout cs-section-grid">
 
             <div class="cs-sistema-left">
-                <h3 class="cs-section-title" data-key="sec_sistema">Sistema Visual y Lenguaje de Diseño</h3>
+                <h3 class="cs-section-title" data-key="sec_sistema">Sistema y lenguaje visual</h3>
 
                 <div class="cs-strategy-text">
                 <div class="cs-sistema-intro" data-key="sistema_intro">
-                    <p>Se proyectó un sistema visual claro y cautivante, diseñado con una estructura flexible que permite una aplicación coherente tanto en interfaces digitales como en dispositivos territoriales de diversa complejidad. El enfoque técnico consistió en equilibrar la identidad Institucional del Municipio B con recursos gráficos contemporáneos que responden a los patrones de consumo visual de las audiencias jóvenes.</p>
+                    <p>El lenguaje gráfico equilibra la institucionalidad del Municipio B con una estética contemporánea adaptada para captar la atención de audiencias jóvenes en entornos digitales saturados.</p>
                 </div>
 
-                <span class="orange-tag" data-key="cat_impacto_visual">Impacto Visual</span>
+                <span class="orange-tag" data-key="cat_impacto_visual">Generación de tramas</span>
                 <div class="cs-sistema-text" data-key="impacto_texto">
-                    <p>A partir de una paleta que es llamativa y colorida, pero también orgánica y terrenal, se generan superposiciones de tramas geométricas. Estos elementos, en movimiento, permiten construir piezas visualmente potentes que captan la atención en entornos digitales saturados.</p>
-                    <p>Además, introducen una lectura visual de movimiento colectivo, reforzando la idea de un espacio barrial dinámico y en constante transformación.</p>
+                    <p>A partir de una paleta que es llamativa y colorida, pero también orgánica y terrenal, se generan superposiciones de tramas geométricas, inspiradas en el apilamiento hexagonal de frutas y verduras.</p>
+                    <p>Remiten al movimiento colectivo, reforzando la idea de un espacio barrial dinámico y en constante transformación.</p>
                 </div>
 
                 <span class="orange-tag" data-key="cat_ilustraciones_sistema">Ilustraciones</span>
                 <div class="cs-sistema-text" data-key="ilustraciones_texto">
-                    <p>Se desarrolló un estilo de ilustraciones que aporta una arista humana al sistema, equilibrando la construcción vectorial con la calidez del trazo manual. Estos recursos permiten representar escenas, gestos y dinámicas propias de la feria, humanizando la interfaz.</p>
-                    <p>Los componentes de interacción (botones) también han sido ilustrados, simulando la apariencia de un sticker, reforzando el carácter táctil y cercano de la propuesta digital.</p>
+                    <p>Se desarrolló un estilo de ilustraciones que aporta una arista humana al sistema, equilibrando la construcción vectorial con la calidez del trazo manual. Estos recursos permiten representar escenas, gestos y dinámicas propias de la feria.</p>
+                    <p>Estas además se integran directamente en la interfaz, operando como botones de acción que imitan la visualidad de un sticker.</p>
                 </div>
                 </div>
             </div>
@@ -389,6 +434,17 @@
 
 
         <!-- =============================================
+             CITA DESTACADA
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+            <div class="cs-pull-quote">
+                <svg class="cs-pull-quote-mark" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--color-orange)"/></svg>
+                <h4 class="cs-pull-quote-text" data-key="sistema_quote">Actualizar la experiencia de la feria no es solo optimizar una compra, es fortalecer la vida barrial.</h4>
+            </div>
+        </div>
+
+
+        <!-- =============================================
              SPLIT HERO — TOTE / STICKERS
              ============================================= -->
         <div class="grid-layout cs-hero-split-tag-row">
@@ -408,7 +464,21 @@
                 <p class="cs-media-caption cs-hero-split-caption cs-hero-split-caption-right" data-key="stickers_subtext">Stickers que nacen de los botones de la web, referencian a cada feria vecinal del municipio B.</p>
             </div>
         </div>
-        
+
+
+        <!-- =============================================
+             PRÓXIMAS ITERACIONES
+             ============================================= -->
+        <div class="grid-layout cs-section-grid">
+            <div class="cs-centered-block">
+                <h3 class="cs-section-title" data-key="sec_iteraciones">Próximas iteraciones</h3>
+                <div class="cs-strategy-text" data-key="iteraciones_texto">
+                    <p>Aunque la propuesta visual se diseñó respondiendo a un público joven y con alta alfabetización digital, un servicio para un comitente estatal exige <strong>accesibilidad universal</strong>, como navegación por teclado y compatibilidad con lectores de pantalla, además de un modo de "alta legibilidad" que desactive las tramas de fondo para usuarios con sensibilidad visual.</p>
+                    <p>El flujo actual resuelve la necesidad puntual de localización, pero no fomenta el retorno frecuente a la plataforma. Incorporando un <strong>calendario de frutas y verduras de estación</strong> con indicadores de precios y soberanía alimentaria, la herramienta evolucionaría de un mapa estático a un asistente de compra consciente.</p>
+                    <p>Implementación de un flujo simple de <strong>puestos y ferias favoritas</strong> que permita personalizar la pantalla de inicio con los días y accesos directos del usuario, sin requerir un registro complejo que genere fricción.</p>
+                </div>
+            </div>
+        </div>
 
     </section>
 
@@ -438,43 +508,6 @@
     </div>
 
     </div>
-    </div>
-
-    <!-- Connect card (Figma node 31:165) — fixed bottom, aligned to the header's
-         language switcher via the same .grid-layout. Collapsed by default;
-         clicking the header expands it upward. -->
-    <div class="connect-card-wrap">
-        <div class="grid-layout">
-            <div class="connect-card" id="connectCard">
-                <button class="connect-card__header" id="connectCardToggle" aria-expanded="false" aria-controls="connectCardBody">
-                    <span data-key="connect_card_title">Contactemos</span>
-                </button>
-                <div class="connect-card__body" id="connectCardBody">
-                    <div class="connect-card__content">
-                        <div class="connect-card__links">
-                            <a href="https://www.behance.net/magdalesoulier2" class="connect-card__link" target="_blank" rel="noopener noreferrer">
-                                <span>BEHANCE</span>
-                                <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
-                            </a>
-                        <a href="https://www.linkedin.com/in/magdalena-soulier/" class="connect-card__link" target="_blank" rel="noopener noreferrer">
-                                <span>LINKED-IN</span>
-                                <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
-                            </a>
-                        </div>
-                        <div class="connect-card__mail">
-                            <span class="connect-card__mail-label">
-                                <span data-key="email_tag">E-mail</span>
-                                <svg class="connect-card__mail-icon" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-white)"/>
-<path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-white)"/>
-</svg>
-                            </span>
-                            <span class="connect-card__mail-address">MAG.SOULIER01@GMAIL.COM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="custom-cursor">

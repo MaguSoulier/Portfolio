@@ -40,15 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Vertical eyebrow labels ("SELECTED PROJECTS", "SOBRE MÍ", the hero's
-        // "2026 - WEB PORTFOLIO" and location/time) — opposite idea from the
-        // drifts above: a small scrubbed offset that undershoots the page's
-        // own scroll, so each label lags behind the rest of the content
-        // instead of scrolling at the normal 1:1 rate. Each label is its own
-        // trigger (not its section) so the lag plays out over just the
+        // Vertical eyebrow labels ("SELECTED PROJECTS", "SOBRE MÍ") — opposite
+        // idea from the drifts above: a small scrubbed offset that undershoots
+        // the page's own scroll, so each label lags behind the rest of the
+        // content instead of scrolling at the normal 1:1 rate. Each label is
+        // its own trigger (not its section) so the lag plays out over just the
         // label's own crossing of the viewport, not the whole (often much
         // taller) section beneath it.
-        document.querySelectorAll('.trabajos-label, .sobre-mi-label, .web-portfolio, .secondary-text-block').forEach((label) => {
+        // .secondary-text-block excluded — it's in the hero, already on
+        // screen at scroll:0, so its ScrollTrigger ('top bottom' → 'bottom
+        // top') starts partway advanced on load instead of at progress 0,
+        // permanently offsetting it out of alignment with .main-text-block
+        // (both are grid-row:1 and meant to share the same top edge).
+        document.querySelectorAll('.trabajos-label, .sobre-mi-label, .web-portfolio').forEach((label) => {
             gsap.to(label, {
                 y: 150,
                 ease: 'none',

@@ -75,8 +75,19 @@
 .site-footer__mail {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-align: left;
     cursor: none !important;
+}
+
+.site-footer__mail:focus-visible {
+    outline: 1px solid var(--color-gray-1);
+    outline-offset: 4px;
 }
 
 .site-footer__mail-label {

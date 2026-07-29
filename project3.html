@@ -32,7 +32,8 @@
         <div class="grid-layout">
             <div class="h-item h-item-1">
                 <a href="index.html" class="flower" id="logo-inicio">
-                    <svg viewBox="0 0 712 681" xmlns="http://www.w3.org/2000/svg">
+                    <span class="sr-only" data-key="logo_home">Inicio</span>
+                    <svg viewBox="0 0 712 681" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <path id="HeaderCentro"
                             d="M355.56,164.2L485.67,215.79L539.56,340.33L485.67,464.87L355.56,516.45L225.44,464.87L171.55,340.33L225.44,215.79L355.56,164.2Z"
                             fill="var(--brand-orange)" />
@@ -61,6 +62,48 @@
         </div>
     </header>
 
+    <!-- Connect card (Figma node 31:165) — fixed bottom, aligned to the header's
+         language switcher via the same .grid-layout. Collapsed by default;
+         clicking the header expands it upward. Placed here (right after the
+         header, before main) so it's an early tab stop — it used to sit after
+         the footer in the DOM, meaning keyboard users had to tab through
+         every project/about/footer link before ever reaching it, arriving
+         only once the footer-visibility observer had already faded it out.
+         position:fixed means this move has no effect on where it renders. -->
+    <div class="connect-card-wrap">
+        <div class="grid-layout">
+            <div class="connect-card" id="connectCard">
+                <button class="connect-card__header" id="connectCardToggle" aria-expanded="false" aria-controls="connectCardBody">
+                    <span data-key="connect_card_title">Contactemos</span>
+                </button>
+                <div class="connect-card__body" id="connectCardBody" inert>
+                    <div class="connect-card__content">
+                        <div class="connect-card__links">
+                            <a href="https://www.behance.net/magdalesoulier2" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                                <span>BEHANCE</span>
+                                <svg class="connect-card__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                            </a>
+                        <a href="https://www.linkedin.com/in/magdalena-soulier/" class="connect-card__link" target="_blank" rel="noopener noreferrer">
+                                <span>LINKED-IN</span>
+                                <svg class="connect-card__link-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
+                            </a>
+                        </div>
+                        <button type="button" class="connect-card__mail" data-aria-key="email_copy" aria-label="Copiar E-mail">
+                            <span class="connect-card__mail-label">
+                                <span data-key="email_tag">E-mail</span>
+                                <svg class="connect-card__mail-icon" aria-hidden="true" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-white)"/>
+<path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-white)"/>
+</svg>
+                            </span>
+                            <span class="connect-card__mail-address">MAG.SOULIER01@GMAIL.COM</span>
+                        </button>
+                        <span class="sr-only" aria-live="polite" id="mailCopyStatus"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="smooth-wrapper">
     <div id="smooth-content">
@@ -87,43 +130,6 @@
     </div>
 
     </div>
-    </div>
-
-    <!-- Connect card (Figma node 31:165) — fixed bottom, aligned to the header's
-         language switcher via the same .grid-layout. Collapsed by default;
-         clicking the header expands it upward. -->
-    <div class="connect-card-wrap">
-        <div class="grid-layout">
-            <div class="connect-card" id="connectCard">
-                <button class="connect-card__header" id="connectCardToggle" aria-expanded="false" aria-controls="connectCardBody">
-                    <span data-key="connect_card_title">Contactemos</span>
-                </button>
-                <div class="connect-card__body" id="connectCardBody">
-                    <div class="connect-card__content">
-                        <div class="connect-card__links">
-                            <a href="https://www.behance.net/magdalesoulier2" class="connect-card__link" target="_blank" rel="noopener noreferrer">
-                                <span>BEHANCE</span>
-                                <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
-                            </a>
-                        <a href="https://www.linkedin.com/in/magdalena-soulier/" class="connect-card__link" target="_blank" rel="noopener noreferrer">
-                                <span>LINKED-IN</span>
-                                <svg class="connect-card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.48 8.48"><polygon points="7.33 0 1.32 0 1.32 1 6.78 1 0 7.78 .71 8.48 7.48 1.71 7.48 7.16 8.48 7.16 8.48 1.15 7.33 0"/></svg>
-                            </a>
-                        </div>
-                        <div class="connect-card__mail">
-                            <span class="connect-card__mail-label">
-                                <span data-key="email_tag">E-mail</span>
-                                <svg class="connect-card__mail-icon" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1.82758 2.65518H6.24138L7.06897 3.48277L7.09631 8.5019L6.24138 9.27588H1.82758L0.999996 8.44829V3.48277L1.82758 2.65518ZM5.96552 3.75863H2.10345V8.21089H5.96552V3.75863Z" fill="var(--color-white)"/>
-<path d="M7.94892 0.72415H2.93103V1.84293L7.89655 1.8276V7.34485H9V1.84293L7.94892 0.72415Z" fill="var(--color-white)"/>
-</svg>
-                            </span>
-                            <span class="connect-card__mail-address">MAG.SOULIER01@GMAIL.COM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="custom-cursor">

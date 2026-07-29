@@ -3,6 +3,7 @@
 // ==========================================
 const translations = {
   es: {
+    logo_home: "Inicio",
     tagline: "Soy una diseñadora visual especializada en",
     connect: "Conenctar",
     connect_card_title: "Conectar",
@@ -28,7 +29,7 @@ const translations = {
     diseno_videojuegos: "Diseño de videojuegos",
     diseno_editorial: "Diseño editorial",
     fotografia: "Fotografía",
-    projet1_description: ["Estrategia multicanal desarrollada para el Municipio B con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.", "A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos."],
+    projet1_description: ["Estrategia multicanal desarrollada con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.", "A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos."],
     project2_description: ["Diseñado para Revista Gigantes (LaDiaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).", "El proyecto funciona como puente para derivar tráfico calificado hacia la plataforma digital de la revista, incrementando los niveles de engagement y retención en el público infantil."],
     project3_description: ["Diseño editorial realizado para la tesis de Valentina Ibarlucea.", "El texto investiga los alcances del arte y diseño participativo en colectivos de base territorial, tomando como caso de estudio la Comisión Derecho a la Ciudad en Ciudad Vieja, Montevideo."],
     formacion_titulo: "Formación",
@@ -52,6 +53,7 @@ const translations = {
     footer_credit: "Diseñado y desarrollado por Magdalena Soulier | © 2026"
   },
   en: {
+    logo_home: "Home",
     tagline: "I'm a visual designer specialized in",
     connect: "Connect",
     connect_card_title: "CONTACT",
@@ -77,7 +79,7 @@ const translations = {
     diseno_videojuegos: "GAME DESIGN",
     diseno_editorial: "EDITORIAL DESIGN",
     fotografia: "PHOTOGRAPHY",
-    projet1_description: ["<em>Your neighborhood, your food fair</em>, is a multi-channel strategy developed for Municipio B, aimed at reconnecting Montevideo's youth with local neighborhood markets.", "Through a dynamic visual identity and a geo-located web platform, the project translates the logic of traditional street markets into digital languages, providing real-time information tailored to contemporary consumption habits."],
+    projet1_description: ["Cross-channel strategy developed with the objective of reconnecting the youth of Montevideo with local neighborhood markets.", "Through a dynamic visual identity and a geolocated web platform, the project translates the logic of the local physical market into digital languages, facilitating real-time access to information and adapting to contemporary consumption habits."],
     project2_description: ["Designed for Revista Gigantes (LaDiaria), aimed at turning passive content consumption into a participatory User-Generated Content (UGC) experience.", "The project acts as a bridge, driving qualified traffic to the magazine's digital platform and increasing engagement and retention among young readers."],
     project3_description: ["Editorial design created for Valentina Ibarlucea's thesis.", "The text explores the reach of participatory art and design within grassroots community groups, using the Comisión Derecho a la Ciudad in Ciudad Vieja, Montevideo as its case study."],
     formacion_titulo: "Education",
@@ -139,6 +141,14 @@ function changeLanguage(lang, updateURL = true) {
     if (element.scrambler && !Array.isArray(value)) {
       element.originalText = value; // Use the translation value directly
     }
+  });
+
+  // Same, but for aria-label — visual text on these elements is driven by
+  // hover/focus (e.g. the connect card's mail button), so their accessible
+  // name needs its own translation pass instead of piggybacking on data-key.
+  document.querySelectorAll('[data-aria-key]').forEach(element => {
+    const key = element.getAttribute('data-aria-key');
+    if (translations[lang][key]) element.setAttribute('aria-label', translations[lang][key]);
   });
 
   startBadgeRotation();

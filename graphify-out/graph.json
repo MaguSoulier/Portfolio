@@ -4,44 +4,47 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "tu_barrio_tu_feria_project_iterations",
-        "label": "Tu Barrio, Tu Feria \u2014 same project represented across site iterations",
+        "id": "connect_card_pattern",
+        "label": "Site-wide Connect Card Component Pattern",
         "nodes": [
-          "legacy_layout_page",
-          "project1_page",
-          "index_project1_entry"
+          "index_connect_card",
+          "project1_connect_card",
+          "project2_connect_card",
+          "project3_connect_card"
         ],
-        "relation": "participate_in",
+        "relation": "implement",
         "confidence": "INFERRED",
-        "confidence_score": 0.8,
-        "source_file": "project1.html"
+        "confidence_score": 0.85,
+        "source_file": "index.html"
       },
       {
-        "id": "site_case_study_navigation_chain",
-        "label": "Sequential prev/next footer navigation chain across case study pages",
+        "id": "header_logo_pattern",
+        "label": "Shared Header Flower/Eye Logo & Nav Pattern",
         "nodes": [
+          "index_header_logo",
+          "project1_header_logo",
+          "project2_header_logo",
+          "project3_header_logo"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "index.html"
+      },
+      {
+        "id": "gsap_animation_stack_pattern",
+        "label": "Site-wide GSAP/ScrollTrigger/ScrollSmoother Animation Stack",
+        "nodes": [
+          "index_gsap",
+          "index_page",
           "project1_page",
           "project2_page",
           "project3_page"
         ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "project1.html"
-      },
-      {
-        "id": "project1_publicos_personas_group",
-        "label": "UX audience segmentation: three personas forming the P\u00fablicos framework",
-        "nodes": [
-          "project1_publicos_section",
-          "project1_persona_desvinculado",
-          "project1_persona_practico",
-          "project1_persona_consciente"
-        ],
-        "relation": "form",
-        "confidence": "EXTRACTED",
-        "confidence_score": 1.0,
-        "source_file": "project1.html"
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.75,
+        "source_file": "index.html"
       }
     ]
   },
@@ -52,9 +55,9 @@
       "source_file": "_legacy/projects.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "legacy_projects",
-      "community": 11,
-      "norm_label": "projects.js"
+      "community": 12,
+      "norm_label": "projects.js",
+      "id": "legacy_projects"
     },
     {
       "label": "cursor",
@@ -62,9 +65,9 @@
       "source_file": "_legacy/projects.js",
       "source_location": "L5",
       "_origin": "ast",
-      "id": "legacy_projects_cursor",
-      "community": 11,
-      "norm_label": "cursor"
+      "community": 12,
+      "norm_label": "cursor",
+      "id": "legacy_projects_cursor"
     },
     {
       "label": "accordionHeaders",
@@ -72,9 +75,9 @@
       "source_file": "_legacy/projects.js",
       "source_location": "L29",
       "_origin": "ast",
-      "id": "legacy_projects_accordionheaders",
-      "community": 11,
-      "norm_label": "accordionheaders"
+      "community": 12,
+      "norm_label": "accordionheaders",
+      "id": "legacy_projects_accordionheaders"
     },
     {
       "label": "clock.js",
@@ -82,9 +85,9 @@
       "source_file": "js/clock.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_clock",
-      "community": 15,
-      "norm_label": "clock.js"
+      "community": 13,
+      "norm_label": "clock.js",
+      "id": "js_clock"
     },
     {
       "label": "updateMontevideoTime()",
@@ -92,269 +95,9 @@
       "source_file": "js/clock.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_clock_updatemontevideotime",
-      "community": 15,
-      "norm_label": "updatemontevideotime()"
-    },
-    {
-      "label": "connect-card.js",
-      "file_type": "code",
-      "source_file": "js/connect-card.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_connect_card",
-      "community": 29,
-      "norm_label": "connect-card.js"
-    },
-    {
-      "label": "cursor-and-init.js",
-      "file_type": "code",
-      "source_file": "js/cursor-and-init.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_cursor_and_init",
-      "community": 30,
-      "norm_label": "cursor-and-init.js"
-    },
-    {
-      "label": "i18n.js",
-      "file_type": "code",
-      "source_file": "js/i18n.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_i18n",
-      "community": 4,
-      "norm_label": "i18n.js"
-    },
-    {
-      "label": "translations",
-      "file_type": "code",
-      "source_file": "js/i18n.js",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "js_i18n_translations",
-      "community": 4,
-      "norm_label": "translations"
-    },
-    {
-      "label": "badgeWords",
-      "file_type": "code",
-      "source_file": "js/i18n.js",
-      "source_location": "L67",
-      "_origin": "ast",
-      "id": "js_i18n_badgewords",
-      "community": 4,
-      "norm_label": "badgewords"
-    },
-    {
-      "label": "changeLanguage()",
-      "file_type": "code",
-      "source_file": "js/i18n.js",
-      "source_location": "L79",
-      "_origin": "ast",
-      "id": "js_i18n_changelanguage",
-      "community": 4,
-      "norm_label": "changelanguage()"
-    },
-    {
-      "label": "startBadgeRotation()",
-      "file_type": "code",
-      "source_file": "js/i18n.js",
-      "source_location": "L117",
-      "_origin": "ast",
-      "id": "js_i18n_startbadgerotation",
-      "community": 4,
-      "norm_label": "startbadgerotation()"
-    },
-    {
-      "label": "updateActiveButton()",
-      "file_type": "code",
-      "source_file": "js/i18n.js",
-      "source_location": "L129",
-      "_origin": "ast",
-      "id": "js_i18n_updateactivebutton",
-      "community": 4,
-      "norm_label": "updateactivebutton()"
-    },
-    {
-      "label": "loader.js",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_loader",
-      "community": 1,
-      "norm_label": "loader.js"
-    },
-    {
-      "label": "percentEl",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "js_loader_percentel",
-      "community": 1,
-      "norm_label": "percentel"
-    },
-    {
-      "label": "iris",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "js_loader_iris",
-      "community": 1,
-      "norm_label": "iris"
-    },
-    {
-      "label": "corona",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "js_loader_corona",
-      "community": 1,
-      "norm_label": "corona"
-    },
-    {
-      "label": "centro",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "js_loader_centro",
-      "community": 1,
-      "norm_label": "centro"
-    },
-    {
-      "label": "ojo",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "js_loader_ojo",
-      "community": 1,
-      "norm_label": "ojo"
-    },
-    {
-      "label": "parpado",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "js_loader_parpado",
-      "community": 1,
-      "norm_label": "parpado"
-    },
-    {
-      "label": "overlay",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L12",
-      "_origin": "ast",
-      "id": "js_loader_overlay",
-      "community": 1,
-      "norm_label": "overlay"
-    },
-    {
-      "label": "iniciarCarga()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "js_loader_iniciarcarga",
-      "community": 1,
-      "norm_label": "iniciarcarga()"
-    },
-    {
-      "label": "moverIris()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "js_loader_moveriris",
-      "community": 1,
-      "norm_label": "moveriris()"
-    },
-    {
-      "label": "parpadearOjo()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "js_loader_parpadearojo",
-      "community": 1,
-      "norm_label": "parpadearojo()"
-    },
-    {
-      "label": "finalizarCarga()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L52",
-      "_origin": "ast",
-      "id": "js_loader_finalizarcarga",
-      "community": 1,
-      "norm_label": "finalizarcarga()"
-    },
-    {
-      "label": "SlowTextScramble",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L84",
-      "_origin": "ast",
-      "id": "js_loader_slowtextscramble",
-      "community": 6,
-      "norm_label": "slowtextscramble"
-    },
-    {
-      "label": ".constructor()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L85",
-      "_origin": "ast",
-      "id": "js_loader_slowtextscramble_constructor",
-      "community": 6,
-      "norm_label": ".constructor()"
-    },
-    {
-      "label": ".setText()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L90",
-      "_origin": "ast",
-      "id": "js_loader_slowtextscramble_settext",
-      "community": 6,
-      "norm_label": ".settext()"
-    },
-    {
-      "label": ".completeImmediately()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L129",
-      "_origin": "ast",
-      "id": "js_loader_slowtextscramble_completeimmediately",
-      "community": 6,
-      "norm_label": ".completeimmediately()"
-    },
-    {
-      "label": ".update()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L136",
-      "_origin": "ast",
-      "id": "js_loader_slowtextscramble_update",
-      "community": 6,
-      "norm_label": ".update()"
-    },
-    {
-      "label": "iniciarAnimacionesEntrada()",
-      "file_type": "code",
-      "source_file": "js/loader.js",
-      "source_location": "L177",
-      "_origin": "ast",
-      "id": "js_loader_iniciaranimacionesentrada",
-      "community": 1,
-      "norm_label": "iniciaranimacionesentrada()"
+      "community": 13,
+      "norm_label": "updatemontevideotime()",
+      "id": "js_clock_updatemontevideotime"
     },
     {
       "label": "logo-interaction.js",
@@ -362,9 +105,9 @@
       "source_file": "js/logo-interaction.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_logo_interaction",
-      "community": 7,
-      "norm_label": "logo-interaction.js"
+      "community": 10,
+      "norm_label": "logo-interaction.js",
+      "id": "js_logo_interaction"
     },
     {
       "label": "logoInicio",
@@ -372,9 +115,9 @@
       "source_file": "js/logo-interaction.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_logo_interaction_logoinicio",
-      "community": 7,
-      "norm_label": "logoinicio"
+      "community": 10,
+      "norm_label": "logoinicio",
+      "id": "js_logo_interaction_logoinicio"
     },
     {
       "label": "headerCorona",
@@ -382,9 +125,9 @@
       "source_file": "js/logo-interaction.js",
       "source_location": "L2",
       "_origin": "ast",
-      "id": "js_logo_interaction_headercorona",
-      "community": 7,
-      "norm_label": "headercorona"
+      "community": 10,
+      "norm_label": "headercorona",
+      "id": "js_logo_interaction_headercorona"
     },
     {
       "label": "headerOjo",
@@ -392,9 +135,9 @@
       "source_file": "js/logo-interaction.js",
       "source_location": "L3",
       "_origin": "ast",
-      "id": "js_logo_interaction_headerojo",
-      "community": 7,
-      "norm_label": "headerojo"
+      "community": 10,
+      "norm_label": "headerojo",
+      "id": "js_logo_interaction_headerojo"
     },
     {
       "label": "nav-menu.js",
@@ -402,9 +145,9 @@
       "source_file": "js/nav-menu.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_nav_menu",
-      "community": 31,
-      "norm_label": "nav-menu.js"
+      "community": 24,
+      "norm_label": "nav-menu.js",
+      "id": "js_nav_menu"
     },
     {
       "label": "nav-scroll-spy.js",
@@ -412,359 +155,9 @@
       "source_file": "js/nav-scroll-spy.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_nav_scroll_spy",
-      "community": 32,
-      "norm_label": "nav-scroll-spy.js"
-    },
-    {
-      "label": "index.js",
-      "file_type": "code",
-      "source_file": "js/pages/index.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_pages_index",
-      "community": 33,
-      "norm_label": "index.js"
-    },
-    {
-      "label": "project1.js",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_pages_project1",
-      "community": 0,
-      "norm_label": "project1.js"
-    },
-    {
-      "label": "T",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "js_pages_project1_t",
-      "community": 0,
-      "norm_label": "t"
-    },
-    {
-      "label": "applyLanguage()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L107",
-      "_origin": "ast",
-      "id": "js_pages_project1_applylanguage",
-      "community": 0,
-      "norm_label": "applylanguage()"
-    },
-    {
-      "label": "changeLanguage()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L120",
-      "_origin": "ast",
-      "id": "js_pages_project1_changelanguage",
-      "community": 0,
-      "norm_label": "changelanguage()"
-    },
-    {
-      "label": "cursor",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L134",
-      "_origin": "ast",
-      "id": "js_pages_project1_cursor",
-      "community": 0,
-      "norm_label": "cursor"
-    },
-    {
-      "label": "updateActive()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L193",
-      "_origin": "ast",
-      "id": "js_pages_project1_updateactive",
-      "community": 0,
-      "norm_label": "updateactive()"
-    },
-    {
-      "label": "jump()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L198",
-      "_origin": "ast",
-      "id": "js_pages_project1_jump",
-      "community": 0,
-      "norm_label": "jump()"
-    },
-    {
-      "label": "slide()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L208",
-      "_origin": "ast",
-      "id": "js_pages_project1_slide",
-      "community": 0,
-      "norm_label": "slide()"
-    },
-    {
-      "label": "next()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L224",
-      "_origin": "ast",
-      "id": "js_pages_project1_next",
-      "community": 0,
-      "norm_label": "next()"
-    },
-    {
-      "label": "prev()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L225",
-      "_origin": "ast",
-      "id": "js_pages_project1_prev",
-      "community": 0,
-      "norm_label": "prev()"
-    },
-    {
-      "label": "startAuto()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L227",
-      "_origin": "ast",
-      "id": "js_pages_project1_startauto",
-      "community": 0,
-      "norm_label": "startauto()"
-    },
-    {
-      "label": "resetAuto()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L228",
-      "_origin": "ast",
-      "id": "js_pages_project1_resetauto",
-      "community": 0,
-      "norm_label": "resetauto()"
-    },
-    {
-      "label": "TextScramble",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L243",
-      "_origin": "ast",
-      "id": "js_pages_project1_textscramble",
-      "community": 5,
-      "norm_label": "textscramble"
-    },
-    {
-      "label": ".constructor()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L244",
-      "_origin": "ast",
-      "id": "js_pages_project1_textscramble_constructor",
-      "community": 5,
-      "norm_label": ".constructor()"
-    },
-    {
-      "label": ".setText()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L251",
-      "_origin": "ast",
-      "id": "js_pages_project1_textscramble_settext",
-      "community": 5,
-      "norm_label": ".settext()"
-    },
-    {
-      "label": ".completeImmediately()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L274",
-      "_origin": "ast",
-      "id": "js_pages_project1_textscramble_completeimmediately",
-      "community": 5,
-      "norm_label": ".completeimmediately()"
-    },
-    {
-      "label": ".update()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L280",
-      "_origin": "ast",
-      "id": "js_pages_project1_textscramble_update",
-      "community": 5,
-      "norm_label": ".update()"
-    },
-    {
-      "label": ".randomChar()",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L301",
-      "_origin": "ast",
-      "id": "js_pages_project1_textscramble_randomchar",
-      "community": 5,
-      "norm_label": ".randomchar()"
-    },
-    {
-      "label": "inicioLink",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L305",
-      "_origin": "ast",
-      "id": "js_pages_project1_iniciolink",
-      "community": 0,
-      "norm_label": "iniciolink"
-    },
-    {
-      "label": "inicioSpan",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L306",
-      "_origin": "ast",
-      "id": "js_pages_project1_iniciospan",
-      "community": 0,
-      "norm_label": "iniciospan"
-    },
-    {
-      "label": "nextLink",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L320",
-      "_origin": "ast",
-      "id": "js_pages_project1_nextlink",
-      "community": 0,
-      "norm_label": "nextlink"
-    },
-    {
-      "label": "nextSpan",
-      "file_type": "code",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L321",
-      "_origin": "ast",
-      "id": "js_pages_project1_nextspan",
-      "community": 0,
-      "norm_label": "nextspan"
-    },
-    {
-      "label": "project2.js",
-      "file_type": "code",
-      "source_file": "js/pages/project2.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_pages_project2",
-      "community": 16,
-      "norm_label": "project2.js"
-    },
-    {
-      "label": "cursor",
-      "file_type": "code",
-      "source_file": "js/pages/project2.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_pages_project2_cursor",
-      "community": 16,
-      "norm_label": "cursor"
-    },
-    {
-      "label": "parallax.js",
-      "file_type": "code",
-      "source_file": "js/parallax.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_parallax",
-      "community": 34,
-      "norm_label": "parallax.js"
-    },
-    {
-      "label": "smooth-scroll.js",
-      "file_type": "code",
-      "source_file": "js/smooth-scroll.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_smooth_scroll",
-      "community": 35,
-      "norm_label": "smooth-scroll.js"
-    },
-    {
-      "label": "text-scramble.js",
-      "file_type": "code",
-      "source_file": "js/text-scramble.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_text_scramble",
-      "community": 3,
-      "norm_label": "text-scramble.js"
-    },
-    {
-      "label": "TextScramble",
-      "file_type": "code",
-      "source_file": "js/text-scramble.js",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "js_text_scramble_textscramble",
-      "community": 3,
-      "norm_label": "textscramble"
-    },
-    {
-      "label": ".constructor()",
-      "file_type": "code",
-      "source_file": "js/text-scramble.js",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "js_text_scramble_textscramble_constructor",
-      "community": 3,
-      "norm_label": ".constructor()"
-    },
-    {
-      "label": ".setText()",
-      "file_type": "code",
-      "source_file": "js/text-scramble.js",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "js_text_scramble_textscramble_settext",
-      "community": 3,
-      "norm_label": ".settext()"
-    },
-    {
-      "label": ".completeImmediately()",
-      "file_type": "code",
-      "source_file": "js/text-scramble.js",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "js_text_scramble_textscramble_completeimmediately",
-      "community": 3,
-      "norm_label": ".completeimmediately()"
-    },
-    {
-      "label": ".update()",
-      "file_type": "code",
-      "source_file": "js/text-scramble.js",
-      "source_location": "L58",
-      "_origin": "ast",
-      "id": "js_text_scramble_textscramble_update",
-      "community": 3,
-      "norm_label": ".update()"
-    },
-    {
-      "label": ".randomChar()",
-      "file_type": "code",
-      "source_file": "js/text-scramble.js",
-      "source_location": "L97",
-      "_origin": "ast",
-      "id": "js_text_scramble_textscramble_randomchar",
-      "community": 3,
-      "norm_label": ".randomchar()"
-    },
-    {
-      "label": "work-section.js",
-      "file_type": "code",
-      "source_file": "js/work-section.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "js_work_section",
-      "community": 36,
-      "norm_label": "work-section.js"
+      "community": 25,
+      "norm_label": "nav-scroll-spy.js",
+      "id": "js_nav_scroll_spy"
     },
     {
       "label": "Rule: Invoke frontend-design skill before writing frontend code",
@@ -775,9 +168,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_frontend_design_skill_rule",
-      "community": 9,
-      "norm_label": "rule: invoke frontend-design skill before writing frontend code"
+      "community": 16,
+      "norm_label": "rule: invoke frontend-design skill before writing frontend code",
+      "id": "claude_frontend_design_skill_rule"
     },
     {
       "label": "Rule: Match reference images exactly, do not improve design",
@@ -788,9 +181,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_reference_image_matching_rule",
-      "community": 22,
-      "norm_label": "rule: match reference images exactly, do not improve design"
+      "community": 19,
+      "norm_label": "rule: match reference images exactly, do not improve design",
+      "id": "claude_reference_image_matching_rule"
     },
     {
       "label": "Rule: Always serve on localhost via serve.mjs before screenshots",
@@ -801,9 +194,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_local_server_rule",
-      "community": 21,
-      "norm_label": "rule: always serve on localhost via serve.mjs before screenshots"
+      "community": 18,
+      "norm_label": "rule: always serve on localhost via serve.mjs before screenshots",
+      "id": "claude_local_server_rule"
     },
     {
       "label": "Rule: Puppeteer screenshot comparison workflow (screenshot.mjs, 2+ rounds)",
@@ -814,9 +207,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_screenshot_workflow_rule",
-      "community": 23,
-      "norm_label": "rule: puppeteer screenshot comparison workflow (screenshot.mjs, 2+ rounds)"
+      "community": 20,
+      "norm_label": "rule: puppeteer screenshot comparison workflow (screenshot.mjs, 2+ rounds)",
+      "id": "claude_screenshot_workflow_rule"
     },
     {
       "label": "Rule: Output defaults \u2014 single index.html, Tailwind CDN, placeholder images, mobile-first",
@@ -827,9 +220,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_output_defaults_rule",
-      "community": 13,
-      "norm_label": "rule: output defaults \u2014 single index.html, tailwind cdn, placeholder images, mobile-first"
+      "community": 0,
+      "norm_label": "rule: output defaults \u2014 single index.html, tailwind cdn, placeholder images, mobile-first",
+      "id": "claude_output_defaults_rule"
     },
     {
       "label": "Rule: Check brand_assets/ folder before designing, use real assets over placeholders",
@@ -840,9 +233,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_brand_assets_rule",
-      "community": 19,
-      "norm_label": "rule: check brand_assets/ folder before designing, use real assets over placeholders"
+      "community": 15,
+      "norm_label": "rule: check brand_assets/ folder before designing, use real assets over placeholders",
+      "id": "claude_brand_assets_rule"
     },
     {
       "label": "Anti-Generic Guardrails (custom colors, layered shadows, font pairing, gradients, transform/opacity-only animation, interactive states, depth layering)",
@@ -853,9 +246,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_anti_generic_guardrails",
-      "community": 12,
-      "norm_label": "anti-generic guardrails (custom colors, layered shadows, font pairing, gradients, transform/opacity-only animation, interactive states, depth layering)"
+      "community": 0,
+      "norm_label": "anti-generic guardrails (custom colors, layered shadows, font pairing, gradients, transform/opacity-only animation, interactive states, depth layering)",
+      "id": "claude_anti_generic_guardrails"
     },
     {
       "label": "Hard Rules: no unrequested content, no transition-all, no default Tailwind blue/indigo",
@@ -866,9 +259,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_hard_rules",
-      "community": 20,
-      "norm_label": "hard rules: no unrequested content, no transition-all, no default tailwind blue/indigo"
+      "community": 17,
+      "norm_label": "hard rules: no unrequested content, no transition-all, no default tailwind blue/indigo",
+      "id": "claude_hard_rules"
     },
     {
       "label": "_legacy/layout.html \u2014 early two-column prototype for Tu Barrio, Tu Feria",
@@ -879,9 +272,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "legacy_layout_page",
-      "community": 2,
-      "norm_label": "_legacy/layout.html \u2014 early two-column prototype for tu barrio, tu feria"
+      "community": 0,
+      "norm_label": "_legacy/layout.html \u2014 early two-column prototype for tu barrio, tu feria",
+      "id": "legacy_layout_page"
     },
     {
       "label": "Legacy accordion component (S\u00cdNTESIS, DESCUBRIMIENTOS, EL DESAF\u00cdO, SISTEMA DE DISE\u00d1O, EXPERIENCIA DE USUARIO)",
@@ -892,9 +285,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "legacy_layout_accordion",
-      "community": 10,
-      "norm_label": "legacy accordion component (sintesis, descubrimientos, el desafio, sistema de diseno, experiencia de usuario)"
+      "community": 30,
+      "norm_label": "legacy accordion component (sintesis, descubrimientos, el desafio, sistema de diseno, experiencia de usuario)",
+      "id": "legacy_layout_accordion"
     },
     {
       "label": "Legacy scrollable image gallery grid",
@@ -905,9 +298,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "legacy_layout_gallery",
-      "community": 17,
-      "norm_label": "legacy scrollable image gallery grid"
+      "community": 31,
+      "norm_label": "legacy scrollable image gallery grid",
+      "id": "legacy_layout_gallery"
     },
     {
       "label": "'TU BARRIO, TU FERIA' project title/brand concept",
@@ -918,13 +311,993 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "legacy_layout_tu_barrio_tu_feria_title",
-      "community": 18,
-      "norm_label": "'tu barrio, tu feria' project title/brand concept"
+      "community": 32,
+      "norm_label": "'tu barrio, tu feria' project title/brand concept",
+      "id": "legacy_layout_tu_barrio_tu_feria_title"
     },
     {
-      "label": "index.html \u2014 Magdalena Soulier portfolio landing page",
+      "label": "connect-card.js",
       "file_type": "code",
+      "source_file": "js/connect-card.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_connect_card",
+      "community": 21,
+      "norm_label": "connect-card.js"
+    },
+    {
+      "label": "cursor-and-init.js",
+      "file_type": "code",
+      "source_file": "js/cursor-and-init.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_cursor_and_init",
+      "community": 22,
+      "norm_label": "cursor-and-init.js"
+    },
+    {
+      "label": "footer.js",
+      "file_type": "code",
+      "source_file": "js/footer.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_footer",
+      "community": 23,
+      "norm_label": "footer.js"
+    },
+    {
+      "label": "i18n.js",
+      "file_type": "code",
+      "source_file": "js/i18n.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_i18n",
+      "community": 8,
+      "norm_label": "i18n.js"
+    },
+    {
+      "label": "translations",
+      "file_type": "code",
+      "source_file": "js/i18n.js",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "js_i18n_translations",
+      "community": 8,
+      "norm_label": "translations"
+    },
+    {
+      "label": "badgeWords",
+      "file_type": "code",
+      "source_file": "js/i18n.js",
+      "source_location": "L105",
+      "_origin": "ast",
+      "id": "js_i18n_badgewords",
+      "community": 8,
+      "norm_label": "badgewords"
+    },
+    {
+      "label": "changeLanguage()",
+      "file_type": "code",
+      "source_file": "js/i18n.js",
+      "source_location": "L117",
+      "_origin": "ast",
+      "id": "js_i18n_changelanguage",
+      "community": 8,
+      "norm_label": "changelanguage()"
+    },
+    {
+      "label": "startBadgeRotation()",
+      "file_type": "code",
+      "source_file": "js/i18n.js",
+      "source_location": "L150",
+      "_origin": "ast",
+      "id": "js_i18n_startbadgerotation",
+      "community": 8,
+      "norm_label": "startbadgerotation()"
+    },
+    {
+      "label": "updateActiveButton()",
+      "file_type": "code",
+      "source_file": "js/i18n.js",
+      "source_location": "L162",
+      "_origin": "ast",
+      "id": "js_i18n_updateactivebutton",
+      "community": 8,
+      "norm_label": "updateactivebutton()"
+    },
+    {
+      "label": "loader.js",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_loader",
+      "community": 4,
+      "norm_label": "loader.js"
+    },
+    {
+      "label": "percentEl",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "js_loader_percentel",
+      "community": 4,
+      "norm_label": "percentel"
+    },
+    {
+      "label": "iris",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "js_loader_iris",
+      "community": 4,
+      "norm_label": "iris"
+    },
+    {
+      "label": "corona",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "js_loader_corona",
+      "community": 4,
+      "norm_label": "corona"
+    },
+    {
+      "label": "centro",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "js_loader_centro",
+      "community": 4,
+      "norm_label": "centro"
+    },
+    {
+      "label": "ojo",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "js_loader_ojo",
+      "community": 4,
+      "norm_label": "ojo"
+    },
+    {
+      "label": "parpado",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "js_loader_parpado",
+      "community": 4,
+      "norm_label": "parpado"
+    },
+    {
+      "label": "overlay",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "js_loader_overlay",
+      "community": 4,
+      "norm_label": "overlay"
+    },
+    {
+      "label": "iniciarCarga()",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "js_loader_iniciarcarga",
+      "community": 4,
+      "norm_label": "iniciarcarga()"
+    },
+    {
+      "label": "moverIris()",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L36",
+      "_origin": "ast",
+      "id": "js_loader_moveriris",
+      "community": 4,
+      "norm_label": "moveriris()"
+    },
+    {
+      "label": "parpadearOjo()",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L44",
+      "_origin": "ast",
+      "id": "js_loader_parpadearojo",
+      "community": 4,
+      "norm_label": "parpadearojo()"
+    },
+    {
+      "label": "finalizarCarga()",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "js_loader_finalizarcarga",
+      "community": 4,
+      "norm_label": "finalizarcarga()"
+    },
+    {
+      "label": "iniciarAnimacionesEntrada()",
+      "file_type": "code",
+      "source_file": "js/loader.js",
+      "source_location": "L87",
+      "_origin": "ast",
+      "id": "js_loader_iniciaranimacionesentrada",
+      "community": 4,
+      "norm_label": "iniciaranimacionesentrada()"
+    },
+    {
+      "label": "coming-soon.js",
+      "file_type": "code",
+      "source_file": "js/pages/coming-soon.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_pages_coming_soon",
+      "community": 14,
+      "norm_label": "coming-soon.js"
+    },
+    {
+      "label": "cursor",
+      "file_type": "code",
+      "source_file": "js/pages/coming-soon.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_pages_coming_soon_cursor",
+      "community": 14,
+      "norm_label": "cursor"
+    },
+    {
+      "label": "index.js",
+      "file_type": "code",
+      "source_file": "js/pages/index.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_pages_index",
+      "community": 26,
+      "norm_label": "index.js"
+    },
+    {
+      "label": "project1.js",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_pages_project1",
+      "community": 2,
+      "norm_label": "project1.js"
+    },
+    {
+      "label": "T",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "js_pages_project1_t",
+      "community": 2,
+      "norm_label": "t"
+    },
+    {
+      "label": "applyLanguage()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L107",
+      "_origin": "ast",
+      "id": "js_pages_project1_applylanguage",
+      "community": 2,
+      "norm_label": "applylanguage()"
+    },
+    {
+      "label": "changeLanguage()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L120",
+      "_origin": "ast",
+      "id": "js_pages_project1_changelanguage",
+      "community": 2,
+      "norm_label": "changelanguage()"
+    },
+    {
+      "label": "cursor",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L134",
+      "_origin": "ast",
+      "id": "js_pages_project1_cursor",
+      "community": 2,
+      "norm_label": "cursor"
+    },
+    {
+      "label": "updateActive()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L212",
+      "_origin": "ast",
+      "id": "js_pages_project1_updateactive",
+      "community": 2,
+      "norm_label": "updateactive()"
+    },
+    {
+      "label": "jump()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L217",
+      "_origin": "ast",
+      "id": "js_pages_project1_jump",
+      "community": 2,
+      "norm_label": "jump()"
+    },
+    {
+      "label": "slide()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L227",
+      "_origin": "ast",
+      "id": "js_pages_project1_slide",
+      "community": 2,
+      "norm_label": "slide()"
+    },
+    {
+      "label": "next()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L243",
+      "_origin": "ast",
+      "id": "js_pages_project1_next",
+      "community": 2,
+      "norm_label": "next()"
+    },
+    {
+      "label": "prev()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L244",
+      "_origin": "ast",
+      "id": "js_pages_project1_prev",
+      "community": 2,
+      "norm_label": "prev()"
+    },
+    {
+      "label": "startAuto()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L246",
+      "_origin": "ast",
+      "id": "js_pages_project1_startauto",
+      "community": 2,
+      "norm_label": "startauto()"
+    },
+    {
+      "label": "resetAuto()",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L247",
+      "_origin": "ast",
+      "id": "js_pages_project1_resetauto",
+      "community": 2,
+      "norm_label": "resetauto()"
+    },
+    {
+      "label": "inicioLink",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L268",
+      "_origin": "ast",
+      "id": "js_pages_project1_iniciolink",
+      "community": 2,
+      "norm_label": "iniciolink"
+    },
+    {
+      "label": "inicioSpan",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L269",
+      "_origin": "ast",
+      "id": "js_pages_project1_iniciospan",
+      "community": 2,
+      "norm_label": "iniciospan"
+    },
+    {
+      "label": "nextLink",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L283",
+      "_origin": "ast",
+      "id": "js_pages_project1_nextlink",
+      "community": 2,
+      "norm_label": "nextlink"
+    },
+    {
+      "label": "nextSpan",
+      "file_type": "code",
+      "source_file": "js/pages/project1.js",
+      "source_location": "L284",
+      "_origin": "ast",
+      "id": "js_pages_project1_nextspan",
+      "community": 2,
+      "norm_label": "nextspan"
+    },
+    {
+      "label": "project2.js",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_pages_project2",
+      "community": 5,
+      "norm_label": "project2.js"
+    },
+    {
+      "label": "T",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "js_pages_project2_t",
+      "community": 5,
+      "norm_label": "t"
+    },
+    {
+      "label": "applyLanguage()",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L62",
+      "_origin": "ast",
+      "id": "js_pages_project2_applylanguage",
+      "community": 5,
+      "norm_label": "applylanguage()"
+    },
+    {
+      "label": "changeLanguage()",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "js_pages_project2_changelanguage",
+      "community": 5,
+      "norm_label": "changelanguage()"
+    },
+    {
+      "label": "cursor",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L97",
+      "_origin": "ast",
+      "id": "js_pages_project2_cursor",
+      "community": 5,
+      "norm_label": "cursor"
+    },
+    {
+      "label": "setPosFromClientX()",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L161",
+      "_origin": "ast",
+      "id": "js_pages_project2_setposfromclientx",
+      "community": 5,
+      "norm_label": "setposfromclientx()"
+    },
+    {
+      "label": "onMove()",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L167",
+      "_origin": "ast",
+      "id": "js_pages_project2_onmove",
+      "community": 5,
+      "norm_label": "onmove()"
+    },
+    {
+      "label": "stopDrag()",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L173",
+      "_origin": "ast",
+      "id": "js_pages_project2_stopdrag",
+      "community": 5,
+      "norm_label": "stopdrag()"
+    },
+    {
+      "label": "inicioLink",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L195",
+      "_origin": "ast",
+      "id": "js_pages_project2_iniciolink",
+      "community": 5,
+      "norm_label": "iniciolink"
+    },
+    {
+      "label": "inicioSpan",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L196",
+      "_origin": "ast",
+      "id": "js_pages_project2_iniciospan",
+      "community": 5,
+      "norm_label": "iniciospan"
+    },
+    {
+      "label": "nextLink",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L210",
+      "_origin": "ast",
+      "id": "js_pages_project2_nextlink",
+      "community": 5,
+      "norm_label": "nextlink"
+    },
+    {
+      "label": "nextSpan",
+      "file_type": "code",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L211",
+      "_origin": "ast",
+      "id": "js_pages_project2_nextspan",
+      "community": 5,
+      "norm_label": "nextspan"
+    },
+    {
+      "label": "parallax.js",
+      "file_type": "code",
+      "source_file": "js/parallax.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_parallax",
+      "community": 27,
+      "norm_label": "parallax.js"
+    },
+    {
+      "label": "smooth-scroll.js",
+      "file_type": "code",
+      "source_file": "js/smooth-scroll.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_smooth_scroll",
+      "community": 28,
+      "norm_label": "smooth-scroll.js"
+    },
+    {
+      "label": "text-scramble.js",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_text_scramble",
+      "community": 6,
+      "norm_label": "text-scramble.js"
+    },
+    {
+      "label": "TextScramble",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "js_text_scramble_textscramble",
+      "community": 6,
+      "norm_label": "textscramble"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "js_text_scramble_textscramble_constructor",
+      "community": 6,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".setText()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "js_text_scramble_textscramble_settext",
+      "community": 6,
+      "norm_label": ".settext()"
+    },
+    {
+      "label": ".completeImmediately()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "js_text_scramble_textscramble_completeimmediately",
+      "community": 6,
+      "norm_label": ".completeimmediately()"
+    },
+    {
+      "label": ".update()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "js_text_scramble_textscramble_update",
+      "community": 6,
+      "norm_label": ".update()"
+    },
+    {
+      "label": ".randomChar()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "js_text_scramble_textscramble_randomchar",
+      "community": 6,
+      "norm_label": ".randomchar()"
+    },
+    {
+      "label": "SlowTextScramble",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L117",
+      "_origin": "ast",
+      "id": "js_text_scramble_slowtextscramble",
+      "community": 6,
+      "norm_label": "slowtextscramble"
+    },
+    {
+      "label": ".constructor()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L118",
+      "_origin": "ast",
+      "id": "js_text_scramble_slowtextscramble_constructor",
+      "community": 6,
+      "norm_label": ".constructor()"
+    },
+    {
+      "label": ".setText()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L123",
+      "_origin": "ast",
+      "id": "js_text_scramble_slowtextscramble_settext",
+      "community": 6,
+      "norm_label": ".settext()"
+    },
+    {
+      "label": ".completeImmediately()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L162",
+      "_origin": "ast",
+      "id": "js_text_scramble_slowtextscramble_completeimmediately",
+      "community": 6,
+      "norm_label": ".completeimmediately()"
+    },
+    {
+      "label": ".update()",
+      "file_type": "code",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L169",
+      "_origin": "ast",
+      "id": "js_text_scramble_slowtextscramble_update",
+      "community": 6,
+      "norm_label": ".update()"
+    },
+    {
+      "label": "work-section.js",
+      "file_type": "code",
+      "source_file": "js/work-section.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "js_work_section",
+      "community": 29,
+      "norm_label": "work-section.js"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "package",
+      "community": 1,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "package_name",
+      "community": 1,
+      "norm_label": "name"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "package_version",
+      "community": 1,
+      "norm_label": "version"
+    },
+    {
+      "label": "description",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "package_description",
+      "community": 1,
+      "norm_label": "description"
+    },
+    {
+      "label": "main",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "package_main",
+      "community": 1,
+      "norm_label": "main"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "package_scripts",
+      "community": 1,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "test",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "package_scripts_test",
+      "community": 1,
+      "norm_label": "test"
+    },
+    {
+      "label": "repository",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "package_repository",
+      "community": 1,
+      "norm_label": "repository"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "package_repository_type",
+      "community": 1,
+      "norm_label": "type"
+    },
+    {
+      "label": "url",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "package_repository_url",
+      "community": 1,
+      "norm_label": "url"
+    },
+    {
+      "label": "keywords",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "package_keywords",
+      "community": 1,
+      "norm_label": "keywords"
+    },
+    {
+      "label": "author",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "package_author",
+      "community": 1,
+      "norm_label": "author"
+    },
+    {
+      "label": "license",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "package_license",
+      "community": 1,
+      "norm_label": "license"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "package_type",
+      "community": 1,
+      "norm_label": "type"
+    },
+    {
+      "label": "bugs",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "package_bugs",
+      "community": 1,
+      "norm_label": "bugs"
+    },
+    {
+      "label": "url",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "package_bugs_url",
+      "community": 1,
+      "norm_label": "url"
+    },
+    {
+      "label": "homepage",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "package_homepage",
+      "community": 1,
+      "norm_label": "homepage"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "package_dependencies",
+      "community": 1,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "puppeteer",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "package_dependencies_puppeteer",
+      "community": 1,
+      "norm_label": "puppeteer"
+    },
+    {
+      "label": "puppeteer",
+      "file_type": "concept",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "puppeteer",
+      "community": 1,
+      "norm_label": "puppeteer"
+    },
+    {
+      "label": "screenshot.mjs",
+      "file_type": "code",
+      "source_file": "screenshot.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "screenshot",
+      "community": 9,
+      "norm_label": "screenshot.mjs"
+    },
+    {
+      "label": "ROOT",
+      "file_type": "code",
+      "source_file": "screenshot.mjs",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "screenshot_root",
+      "community": 9,
+      "norm_label": "root"
+    },
+    {
+      "label": "OUT_DIR",
+      "file_type": "code",
+      "source_file": "screenshot.mjs",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "screenshot_out_dir",
+      "community": 9,
+      "norm_label": "out_dir"
+    },
+    {
+      "label": "nextNumber()",
+      "file_type": "code",
+      "source_file": "screenshot.mjs",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "screenshot_nextnumber",
+      "community": 9,
+      "norm_label": "nextnumber()"
+    },
+    {
+      "label": "n",
+      "file_type": "code",
+      "source_file": "screenshot.mjs",
+      "source_location": "L26",
+      "_origin": "ast",
+      "id": "screenshot_n",
+      "community": 9,
+      "norm_label": "n"
+    },
+    {
+      "label": "outPath",
+      "file_type": "code",
+      "source_file": "screenshot.mjs",
+      "source_location": "L28",
+      "_origin": "ast",
+      "id": "screenshot_outpath",
+      "community": 9,
+      "norm_label": "outpath"
+    },
+    {
+      "label": "serve.mjs",
+      "file_type": "code",
+      "source_file": "serve.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "serve",
+      "community": 11,
+      "norm_label": "serve.mjs"
+    },
+    {
+      "label": "ROOT",
+      "file_type": "code",
+      "source_file": "serve.mjs",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "serve_root",
+      "community": 11,
+      "norm_label": "root"
+    },
+    {
+      "label": "MIME_TYPES",
+      "file_type": "code",
+      "source_file": "serve.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "serve_mime_types",
+      "community": 11,
+      "norm_label": "mime_types"
+    },
+    {
+      "label": "server",
+      "file_type": "code",
+      "source_file": "serve.mjs",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "serve_server",
+      "community": 11,
+      "norm_label": "server"
+    },
+    {
+      "label": "Index \u2014 Magdalena Soulier Portfolio Homepage",
+      "file_type": "document",
       "source_file": "index.html",
       "source_location": null,
       "source_url": null,
@@ -932,63 +1305,11 @@
       "author": null,
       "contributor": null,
       "id": "index_page",
-      "community": 13,
-      "norm_label": "index.html \u2014 magdalena soulier portfolio landing page"
+      "community": 0,
+      "norm_label": "index \u2014 magdalena soulier portfolio homepage"
     },
     {
-      "label": "Animated SVG flower/eye logo (header + loader, brand-orange fill)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_header_logo",
-      "community": 12,
-      "norm_label": "animated svg flower/eye logo (header + loader, brand-orange fill)"
-    },
-    {
-      "label": "Nav menu with WORK/ABOUT ME links and ES/EN language switcher",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_nav_menu",
-      "community": 27,
-      "norm_label": "nav menu with work/about me links and es/en language switcher"
-    },
-    {
-      "label": "Hero section (#inicio) \u2014 name, tagline, rotating badge, photo",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_hero_section",
-      "community": 26,
-      "norm_label": "hero section (#inicio) \u2014 name, tagline, rotating badge, photo"
-    },
-    {
-      "label": "Trabajos (#trabajos) \u2014 selected projects section",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_trabajos_section",
-      "community": 2,
-      "norm_label": "trabajos (#trabajos) \u2014 selected projects section"
-    },
-    {
-      "label": "Project card: TU BARRIO, TU FERIA (id=project1)",
+      "label": "Magdalena Soulier (visual designer)",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
@@ -996,12 +1317,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_project1_entry",
-      "community": 2,
-      "norm_label": "project card: tu barrio, tu feria (id=project1)"
+      "id": "index_magdalena_soulier",
+      "community": 0,
+      "norm_label": "magdalena soulier (visual designer)"
     },
     {
-      "label": "Project card: FABRIKA DE GIGANTES (id=project2)",
+      "label": "Universidad ORT",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
@@ -1009,12 +1330,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_project2_entry",
-      "community": 2,
-      "norm_label": "project card: fabrika de gigantes (id=project2)"
+      "id": "index_universidad_ort",
+      "community": 0,
+      "norm_label": "universidad ort"
     },
     {
-      "label": "Project card: DISE\u00d1AR LOS SUE\u00d1OS CON LOS PIES EN EL BARRIO (id=project3)",
+      "label": "Udelar / Universidad de la Rep\u00fablica",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
@@ -1022,39 +1343,91 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_project3_entry",
-      "community": 2,
-      "norm_label": "project card: disenar los suenos con los pies en el barrio (id=project3)"
+      "id": "index_udelar",
+      "community": 0,
+      "norm_label": "udelar / universidad de la republica"
     },
     {
-      "label": "Sobre m\u00ed (#sobre-mi) section \u2014 placeholder/empty heading",
-      "file_type": "code",
+      "label": "Ceibal \u2014 J\u00f3venes a Programar",
+      "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_sobre_mi_section",
-      "community": 28,
-      "norm_label": "sobre mi (#sobre-mi) section \u2014 placeholder/empty heading"
+      "id": "index_ceibal",
+      "community": 0,
+      "norm_label": "ceibal \u2014 jovenes a programar"
     },
     {
-      "label": "Contact panel component (email + social links)",
-      "file_type": "code",
+      "label": "Taller de Dise\u00f1o 1 (teaching role)",
+      "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_contact_panel",
-      "community": 24,
-      "norm_label": "contact panel component (email + social links)"
+      "id": "index_taller_de_diseno_1",
+      "community": 0,
+      "norm_label": "taller de diseno 1 (teaching role)"
     },
     {
-      "label": "Connect card component (expandable, fixed bottom)",
-      "file_type": "code",
+      "label": "Media Resma (design cooperative)",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_media_resma",
+      "community": 0,
+      "norm_label": "media resma (design cooperative)"
+    },
+    {
+      "label": "Project card: Tu Barrio, Tu Feria",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_project1_card",
+      "community": 0,
+      "norm_label": "project card: tu barrio, tu feria"
+    },
+    {
+      "label": "Project card: Fabrika de Gigantes",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_project2_card",
+      "community": 0,
+      "norm_label": "project card: fabrika de gigantes"
+    },
+    {
+      "label": "Project card: Dise\u00f1ar los Sue\u00f1os con los Pies en el Barrio",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_project3_card",
+      "community": 0,
+      "norm_label": "project card: disenar los suenos con los pies en el barrio"
+    },
+    {
+      "label": "Connect Card widget (index.html)",
+      "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
       "source_url": null,
@@ -1062,11 +1435,11 @@
       "author": null,
       "contributor": null,
       "id": "index_connect_card",
-      "community": 14,
-      "norm_label": "connect card component (expandable, fixed bottom)"
+      "community": 0,
+      "norm_label": "connect card widget (index.html)"
     },
     {
-      "label": "Figma design reference \u2014 node 31:165 (connect card source design)",
+      "label": "Header flower/eye SVG logo (index.html)",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
@@ -1074,90 +1447,51 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_figma_node_31_165",
-      "community": 14,
-      "norm_label": "figma design reference \u2014 node 31:165 (connect card source design)"
+      "id": "index_header_logo",
+      "community": 0,
+      "norm_label": "header flower/eye svg logo (index.html)"
     },
     {
-      "label": "Custom cursor component (dot + project label)",
-      "file_type": "code",
+      "label": "GSAP + ScrollTrigger + ScrollSmoother animation stack",
+      "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_custom_cursor",
-      "community": 25,
-      "norm_label": "custom cursor component (dot + project label)"
+      "id": "index_gsap",
+      "community": 0,
+      "norm_label": "gsap + scrolltrigger + scrollsmoother animation stack"
     },
     {
-      "label": "project1.html \u2014 Tu Barrio, Tu Feria case study page",
-      "file_type": "code",
-      "source_file": "project1.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "project1_page",
-      "community": 2,
-      "norm_label": "project1.html \u2014 tu barrio, tu feria case study page"
-    },
-    {
-      "label": "Case study hero: title, tags (dise\u00f1o web, ilustraci\u00f3n, dise\u00f1o de estrategia, direcci\u00f3n de arte), description",
-      "file_type": "code",
-      "source_file": "project1.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "project1_hero_info",
-      "community": 18,
-      "norm_label": "case study hero: title, tags (diseno web, ilustracion, diseno de estrategia, direccion de arte), description"
-    },
-    {
-      "label": "Tecnolog\u00edas utilizadas section (Figma, Adobe Suite, Procreate, ClaudeCode, p5.js)",
-      "file_type": "code",
-      "source_file": "project1.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "project1_tecnologias_section",
-      "community": 9,
-      "norm_label": "tecnologias utilizadas section (figma, adobe suite, procreate, claudecode, p5.js)"
-    },
-    {
-      "label": "ClaudeCode listed as implementation tool used to build the project",
+      "label": "Valentina Ibarlucea (thesis author)",
       "file_type": "concept",
-      "source_file": "project1.html",
+      "source_file": "index.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_claudecode_tool",
-      "community": 9,
-      "norm_label": "claudecode listed as implementation tool used to build the project"
+      "id": "index_valentina_ibarlucea",
+      "community": 0,
+      "norm_label": "valentina ibarlucea (thesis author)"
     },
     {
-      "label": "Contexto y problem\u00e1tica section",
-      "file_type": "code",
-      "source_file": "project1.html",
+      "label": "Comisi\u00f3n Derecho a la Ciudad (Ciudad Vieja, Montevideo)",
+      "file_type": "concept",
+      "source_file": "index.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_contexto_section",
-      "community": 10,
-      "norm_label": "contexto y problematica section"
+      "id": "index_comision_derecho_a_la_ciudad",
+      "community": 0,
+      "norm_label": "comision derecho a la ciudad (ciudad vieja, montevideo)"
     },
     {
-      "label": "Cited report: C\u00e1mara de Industrias del Uruguay / INEFOP (2020) on feria attendance decline",
+      "label": "Project1 \u2014 Tu Barrio, Tu Feria case study page",
       "file_type": "document",
       "source_file": "project1.html",
       "source_location": null,
@@ -1165,12 +1499,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_inefop_citation",
-      "community": 10,
-      "norm_label": "cited report: camara de industrias del uruguay / inefop (2020) on feria attendance decline"
+      "id": "project1_page",
+      "community": 0,
+      "norm_label": "project1 \u2014 tu barrio, tu feria case study page"
     },
     {
-      "label": "Propuesta estrat\u00e9gica section",
+      "label": "Tu Barrio, Tu Feria (project)",
       "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
@@ -1178,12 +1512,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_propuesta_estrategica",
-      "community": 38,
-      "norm_label": "propuesta estrategica section"
+      "id": "project1_tu_barrio_tu_feria",
+      "community": 3,
+      "norm_label": "tu barrio, tu feria (project)"
     },
     {
-      "label": "P\u00fablicos section \u2014 target audience segmentation (18-34 age group)",
+      "label": "Municipio B (client)",
       "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
@@ -1191,12 +1525,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_publicos_section",
-      "community": 8,
-      "norm_label": "publicos section \u2014 target audience segmentation (18-34 age group)"
+      "id": "project1_municipio_b",
+      "community": 3,
+      "norm_label": "municipio b (client)"
     },
     {
-      "label": "Persona: Desvinculado (disconnected from feria/barrio)",
+      "label": "Iara Rodriguez (team member)",
       "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
@@ -1204,12 +1538,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_persona_desvinculado",
-      "community": 8,
-      "norm_label": "persona: desvinculado (disconnected from feria/barrio)"
+      "id": "project1_iara_rodriguez",
+      "community": 3,
+      "norm_label": "iara rodriguez (team member)"
     },
     {
-      "label": "Persona: Pr\u00e1ctico (values speed/accessibility, mobile-first UI opportunity)",
+      "label": "Emilia Fripp (team member)",
       "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
@@ -1217,12 +1551,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_persona_practico",
-      "community": 8,
-      "norm_label": "persona: practico (values speed/accessibility, mobile-first ui opportunity)"
+      "id": "project1_emilia_fripp",
+      "community": 3,
+      "norm_label": "emilia fripp (team member)"
     },
     {
-      "label": "Persona: Consciente (ethical/conscious consumer, seeks community retention)",
+      "label": "Figma (tool)",
       "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
@@ -1230,12 +1564,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_persona_consciente",
-      "community": 8,
-      "norm_label": "persona: consciente (ethical/conscious consumer, seeks community retention)"
+      "id": "project1_figma",
+      "community": 3,
+      "norm_label": "figma (tool)"
     },
     {
-      "label": "Flujo de usuario diagram \u2014 Pantalla de inicio \u2192 M\u00e1s informaci\u00f3n / Mapa geolocalizado",
+      "label": "Adobe Suite (tool)",
       "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
@@ -1243,12 +1577,12 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_flujo_usuario",
-      "community": 37,
-      "norm_label": "flujo de usuario diagram \u2014 pantalla de inicio \u2192 mas informacion / mapa geolocalizado"
+      "id": "project1_adobe_suite",
+      "community": 3,
+      "norm_label": "adobe suite (tool)"
     },
     {
-      "label": "Sistema Visual y Lenguaje de Dise\u00f1o section (Impacto Visual, Ilustraciones, carousel)",
+      "label": "Procreate (tool)",
       "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
@@ -1256,26 +1590,169 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_sistema_visual_section",
-      "community": 17,
-      "norm_label": "sistema visual y lenguaje de diseno section (impacto visual, ilustraciones, carousel)"
+      "id": "project1_procreate",
+      "community": 3,
+      "norm_label": "procreate (tool)"
     },
     {
-      "label": "Footer 'SIGUIENTE PROYECTO' link component",
-      "file_type": "code",
+      "label": "ClaudeCode (tool)",
+      "file_type": "concept",
       "source_file": "project1.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project1_footer_next_project_link",
-      "community": 2,
-      "norm_label": "footer 'siguiente proyecto' link component"
+      "id": "project1_claudecode",
+      "community": 3,
+      "norm_label": "claudecode (tool)"
     },
     {
-      "label": "project2.html \u2014 'Pr\u00f3ximo Proyecto' coming-soon placeholder (linked as Fabrika de Gigantes)",
-      "file_type": "code",
+      "label": "p5.js (tool)",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_p5_js",
+      "community": 3,
+      "norm_label": "p5.js (tool)"
+    },
+    {
+      "label": "Persona: Desvinculado",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_desvinculado",
+      "community": 3,
+      "norm_label": "persona: desvinculado"
+    },
+    {
+      "label": "Persona: Pr\u00e1ctico",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_practico",
+      "community": 7,
+      "norm_label": "persona: practico"
+    },
+    {
+      "label": "Persona: Consciente",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_consciente",
+      "community": 3,
+      "norm_label": "persona: consciente"
+    },
+    {
+      "label": "Flujo de usuario (mobile-first, no-scroll)",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_flujo_de_usuario",
+      "community": 3,
+      "norm_label": "flujo de usuario (mobile-first, no-scroll)"
+    },
+    {
+      "label": "Sistema Visual y Lenguaje de Dise\u00f1o",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_sistema_visual",
+      "community": 3,
+      "norm_label": "sistema visual y lenguaje de diseno"
+    },
+    {
+      "label": "Rationale: no-scroll mobile-first flow for QR-code access",
+      "file_type": "rationale",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_mobile_first_rationale",
+      "community": 3,
+      "norm_label": "rationale: no-scroll mobile-first flow for qr-code access"
+    },
+    {
+      "label": "Rationale: balancing Municipio B institutional identity with contemporary graphics for youth audiences",
+      "file_type": "rationale",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_sistema_visual_rationale",
+      "community": 3,
+      "norm_label": "rationale: balancing municipio b institutional identity with contemporary graphics for youth audiences"
+    },
+    {
+      "label": "C\u00e1mara de Industrias del Uruguay e INEFOP, informe (2020)",
+      "file_type": "document",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_camara_industrias_uruguay_inefop_2020",
+      "community": 3,
+      "norm_label": "camara de industrias del uruguay e inefop, informe (2020)"
+    },
+    {
+      "label": "Connect Card widget (project1.html)",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_connect_card",
+      "community": 0,
+      "norm_label": "connect card widget (project1.html)"
+    },
+    {
+      "label": "Header flower/eye SVG logo (project1.html)",
+      "file_type": "concept",
+      "source_file": "project1.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project1_header_logo",
+      "community": 0,
+      "norm_label": "header flower/eye svg logo (project1.html)"
+    },
+    {
+      "label": "Project2 \u2014 Fabrika de Gigantes case study page",
+      "file_type": "document",
       "source_file": "project2.html",
       "source_location": null,
       "source_url": null,
@@ -1283,25 +1760,155 @@
       "author": null,
       "contributor": null,
       "id": "project2_page",
-      "community": 2,
-      "norm_label": "project2.html \u2014 'proximo proyecto' coming-soon placeholder (linked as fabrika de gigantes)"
+      "community": 0,
+      "norm_label": "project2 \u2014 fabrika de gigantes case study page"
     },
     {
-      "label": "Footer back link '\u2190 TU BARRIO, TU FERIA' to project1.html",
-      "file_type": "code",
+      "label": "Fabrika de Gigantes (project \u2014 web game)",
+      "file_type": "concept",
       "source_file": "project2.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project2_footer_back_link",
-      "community": 2,
-      "norm_label": "footer back link '\u2190 tu barrio, tu feria' to project1.html"
+      "id": "project2_fabrika_de_gigantes",
+      "community": 7,
+      "norm_label": "fabrika de gigantes (project \u2014 web game)"
     },
     {
-      "label": "project3.html \u2014 'Dise\u00f1ar los Sue\u00f1os...' coming-soon placeholder",
-      "file_type": "code",
+      "label": "Revista Gigantes / LaDiaria (client)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_revista_gigantes",
+      "community": 7,
+      "norm_label": "revista gigantes / ladiaria (client)"
+    },
+    {
+      "label": "Mucho Games (rights holder)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_mucho_games",
+      "community": 7,
+      "norm_label": "mucho games (rights holder)"
+    },
+    {
+      "label": "Figma (tool)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_figma",
+      "community": 7,
+      "norm_label": "figma (tool)"
+    },
+    {
+      "label": "Blender (tool)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_blender",
+      "community": 7,
+      "norm_label": "blender (tool)"
+    },
+    {
+      "label": "Unity (tool)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_unity",
+      "community": 7,
+      "norm_label": "unity (tool)"
+    },
+    {
+      "label": "User-Generated Content (UGC) model",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_ugc",
+      "community": 0,
+      "norm_label": "user-generated content (ugc) model"
+    },
+    {
+      "label": "Limitaciones t\u00e9cnicas (low-end hardware optimization)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_limitaciones_tecnicas",
+      "community": 7,
+      "norm_label": "limitaciones tecnicas (low-end hardware optimization)"
+    },
+    {
+      "label": "Rationale: pixelated texturing + high-contrast cel-shading to cut GPU memory use",
+      "file_type": "rationale",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_cel_shading_rationale",
+      "community": 7,
+      "norm_label": "rationale: pixelated texturing + high-contrast cel-shading to cut gpu memory use"
+    },
+    {
+      "label": "Connect Card widget (project2.html)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_connect_card",
+      "community": 0,
+      "norm_label": "connect card widget (project2.html)"
+    },
+    {
+      "label": "Header flower/eye SVG logo (project2.html)",
+      "file_type": "concept",
+      "source_file": "project2.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project2_header_logo",
+      "community": 0,
+      "norm_label": "header flower/eye svg logo (project2.html)"
+    },
+    {
+      "label": "Project3 \u2014 coming soon placeholder page",
+      "file_type": "document",
       "source_file": "project3.html",
       "source_location": null,
       "source_url": null,
@@ -1309,21 +1916,60 @@
       "author": null,
       "contributor": null,
       "id": "project3_page",
-      "community": 2,
-      "norm_label": "project3.html \u2014 'disenar los suenos...' coming-soon placeholder"
+      "community": 0,
+      "norm_label": "project3 \u2014 coming soon placeholder page"
     },
     {
-      "label": "Footer back link '\u2190 FABRIKA DE GIGANTES' to project2.html",
-      "file_type": "code",
+      "label": "Connect Card widget (project3.html)",
+      "file_type": "concept",
       "source_file": "project3.html",
       "source_location": null,
       "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "project3_footer_back_link",
-      "community": 2,
-      "norm_label": "footer back link '\u2190 fabrika de gigantes' to project2.html"
+      "id": "project3_connect_card",
+      "community": 0,
+      "norm_label": "connect card widget (project3.html)"
+    },
+    {
+      "label": "Header flower/eye SVG logo (project3.html)",
+      "file_type": "concept",
+      "source_file": "project3.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "project3_header_logo",
+      "community": 0,
+      "norm_label": "header flower/eye svg logo (project3.html)"
+    },
+    {
+      "label": "robots.txt (crawl directives)",
+      "file_type": "document",
+      "source_file": "robots.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "robots_robots_txt",
+      "community": 0,
+      "norm_label": "robots.txt (crawl directives)"
+    },
+    {
+      "label": "sitemap.xml reference",
+      "file_type": "concept",
+      "source_file": "robots.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "robots_sitemap",
+      "community": 0,
+      "norm_label": "sitemap.xml reference"
     }
   ],
   "links": [
@@ -1334,9 +1980,9 @@
       "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "legacy_projects",
-      "target": "legacy_projects_accordionheaders",
-      "confidence_score": 1.0
+      "target": "legacy_projects_accordionheaders"
     },
     {
       "relation": "contains",
@@ -1345,9 +1991,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "legacy_projects",
-      "target": "legacy_projects_cursor",
-      "confidence_score": 1.0
+      "target": "legacy_projects_cursor"
     },
     {
       "relation": "indirect_call",
@@ -1357,15 +2003,78 @@
       "weight": 1.0,
       "_origin": "ast",
       "context": "argument",
+      "confidence_score": 0.5,
       "source": "js_clock",
-      "target": "js_clock_updatemontevideotime",
-      "confidence_score": 0.5
+      "target": "js_clock_updatemontevideotime"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/logo-interaction.js",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "js_logo_interaction",
+      "target": "js_logo_interaction_headercorona"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/logo-interaction.js",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "js_logo_interaction",
+      "target": "js_logo_interaction_headerojo"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/logo-interaction.js",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "confidence_score": 1.0,
+      "source": "js_logo_interaction",
+      "target": "js_logo_interaction_logoinicio"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_output_defaults_rule",
+      "target": "index_page"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_anti_generic_guardrails",
+      "target": "index_header_logo"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "_legacy/layout.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "legacy_layout_page",
+      "target": "project1_page"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/i18n.js",
-      "source_location": "L67",
+      "source_location": "L105",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_i18n",
@@ -1376,7 +2085,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/i18n.js",
-      "source_location": "L79",
+      "source_location": "L117",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_i18n",
@@ -1387,7 +2096,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/i18n.js",
-      "source_location": "L117",
+      "source_location": "L150",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_i18n",
@@ -1409,7 +2118,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/i18n.js",
-      "source_location": "L129",
+      "source_location": "L162",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_i18n",
@@ -1421,7 +2130,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/i18n.js",
-      "source_location": "L111",
+      "source_location": "L144",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_i18n_changelanguage",
@@ -1433,7 +2142,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/i18n.js",
-      "source_location": "L114",
+      "source_location": "L147",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_i18n_changelanguage",
@@ -1477,7 +2186,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/loader.js",
-      "source_location": "L177",
+      "source_location": "L87",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_loader",
@@ -1573,17 +2282,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/loader.js",
-      "source_location": "L84",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_loader",
-      "target": "js_loader_slowtextscramble",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -1632,116 +2330,26 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/loader.js",
-      "source_location": "L129",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_loader_slowtextscramble",
-      "target": "js_loader_slowtextscramble_completeimmediately",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/loader.js",
-      "source_location": "L85",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_loader_slowtextscramble",
-      "target": "js_loader_slowtextscramble_constructor",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/loader.js",
-      "source_location": "L90",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_loader_slowtextscramble",
-      "target": "js_loader_slowtextscramble_settext",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/loader.js",
-      "source_location": "L136",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_loader_slowtextscramble",
-      "target": "js_loader_slowtextscramble_update",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "js/loader.js",
-      "source_location": "L204",
+      "source_location": "L114",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_loader_iniciaranimacionesentrada",
-      "target": "js_loader_slowtextscramble_settext",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/loader.js",
-      "source_location": "L98",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_loader_slowtextscramble_settext",
-      "target": "js_loader_slowtextscramble_completeimmediately",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/loader.js",
-      "source_location": "L125",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_loader_slowtextscramble_settext",
-      "target": "js_loader_slowtextscramble_update",
-      "confidence_score": 1.0
+      "target": "js_text_scramble_slowtextscramble_settext"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/logo-interaction.js",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_logo_interaction",
-      "target": "js_logo_interaction_headercorona",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/logo-interaction.js",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_logo_interaction",
-      "target": "js_logo_interaction_headerojo",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/logo-interaction.js",
+      "source_file": "js/pages/coming-soon.js",
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "js_logo_interaction",
-      "target": "js_logo_interaction_logoinicio",
+      "source": "js_pages_coming_soon",
+      "target": "js_pages_coming_soon_cursor",
       "confidence_score": 1.0
     },
     {
@@ -1781,7 +2389,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L305",
+      "source_location": "L268",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1792,7 +2400,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L306",
+      "source_location": "L269",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1803,7 +2411,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L198",
+      "source_location": "L217",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1814,7 +2422,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L224",
+      "source_location": "L243",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1825,7 +2433,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L320",
+      "source_location": "L283",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1836,7 +2444,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L321",
+      "source_location": "L284",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1847,7 +2455,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L225",
+      "source_location": "L244",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1858,7 +2466,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L228",
+      "source_location": "L247",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1869,7 +2477,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L208",
+      "source_location": "L227",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1880,7 +2488,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L227",
+      "source_location": "L246",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1902,18 +2510,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L243",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1",
-      "target": "js_pages_project1_textscramble",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L193",
+      "source_location": "L212",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1",
@@ -1937,7 +2534,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L204",
+      "source_location": "L223",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1_jump",
@@ -1949,7 +2546,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L211",
+      "source_location": "L230",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1_slide",
@@ -1961,7 +2558,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L224",
+      "source_location": "L243",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1_next",
@@ -1973,7 +2570,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L225",
+      "source_location": "L244",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1_prev",
@@ -1985,7 +2582,7 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L227",
+      "source_location": "L246",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1_startauto",
@@ -1997,7 +2594,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project1.js",
-      "source_location": "L228",
+      "source_location": "L247",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project1_resetauto",
@@ -2005,105 +2602,159 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "method",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L274",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "js_pages_project1_textscramble",
-      "target": "js_pages_project1_textscramble_completeimmediately",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L244",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1_textscramble",
-      "target": "js_pages_project1_textscramble_constructor",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L301",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1_textscramble",
-      "target": "js_pages_project1_textscramble_randomchar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L251",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1_textscramble",
-      "target": "js_pages_project1_textscramble_settext",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L280",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1_textscramble",
-      "target": "js_pages_project1_textscramble_update",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L253",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1_textscramble_settext",
-      "target": "js_pages_project1_textscramble_completeimmediately",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L271",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1_textscramble_settext",
-      "target": "js_pages_project1_textscramble_update",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/pages/project1.js",
-      "source_location": "L287",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "js_pages_project1_textscramble_update",
-      "target": "js_pages_project1_textscramble_randomchar",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_applylanguage",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/pages/project2.js",
-      "source_location": "L1",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_changelanguage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L97",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_pages_project2",
       "target": "js_pages_project2_cursor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L195",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_iniciolink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L196",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_iniciospan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L210",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_nextlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L211",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_nextspan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_onmove",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L161",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_setposfromclientx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_stopdrag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2",
+      "target": "js_pages_project2_t",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2_changelanguage",
+      "target": "js_pages_project2_applylanguage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/pages/project2.js",
+      "source_location": "L170",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_pages_project2_onmove",
+      "target": "js_pages_project2_setposfromclientx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L117",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_text_scramble",
+      "target": "js_text_scramble_slowtextscramble",
       "confidence_score": 1.0
     },
     {
@@ -2143,7 +2794,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "js/text-scramble.js",
-      "source_location": "L97",
+      "source_location": "L106",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_text_scramble_textscramble",
@@ -2181,7 +2832,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_text_scramble_textscramble_settext",
-      "target": "js_text_scramble_textscramble_completeimmediately",
+      "target": "js_text_scramble_slowtextscramble_completeimmediately",
       "confidence_score": 1.0
     },
     {
@@ -2193,7 +2844,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_text_scramble_textscramble_settext",
-      "target": "js_text_scramble_textscramble_update",
+      "target": "js_text_scramble_slowtextscramble_update",
       "confidence_score": 1.0
     },
     {
@@ -2201,7 +2852,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "js/text-scramble.js",
-      "source_location": "L78",
+      "source_location": "L87",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_text_scramble_textscramble_update",
@@ -2209,74 +2860,422 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "CLAUDE.md",
-      "source_location": null,
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L190",
       "weight": 1.0,
-      "source": "claude_frontend_design_skill_rule",
-      "target": "project1_claudecode_tool"
+      "_origin": "ast",
+      "source": "js_text_scramble_slowtextscramble_update",
+      "target": "js_text_scramble_textscramble_randomchar",
+      "confidence_score": 1.0
     },
     {
-      "relation": "conceptually_related_to",
-      "confidence": "AMBIGUOUS",
-      "confidence_score": 0.3,
-      "source_file": "CLAUDE.md",
-      "source_location": null,
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L162",
       "weight": 1.0,
-      "source": "claude_output_defaults_rule",
-      "target": "index_page"
+      "_origin": "ast",
+      "source": "js_text_scramble_slowtextscramble",
+      "target": "js_text_scramble_slowtextscramble_completeimmediately",
+      "confidence_score": 1.0
     },
     {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "CLAUDE.md",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_text_scramble_slowtextscramble",
+      "target": "js_text_scramble_slowtextscramble_constructor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L123",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_text_scramble_slowtextscramble",
+      "target": "js_text_scramble_slowtextscramble_settext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L169",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_text_scramble_slowtextscramble",
+      "target": "js_text_scramble_slowtextscramble_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_text_scramble_slowtextscramble_settext",
+      "target": "js_text_scramble_slowtextscramble_completeimmediately",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/text-scramble.js",
+      "source_location": "L158",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_text_scramble_slowtextscramble_settext",
+      "target": "js_text_scramble_slowtextscramble_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_author",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_bugs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_description",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_homepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_keywords",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_repository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package",
+      "target": "package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_scripts",
+      "target": "package_scripts_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_repository",
+      "target": "package_repository_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_repository",
+      "target": "package_repository_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_bugs",
+      "target": "package_bugs_url",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "package_dependencies",
+      "target": "package_dependencies_puppeteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "context": "import",
+      "_origin": "ast",
+      "source": "package_dependencies_puppeteer",
+      "target": "puppeteer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "screenshot.mjs",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "screenshot",
+      "target": "screenshot_n",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "screenshot.mjs",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "screenshot",
+      "target": "screenshot_nextnumber",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "screenshot.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "screenshot",
+      "target": "screenshot_out_dir",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "screenshot.mjs",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "screenshot",
+      "target": "screenshot_outpath",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "screenshot.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "screenshot",
+      "target": "screenshot_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "serve.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "serve",
+      "target": "serve_mime_types",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "serve.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "serve",
+      "target": "serve_root",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "serve.mjs",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "serve",
+      "target": "serve_server",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "claude_anti_generic_guardrails",
+      "source": "index_page",
+      "target": "index_connect_card"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_page",
+      "target": "index_gsap"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_page",
       "target": "index_header_logo"
     },
     {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "_legacy/layout.html",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "legacy_layout_page",
-      "target": "project1_page"
-    },
-    {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "_legacy/layout.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "legacy_layout_accordion",
-      "target": "project1_contexto_section"
-    },
-    {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "_legacy/layout.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "legacy_layout_gallery",
-      "target": "project1_sistema_visual_section"
-    },
-    {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "_legacy/layout.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "legacy_layout_tu_barrio_tu_feria_title",
-      "target": "project1_hero_info"
+      "source": "index_page",
+      "target": "index_magdalena_soulier"
     },
     {
       "relation": "references",
@@ -2285,8 +3284,8 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_trabajos_section",
-      "target": "index_project1_entry"
+      "source": "index_page",
+      "target": "index_project1_card"
     },
     {
       "relation": "references",
@@ -2295,8 +3294,8 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_trabajos_section",
-      "target": "index_project2_entry"
+      "source": "index_page",
+      "target": "index_project2_card"
     },
     {
       "relation": "references",
@@ -2305,48 +3304,8 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_trabajos_section",
-      "target": "index_project3_entry"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_project1_entry",
-      "target": "project1_page"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "AMBIGUOUS",
-      "confidence_score": 0.3,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_project2_entry",
-      "target": "project2_page"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "AMBIGUOUS",
-      "confidence_score": 0.3,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_project3_entry",
-      "target": "project3_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_connect_card",
-      "target": "index_figma_node_31_165"
+      "source": "index_page",
+      "target": "index_project3_card"
     },
     {
       "relation": "references",
@@ -2356,77 +3315,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "project1_page",
-      "target": "project1_footer_next_project_link"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project2.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "project2_footer_back_link",
-      "target": "project1_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "project1_tecnologias_section",
-      "target": "project1_claudecode_tool"
-    },
-    {
-      "relation": "cites",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "project1_contexto_section",
-      "target": "project1_inefop_citation"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "project1_publicos_section",
-      "target": "project1_persona_consciente"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "project1_publicos_section",
-      "target": "project1_persona_desvinculado"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "project1_publicos_section",
-      "target": "project1_persona_practico"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "project1_footer_next_project_link",
-      "target": "project2_page"
+      "target": "index_page"
     },
     {
       "relation": "references",
@@ -2436,12 +3325,412 @@
       "source_location": null,
       "weight": 1.0,
       "source": "project2_page",
-      "target": "project2_footer_back_link"
+      "target": "index_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project3.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project3_page",
+      "target": "index_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "robots.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "robots_robots_txt",
+      "target": "index_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_magdalena_soulier",
+      "target": "index_ceibal"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_magdalena_soulier",
+      "target": "index_media_resma"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_magdalena_soulier",
+      "target": "index_taller_de_diseno_1"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_magdalena_soulier",
+      "target": "index_udelar"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_magdalena_soulier",
+      "target": "index_universidad_ort"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_page",
+      "target": "index_magdalena_soulier"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_page",
+      "target": "index_magdalena_soulier"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project3.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project3_page",
+      "target": "index_magdalena_soulier"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_taller_de_diseno_1",
+      "target": "index_udelar"
     },
     {
       "relation": "semantically_similar_to",
       "confidence": "INFERRED",
-      "confidence_score": 0.95,
+      "confidence_score": 0.75,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_media_resma",
+      "target": "project2_ugc"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_project1_card",
+      "target": "project1_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_project2_card",
+      "target": "project2_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_project3_card",
+      "target": "index_comision_derecho_a_la_ciudad"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_project3_card",
+      "target": "index_valentina_ibarlucea"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_project3_card",
+      "target": "project3_page"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "index_comision_derecho_a_la_ciudad"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_page",
+      "target": "project1_connect_card"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_page",
+      "target": "project1_header_logo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_page",
+      "target": "project2_page"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_adobe_suite"
+    },
+    {
+      "relation": "cites",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_camara_industrias_uruguay_inefop_2020"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_claudecode"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_consciente"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_desvinculado"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_emilia_fripp"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_figma"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_flujo_de_usuario"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_iara_rodriguez"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_municipio_b"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_p5_js"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_practico"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_procreate"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_tu_barrio_tu_feria",
+      "target": "project1_sistema_visual"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_practico",
+      "target": "project2_limitaciones_tecnicas"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_mobile_first_rationale",
+      "target": "project1_flujo_de_usuario"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project1.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project1_sistema_visual_rationale",
+      "target": "project1_sistema_visual"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_page",
+      "target": "project2_connect_card"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_page",
+      "target": "project2_header_logo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "project2.html",
       "source_location": null,
       "weight": 1.0,
@@ -2452,11 +3741,81 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "project3.html",
+      "source_file": "project2.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "project3_footer_back_link",
-      "target": "project2_page"
+      "source": "project2_fabrika_de_gigantes",
+      "target": "project2_blender"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_fabrika_de_gigantes",
+      "target": "project2_figma"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_fabrika_de_gigantes",
+      "target": "project2_limitaciones_tecnicas"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_fabrika_de_gigantes",
+      "target": "project2_mucho_games"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_fabrika_de_gigantes",
+      "target": "project2_revista_gigantes"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_fabrika_de_gigantes",
+      "target": "project2_ugc"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_fabrika_de_gigantes",
+      "target": "project2_unity"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project2.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project2_cel_shading_rationale",
+      "target": "project2_limitaciones_tecnicas"
     },
     {
       "relation": "references",
@@ -2466,50 +3825,73 @@
       "source_location": null,
       "weight": 1.0,
       "source": "project3_page",
-      "target": "project3_footer_back_link"
+      "target": "project3_connect_card"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "project3.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "project3_page",
+      "target": "project3_header_logo"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "robots.txt",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "robots_robots_txt",
+      "target": "robots_sitemap"
     }
   ],
   "hyperedges": [
     {
-      "id": "tu_barrio_tu_feria_project_iterations",
-      "label": "Tu Barrio, Tu Feria \u2014 same project represented across site iterations",
+      "id": "connect_card_pattern",
+      "label": "Site-wide Connect Card Component Pattern",
       "nodes": [
-        "legacy_layout_page",
-        "project1_page",
-        "index_project1_entry"
+        "index_connect_card",
+        "project1_connect_card",
+        "project2_connect_card",
+        "project3_connect_card"
       ],
-      "relation": "participate_in",
+      "relation": "implement",
       "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "project1.html"
+      "confidence_score": 0.85,
+      "source_file": "index.html"
     },
     {
-      "id": "site_case_study_navigation_chain",
-      "label": "Sequential prev/next footer navigation chain across case study pages",
+      "id": "header_logo_pattern",
+      "label": "Shared Header Flower/Eye Logo & Nav Pattern",
       "nodes": [
+        "index_header_logo",
+        "project1_header_logo",
+        "project2_header_logo",
+        "project3_header_logo"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "index.html"
+    },
+    {
+      "id": "gsap_animation_stack_pattern",
+      "label": "Site-wide GSAP/ScrollTrigger/ScrollSmoother Animation Stack",
+      "nodes": [
+        "index_gsap",
+        "index_page",
         "project1_page",
         "project2_page",
         "project3_page"
       ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html"
-    },
-    {
-      "id": "project1_publicos_personas_group",
-      "label": "UX audience segmentation: three personas forming the P\u00fablicos framework",
-      "nodes": [
-        "project1_publicos_section",
-        "project1_persona_desvinculado",
-        "project1_persona_practico",
-        "project1_persona_consciente"
-      ],
-      "relation": "form",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "project1.html"
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "index.html"
     }
   ],
-  "built_at_commit": "8fcfbe49e0e998af849d63e94333af68eaaee713"
+  "built_at_commit": "2178e04ddc31052c99fe04a25796688aa491d624"
 }

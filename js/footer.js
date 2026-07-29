@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const scrambler = new TextScramble(textEl);
         const originalText = textEl.textContent;
         link.addEventListener('mouseenter', () => scrambler.setText(originalText));
+        link.addEventListener('focus', () => scrambler.setText(originalText));
     });
 
     // Email — hovering the mail block scrambles the "E-MAIL" label into
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mailBlock = document.getElementById('footerMail');
     const mailLabelText = footer.querySelector('.site-footer__mail-label [data-key="email_tag"]');
     const mailAddress = footer.querySelector('.site-footer__mail-address');
+    const mailStatus = document.getElementById('footerMailCopyStatus');
     if (!mailBlock || !mailLabelText || !mailAddress) return;
 
     const labelScrambler = new TextScramble(mailLabelText);
@@ -31,15 +33,27 @@ document.addEventListener('DOMContentLoaded', () => {
     mailBlock.addEventListener('mouseleave', () => {
         if (!isJustCopied) labelScrambler.setText(translations[currentLang].email_tag);
     });
+    // focus/blur mirror mouseenter/mouseleave so keyboard users get the same
+    // visual "Copy" cue mouse users get on hover.
+    mailBlock.addEventListener('focus', () => {
+        if (!isJustCopied) labelScrambler.setText(translations[currentLang].email_copy);
+    });
+    mailBlock.addEventListener('blur', () => {
+        if (!isJustCopied) labelScrambler.setText(translations[currentLang].email_tag);
+    });
     mailBlock.addEventListener('click', () => {
         const address = mailAddress.textContent.trim();
         navigator.clipboard.writeText(address).then(() => {
             isJustCopied = true;
             labelScrambler.setText(translations[currentLang].email_copied);
+            // The visual scramble is decorative and silent to screen readers;
+            // this is the one thing that actually announces the copy.
+            if (mailStatus) mailStatus.textContent = translations[currentLang].email_copied;
             setTimeout(() => {
                 isJustCopied = false;
-                const isHovering = mailBlock.matches(':hover');
-                labelScrambler.setText(isHovering ? translations[currentLang].email_copy : translations[currentLang].email_tag);
+                const isActive = mailBlock.matches(':hover, :focus-visible');
+                labelScrambler.setText(isActive ? translations[currentLang].email_copy : translations[currentLang].email_tag);
+                if (mailStatus) mailStatus.textContent = '';
             }, 1500);
         });
     });
