@@ -1,6 +1,19 @@
+/* Wraps .case-study + .cs-footer in a single 100vh flex column so the two
+   share exactly one viewport's height between them — .case-study takes
+   whatever's left after the footer's natural height, instead of each
+   claiming 100vh on its own and forcing the page to scroll. */
+/* #smooth-content selector (needed to out-specificity base.css's own
+   #smooth-content { display: block } ID rule). */
+#smooth-content.coming-soon-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .case-study {
     padding-top: var(--header-h);
-    min-height: 100vh;
+    flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
 }
@@ -17,7 +30,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    min-height: 70vh;
     padding-left: 30px;
     gap: 20px;
 }
@@ -25,7 +37,7 @@
 .cs-coming-label {
     font-family: var(--font-heading);
     font-size: 0.85rem;
-    color: var(--color-orange);
+    color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
@@ -34,7 +46,7 @@
     font-family: var(--font-heading);
     font-size: clamp(2.5rem, 6vw, 6rem);
     font-weight: 700;
-    color: var(--color-orange);
+    color: var(--color-black);
     text-transform: uppercase;
     line-height: 0.88;
     letter-spacing: -0.02em;
@@ -42,7 +54,7 @@
 
 /* ---- Footer ---- */
 .cs-footer {
-    border-top: 2px solid var(--color-orange);
+    border-top: 2px solid var(--color-black);
     background: var(--color-white);
 }
 
@@ -54,9 +66,12 @@
 
 .cs-footer-inicio {
     grid-column: 1 / 4;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
     font-family: var(--font-heading);
     font-size: 0.85rem;
-    color: var(--color-orange);
+    color: var(--color-black);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -64,19 +79,37 @@
 }
 
 .cs-footer-credits {
-    grid-column: 8 / 13;
-    font-family: var(--font-heading);
-    font-size: 0.7rem;
-    color: var(--color-orange);
-    text-transform: uppercase;
-    text-align: right;
-    line-height: 1.6;
+    grid-column: 1 / 5;
+    grid-row: 2;
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    letter-spacing: var(--ls-subtext);
+    color: var(--color-violet);
+    padding: 24px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Same arrow icon/markup as case-study.css's footer nav links (not loaded
+   on this page, so redeclared here) — keeps the "volver" link's scramble
+   target (.cs-footer-inicio-text) and icon sizing identical across pages. */
+.footer-arrow {
+    height: 0.9em;
+    padding-top: 3.1px;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+}
+
+.footer-arrow--left {
+    transform: scaleX(-1);
 }
 
 @media (max-width: 768px) {
     .cs-coming-inner {
         padding-left: 0;
-        min-height: 60vh;
     }
     .cs-footer-inicio {
         grid-column: 1 / 5;

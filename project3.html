@@ -28,11 +28,14 @@
 
 <body>
 
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
     <header>
         <div class="grid-layout">
             <div class="h-item h-item-1">
                 <a href="index.html" class="flower" id="logo-inicio">
                     <span class="sr-only" data-key="logo_home">Inicio</span>
+                    <span class="flower-icon-wrap">
                     <svg viewBox="0 0 712 681" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <path id="HeaderCentro"
                             d="M355.56,164.2L485.67,215.79L539.56,340.33L485.67,464.87L355.56,516.45L225.44,464.87L171.55,340.33L225.44,215.79L355.56,164.2Z"
@@ -51,6 +54,10 @@
                             <ellipse cx="355.56" cy="341.48" rx="43.74" ry="41.87" fill="var(--brand-orange)" />
                         </g>
                     </svg>
+                    <svg class="flower-focus-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" />
+                    </svg>
+                    </span>
                 </a>
             </div>
 
@@ -59,6 +66,21 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
+
+            <nav class="nav-menu" id="navMenu">
+                <div class="h-item h-item-2">
+                    <a href="index.html#trabajos" data-key="navwork" class="nav-work">TRABAJOS</a>
+                </div>
+                <div class="h-item h-item-3">
+                    <a href="index.html#sobre-mi" data-key="navabout" class="nav-about">SOBRE MÍ</a>
+                </div>
+                <div class="h-item h-item-4">
+                    <div class="lang-switcher">
+                         <button onclick="changeLanguage('es')" id="btn-es">ES</button>
+                        <button onclick="changeLanguage('en')" id="btn-en">EN</button>
+                    </div>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -106,9 +128,9 @@
     </div>
 
     <div id="smooth-wrapper">
-    <div id="smooth-content">
+    <div id="smooth-content" class="coming-soon-content">
 
-    <section class="case-study">
+    <main id="main" class="case-study">
 
         <div class="grid-layout cs-coming-soon">
             <div class="cs-coming-inner">
@@ -117,14 +139,17 @@
             </div>
         </div>
 
-    </section>
+    </main>
 
 
     <div class="cs-footer">
         <div class="grid-layout cs-footer-inner">
-            <a href="project2.html" class="cs-footer-inicio">← FABRIKA DE GIGANTES</a>
+            <a href="project2.html" class="cs-footer-inicio">
+                <svg class="footer-arrow footer-arrow--left" viewBox="0 0 27 31" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" aria-hidden="true"><path d="M15.363,30.395L11.507,26.539L18.16,19.885L21.941,17.768L21.563,16.861L18.16,17.919L0,17.919L0,12.476L18.16,12.476L21.563,13.534L21.941,12.627L18.16,10.51L11.507,3.856L15.363,0L26.931,11.568L26.931,18.827L15.363,30.395Z" fill="var(--color-black)"/></svg>
+                <span class="cs-footer-inicio-text">FABRIKA DE GIGANTES</span>
+            </a>
             <div class="cs-footer-credits">
-                DISEÑO Y DESARROLLO POR MAGDALENA SOULIER<br>© 2026
+                Diseñado y desarrollado por Magdalena soulier | © 2026
             </div>
         </div>
     </div>
@@ -144,6 +169,7 @@
     <script src="js/text-scramble.js"></script>
     <script src="js/i18n.js"></script>
     <script src="js/connect-card.js"></script>
+    <script src="js/nav-menu.js"></script>
     <script src="js/pages/coming-soon.js"></script>
 
 

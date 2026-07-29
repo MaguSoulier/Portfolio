@@ -27,6 +27,8 @@
 
 <body>
 
+<a href="#main" class="skip-link">Saltar al contenido</a>
+
 <div id="loader-overlay">
     <div class="loader-container">
 <svg viewBox="0 0 712 681" xmlns="http://www.w3.org/2000/svg">
@@ -65,6 +67,7 @@
             <div class="h-item h-item-1">
                 <a href="#" class="flower" id="logo-inicio">
                     <span class="sr-only" data-key="logo_home">Inicio</span>
+                    <span class="flower-icon-wrap">
                     <svg viewBox="0 0 712 681" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <path id="HeaderCentro"
                             d="M355.56,164.2L485.67,215.79L539.56,340.33L485.67,464.87L355.56,516.45L225.44,464.87L171.55,340.33L225.44,215.79L355.56,164.2Z"
@@ -87,6 +90,10 @@
                         </g>
                     
                     </svg>
+                    <svg class="flower-focus-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" />
+                    </svg>
+                    </span>
                 </a>
             </div>
 
@@ -158,7 +165,7 @@
 
     <div id="smooth-wrapper">
     <div id="smooth-content">
-    <main>
+    <main id="main">
     <section id="inicio" class="grid-layout grid-inicio">
         <div class="main-text-block">
             <h1 id="main-name" class="main-name">
@@ -198,7 +205,7 @@
                 <span data-key="selected_projects">PROYECTOS SELECCIONADOS</span>
             </div>
 
-            <div class="project-item" id="project1">
+            <div class="project-item" id="project1" tabindex="0" role="link" aria-label="Tu Barrio, Tu Feria">
                 <div class="project-media">
                     <img class="media-img" src="Celular y tote.png"
                          alt="Vista previa del proyecto, un celular con la plataforma web y una tote bag con ilustraciones de la identidad visual">
@@ -215,14 +222,14 @@
                         <p>Estrategia multicanal desarrollada con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.</p>
                         <p>A través de una identidad visual dinámica y una plataforma web geolocalizada, el proyecto traduce la lógica del mercado territorial a lenguajes digitales, facilitando el acceso a información en tiempo real y adaptándose a los hábitos de consumo contemporáneos.</p>
                     </div>
-                    <button type="button" class="btn project-cta">
+                    <span class="btn project-cta">
                         <span data-key="ver_proyecto">VER PROYECTO</span>
                         <span class="btn__icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.70458 10L4.27277 8.73137L6.74316 6.54219L8.14712 5.8457L8.00676 5.54729L6.74316 5.89538H0V4.10462H6.74316L8.00676 4.45271L8.14712 4.1543L6.74316 3.45781L4.27277 1.26863L5.70458 0L10 3.80589V6.19411L5.70458 10Z" fill="currentColor"/></svg></span>
-                    </button>
+                    </span>
                 </div>
             </div>
 
-            <div class="project-item reverse" id="project2">
+            <div class="project-item reverse" id="project2" tabindex="0" role="link" aria-label="Fabrika de Gigantes">
                 <div class="project-media">
                     <img class="media-img" src="fabrika-de-gigantes/hero-image.png"
                          alt="Vista previa del proyecto, una coleccion de creaciones de los usuarios en formato de polaroids dispersados">
@@ -238,14 +245,14 @@
                         <p>Diseñado para Revista Gigantes (LaDiaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).</p>
                         <p>El proyecto funciona como puente para derivar tráfico calificado hacia la plataforma digital de la revista, incrementando los niveles de engagement y retención en el público infantil.</p>
                     </div>
-                    <button type="button" class="btn project-cta">
+                    <span class="btn project-cta">
                         <span data-key="ver_proyecto">VER PROYECTO</span>
                         <span class="btn__icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.70458 10L4.27277 8.73137L6.74316 6.54219L8.14712 5.8457L8.00676 5.54729L6.74316 5.89538H0V4.10462H6.74316L8.00676 4.45271L8.14712 4.1543L6.74316 3.45781L4.27277 1.26863L5.70458 0L10 3.80589V6.19411L5.70458 10Z" fill="currentColor"/></svg></span>
-                    </button>
+                    </span>
                 </div>
             </div>
 
-            <div class="project-item" id="project3">
+            <div class="project-item" id="project3" tabindex="0" role="link" aria-label="Diseñar los Sueños con los Pies en el Barrio">
                 <div class="project-media">
                     <img class="media-img" src="disenar-los-suenos/preview.jpg"
                          alt="Vista previa del proyecto, zoom al canto del libro, donde se ve su encuadernado rojo y la tapa con fotografía de la vereda montevideana">
@@ -260,10 +267,10 @@
                         <p>Diseño editorial realizado para la tesis de Valentina Ibarlucea.</p>
                         <p>El texto investiga los alcances del arte y diseño participativo en colectivos de base territorial, tomando como caso de estudio la Comisión Derecho a la Ciudad en Ciudad Vieja, Montevideo.</p>
                     </div>
-                    <button type="button" class="btn project-cta">
+                    <span class="btn project-cta">
                         <span data-key="ver_proyecto">VER PROYECTO</span>
                         <span class="btn__icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.70458 10L4.27277 8.73137L6.74316 6.54219L8.14712 5.8457L8.00676 5.54729L6.74316 5.89538H0V4.10462H6.74316L8.00676 4.45271L8.14712 4.1543L6.74316 3.45781L4.27277 1.26863L5.70458 0L10 3.80589V6.19411L5.70458 10Z" fill="currentColor"/></svg></span>
-                    </button>
+                    </span>
                 </div>
             </div>
 

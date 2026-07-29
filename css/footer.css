@@ -20,6 +20,11 @@
     grid-row: 1;
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* Without this, flex's default align-items:stretch
+        makes each link fill the full column width — harmless visually since
+        the text is left-aligned either way, but it means any focus/hover box
+        drawn on the link outlines that whole stretched width instead of
+        just the word. */
     gap: 24px;
     align-self: start;
 }
@@ -35,6 +40,15 @@
     text-decoration: none;
 }
 
+/* Same reasoning as .connect-card__header/.site-footer__mail above: the
+   site-wide *:focus-visible violet border-bottom (base.css) reads as
+   invisible against this footer's black background, so this link needs
+   its own light-colored override. */
+.site-footer__page-link:focus-visible {
+    outline: 1px solid var(--color-gray-1);
+    outline-offset: 4px;
+}
+
 .site-footer__connect {
     grid-column: 9 / 13;
     grid-row: 1;
@@ -47,6 +61,7 @@
 .site-footer__links {
     display: flex;
     flex-direction: column;
+    align-items: flex-start; /* same stretch fix as .site-footer__pages above */
     gap: 8px;
 }
 
@@ -63,6 +78,14 @@
     text-decoration: none;
     text-transform: uppercase;
     cursor: none !important;
+}
+
+/* Same reasoning as .site-footer__page-link above: white/gray outline
+   instead of the site-wide violet, which disappears against this footer's
+   black background. */
+.site-footer__link:focus-visible {
+    outline: 1px solid var(--color-gray-1);
+    outline-offset: 4px;
 }
 
 .site-footer__link-icon {

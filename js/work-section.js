@@ -50,5 +50,35 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('mouseenter', () => {
             if (item.scramblerInstance) item.scramblerInstance.setText(item.originalText);
         });
+
+        // --- KEYBOARD ACTIVATION ---
+        // The whole card is the tab stop (role="link", tabindex="0" in
+        // index.html) instead of the nested "VER PROYECTO" pill, but a
+        // non-native interactive element doesn't fire a click on Enter/Space
+        // on its own the way a real <a>/<button> would — dispatch one
+        // manually so it reuses the exact same navigation logic above.
+        item.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            e.preventDefault();
+            item.click();
+        });
+
+        // --- SCROLL-INTO-VIEW ON FOCUS ---
+        // GSAP ScrollSmoother re-implements scrolling as an eased transform
+        // on #smooth-content instead of native document scroll, so the
+        // browser's own focus-triggered scrollIntoView (which only knows
+        // about the real, un-eased scroll position) can end up racing the
+        // smoother mid-catch-up and settle short of actually bringing a
+        // tabbed-to card into view. Driving it through the smoother
+        // explicitly — same API smooth-scroll.js already uses for anchor
+        // links — makes it land reliably regardless of how far the card is
+        // from the previous scroll position.
+        item.addEventListener('focus', () => {
+            if (window.pageSmoother) {
+                window.pageSmoother.scrollTo(item, true, 'center center');
+            } else {
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
     });
 });

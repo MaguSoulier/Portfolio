@@ -193,8 +193,12 @@
 
 /* Was tied to a scroll-driven .active class (whichever card sat closest to
    viewport center); now it's a plain hover state — matches the card's
-   overall "hover, not active" treatment. */
-.project-item:hover .tag {
+   overall "hover, not active" treatment. Also fires on :focus-visible so
+   tabbing to the card (role="link"/tabindex on .project-item, see
+   index.html) previews the same state a mouse hover would, not just the
+   generic outline. */
+.project-item:hover .tag,
+.project-item:focus-visible .tag {
     background-color: var(--color-violet);
     color: var(--color-white);
     border-color: var(--color-black); /* --color-dark-violet doesn't exist as a
@@ -234,13 +238,16 @@
 /* Hovering anywhere on the card previews the CTA's own hover state (see
    .btn:hover in button.css) — same visual, just triggered from the whole
    card's hit area instead of requiring the pointer to be on the button
-   itself, matching .tag's card-wide hover just above. */
+   itself, matching .tag's card-wide hover just above. Also fires on
+   :focus-visible so keyboard focus gets the same preview as a mouse hover. */
 
 
-.project-item:hover .project-cta .btn__icon {
+.project-item:hover .project-cta .btn__icon,
+.project-item:focus-visible .project-cta .btn__icon {
     animation: btn-icon-nudge 0.9s ease-in-out infinite;
 }
 
-.project-item:hover .project-cta {
+.project-item:hover .project-cta,
+.project-item:focus-visible .project-cta {
     background-color: var(--color-orange);
 }

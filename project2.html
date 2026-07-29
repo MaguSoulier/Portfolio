@@ -28,6 +28,7 @@
 
 <body>
 
+<a href="#main" class="skip-link">Saltar al contenido</a>
 
     <!-- =============================================
          HEADER (fixed, from css/header.css)
@@ -37,6 +38,7 @@
             <div class="h-item h-item-1">
                 <a href="index.html" class="flower" id="logo-inicio">
                     <span class="sr-only" data-key="logo_home">Inicio</span>
+                    <span class="flower-icon-wrap">
                     <svg viewBox="0 0 712 681" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                         <path id="HeaderCentro"
                             d="M355.56,164.2L485.67,215.79L539.56,340.33L485.67,464.87L355.56,516.45L225.44,464.87L171.55,340.33L225.44,215.79L355.56,164.2Z"
@@ -55,6 +57,10 @@
                             <ellipse cx="355.56" cy="341.48" rx="43.74" ry="41.87" fill="var(--brand-orange)" />
                         </g>
                     </svg>
+                    <svg class="flower-focus-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <polygon points="30,4 70,4 96,30 96,70 70,96 30,96 4,70 4,30" />
+                    </svg>
+                    </span>
                 </a>
             </div>
 
@@ -130,7 +136,7 @@
     <!-- =============================================
          CASE STUDY
          ============================================= -->
-    <section class="case-study">
+    <main id="main" class="case-study">
 
         <!-- Info bar: title + tags (left) / description + CTA (right) -->
         <div class="grid-layout cs-hero-info">
@@ -299,7 +305,7 @@
 
         </div>
 
-    </section>
+    </main>
 
 
     <!-- =============================================

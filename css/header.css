@@ -52,6 +52,54 @@ header {
     pointer-events: none; /* Evita que el SVG interfiera con el click del link */
 }
 
+/* Wraps only the icon (not the padded/full-height .flower link) so the
+   focus ring below hugs the flower shape instead of the whole clickable
+   area. .flower keeps its larger padded hit target for click/tap; this
+   span is sized to the icon alone. */
+.flower-icon-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+/* Octagonal keyboard-focus ring, drawn in the icon's own coordinate space
+   so it scales with it automatically. Hidden by default; only .flower's
+   own :focus-visible reveals it (see rule below) — overrides the site-wide
+   *:focus-visible border-bottom from base.css, which reads as a stray line
+   under this icon rather than an indicator around it. */
+/* Selector needs two classes (.flower .flower-focus-ring) to out-specificity
+   the pre-existing ".flower svg" rule above — otherwise that rule's
+   width:35px/height:auto silently overrides the sizing below, since it
+   also matches this svg (any svg inside .flower). Without this, the ring
+   gets pinned to a fixed 35x35 box instead of tracking the icon's real
+   rendered size, and renders off-center. */
+.flower .flower-focus-ring {
+    display: block;
+    position: absolute;
+    inset: -9px;
+    width: calc(100% + 18px);
+    height: calc(100% + 18px);
+    fill: none;
+    stroke: var(--color-dark-orange);
+    stroke-width: 4;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .flower .flower-focus-ring {
+        transition: opacity 0.15s ease;
+    }
+}
+
+#logo-inicio:focus-visible {
+    outline: none;
+    border-bottom: none;
+}
+
+#logo-inicio:focus-visible .flower-focus-ring {
+    opacity: 1;
+}
+
 /* Configuración base para los elementos del Header */
 #HeaderCorona, #HeaderOjo, #HeaderParpado, #HeaderIris {
     transform-origin: center;
