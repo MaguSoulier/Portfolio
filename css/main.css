@@ -1,18 +1,2502 @@
-/* NOT LINKED FROM ANY PAGE — kept only as a reference for the cascade
-   order. @import makes the browser fetch these sequentially, one at a
-   time, which was blocking render for several seconds (PageSpeed).
-   index.html / project1-3.html now link every file below directly
-   instead, in this same order, so they download in parallel. If you add
-   or reorder a file here, mirror the change in each page's <head>. */
-@import url("tokens.css");
-@import url("typography.css");
-@import url("base.css");
-@import url("button.css");
-@import url("header.css");
-@import url("hero.css");
-@import url("work.css");
-@import url("about.css");
-@import url("loader.css");
-@import url("connect-card.css");
-@import url("footer.css");
-@import url("responsive.css");
+/* Bundled by build-css.mjs from the files listed in PARTIALS, in cascade
+   order. Do NOT hand-edit this file — edit the source file in css/ and
+   rerun `node build-css.mjs`, or your change is silently lost the next
+   time someone rebuilds this file. See build-css.mjs for why this is a
+   single concatenated file instead of @import or separate <link> tags. */
+
+/* ==== tokens.css ==== */
+:root {
+    /* ========================================
+       DESIGN TOKENS — Figma "Library" page, COLORS frame (node 3:5)
+       ======================================== */
+    --color-orange: #F54814;
+    --color-dark-orange: #dd3806;
+    --color-white: #F2F2F2;
+    --color-gray-1: #F7F7F7; /* Figma "Gray" swatch — lighter than --color-white,
+        used as button label/icon color (Primary Button, node 135:56) */
+    --color-gray-2: #BEBEBE;
+    --color-gray-3: #7C7C7C;
+    --color-black: #2D0030;
+    --color-violet: #582B59;
+    --brand-orange: var(--color-orange);
+    --bg-gray: var(--color-white);
+    --brand-brown: var(--color-black);
+
+    /* ========================================
+       TEXT STYLES — Figma "Library" page, TYPOGRAPHY frame (node 7:44)
+       ======================================== */
+    --font-heading: "Space Mono", monospace;
+    --font-body: "Space Grotesk", sans-serif;
+
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    /* size / line-height / letter-spacing, per Figma type scale */
+    --fs-small-tag: 12px;   --lh-small-tag: 18px;   --ls-small-tag: 0.48px;
+    --fs-subtext: 13px;     --lh-subtext: 18px;     --ls-subtext: 0.18px;
+    --fs-mobile-text: 14px; --lh-mobile-text: 19px; --ls-mobile-text: 0.14px;
+    --fs-text: 16px;        --lh-text: 23px;        --ls-text: 0.16px;
+    --fs-subtitle-2: 16px;  --lh-subtitle-2: 20px;  --ls-subtitle-2: 0.32px;
+    --fs-subtitle-1: 20px;  --lh-subtitle-1: 24px;  --ls-subtitle-1: 0.12px;
+    --fs-title-4: 28px;     --lh-title-4: 28px;     --ls-title-4: 0.14px;
+    --fs-title-3: 36px;     --lh-title-3: 36px;     --ls-title-3: -0.72px;
+    --fs-title-2: 60px;     --lh-title-2: 60px;     --ls-title-2: -2.4px;
+    --fs-title-1: 120px;     --lh-title-1: 80px;     --ls-title-1: -3.2px;
+
+    /* ========================================
+       LAYOUT (not part of the Figma token set)
+       ======================================== */
+    --grid-gap: clamp(8px, 0.729vw, 14px);
+    --gap: 14px;
+    --header-h: 70px;
+    --container-width: 85%; /* Un poco más ancho en general */
+    --max-width: 1500px;    /* Pero que nunca supere esto */
+}
+
+/* ==== typography.css ==== */
+/* Text styles from the Figma TYPOGRAPHY frame (node 7:44). */
+
+.title-1,
+.title-2,
+.title-3,
+.title-4,
+.subtitle-1,
+.subtitle-2,
+.small-tag {
+    font-family: var(--font-heading);
+    font-style: normal;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.text,
+.subtext,
+.mobile-text {
+    font-family: var(--font-body);
+    margin: 0;
+}
+
+.title-1 {
+    font-size: var(--fs-title-1);
+    line-height: var(--lh-title-1);
+    letter-spacing: var(--ls-title-1);
+    font-weight: var(--fw-bold);
+}
+
+.title-2 {
+    font-size: var(--fs-title-2);
+    line-height: var(--lh-title-2);
+    letter-spacing: var(--ls-title-2);
+    font-weight: var(--fw-bold);
+}
+
+.title-3 {
+    font-size: var(--fs-title-3);
+    line-height: var(--lh-title-3);
+    letter-spacing: var(--ls-title-3);
+    font-weight: var(--fw-bold);
+}
+
+.title-4 {
+    font-size: var(--fs-title-4);
+    line-height: var(--lh-title-4);
+    letter-spacing: var(--ls-title-4);
+    font-weight: var(--fw-bold);
+}
+
+.subtitle-1 {
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+}
+
+.subtitle-1--bold {
+    font-weight: var(--fw-bold);
+}
+
+.subtitle-2 {
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+}
+
+.subtitle-2--bold {
+    font-weight: var(--fw-bold);
+}
+
+.small-tag {
+    font-size: var(--fs-small-tag);
+    line-height: var(--lh-small-tag);
+    letter-spacing: var(--ls-small-tag);
+    font-weight: var(--fw-regular);
+}
+
+.text {
+    font-size: var(--fs-text);
+    line-height: var(--lh-text);
+    letter-spacing: var(--ls-text);
+    font-weight: var(--fw-regular);
+}
+
+.text--bold {
+    font-weight: var(--fw-bold);
+}
+
+.subtext {
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-light);
+}
+
+.subtext--bold {
+    font-weight: var(--fw-medium);
+}
+
+.mobile-text {
+    font-size: var(--fs-mobile-text);
+    line-height: var(--lh-mobile-text);
+    letter-spacing: var(--ls-mobile-text);
+    font-weight: var(--fw-regular);
+}
+
+.mobile-text--bold {
+    font-weight: var(--fw-bold);
+}
+
+/* ==== base.css ==== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: clip;  /* Prevents horizontal scroll */
+    overflow-y: visible; /* Allows sticky to work */
+    font-family: var(--font-heading);
+    color: var(--color-black);
+    scroll-behavior: smooth; /* Para que el salto sea suave */
+}
+
+* {
+  cursor: none !important;
+}
+
+/* Site-wide default keyboard-focus indicator. Individual components (e.g.
+   .connect-card__mail, .btn, .tag--link, .cs-hero-cta) define their own
+   higher-specificity :focus-visible rule when they sit on a background this
+   orange doesn't contrast against (dark/orange surfaces use a white outline
+   instead) — those override this by cascade, this just covers everything
+   that doesn't have its own. Change the color/width here to restyle focus
+   everywhere at once; override per-component only where the background
+   needs a different color. */
+*:focus-visible {
+  outline: 2px solid var(--color-dark-orange);
+  outline-offset: 2px;
+  border-radius: 0;
+}
+
+/* Visually hidden but still announced by screen readers (e.g. live-region
+   status messages that have no on-screen equivalent). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* First tab stop on every page — lets keyboard/screen-reader users jump
+   past the header's logo + nav + language switcher (repeated on every
+   page load) straight to #main. Off-screen until focused, same pattern
+   .sr-only uses but reversed: needs to become visible on :focus instead
+   of staying hidden always. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10001; /* above header's 1000 */
+  background: var(--color-black);
+  color: var(--color-white);
+  padding: 12px 20px;
+  font-family: var(--font-heading);
+  font-size: var(--fs-subtitle-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--gap);
+    width: var(--container-width);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+p {
+    font-family: var(--font-body);
+    font-size: var(--fs-text);
+    line-height: var(--lh-text);
+    letter-spacing: var(--ls-text);
+    font-weight: var(--fw-regular);
+    margin-bottom: 16px;
+    color: var(--color-black)
+}
+
+h3 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-bold);
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.label {
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-light);
+    color: var(--color-black);
+    opacity: 0.8;
+}
+
+main {
+    padding-top: 7%;
+}
+
+/* ========================================
+   SMOOTH SCROLL (GSAP ScrollSmoother)
+   #smooth-wrapper takes main's old place as the
+   flex item that fills remaining body height.
+   ======================================== */
+
+#smooth-wrapper {
+    flex-grow: 1;
+    display: block;
+}
+
+#smooth-content {
+    display: block;
+}
+
+
+.bold-text {
+    font-weight: 700 !important;
+    display: inline-block;
+}
+
+/* ========================================
+   CUSTOM CURSOR
+   ======================================== */
+
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-black);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-cursor.cursor-pointer {
+    width: 18px;
+    height: 18px;
+    background-color: var(--color-orange);
+    opacity: 0.5;
+}
+
+.custom-cursor.click-static {
+    transform: translate(-50%, -50%) scale(0.6);
+    background-color: var(--color-black);
+}
+
+.custom-cursor.click-interactive {
+    transform: translate(-50%, -50%) scale(0.5);
+    background-color: var(--color-orange);
+}
+
+/* Over a dark surface (e.g. the site footer) the default black dot
+   disappears against the background — swap it to a light color there.
+   The :not()s raise specificity above .cursor-pointer/.click-interactive
+   (same 2-class weight otherwise) so this doesn't need to fight source
+   order — it only ever overrides the plain/click-static black states,
+   never the already-visible orange ones. */
+.custom-cursor.cursor-on-dark:not(.cursor-pointer):not(.click-interactive) {
+    background-color: var(--color-gray-1);
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-white);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-orange);
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-orange) var(--color-white);
+}
+
+/* ========================================
+   VISIBILITY CLASSES
+   ======================================== */
+
+/* Hide on desktop (shown only on mobile) */
+.mobile-only {
+    display: none !important;
+}
+
+/* Show on desktop (hidden on mobile) */
+.desktop-only {
+    display: block;
+}
+
+/* ==== button.css ==== */
+/* ========================================
+   PRIMARY BUTTON — Figma "Primary Button" component (node 135:56)
+   States: Default / Hover / Pressed / Focus / Disabled.
+
+   Built on native interaction states instead of separate state classes —
+   Hover/Pressed/Focus/Disabled map 1:1 onto :hover/:active/:focus-visible/
+   :disabled, so any real <button> or <a class="btn"> gets every variant
+   for free with no JS state management.
+
+   Usage:
+     <button class="btn">
+       <span>Button</span>
+       <span class="btn__icon">...svg.../span>
+     </button>
+   The icon is optional — omit .btn__icon for a text-only button. For a
+   disabled <a> (which has no native disabled state), add aria-disabled="true"
+   instead of the disabled attribute.
+   ======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 16px;
+    border: 2px solid transparent; /* reserved so :focus-visible's border doesn't shift layout */
+    border-radius: 45px;
+    background-color: var(--color-dark-orange);
+    font-family: var(--font-heading);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    color: var(--color-gray-1);
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: none;
+}
+
+.btn__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 16px;
+    padding: 2px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.btn__icon svg {
+    display: block;
+    width: 10px;
+    height: 10px;
+}
+
+@keyframes btn-icon-nudge {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+}
+
+/* Hover — the Figma swatch itself is flat (same fill as Default), so the
+   felt difference here is real motion instead: a soft lift + the arrow
+   nudging forward and back, looping for as long as the pointer stays over
+   the button. Transform/opacity only, no transition-all (per the
+   anti-generic guardrails in CLAUDE.md). */
+
+
+.btn:hover .btn__icon {
+    animation: btn-icon-nudge 0.9s ease-in-out infinite;
+    
+}
+
+/* Pressed — freezes the nudge loop instead of layering a jitter on top of a press */
+.btn:active {
+    background-color: var(--color-dark-orange-2);
+}
+
+.btn:active .btn__icon {
+    animation: none;
+    transform: translateX(0);
+}
+
+/* Focus (keyboard) */
+.btn:focus-visible {
+    outline: none;
+    border-color: var(--color-dark-orange-2);
+    outline-offset: 4px;
+}
+
+/* Disabled — .btn[aria-disabled="true"] covers non-<button> elements (e.g. a
+   disabled-looking <a>), since the disabled attribute only exists on
+   form controls. */
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    background-color: var(--color-gray-2);
+    transform: none;
+    pointer-events: none;
+}
+
+.btn:disabled .btn__icon,
+.btn[aria-disabled="true"] .btn__icon {
+    transform: none;
+}
+
+/* ==== header.css ==== */
+header {
+    height: var(--header-h);
+    background-color: var(--color-white);
+    flex-shrink: 0;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    position: fixed; /* Lo fija a la pantalla */
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.nav-menu {
+    display: contents;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--color-black);
+    cursor: none !important;
+    text-transform: uppercase;
+}
+
+.nav-menu a.active {
+    font-weight: 700;
+    cursor: none !important;
+}
+
+.h-item {
+    align-self: center;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+}
+
+.flower {
+    grid-column: 1;
+    display: flex; /* Vital para que el SVG mantenga su tamaño */
+    align-items: center;
+    cursor: none !important;
+    padding-left: 30px;
+    text-decoration: none; /* Quita subrayados accidentales del link */
+    height: 100%; /* Para que ocupe el alto del header fijo */
+}
+
+.flower svg {
+    display: inline-block;
+    width: 35px;
+    height: auto;
+    transform-origin: center;
+    pointer-events: none; /* Evita que el SVG interfiera con el click del link */
+}
+
+/* Wraps only the icon (not the padded/full-height .flower link) so the
+   focus ring below hugs the flower shape instead of the whole clickable
+   area. .flower keeps its larger padded hit target for click/tap; this
+   span is sized to the icon alone. */
+.flower-icon-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+/* Octagonal keyboard-focus ring, drawn in the icon's own coordinate space
+   so it scales with it automatically. Hidden by default; only .flower's
+   own :focus-visible reveals it (see rule below) — overrides the site-wide
+   *:focus-visible border-bottom from base.css, which reads as a stray line
+   under this icon rather than an indicator around it. */
+/* Selector needs two classes (.flower .flower-focus-ring) to out-specificity
+   the pre-existing ".flower svg" rule above — otherwise that rule's
+   width:35px/height:auto silently overrides the sizing below, since it
+   also matches this svg (any svg inside .flower). Without this, the ring
+   gets pinned to a fixed 35x35 box instead of tracking the icon's real
+   rendered size, and renders off-center. */
+.flower .flower-focus-ring {
+    display: block;
+    position: absolute;
+    inset: -9px;
+    width: calc(100% + 18px);
+    height: calc(100% + 18px);
+    fill: none;
+stroke: var(--color-dark-orange);
+    stroke-width: 4;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .flower .flower-focus-ring {
+        transition: opacity 0.15s ease;
+    }
+}
+
+#logo-inicio:focus-visible {
+    outline: none;
+    border-bottom: none;
+}
+
+#logo-inicio:focus-visible .flower-focus-ring {
+    opacity: 1;
+}
+
+/* Configuración base para los elementos del Header */
+#HeaderCorona, #HeaderOjo, #HeaderParpado, #HeaderIris {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- EFECTO HOVER --- */
+#logo-inicio:hover #HeaderCorona {
+    transform: scale(1.1);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --- ANIMACIÓN DE PESTAÑEO ÚNICO --- */
+@keyframes pestaneoUnico {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}
+
+/* Al hacer hover, el ojo parpadea solo 1 vez */
+#logo-inicio:hover #HeaderParpado {
+    animation: pestaneoUnico 0.4s ease-in-out 1;
+}
+
+/* --- ANIMACIÓN DE CLICK (SOLO CORONA) --- */
+@keyframes coronaGiro {
+    0% { transform: rotate(0deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1.1); }
+}
+
+.animar-corona-click {
+    animation: coronaGiro 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards !important;
+}
+
+/* El ojo ya no tiene animación de click, se queda normal */
+
+.lang-switcher button {
+    background: none;
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    border: none;
+    padding: 3px 8px;
+    cursor: none !important;
+    color: var(--color-black);
+    font-family: inherit;
+}
+
+.lang-switcher span {
+    color: var(--color-black);
+    font-family: inherit;
+}
+
+.lang-switcher button:hover {
+    text-decoration: underline var(--color-black);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+}
+
+.lang-switcher button.active {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.h-item-1 { grid-column: 1; justify-self: start; }
+.h-item-2 { grid-column: 5; justify-self: start; }
+.h-item-3 { grid-column: 7 / 9; justify-self: end; }
+.h-item-4 { grid-column: 11 / 13; justify-self: end; }
+
+.menu-toggle {
+    display: none;
+    grid-column: 10 / 12;
+    justify-self: end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 4px;
+    background-color: var(--color-black);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+
+/* ==== hero.css ==== */
+.grid-inicio {
+    position: relative; /* containing block for .web-portfolio, see below */
+    align-items: start;
+    /* minmax(<vh>, auto) instead of a flat <vh>: rows keep their intended
+       viewport-relative proportions but grow for content that needs more
+       room. A flat height (previously a fixed 700px on the container)
+       couldn't do that — at viewport heights where the vh rows needed more
+       or less than the fixed value, content would overflow the box or
+       leave dead space inside it, and #trabajos (which just follows in
+       normal flow below) would inherit that mismatch as an overlap or a
+       gap. Letting the container's height fall out of its (now flexible)
+       rows keeps it always matching its actual content. */
+    grid-template-rows: minmax(25vh, auto) minmax(30vh, auto);
+    /* Single source of truth for the photo's rendered width, so
+       .web-portfolio's position (computed from it) always stays in sync,
+       including across the responsive overrides below. */
+    --hero-photo-w: clamp(300px, 28vw, 510px);
+}
+
+.photo-container {
+    grid-column: 1 / span 5; /* Ocupa de la 1 a la 4 */
+    grid-row: 1 / 3;
+    padding: 0 30px;
+    z-index: 0;
+    overflow: visible;
+}
+
+.photo-container img {
+    width: var(--hero-photo-w);
+    max-width: 510px;
+    height: auto;
+    display: block;
+    margin-top: -10px;
+}
+
+.main-text-block {
+    grid-column: 5 / 13;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+#main-name {
+    visibility: hidden;
+    line-height: 0.9; /* Ajusta según tu diseño para que el <br> se vea bien */
+    display: block;  /* Asegura que procese el bloque correctamente */
+    transition: opacity 0.5s ease;
+    will-change: contents;
+    z-index: 1;
+}
+
+
+.secondary-text-block {
+    grid-column: 12;/* Empieza exactamente en la columna 5 */
+    grid-row: 1;
+    display: flex;
+    flex-direction: column; /* Esto pone la hora a la izquierda o derecha según necesites */
+    gap: 4px; /* Espacio entre las dos líneas verticales */
+    padding-top: 14px;
+    /* Configuración vertical */
+    writing-mode: vertical-rl;
+
+    font-family: var(--font-heading);
+    color: var(--color-violet);
+    text-transform: uppercase;
+}
+
+.main-name {
+    margin: 0;
+    overflow: visible;
+    display: block;
+    /* The scramble animation (TextScramble) replaces the .line spans below
+       with flat text mid-transition, carrying the line break over as a
+       literal \n. pre-line keeps that \n rendering as a real break so
+       "Soulier" can't ever land next to "Magdalena" during the scramble. */
+    white-space: pre-line;
+    font-family: var(--font-heading);
+    /* Capped at the Figma Title 1 size (80px); letter-spacing kept as a ratio
+       (Title 1's -3.2px / 80px = -4%) so it scales correctly at the smaller
+       end of the clamp instead of crushing the text. */
+    font-size: clamp(32px, 10cqi, var(--fs-title-1));
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    font-weight: var(--fw-bold);
+    width: 100%;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 y 11 */
+    user-select: none;
+}
+
+.main-name .line {
+    display: block; /* Esto garantiza las 2 líneas */
+    width: fit-content;
+}
+
+/* Nested inside .main-text-block (right after #main-name) instead of being
+   placed in grid-row 2: row 2's height was driven by .photo-container
+   spanning rows 1/3, not by the name's actual content height, so the
+   name-to-tagline gap grew or shrank with viewport height instead of
+   staying constant. As a flex sibling of the name it just sits margin-top
+   px below it, always — regardless of row-track sizing.
+   Still plain inline flow (not flexbox) internally so the badge wraps as
+   part of the text run — it sits right after the tagline text and only
+   drops to its own line when it no longer fits, instead of being forced
+   under the text. */
+.tagline {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+    text-transform: uppercase;
+    z-index: 1;
+    margin-top: 22px;
+}
+
+/* Both the sentence and the badge need the same vertical-align reference —
+   otherwise the badge (taller than the plain text line-box because of its
+   own padding) sits on a different baseline than the surrounding text. */
+.tagline [data-key="tagline"] {
+    vertical-align: middle;
+}
+
+/* Small-tag component, Active=Yes / Color=Orange variant (Figma node 44:141). */
+.badge {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: 2px 8px;
+    display: inline-block;
+    vertical-align: middle;
+    animation-delay: 10s;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: 0.24px;
+    font-weight: var(--fw-regular);
+    text-transform: uppercase;
+}
+
+.location-time {
+    font-family: var(--font-heading); /* Para mantener tu estilo */
+    color: var(--color-violet);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+}
+
+.location-line {
+    white-space: nowrap;
+    font-size: var(--fs-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    line-height: 1.2;
+}
+
+/* "2026 - WEB PORTFOLIO" vertical label (Figma node 26:82). Figma places it
+   flush against the photo's right edge, running past its bottom edge.
+
+   Horizontal position still tracks --hero-photo-w directly (same variable
+   that sizes the image) since the photo and the tagline/name text column
+   share a grid column and the label needs to sit right past the photo's
+   actual rendered edge, not just somewhere in that shared column.
+
+   Vertical position, though, is grid-row:1/3 (the same rows .photo-container
+   spans) + align-self:end — an absolutely-positioned grid item can still be
+   assigned a grid area, and align-self positions it inside that area when
+   top/bottom are auto (as here). That ties the label's bottom to the same
+   row edge the photo's own cell ends on, instead of the previous
+   --hero-photo-w-based aspect-ratio formula (height = width * 1.339, the
+   source photo's aspect ratio) needing its own re-tuned magic-number offset
+   at every breakpoint to keep approximating it. */
+.web-portfolio {
+    position: absolute;
+    grid-row: 1 / 3;
+    align-self: end;
+    margin-bottom: 40px;
+    left: calc(var(--hero-photo-w) + 38px); /* 30px photo padding + 8px gap */
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-violet);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg); /* reads bottom-to-top, mirroring .location-time */
+    white-space: nowrap;
+}
+
+/* ==== work.css ==== */
+#trabajos {
+    margin-top: 160px;
+}
+
+/* Vertical eyebrow label — same treatment as .location-time/.web-portfolio
+   in hero.css (writing-mode: vertical-rl), reused here for consistency.
+   Shares row 1 with #project1 (see below) instead of sitting in its own
+   row above the cards. */
+.trabajos-label {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--color-violet);
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    text-transform: uppercase;
+    justify-self: start;
+    align-self: start;
+    margin-top: -60px;
+}
+
+/* Indented to leave column 1 free for .trabajos-label, which sits beside
+   it in the same row. */
+#project1 {
+    grid-column: 1 / 13;
+    grid-row: 1;
+}
+
+.project-item {
+    grid-column: 1 / 13; /* Ocupa todo el ancho */
+    min-height: 400px; /* was a fixed height: 400px — real 2-paragraph
+        descriptions (esp. the longer titles) overflow that, so the box
+        now grows with content instead of clipping/spilling. */
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: start; /* don't stretch the (now aspect-ratio-based) media
+        column to match a taller info column */
+    gap: var(--gap);
+    padding: 32px 24px;
+    transition: background-color 0.4s ease;
+    margin-bottom: 120px;
+}
+
+/* Contenedor de Media (Columnas 1 a 6) */
+.project-media {
+    grid-column: 2 / 8;
+    grid-row: 1; /* explicit — without this, .reverse's column order (info's
+        1/7 starting before media's 7/13 end) makes the auto-placement
+        cursor push .project-info onto a second row instead of packing it
+        beside the image. */
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2/ 1; /* was height:90% of a fixed-height parent — now
+        that the parent is auto-height, this sizes the image directly */
+}
+
+/* Grey tint over the image, not a full desaturation — the image keeps its
+   own color underneath and just reads muted until the card is revealed.
+   ::after (not a filter on .media-img) so it paints as a flat layer on top
+   instead of altering the image's own pixels. */
+.project-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #b4afb4;
+    opacity: 0.55;
+    transition: opacity 0.6s ease;
+    pointer-events: none; /* only the image/card underneath should catch clicks/hover */
+}
+
+.project-item.is-visible .project-media::after {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-media::after {
+        transition: none;
+        opacity: 0;
+    }
+}
+
+/* Image-right / text-left variant (Figma's zigzag — card 2 reverses the
+   usual media-left layout). DOM order stays media-then-info so mobile
+   stacking (which ignores grid-column) still puts the image first. */
+.project-item.reverse .project-media {
+    grid-column: 6 / 12;
+}
+
+.project-item.reverse .project-info {
+    grid-column: 1 / 6;
+    padding-left: 0;
+    padding-right: 24px;
+    transform: translateX(-60px); /* info is on the left here — slide in from the left */
+}
+
+.media-img, .media-video {
+    /* Oversized (110%/150% instead of 100%/100%) and centered — top/left
+       split the extra 10%/50% evenly on both sides — so js/parallax.js has
+       room to drift the image vertically (±10% yPercent) inside the
+       cropped .project-media frame without exposing empty edges. Centered
+       also means the crop itself is centered on the source photo, instead
+       of being biased toward one edge and cutting off content lower in the
+       frame. Mobile (768px, below) resets width/height/top/left back to
+       100%/100%/0/0 since the drift is disabled there. */
+    width: 100%;
+    height: 150%;
+    object-fit: cover; /* Asegura que cubra el área sin deformarse */
+    position: absolute;
+    top: -25%;
+    transition: opacity 0.5s ease;
+    will-change: transform;
+    transform-origin: center;
+    /* The hover zoom (subtle scale-up) is driven by GSAP in
+       cursor-and-init.js, not a CSS transition — js/parallax.js already
+       owns this element's transform (scrubbed yPercent drift), so the
+       zoom is tweened as a separate GSAP property on the same element
+       instead of a CSS :hover rule, which a GSAP-set inline transform
+       would just override. */
+}
+
+/* Contenedor de Info (Columnas 7 a 13) */
+.project-info {
+    grid-column: 8 / 13;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start; /* Centrado vertical */
+    padding-left: 24px;
+
+    /* Scroll-triggered reveal (js/pages/index.js: IntersectionObserver
+       toggles .is-visible on the parent .project-item as it enters/leaves
+       the viewport). Scoped to .project-info only — .project-media keeps
+       its own parallax drift (js/parallax.js) untouched by this. Default
+       slides in from the right (info sits on the right); the .reverse
+       variant above overrides this to slide from the left instead — same
+       idea as .sobre-mi-feature-text's [data-reveal] in about.css. */
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-item.is-visible .project-info {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-info {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap; /* Permite que bajen si no hay espacio */
+    gap: 8px;       /* Espacio entre cada recuadro */
+    margin-bottom: 24px;
+}
+
+/* Small-tag component (Figma node 44:140) — Color=Orange variants. */
+.tag {
+    font-family: var(--font-heading);
+    font-size: var(--fs-small-tag);
+    color: var(--color-violet);
+    border: 1px solid var(--color-violet); /* Borde fino naranja */
+    padding: 4px 10px;         /* Espacio interno (aire) */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: var(--ls-small-tag);
+    line-height: 1;
+    display: inline-block;
+    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.orange-tag {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    background-color: var(--color-black);
+    padding: 4px 10px;         /* Espacio interno (aire) */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    display: inline-block;
+}
+
+/* Was tied to a scroll-driven .active class (whichever card sat closest to
+   viewport center); now it's a plain hover state — matches the card's
+   overall "hover, not active" treatment. Also fires on :focus-visible so
+   tabbing to the card (role="link"/tabindex on .project-item, see
+   index.html) previews the same state a mouse hover would, not just the
+   generic outline. */
+.project-item:hover .tag,
+.project-item:focus-visible .tag {
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    border-color: var(--color-black); /* --color-dark-violet doesn't exist as a
+        token (not in tokens.css, no such swatch in the Figma library either) —
+        an unresolved var() invalidates the whole declaration, so border-color
+        fell back to its initial value (currentcolor = the hover text's white),
+        which is why the border was invisible against the page's near-white
+        background. --color-black (#2D0030, "VioletBlack" in the Figma color
+        library) sits in the same violet family and is an existing token, so
+        it gives a real dark border without inventing a new color. */
+    font-weight: var(--fw-regular);
+}
+
+.project-title { margin-bottom: 24px; }
+.project-description {
+    padding:  0  0  0 24px ;
+}
+.view-project { text-decoration: none; color: var(--color-orange); font-weight: 700; }
+
+/* "Ver proyecto" CTA (Figma node 2300:760, an instance of the Primary
+   Button component — see button.css for the shared .btn styles). Sits
+   below the description, left-aligned to the same 24px inset. align-self
+   keeps it hugging its own content instead of stretching to the full
+   width of the flex-column .project-info. */
+.project-cta {
+    margin-top: 24px;
+    margin-left: 24px; /* matches .project-description's own extra
+        padding-left:24px, which .project-cta doesn't inherit as a sibling
+        (not nested inside .project-description) — needed in both the
+        default and .reverse layouts, since .project-info's own padding
+        difference between them applies equally to both siblings and
+        cancels out. */
+    align-self: flex-start;
+    transition: background-color 0.3s ease;
+}
+
+/* Hovering anywhere on the card previews the CTA's own hover state (see
+   .btn:hover in button.css) — same visual, just triggered from the whole
+   card's hit area instead of requiring the pointer to be on the button
+   itself, matching .tag's card-wide hover just above. Also fires on
+   :focus-visible so keyboard focus gets the same preview as a mouse hover. */
+
+
+.project-item:hover .project-cta .btn__icon,
+.project-item:focus-visible .project-cta .btn__icon {
+    animation: btn-icon-nudge 0.9s ease-in-out infinite;
+}
+
+.project-item:hover .project-cta,
+.project-item:focus-visible .project-cta {
+    background-color: var(--color-orange);
+}
+
+/* ==== about.css ==== */
+/* ========================================
+   SOBRE MÍ — "Formación" (Figma node 2305:848)
+   ======================================== */
+
+#sobre-mi {
+    margin-top: 160px; /* matches #trabajos's own top spacing (work.css) */
+    padding-bottom: 160px;
+}
+
+.grid-sobre-mi {
+    height: auto; /* Override .grid-layout height: 100% */
+    align-items: start;
+}
+
+/* Vertical eyebrow label — same treatment as .trabajos-label (work.css). */
+.sobre-mi-label {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--color-violet);
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    text-transform: uppercase;
+    justify-self: start;
+    align-self: start;
+    margin-top: -60px;
+}
+
+.sobre-mi-intro {
+    grid-column: 2 / 8;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 64px;
+}
+
+.sobre-mi-title {
+    color: var(--color-black);
+}
+
+.sobre-mi-intro-text {
+    padding: 0 48px 0 24px;
+    color: var(--color-black);
+}
+
+.sobre-mi-cards {
+    grid-column: 1 / 13;
+    grid-row: 2;
+    display: flex;
+    gap: 32px;
+    align-items: start;
+}
+
+.sobre-mi-card {
+    flex: 1;
+    min-width: 0; /* lets long words wrap instead of forcing the row wider
+        than its grid track (flex items default to min-width:auto) */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+
+    /* Scroll-triggered reveal (js/pages/index.js: IntersectionObserver adds
+       .is-visible to .sobre-mi-cards once, the first time the row enters
+       the viewport). Each card's own transition-delay below staggers them
+       so they appear one after another instead of all at once. Transform/
+       opacity only, per the site's animation guardrails. */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sobre-mi-cards.is-visible .sobre-mi-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sobre-mi-cards .sobre-mi-card:nth-child(1) { transition-delay: 0s; }
+.sobre-mi-cards .sobre-mi-card:nth-child(2) { transition-delay: 0.30s; margin-top: 80px; }
+.sobre-mi-cards .sobre-mi-card:nth-child(3) { transition-delay: 0.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .sobre-mi-card,
+    .sobre-mi-feature-text {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.sobre-mi-card-title {
+    color: var(--color-black);
+}
+
+.sobre-mi-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Institution/program tags (UDELAR, Universidad ORT, Jóvenes a Programar) —
+   real external links, so unlike the plain .tag pills they need the arrow
+   icon + link affordance. .tag is display:inline-block; this switches it
+   to inline-flex so the icon sits inline after the text instead of
+   wrapping under it. Text is wrapped in its own <span data-key> (see
+   index.html) rather than putting data-key on the link itself — same
+   reasoning as .connect-card__link: changeLanguage() replaces a data-key
+   element's innerText wholesale, which would silently delete the icon on
+   every language switch if it were a sibling inside that same element. */
+.tag--link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+}
+
+/* Keyboard-only indicator — hover deliberately doesn't touch color (see
+   the icon-nudge treatment below instead), but a focus state still needs
+   *some* visible marker for accessibility. Outline, not a fill/border
+   color swap, so it stays out of the way of the hover treatment. */
+.tag--link:focus-visible {
+    outline: 2px solid var(--color-violet);
+    outline-offset: 2px;
+}
+
+@keyframes tag-icon-nudge {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(2px, -2px); }
+}
+
+/* Hover — same idea as .btn__icon's nudge (button.css): no color change,
+   just the icon nudging on a loop for as long as the pointer stays over
+   the tag. Diagonal (up-right) instead of the button's horizontal nudge,
+   matching this icon's own arrow direction. */
+.tag--link:hover .contact-icon,
+.tag--link:focus-visible .contact-icon {
+    animation: tag-icon-nudge 0.9s ease-in-out infinite;
+}
+
+.contact-icon {
+    fill: var(--color-violet);
+}
+
+/* Sized for this compact pill context — the base rule above is a generic
+   13px/orange icon; this out-specifies it for the 12px tag pill. */
+.sobre-mi-card-tags .contact-icon {
+    width: 8px;
+    height: 8px;
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.sobre-mi-card-text {
+    padding: 0 24px;
+    color: var(--color-black);
+}
+
+/* ========================================
+   SOBRE MÍ — Docencia / Media resma (Figma nodes 2155:718, 2155:723)
+   Two alternating image+text rows: image-left/text-right for Docencia,
+   text-left/image-right for Media resma. Both live as direct children of
+   the same .grid-sobre-mi grid as the cards above (grid-row 3 and 4).
+   ======================================== */
+
+.sobre-mi-feature-media {
+    position: relative;
+}
+
+.sobre-mi-feature-media--docencia {
+    grid-column: 1 / 6;
+    grid-row: 3;
+    margin-top: 160px;
+}
+
+.sobre-mi-feature-media--media-resma {
+    grid-column: 7 / 13;
+    grid-row: 4;
+    margin-top: 160px;
+}
+
+/* Cropped frame — the img is oversized (130% height) so js/parallax.js has
+   room to drift it vertically without exposing empty edges, same
+   technique as .project-media/.media-img in work.css. */
+.sobre-mi-feature-media-frame {
+    position: relative;
+    overflow: hidden;
+}
+
+.sobre-mi-feature-media--docencia .sobre-mi-feature-media-frame {
+    aspect-ratio: 540 / 405;
+}
+
+.sobre-mi-feature-media--media-resma .sobre-mi-feature-media-frame {
+    aspect-ratio: 658 / 370;
+}
+
+.sobre-mi-feature-media-img {
+    position: absolute;
+    top: -15%;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    will-change: transform;
+}
+
+/* "Sello" stamp — overlaps the docencia photo's bottom-right corner,
+   positioned in percentages (matching the Figma overlap ratio) so it stays
+   put relative to the frame as the column width changes. Left static (no
+   parallax) so it reads as a fixed sticker over the drifting photo. */
+.sobre-mi-feature-media-accent {
+    position: absolute;
+    left: 63.9%;
+    top: 58.8%;
+    width: 57.2%;
+    aspect-ratio: 309 / 232;
+    object-fit: cover;
+}
+
+.sobre-mi-feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+
+    /* Scroll-triggered reveal (js/pages/index.js), slid in from the side
+       matching the block's [data-reveal] direction instead of the cards'
+       translateY — see the docencia/media-resma comment on that observer. */
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sobre-mi-feature-text[data-reveal="right"] { transform: translateX(60px); }
+.sobre-mi-feature-text[data-reveal="left"] { transform: translateX(-60px); }
+
+.sobre-mi-feature-text.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sobre-mi-feature-text--docencia {
+    grid-column: 7 / 13;
+    grid-row: 3;
+    margin-top: 160px;
+}
+
+.sobre-mi-feature-text--media-resma {
+    grid-column: 1 / 7;
+    grid-row: 4;
+    margin-top: 160px;
+}
+
+.sobre-mi-feature-title {
+    color: var(--color-black);
+}
+
+.sobre-mi-feature-body {
+    padding: 0 48px 0 24px;
+    color: var(--color-black);
+}
+
+
+
+/* ==== loader.css ==== */
+#loader-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en vertical */
+    justify-content: center; /* Centra verticalmente en la pantalla */
+    align-items: center;     /* Centra horizontalmente en la pantalla */
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#loader-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-container {
+    width: 75px; /* Tamaño del área del logo */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loader-percentage {
+    margin-top: 15px; /* Espacio entre el logo y el número */
+    font-family: var(--font-heading);
+    color: var(--color-black);
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1; /* Evita espacios extra por debajo del texto */
+}
+
+#Centro {
+    opacity: 0;
+    animation: aparecerSimple 0.2s ease forwards;
+    color: var(--color-orange);
+}
+
+#anim-corona {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: aparecerEscala 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+#anim-iris {
+    transform-origin: center;
+    transform-box: fill-box;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease;
+    opacity: 1;
+}
+
+/* El ojo inicia cerrado (scaleY 0) y el parpado también se prepara */
+#anim-ojo, #anim-parpado {
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+/* --- CLASES DE CONTROL (JS) --- */
+.eye-open { animation: abrirOjo 0.5s ease-out forwards; }
+.eye-close { animation: cerrarOjo 0.4s ease-in forwards; }
+.parpadeando { animation: parpadear 0.2s ease-in-out; }
+
+/* --- ANIMACIONES DE SALIDA --- */
+.out-fade { animation: desaparecerSimple 0s ease forwards !important; }
+.out-scale { animation: desaparecerEscala 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) forwards !important; }
+
+/* --- KEYFRAMES --- */
+@keyframes aparecerSimple { from { opacity: 0; } to { opacity: 1; } }
+@keyframes desaparecerSimple { from { opacity: 1; } to { opacity: 0; } }
+@keyframes aparecerEscala {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes desaparecerEscala {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+@keyframes abrirOjo { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes cerrarOjo { from { transform: scaleY(1); } to { transform: scaleY(0); } }
+@keyframes parpadear {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0); }
+    100% { transform: scaleY(1); }
+}
+
+/* ==== connect-card.css ==== */
+/* Connect card (Figma node 31:165). Fixed to the bottom of the viewport,
+   collapsed by default. Reuses .grid-layout (the same 12-column/centering
+   rules the header uses) and sits in the same columns as .h-item-4 (the
+   language switcher), so both align to the same right edge. */
+
+.connect-card-wrap {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -8px; /* shifted down by the same 8px .connect-card adds via
+        padding-bottom below — nets out to the same resting position, but
+        leaves 8px of real card hanging just off-screen instead of empty
+        space. When the hover bounce lifts the card (translateY, up to
+        -6px), that buffer is what gets revealed — more orange, not the
+        page background underneath. */
+    z-index: 9000;
+    pointer-events: none; /* only the card itself should catch clicks */
+}
+
+.connect-card-wrap .grid-layout {
+    height: auto;
+}
+
+.connect-card {
+    grid-column: 1 / 13;
+    justify-self: end;
+    width: 314px;
+    min-width: 314px; /* grid items default to min-width:auto, which lets
+                          the browser compress below `width` as the track
+                          narrows — this pins it so it can't shrink */
+    margin-right: -16px; /* nudges past the grid's right edge (where
+        .h-item-4, the language switcher, aligns) by 16px */
+    background-color: var(--color-orange);
+    pointer-events: auto;
+    padding-bottom: 8px; /* the off-screen orange buffer described on
+        .connect-card-wrap above */
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Once the footer (js/connect-card.js watches it via IntersectionObserver)
+   scrolls into view, fade this out — the footer repeats the same
+   links/mail, and being fixed the card would otherwise sit on top of it. */
+.connect-card-wrap.is-hidden .connect-card {
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+}
+
+.connect-card__header {
+    display: block;
+    width: 100%;
+    padding: 8px 16px 16px;
+    background: none;
+    border: none;
+    cursor: none !important; /* custom cursor system, see base.css */
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    text-transform: uppercase;
+    text-align: left;
+}
+
+/* The generic *:focus-visible default (base.css) is violet — invisible
+   against this card's orange background. Same white-outline treatment as
+   .connect-card__mail below. Negative offset keeps the ring inside the
+   card instead of spilling onto the page behind it. */
+.connect-card__header:focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 4px;
+}
+
+/* A brief bounce on hover — signals the card is clickable/expandable.
+   Plays once per hover-in (default animation-iteration-count:1) rather
+   than looping, since this card sits fixed on screen at all times and a
+   continuous bounce would get old fast. Transform only, spring-style
+   easing (easeOutBack), matching the site's animation guardrails.
+
+   translateY lifts the card off its resting position, which would
+   normally expose the page background below it (the card sits flush
+   against the viewport's bottom edge) — .connect-card-wrap/.connect-card
+   above carry an 8px off-screen orange buffer for exactly this, so what's
+   revealed during the lift is more of the card, not the page. */
+@keyframes connect-card-bounce {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-6px); }
+    55%  { transform: translateY(0); }
+    75%  { transform: translateY(-2px); }
+    100% { transform: translateY(0); }
+}
+
+/* Targets .connect-card itself, not .connect-card__header — the header has
+   background:none, so its own fill is transparent and the orange comes
+   from this parent. Animating the header alone bounced the text while the
+   orange box stayed put.
+   :not(.is-expanded) — only the "click to expand" cue; once it's already
+   open, bouncing it on every hover (e.g. while reaching for a link) would
+   just be noise. */
+.connect-card:not(.is-expanded):hover {
+    animation: connect-card-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Animated height via grid-template-rows 0fr -> 1fr — smooth expand/collapse
+   without measuring pixel heights in JS. */
+.connect-card__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.connect-card.is-expanded .connect-card__body {
+    grid-template-rows: 1fr;
+}
+
+.connect-card__content {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.connect-card__links {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 9px 16px;
+    min-height: 53px;
+}
+
+.connect-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: none !important;
+}
+
+.connect-card__link-icon {
+    width: 12px;
+    height: 12px;
+    fill: var(--color-white);
+    flex-shrink: 0;
+}
+
+.connect-card__mail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 6px;
+    padding: 10px 16px;
+    background: none;
+    background-color: var(--color-dark-orange);
+    border: none;
+    font: inherit;
+    text-align: left;
+    cursor: none !important;
+}
+
+.connect-card__mail:focus-visible {
+    outline: 1px solid var(--color-white);
+    outline-offset: -6px;
+}
+
+.connect-card__mail-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+}
+
+.connect-card__mail-icon {
+    width: 10px;
+    height: 10px;
+    fill: var(--color-white);
+    flex-shrink: 0;
+}
+
+.connect-card__mail-address {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+    color: var(--color-white);
+    text-transform: uppercase;
+    cursor: none !important;
+}
+
+@media (max-width: 768px) {
+    /* No language switcher visible in the closed mobile header to align to
+       (it lives inside the off-canvas menu) — a full-width bottom bar is
+       the more sensible mobile pattern here. */
+    .connect-card {
+        grid-column: 1 / 7;
+        justify-self: stretch;
+        width: auto;
+        min-width: 0; /* undo the desktop min-width so it can shrink/stretch */
+        max-width: 100%;
+    }
+}
+
+/* ==== footer.css ==== */
+/* ========================================
+   SITE FOOTER (Figma node 409:712)
+   ======================================== */
+
+.site-footer {
+    position: relative; /* z-index below needs a positioned box to apply at all */
+    z-index: 1; /* explicit and low — .connect-card-wrap (connect-card.css)
+        is fixed at z-index:9000 and must always stack above this */
+    background-color: var(--color-black);
+    margin-top: 160px; /* matches #trabajos/#sobre-mi's own top spacing */
+}
+
+.site-footer__grid {
+    height: auto; /* override .grid-layout height:100% */
+    padding: 72px 0 40px;
+}
+
+.site-footer__pages {
+    grid-column: 2 / 6;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Without this, flex's default align-items:stretch
+        makes each link fill the full column width — harmless visually since
+        the text is left-aligned either way, but it means any focus/hover box
+        drawn on the link outlines that whole stretched width instead of
+        just the word. */
+    gap: 24px;
+    align-self: start;
+}
+
+.site-footer__page-link {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-regular);
+    color: var(--color-gray-1);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* Same reasoning as .connect-card__header/.site-footer__mail above: the
+   site-wide *:focus-visible violet border-bottom (base.css) reads as
+   invisible against this footer's black background, so this link needs
+   its own light-colored override. */
+.site-footer__page-link:focus-visible {
+    outline: 1px solid var(--color-gray-1);
+    outline-offset: 4px;
+}
+
+.site-footer__connect {
+    grid-column: 9 / 13;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-self: start;
+}
+
+.site-footer__links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* same stretch fix as .site-footer__pages above */
+    gap: 8px;
+}
+
+.site-footer__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-2);
+    line-height: var(--lh-subtitle-2);
+    letter-spacing: var(--ls-subtitle-2);
+    font-weight: var(--fw-regular);
+    color: var(--color-gray-1);
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: none !important;
+}
+
+/* Same reasoning as .site-footer__page-link above: white/gray outline
+   instead of the site-wide violet, which disappears against this footer's
+   black background. */
+.site-footer__link:focus-visible {
+    outline: 1px solid var(--color-gray-1);
+    outline-offset: 4px;
+}
+
+.site-footer__link-icon {
+    width: 12px;
+    height: 12px;
+    fill: var(--color-gray-1);
+    flex-shrink: 0;
+}
+
+.site-footer__mail {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    cursor: none !important;
+}
+
+.site-footer__mail:focus-visible {
+    outline: 1px solid var(--color-gray-1);
+    outline-offset: 4px;
+}
+
+.site-footer__mail-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: var(--fw-regular);
+    color: var(--color-gray-1);
+}
+
+.site-footer__mail-icon {
+    width: 10px;
+    height: 10px;
+    fill: var(--color-gray-1);
+    flex-shrink: 0;
+}
+
+.site-footer__mail-address {
+    font-family: var(--font-heading);
+    font-size: var(--fs-subtitle-1);
+    line-height: var(--lh-subtitle-1);
+    letter-spacing: var(--ls-subtitle-1);
+    font-weight: var(--fw-bold);
+    color: var(--color-gray-1);
+    text-transform: uppercase;
+}
+
+.site-footer__credit {
+    grid-column: 2 / 12;
+    grid-row: 2;
+    align-self: end;
+    margin-top: 46px;
+    font-family: var(--font-body);
+    font-size: var(--fs-subtext);
+    line-height: var(--lh-subtext);
+    letter-spacing: var(--ls-subtext);
+    font-weight: 300;
+    color: var(--color-gray-1);
+}
+
+/* ==== responsive.css ==== */
+/* ===== CUSTOM CURSOR - DISABLE ON TOUCH DEVICES =====
+   The 768px mobile block below already disables it, but that's a width
+   breakpoint — tablets (esp. landscape, e.g. a 1024px+ iPad) are wider than
+   768px and slipped through, showing the desktop dot with no mousemove
+   events to ever position it. (hover: none)/(pointer: coarse) target the
+   actual input capability instead of screen size, so this catches every
+   touch device regardless of width. */
+@media (hover: none), (pointer: coarse) {
+    .custom-cursor {
+        display: none !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+}
+
+@media (max-width: 1400px) {
+
+    .grid-inicio {
+        grid-template-rows: minmax(20vh, auto) minmax(10vh, auto);
+        /* Keep in sync with .photo-container img's width below — this is
+           what .web-portfolio's position is computed from. */
+        --hero-photo-w: clamp(100px, 28vw, 410px);
+    }
+
+    .main-name {
+        font-size: clamp(32px, 6cqi, 110px);
+    }
+    .main-text-block {
+        grid-column: 5 / 11;
+    }
+
+    /* Projects — media:info was 6:5 columns (work.css), which keeps the
+       image's aspect-ratio height large even as the card narrows, so a
+       short description ends up next to a much taller image with dead
+       space beneath it. Flipping the split to 5:6 shrinks the image (and
+       with it, its aspect-ratio height) while giving the text more width
+       to wrap into, so the two columns land closer in height. Reverse
+       cards mirror the same 5:6 split, just on the other side. */
+    .project-media {
+        grid-column: 2 / 7;
+        aspect-ratio: 4 / 3;
+    }
+
+    .project-info {
+        grid-column: 7 / 13;
+    }
+
+    .project-item.reverse .project-media {
+        grid-column: 7 / 12;
+    }
+
+    .project-item.reverse .project-info {
+        grid-column: 1 / 7;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+
+    main {
+        padding-top: 120px;
+    }
+
+    /* Tagline, secondary text (location/time) and the "2026" label sized
+       down to match the mobile version. */
+    .tagline {
+        font-size: var(--fs-subtitle-2);
+        line-height: var(--lh-subtitle-2);
+        letter-spacing: var(--ls-subtitle-2);
+    }
+
+    .badge {
+        padding: 2px 8px;
+        font-size: var(--fs-subtitle-2);
+        line-height: var(--lh-subtitle-2);
+        letter-spacing: var(--ls-subtitle-2);
+    }
+
+    .location-time,
+    .location-line {
+        font-size: var(--fs-small-tag);
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+    }
+
+    /* Below 1200px, .main-text-block (narrower grid-column, from the 1400px
+       breakpoint above) wraps onto more lines and can end up taller than the
+       photo — since .web-portfolio shares .photo-container's grid-row (see
+       hero.css), the row's height then follows the *text*, not the photo,
+       and align-self:end no longer lines the label's bottom up with the
+       image. An explicit top (which makes align-self inert — top/bottom
+       being non-auto is what align-self needs to be ignored) sidesteps that
+       by computing the position directly from the photo's own width/aspect
+       ratio again, same as hero.css did before the grid-align rewrite. */
+    .web-portfolio {
+        font-size: var(--fs-small-tag);
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+        top: calc(-70px + var(--hero-photo-w));
+        align-self: start;
+        margin-bottom: 0;
+    }
+
+    /* Projects — Figma "Tablet 768px" frame (node 2129:713): cards stack
+       into a single column (image, then tags, title, description) instead
+       of the side-by-side media+info grid used above this breakpoint.
+       .project-item switching to flex makes the leftover grid-column
+       values on .project-media/.project-info (from work.css and the
+       1400px override above) inert — no need to reset them here.
+       Cards also zigzag horizontally, per Figma: #project1/#project3 are
+       inset 2 columns from the left (3/13), #project2 (reverse) is flush
+       left but inset 2 columns from the right (1/11) — mirroring the
+       .reverse media/info swap used above this breakpoint. */
+    .project-item {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 60px;
+    }
+    .trabajos-label {
+        font-size: var(--fs-small-tag);
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+    }
+
+    #project1,
+    #project3 {
+        grid-column: 3 / 13;
+    }
+
+    #project2 {
+        grid-column: 1 / 11;
+    }
+
+    .project-media {
+        /* .project-item's own padding (work.css) now supplies the card's
+           left inset, so this no longer needs its own margin-left on top
+           of it — that would double the gap. */
+        width: 100%;
+        aspect-ratio: 2 / 1;
+    }
+
+    .project-info {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    /* Cancels the desktop reverse variant's extra right padding (work.css)
+       — Figma's reverse card has the same flush-right edge as the others. */
+    .project-item.reverse .project-info {
+        padding-right: 0;
+    }
+
+    .project-title {
+        font-size: 28px;
+        line-height: 28px;
+        letter-spacing: 0.14px;
+    }
+
+    .project-description {
+        padding-right: 24px;
+    }
+
+    /* ---- Sobre mí / Formación (css/about.css) ----
+       3 cards side-by-side get cramped once each column is this narrow —
+       stack them a breakpoint earlier than the full mobile collapse below. */
+    .sobre-mi-cards {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+}
+
+/* ========================================
+   MOBILE STYLES - 6 COLUMN GRID SYSTEM
+   @media (max-width: 768px)
+   ======================================== */
+
+@media (max-width: 768px) {
+
+    /* ===== ROOT VARIABLES ===== */
+    :root {
+        --container-width: 90%;
+        --gap: 5px;
+        --header-h: 60px;
+    }
+
+    /* ===== GRID SYSTEM - 6 COLUMNS ===== */
+    .grid-layout {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 5px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+        height: var(--header-h);
+    }
+
+    .flower {
+        grid-column: 1 / 2;
+        padding-left: 0px;
+        justify-self: start;
+    }
+
+    .flower svg {
+        width: 28px;
+        height: auto;
+    }
+
+    .menu-toggle {
+        display: block;
+        grid-column: 5 / 7;
+        justify-self: end;
+        align-self: center;
+        padding-right: 0;
+    }
+
+    .menu-toggle .bar {
+        width: 22px;
+        height: 3px;
+        margin: 4px 0;
+    }
+
+    /* Navigation Menu - compact dropdown anchored under the hamburger
+       button. Only WORK / ABOUT ME / language switcher — same items as
+       the desktop header, just stacked. Doesn't cover the screen: it's
+       sized to its content and closes on outside tap via nav-menu.js. */
+    .nav-menu {
+        display: flex;
+        position: fixed;
+        top: calc(var(--header-h) + 8px);
+        right: 5%;
+        left: auto;
+        width: auto;
+        min-width: 160px;
+        background-color: var(--color-white);
+        border: 1px solid var(--color-black);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 18px 20px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-6px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.3s;
+        z-index: 10000;
+    }
+
+    .nav-menu.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .h-item-1 {
+        z-index: 10002;
+        position: relative;
+    }
+
+    .nav-menu .h-item {
+        grid-column: auto;
+        justify-self: start;
+        font-size: var(--fs-subtitle-2);
+    }
+
+    .h-item-2, .h-item-3, .h-item-4 {
+        grid-column: auto;
+    }
+
+    /* ===== MAIN SECTION ===== */
+    main {
+        padding-top: 80px;
+        padding-bottom: 20px; /* Reduced since footer is hidden */
+    }
+
+    /* ===== INICIO SECTION - HERO ===== */
+    .grid-inicio {
+        margin-top: 24px;
+        grid-template-rows: auto auto auto;
+        align-content: start;
+        height: auto;
+        padding-top: 0px;
+    }
+
+    /* Hero (Figma node 2222:736): name full-width on top, then the photo
+       flanked left/right by the two vertical labels, then the tagline. */
+
+    /* Main Name - full width, top. The tagline is nested inside this block
+       in the DOM (desktop stacks it directly under the name via flexbox —
+       see hero.css), but the mobile design keeps name → photo → tagline as
+       three separate stacked rows. display:contents unwraps this element
+       so #main-name and .tagline become independent grid items again, each
+       placed by its own rule below (name here, tagline further down). */
+    .main-text-block {
+        display: contents;
+    }
+
+    #main-name {
+        grid-column: 1 / 7;
+        grid-row: 1;
+        align-self: start;
+        padding-top: 10px;
+    }
+
+    .main-name {
+        font-size: clamp(22px, 12vw, 70px);
+        line-height: 0.85;
+        letter-spacing: -0.02em;
+    }
+
+    .main-name .line {
+        display: block;
+    }
+
+    /* Photo - centered, between the two vertical labels. The negative
+       margin-top pulls it up under the name, replicating the slight
+       name/photo overlap in the Figma mobile frame (name bottom at y:105,
+       photo top at y:90 — a ~15px overlap). */
+    .photo-container {
+        grid-column: 2 / 6;
+        grid-row: 2;
+        padding: 0;
+        margin-top: 10px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .photo-container img {
+        margin-top: -42px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* "2026 - WEB PORTFOLIO" - flanks the photo on the left. Back to being a
+       plain grid item here (desktop positions it with an absolute calc()
+       derived from the photo's rendered size — not needed once it's simply
+       placed in the grid alongside the photo). */
+    .web-portfolio {
+        position: static;
+        grid-column: 1;
+        grid-row: 2;
+        align-self: end;
+        justify-self: end;
+        padding-top: 0;
+        font-size: var(--fs-small-tag);
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+    }
+
+    /* Secondary Text Block - flanks the photo on the right */
+    .secondary-text-block {
+        grid-column: 6;
+        grid-row: 2;
+        writing-mode: vertical-rl;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 0px;
+        margin-top: -32px;
+        align-self: start;
+        justify-self: end;
+        font-size: var(--fs-small-tag);
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+    }
+
+    .location-line {
+        white-space: nowrap;
+        font-size: var(--fs-small-tag);
+        letter-spacing: var(--ls-small-tag);
+    }
+
+    /* Tagline - Bottom, full width */
+    .tagline {
+        grid-column: 1 / 7;
+        grid-row: 3;
+        padding-top: 20px;
+        margin-top: 0px;
+    }
+
+    
+
+    /* ===== PROJECTS SECTION ===== */
+    #trabajos {
+        padding-top: 0px;
+        /* A real, fixed gap — see the .grid-inicio comment above for why
+           this can no longer be 0 and rely on leftover min-height space. */
+        margin-top: 220px;
+    }
+
+    .grid-trabajos {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    /* Stays vertical (Figma's mobile frame keeps it rotated, small) and
+       sits in the 24px gutter #project1's image leaves at its own left
+       edge (see .project-media below) — same "peeks through the card's
+       empty first column" trick used on desktop. */
+    .trabajos-label {
+        grid-column: 1 / 2;
+        grid-row: 1;
+        font-size: var(--fs-small-tag);
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+        align-self: start;
+    }
+
+    /* ---- Sobre mí / Formación (css/about.css) ---- */
+    .sobre-mi-label {
+        grid-column: 1 / 2;
+        grid-row: 1;
+        font-size: var(--fs-small-tag);
+        line-height: var(--lh-small-tag);
+        letter-spacing: var(--ls-small-tag);
+        align-self: start;
+    }
+
+    .sobre-mi-intro {
+        grid-column: 1 / 7;
+        margin-bottom: 40px;
+    }
+
+    .sobre-mi-intro-text {
+        padding: 0;
+    }
+
+    .sobre-mi-cards {
+        grid-column: 1 / 7;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    /* Docencia / Media resma — full-width stack, image then text for each,
+       in that reading order regardless of the desktop left/right swap. */
+    .sobre-mi-feature-media--docencia,
+    .sobre-mi-feature-text--docencia,
+    .sobre-mi-feature-text--media-resma,
+    .sobre-mi-feature-media--media-resma {
+        grid-column: 1 / 7;
+        margin-top: 80px;
+    }
+
+    .sobre-mi-feature-media--docencia { grid-row: 3; }
+    .sobre-mi-feature-text--docencia { grid-row: 4; }
+    .sobre-mi-feature-text--media-resma { grid-row: 5; }
+    .sobre-mi-feature-media--media-resma { grid-row: 6; }
+
+    .sobre-mi-feature-body {
+        padding: 0;
+    }
+
+    /* ---- Footer (css/footer.css) ---- */
+    .site-footer {
+        margin-top: 100px;
+    }
+
+    .site-footer__grid {
+        padding: 40px 0 24px;
+    }
+
+    .site-footer__pages,
+    .site-footer__connect {
+        grid-column: 1 / 7;
+    }
+
+    .site-footer__connect {
+        grid-row: 2;
+        margin-top: 32px;
+    }
+
+    .site-footer__credit {
+        grid-column: 1 / 7;
+        grid-row: 3;
+        margin-top: 32px;
+    }
+
+    /* #project1's desktop grid-column:1/13 (an ID selector, so it isn't
+       overridden by the .project-item rule below) would otherwise span
+       past the 6-col mobile grid — reset it here so it fits and shares
+       row 1 with .trabajos-label like it does on desktop. */
+    #project1, #project3 {
+        grid-column: 1 / 7;
+
+    }
+
+    .project-item {
+        grid-column: 1 / 7;
+        margin-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 16px; /* smaller than desktop's 32px/24px card padding
+            (work.css) to fit the narrower mobile container */
+    }
+
+    /* Image no longer needs its own left inset — .project-item's padding
+       (above) now supplies it, matching the Figma mobile frame's
+       padding-left:24px on the image wrapper without doubling it. */
+    .project-media {
+        width: 100%;
+        aspect-ratio: 4/3;
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 2 / 1;
+    }
+
+    .project-media img,
+    .project-media video {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+
+    .project-info {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .project-tags {
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 15px;
+    }
+
+    .tag {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    .project-title {
+        font-size: var(--fs-title-4);
+        line-height: var(--lh-title-4);
+        letter-spacing: var(--ls-title-4);
+        margin-top: 10px;
+        margin-bottom: 12px;
+    }
+
+    .project-description {
+        font-size: var(--fs-mobile-text);
+        line-height: var(--lh-mobile-text);
+        letter-spacing: var(--ls-mobile-text);
+    }
+
+    
+
+    /* ===== ABOUT SECTION ===== */
+    #sobre-mi {
+        margin-top: 100px;
+        padding-bottom: 80px;
+    }
+
+    /* ===== CUSTOM CURSOR - DISABLE ON MOBILE ===== */
+    .custom-cursor {
+        display: none !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+
+    /* ===== TYPOGRAPHY ADJUSTMENTS ===== */
+    h2 {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+        margin-top: 15px;
+    }
+
+    p {
+        font-size: var(--fs-mobile-text);
+        line-height: var(--lh-mobile-text);
+        letter-spacing: var(--ls-mobile-text);
+        margin-bottom: 8px;
+    }
+
+    /* ===== PREVENT HORIZONTAL OVERFLOW ===== */
+    body {
+        overflow-x: hidden;
+    }
+
+    .grid-layout {
+        width: var(--container-width);
+        max-width: 100%;
+    }
+
+    /* ===== ENSURE IMAGES DON'T BREAK LAYOUT ===== */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* ===== FIX ANY ABSOLUTE POSITIONED ELEMENTS ===== */
+    .badge {
+        position: relative;
+        display: inline-block;
+    }
+
+}
+
+

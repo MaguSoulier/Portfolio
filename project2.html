@@ -18,19 +18,10 @@
     <meta name="twitter:title" content="Fabrika de gigantes — Magdalena Soulier">
     <meta name="twitter:description" content="Videojuego web diseñado para Revista Gigantes (La Diaria) con el objetivo de transformar el consumo pasivo de contenido en una experiencia participativa de User-Generated Content (UGC).">
     <meta name="twitter:image" content="https://magdalenasoulier.netlify.app/og-image.png">
-    <!-- Split out of css/main.css's @import chain — see index.html for why. -->
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/typography.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/work.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/loader.css">
-    <link rel="stylesheet" href="css/connect-card.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- One bundled file, built by build-css.mjs — see index.html for why
+         this replaced both the old @import chain and the 12 separate
+         <link> tags that briefly replaced it. -->
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/pages/case-study.css">
     <link rel="preload" as="image" href="fabrika-de-gigantes/entrence.webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
