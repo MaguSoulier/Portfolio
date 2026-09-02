@@ -25,6 +25,7 @@ const CSS_DIR = path.join(ROOT, 'css');
 // Order matters — this is the cascade order, same as the old @import list.
 const PARTIALS = [
     'tokens.css',
+    'fonts.css',
     'typography.css',
     'base.css',
     'button.css',

@@ -24,10 +24,22 @@
          mobile connections — one request beats twelve there). -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="preload" as="image" href="Foto-violeta.webp" imagesrcset="Foto-violeta-mobile.webp 440w, Foto-violeta-700.webp 700w, Foto-violeta.webp 1020w" imagesizes="(max-width: 767px) 60vw, 510px" fetchpriority="high">
+    <!-- Space Mono 400/700 (non-italic) are self-hosted (css/fonts.css) —
+         everything above the fold uses only these two. Preloading here
+         (same-origin, no CSS round trip needed first) lets the browser
+         start fetching them immediately, in parallel with the page's own
+         CSS/JS — see css/fonts.css for the full reasoning. -->
+    <link rel="preload" as="font" type="font/woff2" href="fonts/space-mono-400.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="fonts/space-mono-700.woff2" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<!-- Space Grotesk (below-the-fold body copy) stays on Google Fonts — no
+     measured benefit to self-hosting it too. Space Mono's italic weights
+     were dropped from this request entirely: grepping every css/*.css
+     file turns up no `font-style: italic` usage anywhere on the site, so
+     Google was serving them for nothing. -->
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>

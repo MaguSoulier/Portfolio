@@ -2,7 +2,6 @@
 // CARGA
 // ==========
 
-let progress = 0;
 const percentEl = document.getElementById('loader-percentage');
 const iris = document.getElementById('anim-iris');
 const corona = document.getElementById('anim-corona');
@@ -14,6 +13,65 @@ const overlay = document.getElementById('loader-overlay');
 let isClosing = false;
 let irisTimeout, blinkTimeout;
 
+// ==========
+// PROGRESO REAL
+// ==========
+// The percentage used to be a fixed setInterval (1%/15ms, always ~1.5s,
+// regardless of the network) — decoupled from whether anything had
+// actually loaded. It's now driven by real checkpoints below; the visible
+// number is smoothed by requestAnimationFrame so it doesn't jump-cut
+// between them, but it never renders ahead of what's actually known to be
+// done — targetProgress only ever moves forward as a real checkpoint
+// resolves, and displayProgress eases toward it, never past it.
+let targetProgress = 0;
+let displayProgress = 0;
+
+function setTargetProgress(value) {
+    if (value > targetProgress) targetProgress = value;
+}
+
+function tickProgress() {
+    displayProgress += (targetProgress - displayProgress) * 0.08;
+    if (targetProgress - displayProgress < 0.5) displayProgress = targetProgress;
+    if (percentEl) percentEl.innerText = Math.round(displayProgress) + "%";
+    if (displayProgress < 100) requestAnimationFrame(tickProgress);
+}
+
+// The hero photo actually decoded — not just requested. img.complete +
+// naturalWidth handles the cache-hit case (already done, synchronously,
+// before any event would fire); img.decode() covers the normal case.
+// A broken image (network error, bad path) resolves instead of rejecting —
+// it must not hang the reveal.
+function esperarFoto() {
+    const img = document.querySelector('#main-photo img');
+    if (!img) return Promise.resolve();
+    if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+    if (typeof img.decode === 'function') {
+        return img.decode().catch(() => {});
+    }
+    return new Promise((resolve) => {
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
+    });
+}
+
+// The two Space Mono weights actually used above the fold (#main-name,
+// .tagline, .badge, .web-portfolio, header nav — see hero.css/header.css)
+// are usable. Deliberately not document.fonts.ready, which would also
+// wait on Space Grotesk and Mono's italics — neither appears above the
+// fold, so waiting on them would only add time for nothing visible.
+function esperarFuentes() {
+    if (!('fonts' in document)) return Promise.resolve();
+    return Promise.all([
+        document.fonts.load('400 16px "Space Mono"'),
+        document.fonts.load('700 16px "Space Mono"'),
+    ]).catch(() => {});
+}
+
+function esperarMs(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function iniciarCarga() {
     // 1. Aparece el Iris casi de inmediato
     setTimeout(() => { iris.style.opacity = "1"; }, 100);
@@ -23,14 +81,36 @@ function iniciarCarga() {
     setTimeout(moverIris, 700);
     parpadearOjo();
 
-    const interval = setInterval(() => {
-        progress++;
-        if (percentEl) percentEl.innerText = progress + "%";
-        if (progress >= 100) {
-            clearInterval(interval);
-            finalizarCarga();
-        }
-    }, 15);
+    requestAnimationFrame(tickProgress);
+
+    // Real readiness gate. Each checkpoint only ever pushes the visible
+    // percentage forward as it actually resolves; a 4s safety timeout
+    // guarantees the page is never stuck behind the overlay if a request
+    // stalls outright. A small minimum-display floor (~450ms) runs
+    // alongside — not after — the real gate, so it costs nothing once the
+    // network is already slower than that (the common case), while still
+    // giving the iris-open/eye-open choreography above room to play out
+    // on an instant cache-hit load.
+    const fuentesListas = esperarFuentes().then(() => setTargetProgress(50));
+    const fotoLista = esperarFoto().then(() => setTargetProgress(100));
+    const listo = Promise.all([fuentesListas, fotoLista]);
+    const timeoutDeSeguridad = esperarMs(4000).then(() => setTargetProgress(100));
+
+    Promise.all([
+        Promise.race([listo, timeoutDeSeguridad]),
+        esperarMs(450),
+    ]).then(() => {
+        // The hero photo's real dimensions (not whatever the layout
+        // guessed before it loaded) are now known, so ScrollSmoother's
+        // scroll-height and parallax.js's scrollTrigger start/end
+        // positions — both computed back on DOMContentLoaded — may be
+        // stale. smooth-scroll.js's own window.load handler corrects this
+        // eventually for every page, but that also waits on every
+        // below-the-fold image; refresh now, as soon as the one image that
+        // actually matters for first paint is confirmed ready.
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+        finalizarCarga();
+    });
 }
 
 function moverIris() {

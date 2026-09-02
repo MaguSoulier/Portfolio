@@ -7,6 +7,7 @@ body {
     min-height: 100vh;
     overflow-x: clip;  /* Prevents horizontal scroll */
     overflow-y: visible; /* Allows sticky to work */
+    overscroll-behavior-y: none; /* see html rule above */
     font-family: var(--font-heading);
     color: var(--color-black);
     scroll-behavior: smooth; /* Para que el salto sea suave */
@@ -81,6 +82,18 @@ body {
 
 html {
     scroll-behavior: smooth;
+    /* Stops Chrome's bottom-of-page overscroll glow/bounce. ScrollSmoother
+       pins #smooth-wrapper as `position: fixed` and translates
+       #smooth-content inside it (smooth-scroll.js) — that fixed wrapper
+       doesn't participate in the browser's own rubber-band motion, so when
+       a fling-scroll overshoots the real document's scroll height (mobile
+       Chrome shows this as a glow, not a bounce, and doesn't damp it the
+       way iOS Safari does), the gap between the wrapper's fixed bottom
+       edge and the overscrolled document boundary exposes body's white
+       background below the (black) footer for a frame before it springs
+       back — reported as a white flash under the footer, mobile-only,
+       Chrome-only (Safari's elastic bounce doesn't show it). */
+    overscroll-behavior-y: none;
 }
 
 svg {

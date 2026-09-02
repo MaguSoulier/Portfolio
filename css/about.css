@@ -217,6 +217,14 @@
     left: 63.9%;
     top: 58.8%;
     width: 57.2%;
+    /* Explicit height: auto so this aspect-ratio actually governs the box.
+       The img now carries width/height="700"/"525" attributes (added for
+       CLS), which the UA turns into a definite `height: 525px` hint —
+       without overriding it here, that hint wins over an author
+       aspect-ratio (which only fills in an *indefinite* axis), so the
+       stamp rendered at its full un-cropped attribute height instead of
+       this ratio's crop. */
+    height: auto;
     aspect-ratio: 309 / 232;
     object-fit: cover;
 }

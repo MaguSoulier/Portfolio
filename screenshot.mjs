@@ -33,9 +33,10 @@ try {
     await page.setViewport({ width: 1440, height: 900 });
     await page.goto(url, { waitUntil: 'networkidle0' });
 
-    // index.html's loader overlay covers the page for ~1.5s+ after networkidle0
-    // resolves (progress bar animation is JS-timed, not network-bound); wait for
-    // it to fade out before capturing, otherwise the shot catches it mid-loader.
+    // index.html's loader overlay stays up until the hero photo has actually
+    // decoded and the above-the-fold fonts are ready (js/loader.js), with a
+    // ~450ms floor and a 4s safety ceiling — not a fixed timer. Wait for it to
+    // fade out before capturing, otherwise the shot catches it mid-loader.
     await page.waitForFunction(() => {
         const overlay = document.getElementById('loader-overlay');
         return !overlay || overlay.style.opacity === '0';
