@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.click();
         });
 
-        // --- SCROLL-INTO-VIEW ON FOCUS ---
+        // --- SCROLL-INTO-VIEW ON FOCUS (keyboard only) ---
         // GSAP ScrollSmoother re-implements scrolling as an eased transform
         // on #smooth-content instead of native document scroll, so the
         // browser's own focus-triggered scrollIntoView (which only knows
@@ -73,7 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // explicitly — same API smooth-scroll.js already uses for anchor
         // links — makes it land reliably regardless of how far the card is
         // from the previous scroll position.
+        //
+        // A mouse/touch click also focuses this element (tabindex="0"), which
+        // would otherwise re-center the card under the cursor on every click.
+        // Track whether the focus was preceded by a pointerdown on this same
+        // card and skip the re-center in that case — only real keyboard
+        // (Tab) focus should scroll.
+        let focusFromPointer = false;
+        item.addEventListener('pointerdown', () => {
+            focusFromPointer = true;
+        });
         item.addEventListener('focus', () => {
+            if (focusFromPointer) {
+                focusFromPointer = false;
+                return;
+            }
             if (window.pageSmoother) {
                 window.pageSmoother.scrollTo(item, true, 'center center');
             } else {

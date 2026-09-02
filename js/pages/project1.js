@@ -118,10 +118,22 @@ function applyLanguage(lang) {
         const key = el.getAttribute('data-key');
         if (t[key] !== undefined) el.innerHTML = t[key];
     });
+    document.documentElement.lang = lang;
+
     const btnEs = document.getElementById('btn-es');
     const btnEn = document.getElementById('btn-en');
-    if (btnEs) btnEs.classList.toggle('active', lang === 'es');
-    if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+    if (btnEs) {
+        btnEs.classList.toggle('active', lang === 'es');
+        btnEs.setAttribute('aria-pressed', lang === 'es');
+        if (lang === 'es') btnEs.setAttribute('aria-current', 'true');
+        else btnEs.removeAttribute('aria-current');
+    }
+    if (btnEn) {
+        btnEn.classList.toggle('active', lang === 'en');
+        btnEn.setAttribute('aria-pressed', lang === 'en');
+        if (lang === 'en') btnEn.setAttribute('aria-current', 'true');
+        else btnEn.removeAttribute('aria-current');
+    }
 }
 
 // Global — called from the header's onclick="changeLanguage('es')" buttons.
@@ -277,10 +289,9 @@ const inicioLink = document.querySelector('.text-inicio');
 const inicioSpan = document.querySelector('.cs-footer-inicio-text');
 if (inicioLink && inicioSpan) {
     const fxInicio = new SlowTextScramble(inicioSpan);
-    const inicioOriginal = inicioSpan.innerText;
     inicioLink.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor-pointer');
-        fxInicio.setText(inicioOriginal);
+        fxInicio.setText(inicioSpan.innerText);
     });
     inicioLink.addEventListener('mouseleave', () => {
         cursor.classList.remove('cursor-pointer');
@@ -292,10 +303,9 @@ const nextLink = document.querySelector('.cs-footer-next');
 const nextSpan = document.querySelector('.cs-footer-next-text');
 if (nextLink && nextSpan) {
     const fxNext = new SlowTextScramble(nextSpan);
-    const nextOriginal = nextSpan.innerText;
     nextLink.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor-pointer');
-        fxNext.setText(nextOriginal);
+        fxNext.setText(nextSpan.innerText);
     });
     nextLink.addEventListener('mouseleave', () => {
         cursor.classList.remove('cursor-pointer');

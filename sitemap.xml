@@ -12,8 +12,6 @@
         <loc>https://magdalenasoulier.netlify.app/project2.html</loc>
         <lastmod>2026-07-23</lastmod>
     </url>
-    <url>
-        <loc>https://magdalenasoulier.netlify.app/project3.html</loc>
-        <lastmod>2026-07-23</lastmod>
-    </url>
+    <!-- project3.html omitted on purpose: it's a "coming soon" stub, noindexed
+         until the real case study replaces it. Re-add once it has real content. -->
 </urlset>

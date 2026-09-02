@@ -1,4 +1,9 @@
-/* Shared stylesheet entry point — order matters (cascade). */
+/* NOT LINKED FROM ANY PAGE — kept only as a reference for the cascade
+   order. @import makes the browser fetch these sequentially, one at a
+   time, which was blocking render for several seconds (PageSpeed).
+   index.html / project1-3.html now link every file below directly
+   instead, in this same order, so they download in parallel. If you add
+   or reorder a file here, mirror the change in each page's <head>. */
 @import url("tokens.css");
 @import url("typography.css");
 @import url("base.css");

@@ -170,8 +170,20 @@ function startBadgeRotation() {
 }
 
 function updateActiveButton(lang) {
+  document.documentElement.lang = lang;
+
   const btnEs = document.getElementById('btn-es');
   const btnEn = document.getElementById('btn-en');
-  if (btnEs) btnEs.classList.toggle('active', lang === 'es');
-  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+  if (btnEs) {
+    btnEs.classList.toggle('active', lang === 'es');
+    btnEs.setAttribute('aria-pressed', lang === 'es');
+    if (lang === 'es') btnEs.setAttribute('aria-current', 'true');
+    else btnEs.removeAttribute('aria-current');
+  }
+  if (btnEn) {
+    btnEn.classList.toggle('active', lang === 'en');
+    btnEn.setAttribute('aria-pressed', lang === 'en');
+    if (lang === 'en') btnEn.setAttribute('aria-current', 'true');
+    else btnEn.removeAttribute('aria-current');
+  }
 }

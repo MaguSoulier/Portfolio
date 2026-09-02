@@ -18,7 +18,24 @@
     <meta name="twitter:title" content="Magdalena Soulier">
     <meta name="twitter:description" content="Diseñadora visual especializada en identidades visuales, diseño UX/UI y desarrollo web. Portfolio 2026, Montevideo, Uruguay.">
     <meta name="twitter:image" content="https://magdalenasoulier.netlify.app/og-image.png">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- Split out of css/main.css's @import chain — @import forces sequential,
+         render-blocking fetches (each file isn't even requested until the
+         previous one finishes downloading). Individual <link> tags let the
+         browser fetch all of them in parallel instead. Order still matches
+         main.css's cascade order; keep the two in sync if it changes. -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/connect-card.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preload" as="image" href="Foto-violeta.webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -112,8 +129,8 @@
                 </div>
                 <div class="h-item h-item-4">
                     <div class="lang-switcher">
-                         <button onclick="changeLanguage('es')" id="btn-es">ES</button>
-                        <button onclick="changeLanguage('en')" id="btn-en">EN</button>
+                         <button onclick="changeLanguage('es')" id="btn-es" aria-pressed="true" aria-current="true">ES</button>
+                        <button onclick="changeLanguage('en')" id="btn-en" aria-pressed="false">EN</button>
                     </div>
                 </div>
             </nav>
@@ -180,7 +197,7 @@
         </div>
 
         <div id="main-photo" class="photo-container">
-            <img src="Foto-violeta.png" alt="Foto de Magdalena mirando levemente hacia la derecha, monocromática en tonos violetas">
+            <img src="Foto-violeta.webp" width="1020" height="1366" fetchpriority="high" decoding="async" alt="Foto de Magdalena mirando levemente hacia la derecha, monocromática en tonos violetas">
         </div>
 
         <div class="web-portfolio">
@@ -207,7 +224,7 @@
 
             <div class="project-item" id="project1" tabindex="0" role="link" aria-label="Tu Barrio, Tu Feria">
                 <div class="project-media">
-                    <img class="media-img" src="Celular y tote.png"
+                    <img class="media-img" src="Celular y tote.webp" width="1400" height="933" loading="lazy" decoding="async"
                          alt="Vista previa del proyecto, un celular con la plataforma web y una tote bag con ilustraciones de la identidad visual">
                 </div>
                 <div class="project-info">
@@ -231,7 +248,7 @@
 
             <div class="project-item reverse" id="project2" tabindex="0" role="link" aria-label="Fabrika de Gigantes">
                 <div class="project-media">
-                    <img class="media-img" src="fabrika-de-gigantes/hero-image.png"
+                    <img class="media-img" src="fabrika-de-gigantes/hero-image.webp" width="1400" height="511" loading="lazy" decoding="async"
                          alt="Vista previa del proyecto, una coleccion de creaciones de los usuarios en formato de polaroids dispersados">
                 </div>
                 <div class="project-info">
@@ -254,7 +271,7 @@
 
             <div class="project-item" id="project3" tabindex="0" role="link" aria-label="Diseñar los Sueños con los Pies en el Barrio">
                 <div class="project-media">
-                    <img class="media-img" src="disenar-los-suenos/preview.jpg"
+                    <img class="media-img" src="disenar-los-suenos/preview.jpg" width="1000" height="562" loading="lazy" decoding="async"
                          alt="Vista previa del proyecto, zoom al canto del libro, donde se ve su encuadernado rojo y la tapa con fotografía de la vereda montevideana">
                 </div>
                 <div class="project-info">
@@ -330,9 +347,9 @@
 
             <div class="sobre-mi-feature-media sobre-mi-feature-media--docencia">
                 <div class="sobre-mi-feature-media-frame">
-                    <img class="sobre-mi-feature-media-img" src="docencia.png" alt="Fotografía del salón de clases con estudiantes trabajando, agrupados en mesas grupales">
+                    <img class="sobre-mi-feature-media-img" src="docencia.webp" width="1200" height="900" loading="lazy" decoding="async" alt="Fotografía del salón de clases con estudiantes trabajando, agrupados en mesas grupales">
                 </div>
-                <img class="sobre-mi-feature-media-accent" src="sello.png" alt="Estampado de un sello identitario de la materia, forma de una manzana con las siglas TD1 LDCV dentro">
+                <img class="sobre-mi-feature-media-accent" src="sello.webp" width="700" height="525" loading="lazy" decoding="async" alt="Estampado de un sello identitario de la materia, forma de una manzana con las siglas TD1 LDCV dentro">
             </div>
             <div class="sobre-mi-feature-text sobre-mi-feature-text--docencia" data-reveal="right">
                 <h2 class="sobre-mi-feature-title title-3" data-key="docencia_titulo">DOCENCIA</h2>
@@ -351,7 +368,7 @@
             </div>
             <div class="sobre-mi-feature-media sobre-mi-feature-media--media-resma">
                 <div class="sobre-mi-feature-media-frame">
-                    <img class="sobre-mi-feature-media-img" src="media-resma.png" alt="Integrantes de la cooperativa media resma sentados, sosteniendo hojas A4 en blanco frente a su rostro, tapándolo">
+                    <img class="sobre-mi-feature-media-img" src="media-resma.webp" width="1048" height="590" loading="lazy" decoding="async" alt="Integrantes de la cooperativa media resma sentados, sosteniendo hojas A4 en blanco frente a su rostro, tapándolo">
                 </div>
             </div>
 

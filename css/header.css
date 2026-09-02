@@ -79,7 +79,7 @@ header {
     width: calc(100% + 18px);
     height: calc(100% + 18px);
     fill: none;
-    stroke: var(--color-dark-orange);
+stroke: var(--color-dark-orange);
     stroke-width: 4;
     opacity: 0;
     pointer-events: none;

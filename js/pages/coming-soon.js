@@ -42,10 +42,9 @@ const inicioLink = document.querySelector('.cs-footer-inicio');
 const inicioSpan = document.querySelector('.cs-footer-inicio-text');
 if (inicioLink && inicioSpan) {
     const fxInicio = new SlowTextScramble(inicioSpan);
-    const inicioOriginal = inicioSpan.innerText;
     inicioLink.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor-pointer');
-        fxInicio.setText(inicioOriginal);
+        fxInicio.setText(inicioSpan.innerText);
     });
     inicioLink.addEventListener('mouseleave', () => {
         cursor.classList.remove('cursor-pointer');

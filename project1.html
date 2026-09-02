@@ -18,8 +18,21 @@
     <meta name="twitter:title" content="Tu Barrio Tu Feria — Magdalena Soulier">
     <meta name="twitter:description" content="Estrategia multicanal desarrollada con el objetivo de reconectar a las juventudes de Montevideo con las ferias barriales.">
     <meta name="twitter:image" content="https://magdalenasoulier.netlify.app/og-image.png">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- Split out of css/main.css's @import chain — see index.html for why. -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/connect-card.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/pages/case-study.css">
+    <link rel="preload" as="image" href="tu-barrio-tu-feria/celular 1.webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,8 +92,8 @@
                 </div>
                 <div class="h-item h-item-4">
                     <div class="lang-switcher">
-                         <button onclick="changeLanguage('es')" id="btn-es">ES</button>
-                        <button onclick="changeLanguage('en')" id="btn-en">EN</button>
+                         <button onclick="changeLanguage('es')" id="btn-es" aria-pressed="true" aria-current="true">ES</button>
+                        <button onclick="changeLanguage('en')" id="btn-en" aria-pressed="false">EN</button>
                     </div>
                 </div>
             </nav>
@@ -173,7 +186,7 @@
 
         <!-- Full-bleed hero image with scroll-driven parallax -->
         <div class="cs-hero-image-wrap">
-            <div class="cs-hero-image" style="background-image: url('tu-barrio-tu-feria/celular 1.png');"></div>
+            <div class="cs-hero-image" style="background-image: url('tu-barrio-tu-feria/celular 1.webp');"></div>
         </div>
 
 
@@ -239,7 +252,7 @@
             </div>
 
             <div class="cs-context-img">
-                <img src="tu-barrio-tu-feria/celular 3.png" alt="Interfaz del proyecto visualizada en un celular en la calle">
+                <img src="tu-barrio-tu-feria/celular 3.webp" width="1680" height="1120" loading="lazy" decoding="async" alt="Interfaz del proyecto visualizada en un celular en la calle">
             </div>
 
         </div>
@@ -268,7 +281,7 @@
         <div class="grid-layout cs-section-grid">
 
             <div class="cs-proposal-img">
-                <img src="tu-barrio-tu-feria/img23.jpg" alt="Interfaz del proyecto visualizada en laptop">
+                <img src="tu-barrio-tu-feria/img23.webp" width="1200" height="756" loading="lazy" decoding="async" alt="Interfaz del proyecto visualizada en laptop">
             </div>
 
             <div class="cs-proposal-content">
@@ -330,7 +343,7 @@
 
         <!-- Full-bleed hero image — mapa completo -->
         <div class="cs-hero-image-wrap cs-hero-image-wrap--2">
-            <div class="cs-hero-image" style="background-image: url('tu-barrio-tu-feria/mapa completo.png');"></div>
+            <div class="cs-hero-image" style="background-image: url('tu-barrio-tu-feria/mapa completo.webp');"></div>
         </div>
 
 
@@ -368,7 +381,7 @@
             </div>
 
             <div class="cs-flow-img">
-                <img src="tu-barrio-tu-feria/Celular y tote.png" alt="Celular mostrando la web del proyecto en la mano de una persona">
+                <img src="tu-barrio-tu-feria/Celular y tote.webp" width="1400" height="933" loading="lazy" decoding="async" alt="Celular mostrando la web del proyecto en la mano de una persona">
             </div>
 
         </div>
@@ -420,14 +433,14 @@
 
                 <div class="cs-carousel-track-wrap">
                     <div class="cs-carousel-track" id="csCarouselTrack">
-                        <img src="tu-barrio-tu-feria/carousel/1.png" alt="Sistema visual — imagen 1">
-                        <img src="tu-barrio-tu-feria/carousel/2.png" alt="Sistema visual — imagen 2">
-                        <img src="tu-barrio-tu-feria/carousel/3.png" alt="Sistema visual — imagen 3">
-                        <img src="tu-barrio-tu-feria/carousel/4.png" alt="Sistema visual — imagen 4">
-                        <img src="tu-barrio-tu-feria/carousel/5.png" alt="Sistema visual — imagen 5">
-                        <img src="tu-barrio-tu-feria/carousel/6.png" alt="Sistema visual — imagen 6">
-                        <img src="tu-barrio-tu-feria/carousel/7.png" alt="Sistema visual — imagen 7">
-                        <img src="tu-barrio-tu-feria/carousel/8.png" alt="Sistema visual — imagen 8">
+                        <img src="tu-barrio-tu-feria/carousel/1.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 1">
+                        <img src="tu-barrio-tu-feria/carousel/2.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 2">
+                        <img src="tu-barrio-tu-feria/carousel/3.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 3">
+                        <img src="tu-barrio-tu-feria/carousel/4.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 4">
+                        <img src="tu-barrio-tu-feria/carousel/5.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 5">
+                        <img src="tu-barrio-tu-feria/carousel/6.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 6">
+                        <img src="tu-barrio-tu-feria/carousel/7.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 7">
+                        <img src="tu-barrio-tu-feria/carousel/8.webp" width="700" height="900" loading="lazy" decoding="async" alt="Sistema visual — imagen 8">
                     </div>
                 </div>
 
@@ -459,10 +472,10 @@
         <div class="cs-hero-split-group">
             <div class="cs-hero-split">
                 <div class="cs-hero-split-left">
-                    <img src="tu-barrio-tu-feria/TOTE 1.png" alt="Tote bag con ilustración Tu Barrio Tu Feria">
+                    <img src="tu-barrio-tu-feria/TOTE 1.webp" width="1600" height="1038" loading="lazy" decoding="async" alt="Tote bag con ilustración Tu Barrio Tu Feria">
                 </div>
                 <div class="cs-hero-split-right">
-                    <img src="tu-barrio-tu-feria/stickers (1).png" alt="Stickers del proyecto en un teléfono">
+                    <img src="tu-barrio-tu-feria/stickers (1).webp" width="1600" height="1412" loading="lazy" decoding="async" alt="Stickers del proyecto en un teléfono">
                 </div>
             </div>
             <div class="grid-layout cs-hero-split-captions">
